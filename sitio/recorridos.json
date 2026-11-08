@@ -1,0 +1,44 @@
+{
+  "_nota": "Recorridos del 3D. Coordenadas [x, y, z] en metros; y puede ser 'piso(25)+1.2' (base del piso 25 más 1.2 m). m = a dónde va la persona; c = cámara; mira = a dónde ve si no hay persona; t = segundos del paso; corte = z del corte automático (queda lo que está al sur); casa = altura a la que se corta la Casa.",
+  "recorridos": [
+    { "id": "vuelo", "nombre": "Vuelo", "dur": "60 s", "pasos": [
+      { "c": [-1500, 700, 1500], "mira": [0, 60, 0], "t": 0 },
+      { "c": [0, 950, 1250], "mira": [0, 40, 0], "t": 9, "txt": "<strong>Un cuadrado de 333 m.</strong> Un anillo de 33 m de fondo, 33 pisos, y un parque de 7 hectáreas al centro." },
+      { "c": [700, 260, -520], "mira": [0, 90, -150], "t": 9, "txt": "<strong>Cuatro parques de cielo.</strong> Al centro de cada fachada faltan tres pisos: un jardín abierto al bosque y al parque." },
+      { "c": [240, 60, 240], "mira": [0, 10, 0], "t": 10, "txt": "<strong>La Casa de Decisiones.</strong> El Presidente al centro, rodeado de agua, a cuatro calzadas de los cuatro lados del gobierno." },
+      { "c": [-60, 230, 260], "mira": [0, 160, 0], "t": 9, "txt": "<strong>La azotea.</strong> Una pista de 1.2 km, paneles solares caminables, jardines de agave, cuatro torres con linterna." },
+      { "c": [-600, 120, 700], "mira": [0, 20, 400], "t": 9, "txt": "<strong>El bosque es de la ciudad.</strong> 78 hectáreas, 15,000 árboles nativos, el Teatro 999 y el Salón de Eventos bajo la colina. Debajo de las esquinas, el estacionamiento." },
+      { "c": [-820, 480, 900], "mira": [0, 50, 0], "t": 9, "txt": "<strong>Estructura, liderazgo, ejecución.</strong> Por eso es un cuadrado." } ] },
+    { "id": "coche", "nombre": "Del coche al escritorio", "dur": "12 min reales · 50 s", "pasos": [
+      { "m": [400, 1.6, -400], "c": [480, 60, -300], "t": 0 },
+      { "m": [330, 1.6, -330], "c": [430, 50, -250], "t": 6, "txt": "<strong>7:52.</strong> Estacionas en tu celda del bosque, la del lado donde trabajas; el cajón te lo asignó el teléfono. Subes por el patio de luz al sendero." },
+      { "m": [178, 1.6, -178], "c": [270, 48, -110], "t": 9, "txt": "<strong>7:57.</strong> 333 m de sendero con banda móvil, o un carrito eléctrico cada 2 minutos. Las aves ya cantan." },
+      { "m": [30, 1.6, -172], "c": [10, 34, -262], "t": 8, "txt": "<strong>8:00.</strong> La plaza Norte, de tezontle. Por el zaguán se ve el parque y la linterna. La puerta de vidrio te reconoce y se abre 3 m antes de que llegues." },
+      { "m": [20, 1.6, -150], "c": [20, 26, -236], "t": 5, "corte": -160, "txt": "<strong>8:01.</strong> Vestíbulo de 11 m de altura, muro verde, café de la casa. Lanzadera de doble cabina al lobby 22." },
+      { "m": [20, "piso(25)+1.2", -150], "c": [20, "piso(25)+29", -262], "t": 7, "corte": -160, "txt": "<strong>8:03.</strong> Piso 25, lado Norte: sector Personas. Del lobby 22, tres pisos en el local. Nadie esperó más de 40 segundos." },
+      { "m": [75, "piso(25)+1.2", -150], "c": [40, "piso(25)+15", -246], "t": 9, "corte": -160, "txt": "<strong>8:04.</strong> Tu escritorio, a 15 m de una ventana al bosque. Doce minutos del coche a la silla." } ] },
+    { "id": "casa", "nombre": "Del escritorio a la Casa", "dur": "5 min reales · 45 s", "pasos": [
+      { "m": [75, "piso(25)+1.2", -150], "c": [40, "piso(25)+15", -246], "t": 0, "corte": -160 },
+      { "m": [20, "piso(25)+1.2", -150], "c": [-30, "piso(25)+13", -250], "t": 6, "corte": -160, "txt": "<strong>Te llaman del centro.</strong> 60 m al núcleo, lanzadera a la planta baja." },
+      { "m": [20, 1.6, -150], "c": [-40, 26, -250], "t": 7, "corte": -160, "txt": "<strong>Planta baja.</strong> Cruzas el anillo hacia el parque." },
+      { "m": [0, 1.6, -120], "c": [-70, 30, -95], "t": 6, "txt": "<strong>La calzada Norte.</strong> 84 m bajo una pérgola de bronce, colorines a los lados, el agua al frente." },
+      { "m": [0, 1.6, -72], "c": [-64, 26, -46], "t": 8, "txt": "<strong>La sala de espera de Estado.</strong> A la orilla del agua, con vista a la linterna; ahí está la esclusa. Quien espera, espera frente al agua." },
+      { "m": [0, 1.6, -30], "c": [-50, 30, -10], "t": 6, "casa": 9.5, "txt": "<strong>El puente y los portales.</strong> Dos puertas en serie, verificación de dos factores. Cinco minutos desde tu escritorio." },
+      { "m": [0, 1.6, 0], "c": [30, 42, 30], "t": 8, "casa": 9.5, "txt": "<strong>La suite.</strong> Tu equipo ya puso la presentación en la antesala. Cuando la puerta se abre, la pantalla ya tiene tu material." } ] },
+    { "id": "ciudadano", "nombre": "El ciudadano", "dur": "45 s", "pasos": [
+      { "m": [0, 1.6, -400], "c": [90, 60, -480], "t": 0 },
+      { "m": [0, 1.6, -300], "c": [70, 40, -380], "t": 7, "txt": "<strong>Un agricultor de Michoacán</strong> baja del tren en la Gran Estación, pide un café y toma la Rampa Norte con sus bandas. Tiene cita; no hay fila." },
+      { "m": [-30, 1.6, -155], "c": [-70, 28, -250], "t": 8, "corte": -160, "txt": "<strong>La Casa del Ciudadano.</strong> 99 mesas redondas de piedra, dos sillas iguales, sin mostrador." },
+      { "m": [-30, 1.6, -155], "c": [-10, 16, -215], "t": 7, "corte": -160, "txt": "<strong>Su caso entra al Tablero</strong> y llega al mismo tiempo a tres lados: el área responsable, Sistemas y Valor y Estudios." },
+      { "c": [-60, "piso(30)+17", -262], "mira": [0, "piso(30)+1.2", -150], "t": 8, "corte": -160, "txt": "<strong>Pisos 30–31, La Fábrica.</strong> Los ingenieros ven que la misma queja se repitió 33 veces esta semana. Lo que se repite se arregla en el sistema." },
+      { "c": [-60, "piso(33)+15", -262], "mira": [0, "piso(33)+1.2", -150], "t": 7, "corte": -160, "txt": "<strong>Piso 33.</strong> La Secretaria baja una escalera y está con quien construye su herramienta. Respuesta humana en 1 hora; solución o fecha en 11 días." },
+      { "m": [-30, 1.6, -155], "c": [70, 70, -340], "t": 8, "corte": -160, "txt": "<strong>El gobierno aprende</strong> de cada persona que viene a hablar." } ] },
+    { "id": "decision", "nombre": "Una decisión", "dur": "11 min reales · 40 s", "pasos": [
+      { "c": [30, 42, 30], "mira": [0, 3, 0], "t": 0, "casa": 9.5 },
+      { "c": [44, 30, 8], "mira": [8, 3, 0], "t": 7, "casa": 9.5, "txt": "<strong>Sala Oriente, 24 personas.</strong> El Presidente decide. La decisión queda en el Tablero con dueño y fecha antes de que salga de la sala." },
+      { "c": [60, 36, -60], "mira": [10, 4, -20], "t": 7, "casa": 9.5, "txt": "<strong>Minuto 1.</strong> El equipo sale por el cuarto de resultado; en la antesala, el siguiente ya está listo. El carrusel no se detiene." },
+      { "c": [200, "piso(33)+17", -262], "mira": [150, "piso(33)+1.2", -150], "t": 8, "corte": -160, "txt": "<strong>Minuto 3.</strong> La torre Nororiente, piso 33: la coordinadora de Personas y Orden ve la decisión en su pantalla." },
+      { "c": [40, "piso(12)+15", -246], "mira": [75, "piso(12)+1.2", -150], "t": 9, "corte": -160, "txt": "<strong>Minuto 11.</strong> Piso 12, lado Norte: la dueña de la tarea la tiene en su escritorio. El ingeniero de piso ya está a su lado." },
+      { "c": [-240, 300, 420], "mira": [0, 60, 0], "t": 9, "txt": "<strong>Aquí se decide y se cumple.</strong>" } ] }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "edificio-gobierno",
+  "private": true,
+  "type": "module",
+  "scripts": { "validar": "node modelo/validar.mjs", "publicar": "./publicar.sh" }
+}

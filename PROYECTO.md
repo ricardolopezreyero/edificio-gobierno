@@ -1007,7 +1007,7 @@ El proyecto está completo con la opción recomendada en cada caso. Si eliges la
 
 ## 21. Siguiente etapa: el modelo 3D
 
-Todo lo anterior está en números en [`modelo/parametros.json`](modelo/parametros.json): terreno, celdas, edificio, anillo, pisos, alturas, núcleos, parques de cielo, Casa de Decisiones, calzadas, sótanos, teatros, estacionamientos y vegetación por zona. El 3D se construye leyendo ese archivo, de modo que si cambia una decisión (por ejemplo, el número de sótanos) cambia el modelo entero.
+Todo lo anterior está en números en [`modelo/parametros.json`](modelo/parametros.json) (esquema v2, explicado en [`modelo/README.md`](modelo/README.md)): solo valores primarios por dominios, piezas del terreno como emplazamientos con sus fichas, recorridos aparte, y lo derivado calculado en `sitio/derivados.js` y revisado por `modelo/validar.mjs`. El 3D, el plano y los números se construyen leyendo esos archivos, de modo que si cambia una decisión (por ejemplo, el número de sótanos) cambia el modelo entero.
 
 Orden sugerido para el 3D (Three.js en una página, como el gimnasio y el resort):
 
