@@ -56,7 +56,8 @@ Three.js, 1 unidad = 1 metro, todo leído de `parametros.json` (esquema v2: domi
 - **El Cuartel** (edificio militar y de seguridad, rectangular, 9 pisos, helipuerto en el techo) y el polvorín bajo su montículo en la Puerta Oriente; **veredas** en malla de 111 m con postes y frutales, jardineras al pie de las fachadas, círculos de flor en las plazas, manchas de flor en el patio que cambian con el mes y macetas de barro con palma.
 - **Teatros** con foyer de doble altura y restaurante debajo, abiertos todo el día; junto al 999, el **Salón de Eventos** (66 × 44 m, vacío y reconfigurable) unido por una galería, con bodegas, cabinas de producción y cuartos de máquinas del Sur.
 - **Ambientes** día / atardecer / noche (ventanas encendidas), **meses** verde / marzo (jacarandas y colorines) / noviembre (cempasúchil), **capas**, **corte** con deslizador (losas por uso, los 11 sótanos, La Bóveda, el estacionamiento bajo el bosque), **fichas** al tocar 90 elementos, pantalla completa y descarga de imagen con nombre y fecha.
-- **Cinco recorridos** con subtítulos: Vuelo, Del coche al escritorio (12 min), Del escritorio a la Casa (5 min), El ciudadano y Una decisión (11 min). Cuando la persona entra al edificio, el modelo se abre solo para seguirla.
+- **Mobiliario** de seis piezas acomodado por regla en los 33 pisos (30,940 mesas, 71,676 sillas, 4,352 cubículos, 2,208 mesas de junta, 1,332 butacas en los teatros con pantalla y escenario) y la capa **Ver adentro**, que vuelve translúcidas fachadas, colinas y Casa para verlo todo sin quitar techos.
+- **Seis recorridos** con subtítulos (Adentro recorre los pisos amueblados y los teatros): Vuelo, Del coche al escritorio (12 min), Del escritorio a la Casa (5 min), El ciudadano y Una decisión (11 min). Cuando la persona entra al edificio, el modelo se abre solo para seguirla.
 
 ## Publicar
 

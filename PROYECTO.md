@@ -61,6 +61,7 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Helipuerto | 6 plataformas, torre, hangar, pabellón de llegada con baños y cafetería, banda de 240 m; del helicóptero al escritorio en 9 min |
 | Banderas | Dos astas de 111 m junto a la Rampa Norte: México al Oriente, el país visitante al Poniente |
 | Baños | ~600 bloques y ~8,000 muebles; 1 por cada 7 personas; nadie a más de 40 m |
+| Mobiliario | Seis piezas en todo el edificio, acomodadas por regla: 30,940 mesas, 71,676 sillas, 4,352 cubículos, 2,208 mesas de junta, 1,332 butacas |
 | Vida útil de diseño | 200 años |
 | Obra | ~7 años; el bosque y el teatro 999 abren al público en el año 3 |
 | Orden de magnitud | US$ 15,000 a 25,000 millones (ver §19; cifra para dimensionar, no presupuesto) |
@@ -435,6 +436,51 @@ El **Teatro 333** está a 60 m de la Casa, bajo una loma del parque, con entrada
 | Oficina de Secretario | 150 m² + antesala + sala de 12 + baño | Piso 32–33 | 24 |
 | Cabina de llamada | 1–2 personas, 4 m², cada 11 m en planta abierta | Todos | 3,000 |
 | Lockers y vestidores de piso | 1 locker por persona, vestidores con regadera en pisos 4–23 (bicicleta, deporte) | Todos | — |
+
+### El mobiliario: seis piezas, todo acomodado
+
+Poca variedad y acomodo total: **la misma mesa, la misma silla y el mismo cubículo en todo el edificio**. Lo que cambia es la regla de acomodo por tipo de piso, y esa regla vive en los parámetros, de modo que el 3D amuebla los 33 pisos solo.
+
+**El catálogo (seis piezas):**
+
+| Pieza | Medida | Qué es |
+|---|---|---|
+| **Mesa de trabajo** | 1.8 × 0.9 × 0.74 m | Tablero de encino de 40 mm sobre dos paneles de acero, un cajón, energía y red en la mesa. Es el escritorio, y dos juntas son la mesa del comedor |
+| **La silla** | 0.5 × 0.5 × 0.9 m | Malla y lana de Oaxaca sobre acero, reclina, regulable. Una sola silla para trabajo, juntas y comedor |
+| **Cubículo de llamada** | 2.0 × 2.0 × 2.4 m | Vidrio acústico y encino, ventana al parque, ventilador silencioso; 1 o 2 personas |
+| **Mesa de junta** | 2.4 × 1.2 (4) · 4.2 × 1.4 (8) · 6.6 × 1.6 (12) | Una sola pieza de parota con orilla viva; tres tamaños del mismo tablero |
+| **Mesa redonda** | Ø 1.6 m | Piedra de una pieza, dos sillas iguales: la Casa del Ciudadano y los cafés |
+| **La butaca** | 0.65 m, paso 1.10 | Piel vegetal, tzalam, ventilación individual, micrófono, USB-C |
+
+**La regla de acomodo:** el anillo de 33.3 m se parte en **tres bandas de 11.1 m**. La **exterior** (ventana al bosque) y la **interior** (ventana al parque) llevan las mesas, siempre de cara a la ventana con la silla del lado de adentro. La **banda media** lleva cubículos, salas, baños y núcleos, en un patrón de tres módulos que se repite a lo largo de cada lado.
+
+| Pisos | Uso | Bandas de ventana (por módulo de 11.1 m) | Banda media (cada tres módulos) |
+|---|---|---|---|
+| PB | Casa del Ciudadano · comedores | Afuera: 4 mesas redondas con dos sillas (99 por puerta) · Adentro: 2 mesas dobles de comedor con 8 sillas | Vestíbulos, compuertas, cafés |
+| 1–3 | Público y servicios | 2 mesas dobles de comedor por banda | Guarderías, clínica, servicios |
+| 4–13 | Operación (1,500) | **8 mesas** en dos filas (a 2.2 y 6.6 m de la ventana), barrios de 11 | Cubículos (4) · sala de equipo (8) · sala de charla (4) + 2 cubículos |
+| 14–23 | Mandos medios (1,000) | **5 mesas** en dos filas (3 + 2), barrios de 33 | Sala de equipo · cubículos · sala de equipo |
+| 24–29 | Direcciones (500) | **3 oficinas** de 41 m² por módulo: mesa, silla, dos sillas de visita | Sala de consejo (12) · cubículos · sala de charla |
+| 30–31 | La Fábrica | 8 mesas en dos filas, como operación | Sala de equipo · sala de equipo · cubículos |
+| 32–33 | Gabinete | **1 oficina** de Secretario por módulo: mesa y sala de 8 | Sala de consejo · sala de consejo · cubículos |
+| Torres | Oficinas de esquina | Una mesa y una sala de 8 por piso, más la terraza | — |
+
+**Lo que resulta en el edificio** (contado por el modelo, no estimado):
+
+| Pieza | Cantidad |
+|---|---|
+| Mesas de trabajo | 30,940 |
+| Sillas | 71,676 |
+| Cubículos de llamada | 4,352 |
+| Mesas de junta (con sus sillas) | 2,208 |
+| Mesas redondas | 320 |
+| Butacas | 1,332 |
+
+Una mesa por persona (30,000) con las de los comedores y las de esquina; una silla por mesa más las de juntas, comedores y visitas. Nadie comparte escritorio y nadie busca silla.
+
+**Los teatros, sentados:** el 999 son **27 filas de 37 butacas**, paso de 1.10 m, con rake de 13 cm por fila, pantalla de 24 × 10 m sobre el escenario; el 333 son **9 filas de 37**, pantalla de 14 × 6 m. Ninguna fila a más de 30 m (999) ni 18 m (333) del escenario. El Salón de Eventos se queda **vacío**: su mobiliario vive en su bodega y se monta por evento.
+
+**Verlo sin quitar techos:** en el 3D, la capa «Ver adentro» vuelve translúcidas las fachadas, las colinas de los teatros y la Casa: se ven las mesas en cada piso, las butacas bajo la colina y la suite bajo su techo verde, con todo en su lugar. El recorrido «Adentro» lo enseña piso por piso.
 
 ### Salas de juntas: once tamaños, ~2,700 salas
 

@@ -64,6 +64,10 @@ R.recorridos.forEach(r => {
     try { resolverPunto(p.c, D.yPiso); resolverPunto(p.m || p.mira, D.yPiso); } catch (err) { errores.push(`${r.id}[${i}]: ${err.message}`); }
   });
 });
+// mobiliario
+const MB = P.mobiliario; ok(MB && Array.isArray(MB.catalogo) && MB.catalogo.length <= 8, "mobiliario: catálogo corto (≤ 8 piezas)");
+usos.forEach(u => ok(MB.por_uso[u.id], `mobiliario: falta regla para el uso ${u.id}`));
+["t999", "t333"].forEach(t => { const te = MB.teatros[t], b = P.recintos["teatro_" + t.slice(1)].butacas; ok(te.filas * te.por_fila === b, `teatro ${t}: ${te.filas} × ${te.por_fila} ≠ ${b} butacas`); });
 // colores
 const hex = /^#[0-9a-f]{6}$/i;
 usos.forEach(u => ok(hex.test(u.color), `uso ${u.id}: color`));

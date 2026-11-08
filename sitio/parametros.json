@@ -43,6 +43,10 @@
       {
         "fecha": "2026-11-08",
         "que": "Helipuerto de 6 plataformas con torre, hangar, pabellón de llegada y banda; dos astas de 111 m (México y país visitante)"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "Mobiliario: catálogo de seis piezas y acomodo por regla en los 33 pisos; butacas y pantallas en los teatros; modo ver adentro"
       }
     ]
   },
@@ -3768,5 +3772,243 @@
         }
       }
     }
-  ]
+  ],
+  "mobiliario": {
+    "principio": "Seis piezas para todo el edificio, sin variedad: la misma mesa, la misma silla, el mismo cubículo. Lo que cambia es el acomodo, y el acomodo sale de una regla por tipo de piso.",
+    "catalogo": [
+      {
+        "id": "mesa",
+        "nombre": "Mesa de trabajo",
+        "medida": [
+          1.8,
+          0.74,
+          0.9
+        ],
+        "material": "tablero de encino de 40 mm sobre dos paneles de acero; un cajón; energía y red en la mesa",
+        "usos": "escritorio, comedor (dos juntas), mostrador, mesa de ingeniero",
+        "color": "#8a5a3a"
+      },
+      {
+        "id": "silla",
+        "nombre": "La silla",
+        "medida": [
+          0.5,
+          0.9,
+          0.5
+        ],
+        "material": "malla y lana de Oaxaca sobre acero, reclina, regulable; una sola silla para trabajo, juntas y comedor",
+        "color": "#3b3f46"
+      },
+      {
+        "id": "cubiculo",
+        "nombre": "Cubículo de llamada",
+        "medida": [
+          2,
+          2.4,
+          2
+        ],
+        "material": "vidrio acústico y encino, ventana al parque, ventilador silencioso, para 1 o 2 personas",
+        "color": "#9fc7e8"
+      },
+      {
+        "id": "junta",
+        "nombre": "Mesa de junta",
+        "material": "una sola pieza de parota con orilla viva, energía y red en la mesa",
+        "tamanos": {
+          "charla": {
+            "medida": [
+              2.4,
+              1.2
+            ],
+            "sillas": 4
+          },
+          "equipo": {
+            "medida": [
+              4.2,
+              1.4
+            ],
+            "sillas": 8
+          },
+          "consejo": {
+            "medida": [
+              6.6,
+              1.6
+            ],
+            "sillas": 12
+          }
+        },
+        "color": "#7a5030"
+      },
+      {
+        "id": "redonda",
+        "nombre": "Mesa redonda",
+        "diametro": 1.6,
+        "material": "piedra de una pieza, dos sillas iguales; la mesa de la Casa del Ciudadano y de los cafés",
+        "color": "#8d8a82"
+      },
+      {
+        "id": "butaca",
+        "nombre": "La butaca",
+        "medida": [
+          0.65,
+          1.1
+        ],
+        "material": "piel de curtido vegetal, tzalam, espuma de curado en frío, ventilación individual, micrófono, USB-C",
+        "color": "#7a2e2e"
+      }
+    ],
+    "bandas": {
+      "nota": "el anillo de 33.3 m se parte en tres bandas de 11.1 m: exterior (ventana al bosque) y interior (ventana al parque) para mesas; media para cubículos, salas, baños y núcleos",
+      "exterior": [
+        0,
+        11.1
+      ],
+      "media": [
+        11.1,
+        22.2
+      ],
+      "interior": [
+        22.2,
+        33.3
+      ]
+    },
+    "por_uso": {
+      "publico": {
+        "nota": "pisos 1–3: comedores, guarderías, clínica, servicios",
+        "comedor": {
+          "mesas_dobles_por_modulo": 2,
+          "filas_v": [
+            3,
+            7.6
+          ],
+          "sillas_por_mesa": 8
+        }
+      },
+      "operacion": {
+        "nota": "pisos 4–13, 1,500 por piso: barrios de 11 en planta abierta",
+        "mesas_por_modulo": 8,
+        "filas_v": [
+          2.2,
+          6.6
+        ],
+        "por_fila": [
+          4,
+          4
+        ],
+        "paso_u": 2.8,
+        "banda_media": [
+          "cubiculos",
+          "equipo",
+          "charla"
+        ]
+      },
+      "mandos": {
+        "nota": "pisos 14–23, 1,000 por piso: barrios de 33 con sala propia",
+        "mesas_por_modulo": 5,
+        "filas_v": [
+          2.2,
+          6.6
+        ],
+        "por_fila": [
+          3,
+          2
+        ],
+        "paso_u": 2.8,
+        "banda_media": [
+          "equipo",
+          "cubiculos",
+          "equipo"
+        ]
+      },
+      "direccion": {
+        "nota": "pisos 24–29: tres oficinas privadas por módulo (41 m²), mesa + dos sillas de visita",
+        "oficinas_por_modulo": 3,
+        "mesa_v": 3,
+        "visitas_v": 5.2,
+        "banda_media": [
+          "consejo",
+          "cubiculos",
+          "charla"
+        ]
+      },
+      "fabrica": {
+        "nota": "pisos 30–31: ingeniería, como operación pero con más salas",
+        "mesas_por_modulo": 8,
+        "filas_v": [
+          2.2,
+          6.6
+        ],
+        "por_fila": [
+          4,
+          4
+        ],
+        "paso_u": 2.8,
+        "banda_media": [
+          "equipo",
+          "equipo",
+          "cubiculos"
+        ]
+      },
+      "gabinete": {
+        "nota": "pisos 32–33: una oficina de Secretario por módulo con su sala de 8",
+        "oficinas_por_modulo": 1,
+        "mesa_v": 3,
+        "junta": "equipo",
+        "junta_v": 7.6,
+        "banda_media": [
+          "consejo",
+          "consejo",
+          "cubiculos"
+        ]
+      }
+    },
+    "pb": {
+      "ciudadano": {
+        "nota": "banda exterior de la planta baja: la Casa del Ciudadano, 4 mesas redondas por módulo con dos sillas",
+        "mesas_por_modulo": 4,
+        "v": 4.5,
+        "paso_u": 2.8
+      },
+      "comedor": {
+        "nota": "banda interior de la planta baja: los comedores",
+        "mesas_dobles_por_modulo": 2,
+        "filas_v": [
+          25.5,
+          30
+        ],
+        "sillas_por_mesa": 8
+      }
+    },
+    "esquinas": {
+      "nota": "las oficinas de esquina, en las torres: una mesa, una sala de 8 y la terraza",
+      "mesa": 1,
+      "junta": "equipo"
+    },
+    "cubiculos_por_modulo": 4,
+    "teatros": {
+      "t999": {
+        "filas": 27,
+        "por_fila": 37,
+        "paso_m": 1.1,
+        "ancho_m": 0.65,
+        "rake_m": 0.13,
+        "pantalla_xz": [
+          24,
+          10
+        ]
+      },
+      "t333": {
+        "filas": 9,
+        "por_fila": 37,
+        "paso_m": 1.1,
+        "ancho_m": 0.65,
+        "rake_m": 0.12,
+        "pantalla_xz": [
+          14,
+          6
+        ]
+      },
+      "nota": "999 = 27 filas × 37 butacas; 333 = 9 × 37; ninguna fila a más de 30 / 18 m"
+    }
+  }
 }

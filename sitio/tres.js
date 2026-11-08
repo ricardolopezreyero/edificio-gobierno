@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { derivar, resolverPunto } from "/derivados.js?v=1";
+import * as BGU from "three/addons/utils/BufferGeometryUtils.js";
 
 const _RLR = "Ricardo López Reyero", _k = "EYE", _rev = 181218; // firma (RLR en ROT13 y en el alfabeto)
 const P = window.EDIFICIO.P, D = derivar(P);
@@ -209,7 +210,8 @@ function matPorNombre(n, w, h) {
   if (!MAT[clave]) throw new Error("material desconocido: " + n);
   return MAT[clave];
 }
-function loma(x, z, rx, ry, rz, m, info, grupo = sitio) { const o = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 24), m); o.scale.set(rx, ry, rz); o.position.set(x, 0, z); o.castShadow = o.receiveShadow = true; if (info) { o.userData.info = info; pickables.push(o); } grupo.add(o); return o; }
+const lomasMat = [];
+function loma(x, z, rx, ry, rz, m, info, grupo = sitio) { m = m.clone(); lomasMat.push(m); const o = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 24), m); o.scale.set(rx, ry, rz); o.position.set(x, 0, z); o.castShadow = o.receiveShadow = true; if (info) { o.userData.info = info; pickables.push(o); } grupo.add(o); return o; }
 function construirEmplazamientos(grupoId, grupo) {
   P.emplazamientos.filter(e => e.grupo === grupoId).forEach(e => {
     const [ex, ez] = e.pos_xz;
@@ -458,6 +460,99 @@ construirEmplazamientos("patio", parque); // Teatro 333 con foyer, restaurante, 
   for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) { if (!i && !j) { caja3(4.5, 0.08, 4.5, MC.parque, 0, 0.5, 0, parque); continue; } caja3(4.2, 0.12, 2.0, MC.madera, i * M, 1.0, j * M, parque); }
 }
 
+/* ---------- Mobiliario: seis piezas, acomodadas por regla en los 33 pisos ---------- */
+// RLR · cada pieza es una malla instanciada; las posiciones salen de P.mobiliario (bandas, reglas por uso, patrón de la banda media)
+const MB = P.mobiliario, mobiliario = new THREE.Group(); edificio.add(mobiliario);
+const CAT = Object.fromEntries(MB.catalogo.map(c => [c.id, c]));
+const conteoMob = {};
+{
+  const listas = { mesa: [], silla: [], cubiculo: [], junta: [], redonda: [], butaca: [] };
+  const add = (p, x, y, z, ry = 0, sx = 1, sz = 1) => listas[p].push([x, y, z, ry, sx, sz]);
+  const yBase = k => (k ? yPiso(k) + 0.35 : 0.5);
+  // marco por lado: u a lo largo del lado (−L/2..L/2), v hacia adentro del anillo (0 = fachada exterior, 33.3 = fachada interior)
+  const LADOS = [
+    { id: "norte", xz: (u, v) => [u, -L / 2 + v], ry: 0 }, { id: "sur", xz: (u, v) => [u, L / 2 - v], ry: 0 },
+    { id: "oriente", xz: (u, v) => [L / 2 - v, u], ry: Math.PI / 2 }, { id: "poniente", xz: (u, v) => [-L / 2 + v, u], ry: Math.PI / 2 },
+  ];
+  const TAM = CAT.junta.tamanos;
+  function sala(lado, uc, vc, y, tam) { // mesa de junta con sus sillas alrededor
+    const t = TAM[tam], [lt, wt] = t.medida, n = t.sillas, [x, z] = lado.xz(uc, vc); add("junta", x, y, z, lado.ry, lt / TAM.equipo.medida[0], wt / TAM.equipo.medida[1]);
+    const porLado = Math.max(1, Math.floor((n - 2) / 2)), paso = lt / (porLado + 1);
+    for (let j = 1; j <= porLado; j++) [-1, 1].forEach(sg => { const [sx, sz] = lado.xz(uc - lt / 2 + j * paso, vc + sg * (wt / 2 + 0.45)); add("silla", sx, y, sz, lado.ry); });
+    [-1, 1].forEach(sg => { const [sx, sz] = lado.xz(uc + sg * (lt / 2 + 0.45), vc); add("silla", sx, y, sz, lado.ry + Math.PI / 2); });
+  }
+  function cubiculos(lado, uc, y, n, v = 13.3) { for (let j = 0; j < n; j++) { const [x, z] = lado.xz(uc - (n - 1) * 1.3 + j * 2.6, v); add("cubiculo", x, y, z, lado.ry); } }
+  function filaMesas(lado, uc, v, y, n, paso, espejo) { // n mesas en fila frente a la ventana; la silla del lado de adentro
+    for (let j = 0; j < n; j++) { const u = uc - ((n - 1) * paso) / 2 + j * paso, [x, z] = lado.xz(u, v); add("mesa", x, y, z, lado.ry); const [cx, cz] = lado.xz(u, v + (espejo ? -0.8 : 0.8)); add("silla", cx, y, cz, lado.ry); }
+  }
+  function comedor(lado, uc, v, y, espejo) { // mesa doble (dos mesas juntas) con 8 sillas
+    const [x, z] = lado.xz(uc, v); add("mesa", x, y, z, lado.ry, 2, 1);
+    for (let j = 0; j < 4; j++) [-1, 1].forEach(sg => { const [cx, cz] = lado.xz(uc - 1.35 + j * 0.9, v + sg * 0.85); add("silla", cx, y, cz, lado.ry); });
+  }
+  const nMod = P.edificio.geometria.reticula.modulos_por_lado, cTorre = P.edificio.arquitectura.torres_esquina.modulos;
+  for (let k = 0; k <= NP; k++) {
+    const y = yBase(k), uso = k ? D.usoDe(k).id : "pb", R = k ? MB.por_uso[uso] : null;
+    for (const lado of LADOS) {
+      for (let i = cTorre; i < nMod - cTorre; i++) {
+        const uc = -L / 2 + i * M + M / 2;
+        if (Math.abs(uc - VANO / 2) < M) continue;                                   // núcleo de medio lado
+        if (k >= PC0 && k <= PC2 && Math.abs(uc) < VANO / 2) continue;              // parque de cielo
+        if (k === 0 && Math.abs(uc) < M) continue;                                    // zaguán
+        if (k === 0) { // planta baja: Casa del Ciudadano afuera, comedores adentro
+          const cz = MB.pb.ciudadano; for (let j = 0; j < cz.mesas_por_modulo; j++) { const u = uc - ((cz.mesas_por_modulo - 1) * cz.paso_u) / 2 + j * cz.paso_u, [x, z] = lado.xz(u, cz.v); add("redonda", x, y, z); [-1, 1].forEach(sg => { const [sx, sz] = lado.xz(u + sg * 0.95, cz.v); add("silla", sx, y, sz, lado.ry + Math.PI / 2); }); }
+          MB.pb.comedor.filas_v.forEach(v => { for (let j = 0; j < MB.pb.comedor.mesas_dobles_por_modulo; j++) comedor(lado, uc - 2.6 + j * 5.2, v, y, true); });
+          continue;
+        }
+        if (uso === "publico") { R.comedor.filas_v.forEach(v => { for (let j = 0; j < R.comedor.mesas_dobles_por_modulo; j++) { comedor(lado, uc - 2.6 + j * 5.2, v, y, false); comedor(lado, uc - 2.6 + j * 5.2, F - v, y, true); } }); continue; }
+        // bandas exterior e interior
+        if (R.mesas_por_modulo) { R.filas_v.forEach((v, f) => { filaMesas(lado, uc, v, y, R.por_fila[f], R.paso_u, false); filaMesas(lado, uc, F - v, y, R.por_fila[f], R.paso_u, true); }); }
+        else if (R.oficinas_por_modulo) {
+          const n = R.oficinas_por_modulo, paso = M / n;
+          for (let o = 0; o < n; o++) { const u = uc - M / 2 + paso / 2 + o * paso;
+            [[R.mesa_v, false], [F - R.mesa_v, true]].forEach(([v, esp]) => { const [x, z] = lado.xz(u, v); add("mesa", x, y, z, lado.ry); const [cx, cz] = lado.xz(u, v + (esp ? -0.8 : 0.8)); add("silla", cx, y, cz, lado.ry);
+              if (R.visitas_v) [-0.6, 0.6].forEach(du => { const [vx, vz] = lado.xz(u + du, esp ? F - R.visitas_v : R.visitas_v); add("silla", vx, y, vz, lado.ry); });
+              if (R.junta) sala(lado, u, esp ? F - R.junta_v : R.junta_v, y, R.junta); }); }
+        }
+        // banda media: patrón de tres módulos
+        const pat = R.banda_media[i % 3];
+        if (pat === "cubiculos") cubiculos(lado, uc, y, MB.cubiculos_por_modulo);
+        else if (pat === "charla") { sala(lado, uc - 2.4, 16.65, y, "charla"); cubiculos(lado, uc + 3.6, y, 1, 13.3); cubiculos(lado, uc + 3.6, y, 1, 20); }
+        else sala(lado, uc, 16.65, y, pat);
+      }
+    }
+    // oficinas de esquina en las torres: una mesa y una sala de 8
+    if (k >= 1) [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([i, j]) => { const cc = D.torre.centro; add("mesa", i * (cc - 7), y, j * (cc - 7), 0); add("silla", i * (cc - 7), y, j * (cc - 7) + j * 0.8, 0);
+      const ladoF = { id: "esq", xz: (u, v) => [u, v], ry: 0 }; sala(ladoF, i * (cc + 5), j * (cc + 5), y, MB.esquinas.junta); });
+  }
+  // teatros: filas de butacas con rake, escenario y pantalla, dentro de la colina
+  [["t999", "teatro_999", -1], ["t333", "teatro_333", -1]].forEach(([tid, eid]) => {
+    const e = P.emplazamientos.find(x => x.id === eid), te = MB.teatros[tid], [cx, cz] = e.pos_xz, prof = e.medida_xz[1] / 2, grupo = e.grupo === "patio" ? parque : sitio;
+    const zPantalla = cz - prof * 0.3, zEsc = zPantalla + 7, z0 = zEsc + 7, [pw, ph] = te.pantalla_xz;
+    const pantalla = new THREE.Mesh(new THREE.BoxGeometry(pw, ph, 0.4), new THREE.MeshStandardMaterial({ color: 0x0b1020, emissive: 0x1a2a4a, emissiveIntensity: 0.8, side: DS })); pantalla.position.set(cx, ph / 2 + 1, zPantalla); grupo.add(pantalla);
+    caja3(pw, 1, 14, MAT.cantera, cx, 0.5, zEsc, grupo);
+    for (let r = 0; r < te.filas; r++) for (let b = 0; b < te.por_fila; b++) add("butaca", cx - ((te.por_fila - 1) * te.ancho_m) / 2 + b * te.ancho_m, 0.1 + r * te.rake_m, z0 + r * te.paso_m, Math.PI);
+    caja3(te.por_fila * te.ancho_m + 2, 0.3, te.filas * te.paso_m + 2, MAT.recinto, cx, 0.05, z0 + (te.filas * te.paso_m) / 2, grupo).castShadow = false;
+  });
+  // geometrías (una por pieza) y mallas instanciadas
+  const geoCaja = (w, h, d, dx = 0, dy = 0, dz = 0) => { const g = new THREE.BoxGeometry(w, h, d); g.translate(dx, dy, dz); return g; };
+  const union = (...gs) => { const g = BGU.mergeGeometries(gs.map(x => x.toNonIndexed()), false); return g; };
+  const mesaC = CAT.mesa.medida, sillaC = CAT.silla.medida, cubC = CAT.cubiculo.medida, jun = TAM.equipo.medida;
+  const GEO = {
+    mesa: union(geoCaja(mesaC[0], 0.05, mesaC[2], 0, mesaC[1] - 0.025), geoCaja(0.06, mesaC[1] - 0.05, mesaC[2] - 0.2, -mesaC[0] / 2 + 0.1, (mesaC[1] - 0.05) / 2), geoCaja(0.06, mesaC[1] - 0.05, mesaC[2] - 0.2, mesaC[0] / 2 - 0.1, (mesaC[1] - 0.05) / 2)),
+    silla: union(geoCaja(sillaC[0], 0.08, sillaC[2], 0, 0.46), geoCaja(sillaC[0], 0.5, 0.06, 0, 0.72, -sillaC[2] / 2 + 0.03), geoCaja(0.06, 0.42, 0.06, 0, 0.21)),
+    cubiculo: geoCaja(cubC[0], cubC[1], cubC[2], 0, cubC[1] / 2),
+    junta: union(geoCaja(jun[0], 0.06, jun[1], 0, 0.72), geoCaja(0.08, 0.69, jun[1] - 0.4, -jun[0] / 2 + 0.3, 0.345), geoCaja(0.08, 0.69, jun[1] - 0.4, jun[0] / 2 - 0.3, 0.345)),
+    redonda: union(new THREE.CylinderGeometry(CAT.redonda.diametro / 2, CAT.redonda.diametro / 2, 0.06, 20).translate(0, 0.72, 0), new THREE.CylinderGeometry(0.25, 0.35, 0.69, 12).translate(0, 0.345, 0)),
+    butaca: union(geoCaja(CAT.butaca.medida[0] - 0.08, 0.1, 0.55, 0, 0.45), geoCaja(CAT.butaca.medida[0] - 0.08, 0.6, 0.1, 0, 0.75, 0.25), geoCaja(CAT.butaca.medida[0] - 0.08, 0.4, 0.5, 0, 0.2)),
+  };
+  const MATM = { mesa: mat(hex(CAT.mesa.color), { roughness: 0.6 }), silla: mat(hex(CAT.silla.color), { roughness: 0.8 }), cubiculo: new THREE.MeshStandardMaterial({ color: hex(CAT.cubiculo.color), transparent: true, opacity: 0.45, roughness: 0.2, side: DS }), junta: mat(hex(CAT.junta.color), { roughness: 0.5 }), redonda: mat(hex(CAT.redonda.color), { roughness: 0.7 }), butaca: mat(hex(CAT.butaca.color), { roughness: 0.75 }) };
+  const q = new THREE.Quaternion(), e3 = new THREE.Euler(), m4m = new THREE.Matrix4();
+  Object.entries(listas).forEach(([id, lista]) => { if (!lista.length) return; if (movil && id === "silla") lista = lista.filter((_, i) => i % 3 === 0);
+    const inst = new THREE.InstancedMesh(GEO[id], MATM[id], lista.length);
+    lista.forEach(([x, y, z, ry, sx, sz], i) => { e3.set(0, ry, 0); q.setFromEuler(e3); m4m.compose(new THREE.Vector3(x, y, z), q, new THREE.Vector3(sx, 1, sz)); inst.setMatrixAt(i, m4m); });
+    inst.castShadow = false; inst.receiveShadow = true; mobiliario.add(inst); conteoMob[id] = lista.length; });
+}
+
 /* ---------- Árboles instanciados ---------- */
 // RLR · cada especie: tronco + copa en dos mallas instanciadas; el color de la copa es por instancia (estaciones)
 function especie(nombre, tronco, copa, cTronco, cCopa, max) {
@@ -610,6 +705,12 @@ function ponerMes(m) {
   MAT.pradera.color.set(c.pradera); if (P.presentacion.meses[m].flor) MAT.flor.color.set(hex(P.presentacion.meses[m].flor));
 }
 
+/* ---------- Ver adentro (transparencia) ---------- */
+let rayosX = false;
+function transparencia(on) {
+  rayosX = on; const lista = [...vidrios, ...lomasMat, ...matsCasa];
+  lista.forEach(m => { m.transparent = on; m.opacity = on ? 0.22 : 1; m.depthWrite = !on; m.needsUpdate = true; });
+}
 /* ---------- Corte ---------- */
 const corteChk = document.getElementById("corte"), corteZ = document.getElementById("corte-z");
 const planoCorte = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
@@ -633,6 +734,8 @@ function estadoCam() { return { c: camara.position.toArray(), mira: control.targ
 function corteDePaso(p) {
   const z = p.corte; if (z != null) { if (!corteOn) ponerCorte(true, z, true); else planoCorte.constant = -z; } else if (corteOn && tour?.auto) ponerCorte(false);
   planoCasa.constant = p.casa != null ? p.casa : 1e6;
+  const chk = document.querySelector('[data-c="rayosx"]'); if (p.xray && !rayosX) { transparencia(true); tour.xrayAuto = true; } else if (!p.xray && tour?.xrayAuto) { transparencia(false); tour.xrayAuto = false; }
+  if (chk) chk.checked = rayosX;
 }
 function empezarTour(r) {
   pararTour(); control.autoRotate = false; control.enabled = false; document.getElementById("panel").classList.remove("abierto"); document.getElementById("pista").hidden = true;
@@ -642,7 +745,7 @@ function empezarTour(r) {
   listaRec.querySelectorAll("button").forEach(b => b.classList.toggle("activo", b.dataset.r === r.id));
   document.getElementById("ficha").hidden = true;
 }
-function pararTour() { if (tour?.auto) ponerCorte(false); planoCasa.constant = 1e6; tour = null; sub.hidden = true; document.getElementById("pista").hidden = false; marcador.visible = false; luzMarcador.intensity = 0; control.enabled = true; control.autoRotate = true; listaRec.querySelectorAll("button").forEach(b => b.classList.remove("activo")); }
+function pararTour() { if (tour?.auto) ponerCorte(false); if (tour?.xrayAuto) { transparencia(false); const chk = document.querySelector('[data-c="rayosx"]'); if (chk) chk.checked = false; } planoCasa.constant = 1e6; tour = null; sub.hidden = true; document.getElementById("pista").hidden = false; marcador.visible = false; luzMarcador.intensity = 0; control.enabled = true; control.autoRotate = true; listaRec.querySelectorAll("button").forEach(b => b.classList.remove("activo")); }
 const suave = k => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
 function animarTour(ahora) {
   const p = tour.r.pasos[tour.i]; if (!p) { pararTour(); return; }
@@ -678,7 +781,7 @@ document.getElementById("ficha-cerrar").addEventListener("click", () => { docume
 const $$ = s => [...document.querySelectorAll(s)];
 $$("#amb button").forEach(b => b.addEventListener("click", () => { $$("#amb button").forEach(x => x.setAttribute("aria-pressed", x === b)); ponerAmbiente(b.dataset.a); history.replaceState(null, "", location.pathname + "?amb=" + b.dataset.a + location.hash); }));
 $$("#mes button").forEach(b => b.addEventListener("click", () => { $$("#mes button").forEach(x => x.setAttribute("aria-pressed", x === b)); ponerMes(b.dataset.m); }));
-$$("#capas input").forEach(i => i.addEventListener("change", () => { ({ bosque, ciudad, etiquetas })[i.dataset.c].visible = i.checked; if (i.dataset.c === "etiquetas" && corteOn) etiquetas.visible = false; }));
+$$("#capas input").forEach(i => i.addEventListener("change", () => { if (i.dataset.c === "rayosx") return transparencia(i.checked); ({ bosque, ciudad, etiquetas, mobiliario })[i.dataset.c].visible = i.checked; if (i.dataset.c === "etiquetas" && corteOn) etiquetas.visible = false; }));
 corteChk.addEventListener("change", () => { corteZ.disabled = !corteChk.checked; ponerCorte(corteChk.checked, Number(corteZ.value)); if (corteChk.checked && !tour) { control.autoRotate = false; camara.position.set(-420, 220, -700); control.target.set(0, 40, 0); } });
 corteZ.addEventListener("input", () => { planoCorte.constant = -Number(corteZ.value); });
 document.getElementById("pantalla").addEventListener("click", () => { if (document.fullscreenElement) document.exitFullscreen(); else document.getElementById("v-3d").requestFullscreen?.(); });
@@ -710,6 +813,6 @@ aplicarAmbiente(ambObj);
 if (new URLSearchParams(location.search).has("og")) { document.body.classList.add("og"); control.autoRotate = false; etiquetas.visible = false; camara.position.set(...P.presentacion.og.pos); control.target.set(...P.presentacion.og.mira); control.update(); }
 requestAnimationFrame(animar);
 document.getElementById("cargando").remove();
-window.__edificio = { escena, camara, control, ponerAmbiente, ponerMes, ponerCorte, empezarTour, RECORRIDOS, totalArboles, pickables };
-console.log(`Edificio de Gobierno · ${totalArboles.toLocaleString("es-MX")} árboles · ${pickables.length} elementos con ficha`);
+window.__edificio = { escena, camara, control, ponerAmbiente, ponerMes, ponerCorte, transparencia, empezarTour, RECORRIDOS, totalArboles, pickables, conteoMob };
+console.log(`Edificio de Gobierno · ${totalArboles.toLocaleString("es-MX")} árboles · ${pickables.length} elementos con ficha · mobiliario`, conteoMob);
 // RLR · fin — Ricardo López Reyero · EYE · 181218

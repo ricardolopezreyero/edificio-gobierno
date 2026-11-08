@@ -56,6 +56,8 @@ Una entrada en `emplazamientos` basta para que aparezca en el 3D, en el plano, c
 | Más árboles o otra mezcla de especies | `terreno.bosque.malla_siembra_m`, `vegetacion.mezcla_bosque`, `vegetacion.especies_3d` |
 | Un recorrido nuevo | Un objeto más en `recorridos.json`; la `y` puede ser `"piso(25)+1.2"` |
 | Otro ambiente, mes o cámara inicial | `presentacion` |
+| Otra mesa, otra densidad por piso, otro patrón de la banda media | `mobiliario.catalogo` y `mobiliario.por_uso` (el 3D re-amuebla solo) |
+| Más filas o butacas en un teatro | `mobiliario.teatros` (filas × por_fila debe dar las butacas del recinto; el validador lo revisa) |
 | Un sector, una secretaría | `edificio.sectores`; las esquinas se refieren a ellos por `id` |
 
 ## Comandos
