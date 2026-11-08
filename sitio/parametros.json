@@ -715,5 +715,59 @@
       16000,
       26000
     ]
-  }
+  },
+  "salon_de_eventos": {
+    "donde": "Puerta Sur, junto al Teatro 999",
+    "medida": [
+      66,
+      44
+    ],
+    "m2": 2904,
+    "altura_libre": 11,
+    "sin_columnas": true,
+    "capacidad": {
+      "de_pie": 2000,
+      "banquete": 1200,
+      "stands_3x3": 100
+    },
+    "divisible_en": 3,
+    "galeria": {
+      "largo": 25,
+      "ancho": 11.1,
+      "alto": 7
+    },
+    "cocina": "propia, unida a la del teatro por pasillo de servicio",
+    "cabina_ambiente_m2": 30,
+    "cajas_de_piso_cada": 5.55
+  },
+  "bodegas": {
+    "t999": 1200,
+    "salon": 800,
+    "t333": 400,
+    "casa": 300,
+    "anden_camiones": 4
+  },
+  "cabinas_produccion": {
+    "t999": {
+      "m2": 60,
+      "camaras": 10
+    },
+    "t333": {
+      "m2": 40,
+      "camaras": 6
+    },
+    "salon": {
+      "m2": 30,
+      "camaras": 4
+    }
+  },
+  "cuartos_de_maquinas": [
+    "S5–S6 planta del edificio",
+    "pisos técnicos 11 y 22",
+    "azotea (elevadores)",
+    "Puerta Oriente (subestación y enfriamiento de La Bóveda)",
+    "bloque de servicio del Sur (999 y Salón)",
+    "loma del 333 y sótano de la Casa",
+    "estación y estacionamientos de esquina"
+  ]
 }

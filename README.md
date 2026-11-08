@@ -50,7 +50,7 @@ Three.js, 1 unidad = 1 metro, todo leído de `parametros.json`: si cambia un nú
 - **Edificio**: basamento de tezontle con los cuatro zaguanes, anillo de vidrio con pilares de piedra cada 11.1 m (dobles cada 33.3), la greca de 256 bahías en los pisos 24–31, el remate con cornisa, las cuatro torres de esquina con linterna, 33 losas interiores coloreadas por uso, 8 núcleos, los 4 parques de cielo con sus columnas y árboles, azotea con pista, paneles, Mirador 33 y helipuerto.
 - **Parque interior**: el agua alrededor de la Casa, las cuatro calzadas con pérgola, ahuehuetes, colorines, la loma del Teatro 333 y la milpa.
 - **Casa de Decisiones** de 11 + 7 m con portales de columnas sobre el agua y la linterna del Presidente de 22 m; la suite 3 × 3 por dentro (muros, mesas, el patio de la magnolia) se ve cortando la Casa a 9.5 m.
-- **Teatros** con foyer de doble altura y restaurante debajo, abiertos todo el día.
+- **Teatros** con foyer de doble altura y restaurante debajo, abiertos todo el día; junto al 999, el **Salón de Eventos** (66 × 44 m, vacío y reconfigurable) unido por una galería, con bodegas, cabinas de producción y cuartos de máquinas del Sur.
 - **Ambientes** día / atardecer / noche (ventanas encendidas), **meses** verde / marzo (jacarandas y colorines) / noviembre (cempasúchil), **capas**, **corte** con deslizador (losas por uso, los 11 sótanos, La Bóveda, el estacionamiento bajo el bosque), **fichas** al tocar 90 elementos, pantalla completa y descarga de imagen con nombre y fecha.
 - **Cinco recorridos** con subtítulos: Vuelo, Del coche al escritorio (12 min), Del escritorio a la Casa (5 min), El ciudadano y Una decisión (11 min). Cuando la persona entra al edificio, el modelo se abre solo para seguirla.
 

@@ -202,6 +202,23 @@ const infoF999 = { t: "Foyer del Teatro 999", c: "Aquí se recibe a la gente ant
 caja3(90, 5, 22, matVidrio(90, 5, true), 0, 2.5, 318, sitio, infoR999); caja3(96, 0.8, 26, MAT.cantera, 0, 5.4, 318, sitio);
 caja3(90, 12, 22, matVidrio(90, 12, true), 0, 11.8, 324, sitio, infoF999); caja3(96, 1.2, 26, MAT.recinto, 0, 18.4, 324, sitio);
 caja3(110, 0.4, 16, MAT.tezontle, 0, 0.2, 299, sitio, infoR999).castShadow = false;
+// RLR · cabina de producción del 999: sobre el foyer, con ventana a la sala
+caja3(14, 4, 6, matVidrio(14, 4, true), 0, 21.4, 334, sitio, { t: "Cabina de producción · Teatro 999", c: "Al fondo de la platea, con ventana a la sala: dirección de video, audio, luces, transmisión y traducción. Ocho cámaras robóticas, mezcla en 4K, señal lista para televisión y redes en el momento.", d: [["Superficie", "60 m²"], ["Cámaras", "8 robóticas + 2 de mano"], ["Salida", "TV, streaming, pantallas del edificio"]] });
+// RLR · el Salón de Eventos: vacío, sin columnas, 11 m libres; se monta y desmonta todos los días; conectado al foyer por la galería
+const infoSalon = { t: "Salón de Eventos", c: "Un salón vacío de 66 × 44 m sin columnas y 11 m libres, pegado al Teatro 999 y conectado a su foyer por una galería de vidrio. Se monta y desmonta todos los días: expo de proveedores, desayuno de 1,200, baile de Año Nuevo, feria de los estados. Los proveedores exponen aquí y presentan en el teatro. Muros móviles lo parten en tres; cajas de piso cada 5.55 m con energía, red y agua; parrilla de rigging en todo el techo; cabina de ambiente en el mezanine.", d: [["Superficie", "2,904 m²"], ["Capacidad", "2,000 de pie · 1,200 en banquete · 100 stands de 3 × 3"], ["Altura libre", "11 m"], ["Cocina", "propia, unida por pasillo de servicio a la del teatro"], ["Bodega", "800 m² contigua, con andén"]] };
+caja3(66, 8, 44, matPiedra(texTorre, 66, 8, 2), 103, 4, 314, sitio, infoSalon);
+caja3(66, 3, 44, matVidrio(66, 3, true), 103, 9.5, 314, sitio, infoSalon);
+caja3(68, 0.9, 46, MAT.bronce, 103, 11.45, 314, sitio, infoSalon);
+caja3(8, 3, 5, matVidrio(8, 3, true), 103, 13.4, 295, sitio, { t: "Cabina de ambiente · Salón", c: "En el mezanine del salón: luces, sonido, pantallas y clima se mueven desde aquí para que el ambiente cambie con el evento, de un desayuno de trabajo a un baile, sin que nadie suba a una escalera.", d: [["Superficie", "30 m²"]] });
+// la galería: 25 m de vidrio entre el foyer del teatro y el salón; también es antesala de la expo
+caja3(26, 7, M, matVidrio(26, 7, true), 57.5, 3.5, 322, sitio, { t: "La galería", c: "25 m de vidrio y doble altura entre el foyer del Teatro 999 y el Salón de Eventos. Es el paso y es la antesala de la expo: registro, café, los primeros stands.", d: [["Medida", "25 × 11.1 m, 7 m de alto"]] });
+caja3(27, 0.6, M + 1, MAT.cantera, 57.5, 7.3, 322, sitio);
+// pasillo de servicio (cocina con cocina) detrás de la galería
+caja3(26, 4, 6, MAT.recinto, 57.5, 2, 331, sitio, { t: "Pasillo de servicio", c: "Une la cocina del teatro con la cocina del salón: los dos recintos se sirven como uno solo.", d: [] });
+// bodegas y cuarto de máquinas del Sur
+caja3(40, 6, 24, MAT.recinto, 124, 3, 362, sitio, { t: "Bodegas y máquinas del Sur", c: "Cada recinto tiene su bodega para montar y desmontar sin cruzarse: la del Teatro 999 (1,200 m², detrás del escenario), la del Salón (800 m², contigua, con andén de carga) y los cuartos de máquinas de los dos: clima, eléctrico, UPS, bombas contra incendio. Navidad, Año Nuevo, desayunos, comidas y cenas se guardan aquí, listos.", d: [["Bodega 999", "1,200 m²"], ["Bodega Salón", "800 m²"], ["Andén", "4 camiones"], ["Máquinas", "clima, eléctrico, UPS, bombas"]] });
+caja3(44, 0.6, 28, MAT.cantera, 124, 6.3, 362, sitio);
+caja3(30, 0.4, 14, MAT.asfalto, 124, 0.2, 384, sitio).castShadow = false; // andén
 // canchas (poniente)
 [[-430, -110, 40, 20], [-380, -110, 40, 20], [-430, -75, 36, 18], [-390, -75, 36, 18], [-350, -75, 36, 18], [-430, -40, 36, 18], [-390, -40, 36, 18], [-350, -40, 36, 18]].forEach(([x, z, w, d]) => caja3(w, 0.3, d, MAT.cancha, x, 0.3, z, sitio).castShadow = false);
 for (let k = 0; k < 8; k++) caja3(20, 0.3, 10, MAT.pista, -440 + (k % 4) * 24, 0.3, 10 + Math.floor(k / 4) * 14, sitio).castShadow = false;
@@ -383,7 +400,9 @@ loma(60, 105, 38, 9, 27, MAT.pradera, { t: "Teatro 333", c: "Bajo una loma del p
 { const infoR = { t: "Restaurante del Teatro 333", c: "Debajo del foyer, con terraza hacia el parque y el agua de la Casa: 120 asientos. Abierto todo el día.", d: [["Asientos", "120"]] }, infoF = { t: "Foyer del Teatro 333", c: "Para recibir a los 333 invitados antes de acomodarlos: 40 × 12 m, 8 m de altura, vidrio contra la loma.", d: [["Superficie", "480 m²"]] };
   caja3(40, 4.5, 12, matVidrio(40, 4.5, true), 60, 2.25, 72, parque, infoR); caja3(44, 0.6, 14, MAT.cantera, 60, 4.8, 72, parque);
   caja3(40, 8, 12, matVidrio(40, 8, true), 60, 9, 78, parque, infoF); caja3(44, 1, 14, MAT.recinto, 60, 13.5, 78, parque);
-  caja3(50, 0.3, 10, MAT.tezontle, 60, 0.3, 61, parque, infoR).castShadow = false; }
+  caja3(50, 0.3, 10, MAT.tezontle, 60, 0.3, 61, parque, infoR).castShadow = false;
+  caja3(8, 3, 5, matVidrio(8, 3, true), 60, 15.5, 82, parque, { t: "Cabina de producción · Teatro 333", c: "Al fondo de la sala, con ventana: video, audio, luces, transmisión y traducción. Seis cámaras robóticas; la señal sale directo a la Sala de Prensa por el túnel.", d: [["Superficie", "40 m²"]] });
+  caja3(16, 4, 10, MAT.cantera, 110, 2, 112, parque, { t: "Bodega del Teatro 333", c: "400 m² bajo la loma, con acceso desde el túnel del S1: montajes, mobiliario de ceremonias, banderas, el equipo de las tomas de protesta.", d: [["Superficie", "400 m²"]] }); }
 caja3(33, 0.6, 33, mat(0x7a8a3a), -80, 0.3, -90, parque, { t: "La milpa", c: "33 × 33 m de maíz, frijol y calabaza. La siembran los niños de las guarderías en mayo, la cosechan en octubre, y las tortillas se sirven en los Mercados.", d: [] }).castShadow = false;
 // la Casa de Decisiones
 {
@@ -458,7 +477,7 @@ function libre(x, z) {
   if (Math.abs(x) < L / 2 + 6 && Math.abs(z) < L / 2 + 6) return false;              // edificio
   if (plazas.some(([px, pz]) => dentro(x, z, px, pz, PLAZA + 8, PLAZA + 8))) return false;
   if (dentro(x, z, 0, -420, 260, 60) || dentro(x, z, 0, -380, 30, 60)) return false; // estación y su andén
-  if (enElipse(x, z, 0, 400, 118, 88) || dentro(x, z, 0, 305, 124, 60)) return false;  // teatro 999, foyer y restaurante
+  if (enElipse(x, z, 0, 400, 118, 88) || dentro(x, z, 0, 305, 124, 60) || dentro(x, z, 100, 330, 110, 100) || dentro(x, z, 124, 384, 36, 20)) return false;  // teatro 999, foyer, restaurante, salón, bodegas
   if (dentro(x, z, -400, -20, 210, 200)) return false;                                // canchas
   if (enElipse(x, z, 400, -90, 22, 22) || enElipse(x, z, 430, 110, 66, 50) || enElipse(x, z, 420, 40, 44, 33)) return false;
   for (const [i, j] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) { if (dentro(x, z, i * (C + 110), j * (C + 110), 50, 80)) return false; const t = ((x * i) + (z * j)) / 2; if (t > L / 2 && t < C - 40 && Math.abs(x * i - z * j) < 12) return false; }
@@ -480,7 +499,7 @@ for (let k = 0; k < 900; k++) {
   const x = entre(-LI / 2 + 6, LI / 2 - 6), z = entre(-LI / 2 + 6, LI / 2 - 6);
   if (Math.abs(x) < CASA / 2 + AGUA + 10 && Math.abs(z) < CASA / 2 + AGUA + 10) continue;   // la isla y el agua
   if (Math.abs(x) < 9 || Math.abs(z) < 9) continue;                                          // calzadas
-  if (enElipse(x, z, 60, 105, 42, 31) || dentro(x, z, 60, 68, 58, 34) || dentro(x, z, -80, -90, 40, 40)) continue;           // teatro y milpa
+  if (enElipse(x, z, 60, 105, 42, 31) || dentro(x, z, 60, 68, 58, 34) || dentro(x, z, 110, 112, 24, 18) || dentro(x, z, -80, -90, 40, 40)) continue;           // teatro y milpa
   if (azar() < 0.45) continue;                                                               // claros
   planta(azar() < 0.7 ? "encino" : "madrono", x, 0, z, entre(0.7, 1.1), parque);
 }
@@ -526,7 +545,7 @@ function etiqueta(texto, x, y, z, ancho = 60, grupo = etiquetas, color = "#e6e8e
 }
 Object.entries(SECT).forEach(([l, s]) => { const d = L / 2 + 30, p = { norte: [0, -d], sur: [0, d], oriente: [d, 0], poniente: [-d, 0] }[l]; etiqueta(`${NOMBRE_LADO[l]} · ${s.nombre}`, p[0], H_TOP + 26, p[1], 110); });
 etiqueta("Casa de Decisiones", 0, 42, 0, 90);
-etiqueta("Teatro 999", 0, 32, 400, 70); etiqueta("Teatro 333", 60, 22, 105, 60); etiqueta("Estación de Metro y Tren", 0, 26, -420, 110); etiqueta("Canchas", -400, 20, -20, 60); etiqueta("Energía", 430, 26, 110, 60);
+etiqueta("Teatro 999", 0, 32, 400, 70); etiqueta("Salón de Eventos", 103, 24, 314, 90); etiqueta("Teatro 333", 60, 22, 105, 60); etiqueta("Estación de Metro y Tren", 0, 26, -420, 110); etiqueta("Canchas", -400, 20, -20, 60); etiqueta("Energía", 430, 26, 110, 60);
 [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(([i, j]) => etiqueta("Bosque · estacionamiento debajo", i * C, 30, j * C, 150));
 [[0, -(L - F) / 2], [0, (L - F) / 2], [(L - F) / 2, 0], [-(L - F) / 2, 0]].forEach(([x, z]) => etiqueta("Parque de cielo", x, Y_VANO1 + 8, z, 70));
 const etiquetasCorte = new THREE.Group(); corteG.add(etiquetasCorte);

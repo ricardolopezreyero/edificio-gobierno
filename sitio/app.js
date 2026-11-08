@@ -26,7 +26,7 @@ mostrar(location.hash.slice(1) || "3d");
 /* ---------- 3D (se carga una vez) ---------- */
 function cargar3D() {
   if (cargando3D) return cargando3D;
-  cargando3D = import("/tres.js?v=7").then(m => { window.EDIFICIO.tres = m; }).catch(e => {
+  cargando3D = import("/tres.js?v=9").then(m => { window.EDIFICIO.tres = m; }).catch(e => {
     $("#cargando").innerHTML = `<p>No se pudo cargar el 3D.<br><small>${e.message}</small></p>`;
     console.error(e);
   });
@@ -49,7 +49,7 @@ function planoTerreno() {
   // plazas
   [[0, -C / 2 - 49.5], [0, C / 2 + 49.5], [C / 2 + 49.5, 0], [-C / 2 - 49.5, 0]].forEach(([x, y]) => s += rect(x - 49.5, y - 49.5, 99, 99, "#5a2c22"));
   // teatro 999 y estación
-  s += `<ellipse cx="0" cy="400" rx="110" ry="80" fill="#2d5a3a"/>` + txt(0, 400, "999", 22, "#e6e8ec");
+  s += `<ellipse cx="0" cy="400" rx="110" ry="80" fill="#2d5a3a"/>` + txt(0, 400, "999", 22, "#e6e8ec") + rect(70, 292, 66, 44, "#6f6b62") + txt(103, 314, "Salón", 12);
   s += rect(-120, -440, 240, 40, "#2a3a4a") + txt(0, -420, "Estación de Metro y Tren", 12);
   // edificio
   const L = P.edificio.lado, F = P.edificio.fondo_anillo;

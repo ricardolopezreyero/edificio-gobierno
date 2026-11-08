@@ -51,7 +51,7 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Parques de cielo | 4, uno al centro de cada fachada, pisos 16–18, 99 m de ancho, abiertos al aire |
 | Bosque | ~78 ha netas, 15,000 a 20,000 árboles de ~33 especies nativas del Valle de México |
 | Estacionamiento | ~37,000 cajones: 29,500 bajo el bosque de las 4 esquinas + 7,400 bajo el edificio |
-| Teatros | 333 butacas bajo el parque central · 999 butacas en el bosque, abierto a la ciudad |
+| Teatros y eventos | 333 butacas bajo el parque central · 999 butacas en el bosque, abierto a la ciudad · Salón de Eventos de 2,904 m² junto al 999, con bodega y cabina por recinto |
 | Comer | 4 Mercados de los 32 estados + 4 comedores de planta baja + 33 cafés + 8 restaurantes |
 | Gimnasios | 12, incluida una alberca de 33.3 m y una pista de 1.2 km en la azotea |
 | Servidores | La Bóveda: sótanos 10–11 unidos, 9 m de altura, 110,889 m², 4 cuadrantes independientes |
@@ -193,7 +193,7 @@ Nueve celdas de 333 × 333 m. El edificio ocupa la central. Todo lo demás es bo
 |---|---|---|
 | **Centro** | El edificio, el parque interior, la Casa de Decisiones, el Teatro 333 bajo una loma del parque | Perímetro de seguridad Z1 en las cuatro plazas de acceso |
 | **Puerta Norte** | Plaza de llegada principal, **estación de Metro y Tren Suburbano** (más terminal de 33 rutas eléctricas), ciclovías, **Casa del Ciudadano Norte**, jacarandas | La puerta «de la ciudad» |
-| **Puerta Sur** | **Teatro 999** semienterrado bajo una colina de bosque, su propia plaza y estacionamiento de visitantes (2,000 cajones en un nivel) | Abierto a la ciudad: eventos nacionales, conciertos, ceremonias |
+| **Puerta Sur** | **Teatro 999** semienterrado bajo una colina de bosque, el **Salón de Eventos** (66 × 44 m) unido al foyer por una galería, bodegas y máquinas del Sur, plaza y estacionamiento de visitantes (2,000 cajones en un nivel) | Abierto a la ciudad: eventos nacionales, conciertos, ceremonias, expos |
 | **Puerta Oriente** | Acceso de prensa y visitas oficiales, helipuerto de emergencia, **subestación eléctrica** y planta de enfriamiento de La Bóveda camufladas en lomas con bosque encima | Sale el sol: la puerta de las noticias |
 | **Puerta Poniente** | **Deportes al aire libre**: 8 canchas de pádel, 6 de tenis, 2 de fútbol rápido, 4 de básquet, pista de 5 km por el bosque; acceso de logística y proveedores (rampa al S1) | El lado del atardecer |
 | **4 esquinas** | Bosque denso sobre **2 niveles de estacionamiento** (221,778 m² cada esquina, ~7,400 cajones por esquina), rampas y accesos vehiculares desde el anillo vial perimetral | Senderos peatonales cubiertos de 333 m hasta el edificio; también carritos eléctricos |
@@ -464,6 +464,54 @@ Capacidad en hora de comida: 4 × 1,200 × 3 + 4 × 1,000 × 3 = **26,400** más
 | Apoyo | Camerinos, cabinas de traducción (6 idiomas y lenguas indígenas), prensa, control | Lo mismo, más 2,000 cajones de visitantes bajo la plaza |
 
 **La butaca** (la misma en los dos): paso entre filas de **1.10 m** (el cine comercial usa 0.85), asiento de **0.65 m** de ancho, respaldo reclinable 15°, espuma de curado en frío forrada de piel de curtido vegetal, apoyabrazos de madera de tzalam, **ventilación individual** bajo el asiento (aire a 2 cm/s, silenciosa), micrófono por butaca para preguntas, botón de voto, toma USB‑C, luz guía en el piso, y número grabado en bronce. Hecha en México.
+
+### Los eventos se hacen aquí: el Salón de Eventos, las bodegas y las cabinas
+
+Si un desayuno, una expo o una cena de fin de año se hacen fuera del complejo, la persona de gobierno correcta no va, o va tarde. Por eso los eventos se hacen aquí, y por eso cada recinto tiene lo que necesita para montar y desmontar **todos los días** sin estorbarse.
+
+**El Salón de Eventos** (Puerta Sur, pegado al Teatro 999):
+
+| | |
+|---|---|
+| Qué es | Un salón **vacío**, sin columnas, de **66 × 44 m (2,904 m²) y 11 m libres**, con piso plano y rigging en todo el techo: un salón de baile que se vuelve lo que el día pida |
+| Capacidades | 2,000 personas de pie · 1,200 en banquete · 100 stands de 3 × 3 m con pasillos de 3 m · 3 salones de 22 × 44 m con muros móviles acústicos |
+| Para qué | Expo de proveedores, feria de los estados, desayunos y comidas de trabajo, cenas de Navidad y Año Nuevo, firmas, networking. Los proveedores exponen aquí y **presentan en el teatro**, a 25 m |
+| Conexión | **La galería**: 25 m de vidrio y doble altura entre el foyer del 999 y el salón; es el paso y la antesala de la expo (registro, café, primeros stands) |
+| Cocina | Propia, unida a la cocina del teatro por un pasillo de servicio: los dos recintos se sirven como uno (desayuno de 1,200 y función de 999 el mismo día) |
+| Instalaciones | Cajas de piso cada 5.55 m con energía trifásica, red y agua; blackout total; techo acústico; clima por zona; terraza al bosque |
+| Cabina de ambiente | 30 m² en el mezanine: luces, sonido, pantallas y clima se mueven desde ahí para que el ambiente cambie con el evento, sin escaleras |
+
+**Una bodega por recinto**, cada una con su andén y su montacargas, para que nunca se crucen un montaje con un desmontaje:
+
+| Recinto | Bodega | Dónde |
+|---|---|---|
+| Teatro 999 | 1,200 m² | Detrás del escenario, en el bloque de servicio del Sur |
+| Salón de Eventos | 800 m² | Contigua al salón, con andén para 4 camiones |
+| Teatro 333 | 400 m² | Bajo la loma, con acceso desde el túnel del S1 |
+| Casa de Decisiones | 300 m² | Sótano de la Casa (ceremonias, banderas, mobiliario de Estado) |
+
+Lo que se guarda: la Navidad completa, el Año Nuevo, las mesas y sillas de desayuno, comida y cena, los stands base, el escenario modular, las banderas y el protocolo. Todo etiquetado en el Tablero: qué hay, dónde y cuándo se usó.
+
+**Cabinas de producción de video** (el gobierno comunica, y la señal tiene que salir perfecta):
+
+| Recinto | Cabina | Equipo |
+|---|---|---|
+| Teatro 999 | 60 m² al fondo de la platea, con ventana | 8 cámaras robóticas + 2 de mano, mezcla 4K, audio, luces, traducción, salida a TV, streaming y a las pantallas del edificio |
+| Teatro 333 | 40 m² al fondo de la sala | 6 cámaras robóticas; la señal sale directo a la Sala de Prensa por el túnel |
+| Salón de Eventos | 30 m² en el mezanine | Ambiente (luces, sonido, pantallas, clima) y 4 cámaras para transmitir una expo o una firma |
+| Sala de Prensa y Casa | Estudio de televisión propio | Ya descrito en §9 |
+
+**Cuartos de máquinas** (sí hay, y aquí están todos):
+
+| Dónde | Qué |
+|---|---|
+| Sótanos S5–S6 | La planta del edificio: chillers, bombas, cisternas, tratamiento de agua, baterías, generadores, subestación interior |
+| Pisos técnicos 11 y 22 | Entrepisos de instalaciones de 2.2 m: manejadoras de aire, eléctrico y red de cada tercio del edificio |
+| Azotea | Cuartos de máquinas de los 96 elevadores, integrados en el borde interior del anillo |
+| Puerta Oriente | Subestación de 400 kV y planta de enfriamiento de La Bóveda, en lomas con bosque encima |
+| Bloque de servicio del Sur | Máquinas del Teatro 999 y del Salón: clima, eléctrico, UPS, bombas contra incendio |
+| Loma del 333 y sótano de la Casa | Máquinas propias de cada uno, con respaldo desde el S6 por túnel |
+| Estación y estacionamientos | Ventilación, bombeo y eléctrico de cada esquina, en su propio cuarto bajo el bosque |
 
 ### Escuchar: la Casa del Ciudadano (4, en planta baja)
 
