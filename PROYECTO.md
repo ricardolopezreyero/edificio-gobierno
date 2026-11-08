@@ -18,6 +18,7 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 5. [El sitio](#5-el-sitio)
 6. [El tablero del terreno](#6-el-tablero-del-terreno-999--999-m)
 7. [El edificio](#7-el-edificio)
+7b. [Arquitectura: lo que un arquitecto cambiaría y lo que no](#7b-arquitectura-lo-que-un-arquitecto-cambiaría-y-lo-que-no)
 8. [La organización es la geometría](#8-la-organización-es-la-geometría)
 9. [La Casa de Decisiones](#9-la-casa-de-decisiones)
 10. [Programa de espacios con medidas](#10-programa-de-espacios-con-medidas)
@@ -45,12 +46,13 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Altura | 33 pisos, ~160 m (planta baja de 11 m, pisos de 4.5 m) |
 | Planta tipo | 39,900 m² por piso · 1.32 millones de m² sobre el suelo |
 | Sótanos | 11 niveles bajo todo el cuadrado (110,889 m² cada uno), ~50 m de profundidad |
-| Centro | Casa de Decisiones: 99 × 99 m, 2 niveles + 1 sótano, en medio del parque de 7.1 ha |
+| Centro | Casa de Decisiones: 99 × 99 m, planta baja de 11 m + planta alta de 7 m + sótano, linterna del Presidente de 22 m, en medio del parque de 7.1 ha |
+| Arquitectura | Basamento de tezontle (4 pisos), 4 zaguanes, 4 torres de esquina (+11 m), la greca (256 bahías en pisos 24–31), remate con cornisa (§7b) |
 | Parques de cielo | 4, uno al centro de cada fachada, pisos 16–18, 99 m de ancho, abiertos al aire |
 | Bosque | ~78 ha netas, 15,000 a 20,000 árboles de ~33 especies nativas del Valle de México |
 | Estacionamiento | ~37,000 cajones: 29,500 bajo el bosque de las 4 esquinas + 7,400 bajo el edificio |
 | Teatros | 333 butacas bajo el parque central · 999 butacas en el bosque, abierto a la ciudad |
-| Comer | 4 Mercados de los 32 estados + 4 comedores de planta baja + 33 cafés + 6 restaurantes |
+| Comer | 4 Mercados de los 32 estados + 4 comedores de planta baja + 33 cafés + 8 restaurantes |
 | Gimnasios | 12, incluida una alberca de 33.3 m y una pista de 1.2 km en la azotea |
 | Servidores | La Bóveda: sótanos 10–11 unidos, 9 m de altura, 110,889 m², 4 cuadrantes independientes |
 | Elevadores | 8 núcleos, 96 elevadores de doble cabina + 16 de servicio + 16 de bomberos |
@@ -190,7 +192,7 @@ Nueve celdas de 333 × 333 m. El edificio ocupa la central. Todo lo demás es bo
 | Celda | Qué tiene | Notas |
 |---|---|---|
 | **Centro** | El edificio, el parque interior, la Casa de Decisiones, el Teatro 333 bajo una loma del parque | Perímetro de seguridad Z1 en las cuatro plazas de acceso |
-| **Puerta Norte** | Plaza de llegada principal, **estación de transporte** (Metro/tren + terminal de 33 rutas eléctricas), ciclovías, **Casa del Ciudadano Norte**, jacarandas | La puerta «de la ciudad» |
+| **Puerta Norte** | Plaza de llegada principal, **estación de Metro y Tren Suburbano** (más terminal de 33 rutas eléctricas), ciclovías, **Casa del Ciudadano Norte**, jacarandas | La puerta «de la ciudad» |
 | **Puerta Sur** | **Teatro 999** semienterrado bajo una colina de bosque, su propia plaza y estacionamiento de visitantes (2,000 cajones en un nivel) | Abierto a la ciudad: eventos nacionales, conciertos, ceremonias |
 | **Puerta Oriente** | Acceso de prensa y visitas oficiales, helipuerto de emergencia, **subestación eléctrica** y planta de enfriamiento de La Bóveda camufladas en lomas con bosque encima | Sale el sol: la puerta de las noticias |
 | **Puerta Poniente** | **Deportes al aire libre**: 8 canchas de pádel, 6 de tenis, 2 de fútbol rápido, 4 de básquet, pista de 5 km por el bosque; acceso de logística y proveedores (rampa al S1) | El lado del atardecer |
@@ -255,9 +257,43 @@ El piso 17 es además la **cintura del edificio**: sky lobby de cambio de elevad
 - **Pista de correr de 1.2 km** por el perímetro (1,200 m exactos por el eje del anillo), de caucho sobre losa, con sombra de los páneles en tramos.
 - **Paneles solares** bifaciales vidrio-vidrio sobre pérgolas caminables en ~24,000 m² (unos 5 MWp).
 - **Jardines de azotea** con sedum, echeverias y agaves (plantas de aquí, casi sin agua) en el resto.
-- 4 miradores de esquina con el restaurante **Mirador 33** en la esquina Nororiente.
-- Helipuerto de emergencia en la esquina Suroriente (solo médico y de seguridad).
+- Las cuatro torres de esquina suben 11 m sobre la azotea con una linterna de vidrio; en la Nororiente está el restaurante **Mirador 33**.
+- Helipuerto de emergencia en el techo del lado Sur, junto a la torre Suroriente (solo médico y de seguridad).
 - Estación de calistenia al aire libre en la esquina Surponiente.
+
+---
+
+## 7b. Arquitectura: lo que un arquitecto cambiaría y lo que no
+
+Ricardo, al ver el primer modelo: «está demasiado exacto y está correcto; ahorita simplemente es un cuadrado». Tiene razón. Un cuadrado perfecto es el símbolo, pero el símbolo no está en la planta: está en **cómo el cuadrado toca el suelo, cómo toca el cielo y cómo se ven las personas en él**. Eso es lo que un arquitecto de oficio agregaría, y es lo que cualquier palacio de la Ciudad de México ya hace: basamento de tezontle, cuerpo de cantera, remate con cornisa, torreones en las esquinas y un zaguán que deja ver el patio desde la calle. Las referencias que valen aquí son reales y mexicanas: el Palacio Nacional (tezontle y cantera), Teodoro González de León (masa de piedra, portales profundos), Ricardo Legorreta (muros, agua, patio) y Pedro Ramírez Vázquez (el patio con agua y el paraguas del Museo de Antropología).
+
+Regla para decidir: **todo lo que se agrega tiene que salir de la retícula de 11.1 m y de la organización** (rango, sector, decisión). Si una forma no cuenta nada del gobierno que vive adentro, no entra.
+
+### Lo que sí (y ya está en el modelo)
+
+| # | Movimiento | Medida | Por qué vale la pena |
+|---|---|---|---|
+| 1 | **Basamento de piedra** | Planta baja y pisos 1–3 (24.5 m) en tezontle rojo con marcos de cantera y vanos profundos; el vidrio empieza en el piso 4 | El edificio «pisa» como los palacios de la ciudad. Abajo está lo público (Casas del Ciudadano, comedores, guarderías): la piedra dice «esto es de todos». Y protege lo que más se toca |
+| 2 | **Cuatro zaguanes** | El eje de cada calzada atraviesa el anillo en planta baja: paso de 11.1 × 11 m con portal de tezontle de 20 m por fuera y por dentro | Desde la plaza se ve el parque y la linterna del Presidente. **La decisión se ve desde la calle.** Es el gesto más barato y el que más dice |
+| 3 | **Cuatro torres de esquina** | Tres módulos por lado (38.8 m con el vuelo), salen 5.5 m de las dos fachadas y suben 11 m sobre el techo, con linterna de vidrio | Las esquinas son los superdirectores que coordinan dos sectores: aquí se vuelven volumen. Un cuadrado con cuatro torres se reconoce desde lejos: fortaleza, palacio, orden. El Mirador 33 vive en la torre Nororiente |
+| 4 | **La greca** | En los pisos de dirección (24–31) una de cada tres oficinas sale 2.2 m, en diagonal, un piso sí y dos no; marco de bronce | «Volumen a algunas oficinas» con regla, no con capricho: la textura nace del rango. De lejos se lee como un textil mexicano; de cerca cada bahía da sombra a la de abajo. Son 256 bahías |
+| 5 | **El remate** | Los pisos 32 y 33 (gabinete y coordinadores) salen 2.2 m sobre toda la fachada, con cornisa de bronce de 4 m de vuelo | Basamento, cuerpo y remate: la composición de tres cuerpos que el ojo entiende sin explicación. Y el gabinete queda marcado desde fuera |
+| 6 | **Ritmo de pilares** | Cada tres módulos (33.3 m) el pilar de cantera es doble | El 33 se ve en la fachada. Secundario, pero es lo que vuelve «dibujada» una fachada en vez de «repetida» |
+| 7 | **Marcos de bronce en los parques de cielo** | Un marco de 1.4 m alrededor de cada vacío de 99 × 13.5 m | Convierte el hueco en ventana: la ventana más grande del país, una por lado |
+
+Costo de todo esto: las torres suman ~26,000 m² (2 %), las bahías y el remate son un quinto de módulo de vuelo (sin estructura especial), el basamento cambia vidrio por piedra donde más golpea el uso. En conjunto, menos del 4 % de la fachada. Nada cambia la planta ni la retícula.
+
+### Lo que no (aunque se antoje)
+
+| Tentación | Por qué no |
+|---|---|
+| Curvas, torsiones, formas paramétricas | Contradicen el símbolo: estructura, no creatividad. Eso ya lo hizo Apple con su círculo |
+| Salientes al azar (tipo Habitat 67) | El orden es el mensaje. La greca sale de una regla; el azar no cuenta nada |
+| Escalonar el edificio como pirámide | Tentador por mexicano, pero rompe el prisma, quita ~10 % de superficie y convierte la azotea en varios techos. El basamento y el remate ya dan la lectura en tres cuerpos sin perder la planta |
+| Un lado más alto o distinto | Los cuatro sectores son iguales. La jerarquía va en la altura, no entre lados |
+| Voladizos de más de un módulo | Cuestan estructura y no comunican nada que la torre no diga mejor |
+| Ornamento aplicado (grecas pintadas, murales en fachada) | La decoración va adentro, en las Casas del Ciudadano. Afuera solo lo que la estructura hace |
+| Muro ciego en los pisos altos «para que se vea más sólido» | Luz natural en todo escritorio es el lineamiento 5. La solidez la dan el basamento y las torres |
 
 ---
 
@@ -301,7 +337,7 @@ Tú pediste pisos de ingenieros con retroalimentación directa de los de arriba.
 
 ## 9. La Casa de Decisiones
 
-Al centro exacto del parque interior. **99 × 99 m, dos niveles sobre el suelo y uno debajo**, techo verde que continúa el parque, de modo que desde los pisos altos se ve una loma cuadrada con un patio de luz al centro. Se llega por las cuatro **calzadas** (galerías cubiertas de 11.1 m de ancho y 84 m de largo (de la fachada interior al borde del agua), con jardín a ambos lados) desde el centro de cada lado del anillo, o por el túnel de seguridad desde el S1.
+Al centro exacto del parque interior. **99 × 99 m, dos niveles sobre el suelo (planta baja de 11 m y planta alta de 7 m) y uno debajo**, techo verde que continúa el parque, y al centro **la linterna**: la oficina del Presidente sube 11 m más, hasta 22 m, como un cubo de vidrio y bronce abierto al cielo. Es la única marca vertical del centro del complejo y se ve desde los cuatro zaguanes. Alrededor de toda la Casa, **los portales**: una columnata de 11 m de altura y 3.3 m de fondo cuyas columnas pisan el agua, para caminar a la sombra y recibir bajo techo. Se llega por las cuatro **calzadas** (galerías cubiertas de 11.1 m de ancho y 84 m de largo (de la fachada interior al borde del agua), con jardín a ambos lados) desde el centro de cada lado del anillo, o por el túnel de seguridad desde el S1.
 
 ### El tablero de 3 × 3: la suite de decisión (33.3 × 33.3 m)
 
@@ -324,7 +360,7 @@ Nueve celdas de 11.1 × 11.1 m (123 m² cada una):
 +----------+----------+----------+
 ```
 
-- **La oficina del Presidente** es la celda central: 11.1 × 11.1 m, 7 m de altura, con un patio de luz de 5 × 5 m al centro con una magnolia mexicana (yoloxóchitl) y cielo abierto. Escritorio, mesa redonda de 6, sillones, y **cuatro puertas corredizas**, una hacia cada sala de los lados (Norte, Sur, Oriente, Poniente). El Presidente se mueve a cualquiera de las cuatro salas sin salir de su oficina.
+- **La oficina del Presidente** es la celda central: 11.1 × 11.1 m y **22 m de altura** (el doble de las salas), con un patio de luz de 5 × 5 m al centro con una magnolia mexicana (yoloxóchitl) y cielo abierto. Las seis salas y las dos oficinas tienen **11 m de altura**: altura y media de lo normal en un edificio público, para que la gente respire en la decisión. Escritorio, mesa redonda de 6, sillones, y **cuatro puertas corredizas**, una hacia cada sala de los lados (Norte, Sur, Oriente, Poniente). El Presidente se mueve a cualquiera de las cuatro salas sin salir de su oficina.
 - **Seis salas**: Norte y Sur para 33 personas (gabinete, mesas de sector); Oriente y Poniente para 24; Nororiente y Surponiente para 16 (reuniones chicas, bilaterales). Cada sala tiene puertas corredizas hacia las dos celdas vecinas, así que **todas están conectadas en anillo** y las de los lados con el centro.
 - **Vicepresidencia** (Noroeste) y **Secretaría** (Sureste) ocupan las esquinas opuestas: cada una toca dos salas y tiene su propia puerta al exterior de la suite. Quien manda la agenda (Secretaría) está pegado a la Sala Sur y a la Oriente; quien sustituye al Presidente (Vicepresidencia) a la Norte y a la Poniente.
 - **El pasillo de preparación**: un corredor de 3.3 m alrededor de las nueve celdas, con una **antesala de 20 m² por sala** donde el siguiente equipo ya conectó su presentación (pantalla espejo de la sala, sin cables), repasa y espera. Cuando la puerta se abre, entran y la pantalla ya tiene su material. Cero tiempos muertos: ese es **el carrusel**.
@@ -334,8 +370,8 @@ Nueve celdas de 11.1 × 11.1 m (123 m² cada una):
 
 | Nivel | Qué hay |
 |---|---|
-| **Planta alta** | 300 personas del equipo de Presidencia en oficinas abiertas y privadas alrededor del patio de luz; biblioteca; comedor de Estado (99 comensales) con cocina; terraza-jardín |
-| **Planta baja** | La suite de decisión al centro; **Sala del Gabinete** (33 asientos en mesa cuadrada, 15 × 15 m); **Sala de Situación** (crisis, 24/7, pantallas en 3 muros, conexión a La Bóveda y al Centro de Continuidad); **Sala de Prensa** (200 asientos, 60 posiciones de cámara, estudio de televisión, acceso directo desde la calzada Oriente sin cruzar zonas restringidas); salón de recepciones de 600 m² para visitas de Estado; capilla ecuménica de silencio |
+| **Planta alta (7 m)** | 300 personas del equipo de Presidencia en oficinas abiertas y privadas alrededor del patio de luz; biblioteca; comedor de Estado (99 comensales) con cocina; terraza-jardín |
+| **Planta baja (11 m)** | La suite de decisión al centro; **Sala del Gabinete** (33 asientos en mesa cuadrada, 15 × 15 m); **Sala de Situación** (crisis, 24/7, pantallas en 3 muros, conexión a La Bóveda y al Centro de Continuidad); **Sala de Prensa** (200 asientos, 60 posiciones de cámara, estudio de televisión, acceso directo desde la calzada Oriente sin cruzar zonas restringidas); salón de recepciones de 600 m² para visitas de Estado; capilla ecuménica de silencio |
 | **Sótano** | Túnel a los cuatro núcleos de medio lado y al S1; refugio presidencial; cocina y servicios; cuarto de red propio; aislamiento sísmico de base de toda la Casa |
 
 El **Teatro 333** está a 60 m de la Casa, bajo una loma del parque, con entrada desde la calzada Sur y salida directa a la Sala de Prensa por túnel: anuncios grandes, tomas de protesta, ceremonias con 333 invitados.
@@ -389,7 +425,8 @@ Regla: **una sala por cada 11 personas**. Todas con cámara, pantalla, micrófon
 | **4 Comedores de planta baja** | PB, uno por lado, con terraza al bosque | 1,000 asientos cada uno | Comida corrida de calidad, barra de ensaladas, menú del día publicado la semana anterior |
 | **33 cafés de piso** | Uno por piso, junto al núcleo de medio lado | 40 asientos | Barista, fruta, agua, pan; es el lugar de la plática de 5 minutos |
 | **4 restaurantes del bosque** | PB en las esquinas, con terraza entre árboles | 120 asientos | Cocina de autor regional; abiertos también a visitantes acreditados |
-| **Mirador 33** | Azotea, esquina Nororiente | 150 asientos | Para cerrar tratos y cenas de Estado informales |
+| **Restaurantes de los teatros** | Bajo el foyer de cada teatro | 120 (333) y 300 (999) | Abiertos todo el día; el del 999 es el restaurante del bosque para la ciudad |
+| **Mirador 33** | Linterna de la torre Nororiente | 150 asientos | Para cerrar tratos y cenas de Estado informales |
 | **Comedor de Estado** | Casa de Decisiones | 99 asientos | Visitas oficiales |
 | **Cocina central** | S1 | 40,000 comidas/día | Recibe, prepara base y abastece por montacargas; cada mercado y comedor termina en sitio |
 
@@ -422,7 +459,9 @@ Capacidad en hora de comida: 4 × 1,200 × 3 + 4 × 1,000 × 3 = **26,400** más
 | Pantallas | LED de 14 × 6 m y dos laterales | LED de 24 × 10 m y dos laterales |
 | Sonido | Line array con calibración por butaca, 25 dB de ruido de fondo | Igual, con refuerzo distribuido en balcón |
 | Camuflaje | El techo es parque; solo se ve el pórtico de piedra en la ladera | El techo es bosque; el foyer de vidrio se asoma entre los árboles hacia la plaza |
-| Apoyo | Camerinos, cabinas de traducción (6 idiomas y lenguas indígenas), prensa, control | Lo mismo más foyer de 1,500 m², vestíbulos, taquilla, 2,000 cajones de visitantes |
+| **Foyer** (recibir antes de acomodar) | 40 × 12 m, 8 m de altura, 480 m², de vidrio contra la loma, con guardarropa, taquilla y baños 1:15 | 90 × 22 m, **12 m de doble altura**, 1,980 m², cantera y vidrio mirando a la plaza; acceso sin escalones a la platea |
+| **Restaurante debajo** | Bajo el foyer, 120 asientos, terraza hacia el agua de la Casa; abierto todo el día | Bajo el foyer, 300 asientos, 5 m de altura, terraza de 110 × 16 m al bosque; cocina compartida con el foyer; abierto todo el día, no solo en funciones |
+| Apoyo | Camerinos, cabinas de traducción (6 idiomas y lenguas indígenas), prensa, control | Lo mismo, más 2,000 cajones de visitantes bajo la plaza |
 
 **La butaca** (la misma en los dos): paso entre filas de **1.10 m** (el cine comercial usa 0.85), asiento de **0.65 m** de ancho, respaldo reclinable 15°, espuma de curado en frío forrada de piel de curtido vegetal, apoyabrazos de madera de tzalam, **ventilación individual** bajo el asiento (aire a 2 cm/s, silenciosa), micrófono por butaca para preguntas, botón de voto, toma USB‑C, luz guía en el piso, y número grabado en bronce. Hecha en México.
 
@@ -518,7 +557,7 @@ Desde el estacionamiento de esquina hasta el vestíbulo más lejano hay 333 m: *
 
 ### Sin coche
 
-- **Estación propia** en la Puerta Norte: extensión de Metro o tren (desde Cuatro Caminos / Tren Suburbano, por confirmar con la autoridad de transporte) con andenes que desembocan en la plaza Norte.
+- **Estación de Metro y Tren Suburbano** en la Puerta Norte: extensión de Metro o tren (desde Cuatro Caminos / Tren Suburbano, por confirmar con la autoridad de transporte) con andenes que desembocan en la plaza Norte.
 - **33 rutas de autobús eléctrico** que salen desde el S1 a las colonias donde vive la gente del edificio, con horarios ajustados al padrón de empleados (la ruta se diseña con los domicilios, no al revés).
 - Ciclovías a los cuatro lados del terreno, 10,000 lugares para bici, regaderas.
 - Meta: **la mitad de la gente llega sin coche** en el año 5. El estacionamiento de esquina se va convirtiendo en otra cosa conforme se vacía.

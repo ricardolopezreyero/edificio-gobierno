@@ -14,7 +14,7 @@ Proyecto de **Ricardo López Reyero**.
 |---|---|
 | [ORIGEN.md](ORIGEN.md) | **El origen**: el dictado original de Ricardo López Reyero, tal como se habló el 7 de noviembre de 2026 a las 10:02 pm, del que salió todo lo demás |
 | [PROMPT.md](PROMPT.md) | El brief destilado: lo que se pidió, limpio, con la nota de lo que se cambió del dictado |
-| [PROYECTO.md](PROYECTO.md) | El proyecto maestro: idea, correcciones honestas, 12 lineamientos, sitio, tablero del terreno, edificio, organización, Casa de Decisiones, programa con medidas, sótanos, llegada, seguridad, comunicación, materiales, vegetación, confort, 33 detalles, construcción, decisiones pendientes y plan del 3D |
+| [PROYECTO.md](PROYECTO.md) | El proyecto maestro: idea, correcciones honestas, 12 lineamientos, sitio, tablero del terreno, edificio, arquitectura (qué sí y qué no), organización, Casa de Decisiones, programa con medidas, sótanos, llegada, seguridad, comunicación, materiales, vegetación, confort, 33 detalles, construcción, decisiones pendientes y plan del 3D |
 | [modelo/parametros.json](modelo/parametros.json) | Todos los números del proyecto; el 3D se construye leyendo este archivo |
 | [sitio/](sitio/) | La página: `index.html`, `app.js` (pestañas, plano SVG, números, documentos), `tres.js` (modelo 3D con Three.js), `estilo.css` |
 
@@ -47,9 +47,10 @@ Las seis decisiones abiertas están en [PROYECTO.md §20](PROYECTO.md#20-decisio
 Three.js, 1 unidad = 1 metro, todo leído de `parametros.json`: si cambia un número, cambia el edificio.
 
 - **Terreno** de 999 × 999 m con ~10,800 árboles instanciados de 9 especies (encino, pino, cedro, fresno, madroño, ahuehuete, jacaranda, colorín), plazas de tezontle, estación, Teatro 999 bajo su colina, canchas, lomas de energía, senderos cubiertos y la ciudad alrededor.
-- **Edificio**: anillo de vidrio con pilares de piedra cada 11.1 m, 33 losas interiores coloreadas por uso, 8 núcleos, los 4 parques de cielo con sus columnas y árboles, azotea con pista, paneles, Mirador 33 y helipuerto.
+- **Edificio**: basamento de tezontle con los cuatro zaguanes, anillo de vidrio con pilares de piedra cada 11.1 m (dobles cada 33.3), la greca de 256 bahías en los pisos 24–31, el remate con cornisa, las cuatro torres de esquina con linterna, 33 losas interiores coloreadas por uso, 8 núcleos, los 4 parques de cielo con sus columnas y árboles, azotea con pista, paneles, Mirador 33 y helipuerto.
 - **Parque interior**: el agua alrededor de la Casa, las cuatro calzadas con pérgola, ahuehuetes, colorines, la loma del Teatro 333 y la milpa.
-- **Casa de Decisiones** con la suite 3 × 3 por dentro (muros, mesas, el patio de la magnolia); se corta a 6.5 m para verla.
+- **Casa de Decisiones** de 11 + 7 m con portales de columnas sobre el agua y la linterna del Presidente de 22 m; la suite 3 × 3 por dentro (muros, mesas, el patio de la magnolia) se ve cortando la Casa a 9.5 m.
+- **Teatros** con foyer de doble altura y restaurante debajo, abiertos todo el día.
 - **Ambientes** día / atardecer / noche (ventanas encendidas), **meses** verde / marzo (jacarandas y colorines) / noviembre (cempasúchil), **capas**, **corte** con deslizador (losas por uso, los 11 sótanos, La Bóveda, el estacionamiento bajo el bosque), **fichas** al tocar 90 elementos, pantalla completa y descarga de imagen con nombre y fecha.
 - **Cinco recorridos** con subtítulos: Vuelo, Del coche al escritorio (12 min), Del escritorio a la Casa (5 min), El ciudadano y Una decisión (11 min). Cuando la persona entra al edificio, el modelo se abre solo para seguirla.
 

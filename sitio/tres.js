@@ -15,6 +15,8 @@ const CASA = P.casa_de_decisiones.lado, SUITE = P.casa_de_decisiones.suite.lado;
 const VANO = P.edificio.parques_de_cielo.ancho;                 // 99
 const [PC0, , PC2] = P.edificio.parques_de_cielo.pisos;        // 16 · 18
 const Y_VANO0 = yPiso(PC0), Y_VANO1 = yPiso(PC2 + 1);          // 78.5 · 92
+const Y_BASA = yPiso(4);                                        // 24.5: arriba del basamento de piedra
+const Y_REMATE = yPiso(32);                                     // 150.5: el remate del gabinete
 const AGUA = P.parque_interior.espejo_agua.ancho;              // 16.5
 const rad = g => (g * Math.PI) / 180;
 const lerp = (a, b, k) => a + (b - a) * k;
@@ -116,7 +118,28 @@ const texNoche = lienzo(1200, 400, (g, w, h) => {
   for (let i = 0; i < 30; i++) for (let j = 0; j < 10; j++) if (azar() < 0.38) { g.fillStyle = azar() < 0.7 ? "#ffd9a0" : "#cfe3ff"; g.globalAlpha = 0.5 + azar() * 0.5; g.fillRect(i * cw + 3, j * ch + 4, cw - 6, ch * 0.72); }
 });
 texNoche.colorSpace = THREE.SRGBColorSpace;
+// RLR · basamento de tezontle: PB con vanos de 8 m y pisos 1–3 con tres ventanas por módulo; torres con rendijas verticales en cantera
+const texBasaPB = lienzo(256, 256, (g, w, h) => {
+  g.fillStyle = "#8e3d2c"; g.fillRect(0, 0, w, h); g.fillStyle = "#7a3324"; for (let i = 0; i < 60; i++) g.fillRect(azar() * w, azar() * h, 3, 2);
+  g.fillStyle = "#8d8a82"; g.fillRect(0, 0, 14, h);
+  [0.26, 0.64].forEach(x => { g.fillStyle = "#b08d57"; g.fillRect(w * x - 4, h * 0.14, w * 0.28 + 8, h * 0.76); g.fillStyle = "#2b3d52"; g.fillRect(w * x, h * 0.16, w * 0.28, h * 0.72); });
+});
+const texBasa = lienzo(256, 128, (g, w, h) => {
+  g.fillStyle = "#8e3d2c"; g.fillRect(0, 0, w, h); g.fillStyle = "#7a3324"; for (let i = 0; i < 40; i++) g.fillRect(azar() * w, azar() * h, 3, 2);
+  g.fillStyle = "#8d8a82"; g.fillRect(0, 0, 14, h); g.fillStyle = "#6f6b62"; g.fillRect(0, h * 0.86, w, h * 0.14);
+  [0.14, 0.42, 0.70].forEach(x => { g.fillStyle = "#b08d57"; g.fillRect(w * x - 3, h * 0.12, w * 0.2 + 6, h * 0.66); g.fillStyle = "#2b3d52"; g.fillRect(w * x, h * 0.15, w * 0.2, h * 0.6); });
+});
+const texTorre = lienzo(256, 128, (g, w, h) => {
+  g.fillStyle = "#8d8a82"; g.fillRect(0, 0, w, h); g.fillStyle = "#807c74"; for (let i = 0; i < 30; i++) g.fillRect(azar() * w, azar() * h, 6, 2);
+  g.fillStyle = "#6f6b62"; g.fillRect(0, h * 0.88, w, h * 0.12);
+  [0.3, 0.62].forEach(x => { g.fillStyle = "#b08d57"; g.fillRect(w * x - 2, h * 0.08, w * 0.1 + 4, h * 0.78); g.fillStyle = "#1f2d3f"; g.fillRect(w * x, h * 0.1, w * 0.1, h * 0.74); });
+});
 const vidrios = []; // materiales de fachada (para el brillo nocturno)
+function matPiedra(tex, w, h, filas) {
+  const map = tex.clone(); map.repeat.set(w / M, filas); map.needsUpdate = true;
+  const em = texNoche.clone(); em.repeat.set(w / (10 * M), h / (10 * HP)); em.needsUpdate = true;
+  const m = new THREE.MeshStandardMaterial({ map, emissiveMap: em, emissive: 0xffffff, emissiveIntensity: 0, roughness: 0.85, side: DS }); vidrios.push(m); return m;
+}
 function matVidrio(w, h, pb = false) {
   const map = (pb ? texVidrioPB : texVidrio).clone(); map.repeat.set(w / M, pb ? 1 : h / HP); map.needsUpdate = true;
   const em = texNoche.clone(); em.repeat.set(w / (10 * M), h / (10 * HP)); em.needsUpdate = true;
@@ -168,12 +191,17 @@ plazas.forEach(([x, z, t, c]) => caja3(PLAZA, 0.5, PLAZA, MAT.tezontle, x, 0.2, 
   caja3(40, 0.5, 70, MAT.asfalto, i * (C + 110), 0.2, j * (C + 110), sitio).castShadow = false;
 });
 // estación (norte)
-caja3(240, 10, 40, matVidrio(240, 10, true), 0, 5, -420, sitio, { t: "Estación", c: "Extensión de Metro o tren con andenes que salen a la plaza Norte, más la terminal de 33 rutas de autobús eléctrico que bajan al S1. Meta: la mitad de la gente llega sin coche.", d: [["Largo", "240 m"], ["Rutas eléctricas", "33, diseñadas con los domicilios del padrón"], ["Bicis", "10,000 lugares en el S1"]] });
+caja3(240, 10, 40, matVidrio(240, 10, true), 0, 5, -420, sitio, { t: "Estación de Metro y Tren Suburbano", c: "Extensión de Metro o tren con andenes que salen a la plaza Norte, más la terminal de 33 rutas de autobús eléctrico que bajan al S1. Meta: la mitad de la gente llega sin coche.", d: [["Largo", "240 m"], ["Rutas eléctricas", "33, diseñadas con los domicilios del padrón"], ["Bicis", "10,000 lugares en el S1"]] });
 caja3(250, 1.2, 50, MAT.cantera, 0, 10.6, -420, sitio);
 // teatro 999: colina + pórtico (sur)
 function loma(x, z, rx, ry, rz, m, info) { const o = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 24), m); o.scale.set(rx, ry, rz); o.position.set(x, 0, z); o.castShadow = o.receiveShadow = true; if (info) { o.userData.info = info; pickables.push(o); } sitio.add(o); return o; }
 loma(0, 400, 112, 15, 82, MAT.pradera, { t: "Teatro 999", c: "Semienterrado bajo una colina de bosque, abierto a la ciudad: conciertos, actos nacionales, ceremonias. 999 butacas en platea y balcón, ninguna a más de 30 m del escenario.", d: [["Sala", "2,200 m²"], ["Escenario", "24 × 14 m con foso para 60 músicos"], ["Pantalla", "LED de 24 × 10 m"], ["Butaca", "paso 1.10 m, 0.65 m de ancho, ventilación individual"], ["Estacionamiento", "2,000 cajones bajo la plaza"]] });
-caja3(60, 10, 18, matVidrio(60, 10, true), 0, 5, 322, sitio); caja3(66, 1.2, 22, MAT.recinto, 0, 10.6, 322, sitio);
+// restaurante en planta baja con terraza al bosque, foyer de doble altura encima, la sala dentro de la colina
+const infoR999 = { t: "Restaurante del Teatro 999", c: "Debajo del foyer, abierto todo el día y no solo en funciones: 300 asientos, 5 m de alto, terraza de 110 m hacia la plaza y el bosque. La cocina se comparte con el foyer.", d: [["Asientos", "300"], ["Terraza", "110 × 16 m"]] };
+const infoF999 = { t: "Foyer del Teatro 999", c: "Aquí se recibe a la gente antes de acomodarla: 90 × 22 m, 12 m de altura, cantera y vidrio mirando a la plaza. Guardarropa, taquilla, baños 1:15 y acceso sin escalones a la platea.", d: [["Superficie", "1,980 m²"], ["Altura", "12 m"]] };
+caja3(90, 5, 22, matVidrio(90, 5, true), 0, 2.5, 318, sitio, infoR999); caja3(96, 0.8, 26, MAT.cantera, 0, 5.4, 318, sitio);
+caja3(90, 12, 22, matVidrio(90, 12, true), 0, 11.8, 324, sitio, infoF999); caja3(96, 1.2, 26, MAT.recinto, 0, 18.4, 324, sitio);
+caja3(110, 0.4, 16, MAT.tezontle, 0, 0.2, 299, sitio, infoR999).castShadow = false;
 // canchas (poniente)
 [[-430, -110, 40, 20], [-380, -110, 40, 20], [-430, -75, 36, 18], [-390, -75, 36, 18], [-350, -75, 36, 18], [-430, -40, 36, 18], [-390, -40, 36, 18], [-350, -40, 36, 18]].forEach(([x, z, w, d]) => caja3(w, 0.3, d, MAT.cancha, x, 0.3, z, sitio).castShadow = false);
 for (let k = 0; k < 8; k++) caja3(20, 0.3, 10, MAT.pista, -440 + (k % 4) * 24, 0.3, 10 + Math.floor(k / 4) * 14, sitio).castShadow = false;
@@ -205,8 +233,10 @@ caras.forEach(c => {
   const info = infoLado(c.lado);
   const banda = (u0, u1, y0, y1, pb = false) => { const w = u1 - u0, h = y1 - y0, [x, y, z] = c.pos((u0 + u1) / 2, (y0 + y1) / 2); plano(w, h, matVidrio(w, h, pb), x, y, z, c.rot, edificio, info); };
   const a = -c.largo / 2, b = c.largo / 2;
-  banda(a, b, 0, H0, true);                 // planta baja
-  banda(a, b, H0, Y_VANO0);                 // pisos 1–15
+  const bandaP = (u0, u1, y0, y1, tex, filas) => { const w = u1 - u0, h = y1 - y0, [x, y, z] = c.pos((u0 + u1) / 2, (y0 + y1) / 2); plano(w, h, matPiedra(tex, w, h, filas), x, y, z, c.rot, edificio, info); };
+  bandaP(a, -M / 2, 0, H0, texBasaPB, 1); bandaP(M / 2, b, 0, H0, texBasaPB, 1); // planta baja de tezontle, partida por el zaguán
+  bandaP(a, b, H0, Y_BASA, texBasa, 3);                                         // pisos 1–3: el basamento
+  banda(a, b, Y_BASA, Y_VANO0);                                                 // pisos 4–15
   banda(a, -VANO / 2, Y_VANO0, Y_VANO1);    // 16–18 a un lado del vano
   banda(VANO / 2, b, Y_VANO0, Y_VANO1);     // 16–18 al otro
   banda(a, b, Y_VANO1, H_TOP);              // 19–33
@@ -215,16 +245,62 @@ caras.forEach(c => {
 {
   const g = new THREE.BoxGeometry(0.9, 1, 0.6), inst = new THREE.InstancedMesh(g, MAT.cantera, 4 * 31 * 3);
   const m4 = new THREE.Matrix4(); let n = 0;
-  const bandas = [[H0, Y_VANO0], [Y_VANO0, Y_VANO1], [Y_VANO1, H_TOP]];
+  const bandas = [[Y_BASA, Y_VANO0], [Y_VANO0, Y_VANO1], [Y_VANO1, Y_REMATE]];
   for (let i = 0; i <= 30; i++) { const u = -L / 2 + i * M; bandas.forEach(([y0, y1], bi) => {
     if (bi === 1 && Math.abs(u) < VANO / 2 - 1) return; // en el vano no hay pilares, hay columnas
     const h = y1 - y0, y = (y0 + y1) / 2;
-    [[u, -L / 2 - 0.3, 0], [u, L / 2 + 0.3, 0], [L / 2 + 0.3, u, Math.PI / 2], [-L / 2 - 0.3, u, Math.PI / 2]].forEach(([x, z, r]) => { m4.compose(new THREE.Vector3(x, y, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, r, 0)), new THREE.Vector3(1, h, 1)); inst.setMatrixAt(n++, m4); });
+    [[u, -L / 2 - 0.3, 0], [u, L / 2 + 0.3, 0], [L / 2 + 0.3, u, Math.PI / 2], [-L / 2 - 0.3, u, Math.PI / 2]].forEach(([x, z, r]) => { m4.compose(new THREE.Vector3(x, y, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, r, 0)), new THREE.Vector3(i % 3 === 0 ? 2.0 : 1, h, i % 3 === 0 ? 1.6 : 1)); inst.setMatrixAt(n++, m4); });
   }); }
   inst.count = n; inst.castShadow = true; edificio.add(inst);
 }
-// pórticos de tezontle en el centro de cada lado (PB)
-[[0, -L / 2, 0], [0, L / 2, 0], [L / 2, 0, Math.PI / 2], [-L / 2, 0, Math.PI / 2]].forEach(([x, z, r]) => { const o = caja3(44, H0 + 1.5, 4, MAT.tezontle, x, (H0 + 1.5) / 2, z); o.rotation.y = r; });
+// RLR · los cuatro zaguanes: el eje de cada calzada atraviesa el anillo en planta baja (11.1 m de ancho × 11 m) con portales de tezontle de 20 m
+const infoZaguan = { t: "El zaguán", c: "El eje de cada calzada atraviesa el anillo: desde la plaza se ve el parque y la Casa de Decisiones. Un paso de 11.1 m de ancho y 11 m de alto, con portal de tezontle de 20 m por fuera y por dentro. La decisión se ve desde la calle.", d: [["Paso", "11.1 × 11 m, piso de tezontle"], ["Portal", "20 m de alto, jambas de 5 m"], ["Hay", "cuatro, uno por lado, con sus compuertas de vidrio"]] };
+[[0, -L / 2, 0], [0, L / 2, 0], [L / 2, 0, Math.PI / 2], [-L / 2, 0, Math.PI / 2], [0, -LI / 2, 0], [0, LI / 2, 0], [LI / 2, 0, Math.PI / 2], [-LI / 2, 0, Math.PI / 2]].forEach(([x, z, r]) => {
+  const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = r; edificio.add(g);
+  [-1, 1].forEach(sg => caja3(5, 20, 5, MAT.tezontle, sg * (M / 2 + 2.5), 10, 0, g, infoZaguan));
+  caja3(M + 10, 4.5, 5, MAT.tezontle, 0, 22.25, 0, g, infoZaguan);
+});
+[[M, F + 2, 0, -(L - F) / 2], [M, F + 2, 0, (L - F) / 2], [F + 2, M, (L - F) / 2, 0], [F + 2, M, -(L - F) / 2, 0]].forEach(([w, d, x, z]) => caja3(w, 0.4, d, MAT.tezontle, x, 0.5, z, edificio, infoZaguan).castShadow = false);
+// RLR · la greca: en los pisos de dirección (24–31) una de cada tres oficinas sale 2.2 m, en diagonal; la textura viene del rango, no del capricho
+{
+  const matB = matVidrio(M, HP), inst = new THREE.InstancedMesh(new THREE.BoxGeometry(M - 1.6, HP - 0.9, 2.5), matB, 4 * 30 * 8);
+  const marcos = new THREE.InstancedMesh(new THREE.BoxGeometry(M - 1.0, 0.35, 2.9), MAT.bronce, 4 * 30 * 8 * 2);
+  let n = 0, nm = 0; const m4 = new THREE.Matrix4();
+  for (let k = 24; k <= 31; k++) for (let i = 3; i <= 26; i++) { if ((i + k) % 3) continue; const u = -L / 2 + M / 2 + i * M, y = yPiso(k) + HP / 2;
+    [[u, -L / 2 - 0.95, 0], [u, L / 2 + 0.95, 0], [L / 2 + 0.95, u, Math.PI / 2], [-L / 2 - 0.95, u, Math.PI / 2]].forEach(([x, z, r]) => {
+      const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, r, 0));
+      m4.compose(new THREE.Vector3(x, y, z), q, new THREE.Vector3(1, 1, 1)); inst.setMatrixAt(n++, m4);
+      m4.compose(new THREE.Vector3(x, y - HP / 2 + 0.3, z), q, new THREE.Vector3(1, 1, 1)); marcos.setMatrixAt(nm++, m4);
+      m4.compose(new THREE.Vector3(x, y + HP / 2 - 0.3, z), q, new THREE.Vector3(1, 1, 1)); marcos.setMatrixAt(nm++, m4);
+    }); }
+  inst.count = n; marcos.count = nm; inst.castShadow = marcos.castShadow = true; edificio.add(inst, marcos);
+  inst.userData.info = { t: "La greca", c: "En los pisos de dirección (24–31) una de cada tres oficinas sale 2.2 m de la fachada, en diagonal, un piso sí y dos no. La textura nace del rango, no del capricho: se lee como un textil mexicano y cada bahía da sombra a la de abajo.", d: [["Bahías", n.toLocaleString("es-MX")], ["Saliente", "2.2 m (un quinto de módulo)"], ["Marco", "bronce"]] }; pickables.push(inst);
+}
+// RLR · el remate: los dos pisos del gabinete (32–33) salen 2.2 m sobre toda la fachada, con cornisa de bronce
+{
+  const h = H_TOP - Y_REMATE, y = Y_REMATE + h / 2, infoR = { t: "El remate", c: "Los pisos 32 y 33, del gabinete y los coordinadores de sector, salen 2.2 m sobre toda la fachada y cierran la composición con una cornisa de bronce: basamento, cuerpo y remate, como los palacios de la ciudad.", d: [["Saliente", "2.2 m"], ["Altura", "9 m (dos pisos)"], ["Cornisa", "bronce, 4 m de vuelo"]] };
+  [[L + 5, 2.5, 0, -L / 2 - 0.95], [L + 5, 2.5, 0, L / 2 + 0.95], [2.5, L, L / 2 + 0.95, 0], [2.5, L, -L / 2 - 0.95, 0]].forEach(([w, d, x, z]) => caja3(w, h, d, matVidrio(L, h), x, y, z, edificio, infoR));
+  [[L + 8, 4, 0, -L / 2 - 1.5], [L + 8, 4, 0, L / 2 + 1.5], [4, L, L / 2 + 1.5, 0], [4, L, -L / 2 - 1.5, 0]].forEach(([w, d, x, z]) => caja3(w, 0.8, d, MAT.bronce, x, Y_REMATE - 0.4, z, edificio, infoR));
+}
+// RLR · las cuatro torres de esquina: 3 módulos por lado, salen 5.5 m de las dos fachadas y suben 11 m sobre el techo; linterna de vidrio arriba
+{
+  const TW = 3 * M + 5.5, HT = H_TOP + 11, cc = L / 2 - 1.5 * M + 2.75;
+  const nombres = { "1,-1": "Nororiente · Personas y Orden", "1,1": "Suroriente · Orden y Economía", "-1,1": "Surponiente · Economía y Territorio", "-1,-1": "Norponiente · Territorio y Personas" };
+  [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([i, j]) => {
+    const info = { t: "Torre " + nombres[i + "," + j], c: "Las esquinas son de los superdirectores que coordinan dos sectores: aquí se vuelven volumen. Tres módulos por lado en cantera, salen 5.5 m de las dos fachadas y suben 11 m sobre el techo con una linterna de vidrio. Cuatro torres: un cuadrado que se reconoce desde lejos." + (i > 0 && j < 0 ? " En esta linterna está el Mirador 33, el restaurante de la azotea." : ""), d: [["Base", "38.8 × 38.8 m"], ["Altura", "170 m + linterna"], ["Oficinas de esquina", "33, una por piso"]] };
+    const m = matPiedra(texTorre, TW, HT, HT / HP); m.roughness = 0.8;
+    caja3(TW, HT, TW, m, i * cc, HT / 2, j * cc, edificio, info);
+    caja3(TW + 2.4, 1.2, TW + 2.4, MAT.cantera, i * cc, HT + 0.6, j * cc, edificio, info);
+    caja3(TW - 6, 6, TW - 6, matVidrio(TW - 6, 6, true), i * cc, HT + 4.2, j * cc, edificio, info);
+    caja3(TW - 4, 0.9, TW - 4, MAT.bronce, i * cc, HT + 7.6, j * cc, edificio, info);
+  });
+}
+// marcos de bronce de los parques de cielo (en la fachada exterior)
+[[0, -L / 2, 0], [0, L / 2, 0], [L / 2, 0, Math.PI / 2], [-L / 2, 0, Math.PI / 2]].forEach(([x, z, r]) => {
+  const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = r; edificio.add(g); const hv = Y_VANO1 - Y_VANO0;
+  caja3(VANO + 3.6, 1.4, 1.4, MAT.bronce, 0, Y_VANO1 + 0.7, 0, g); caja3(VANO + 3.6, 1.4, 1.4, MAT.bronce, 0, Y_VANO0 - 0.7, 0, g);
+  [-1, 1].forEach(sg => caja3(1.4, hv + 2.8, 1.4, MAT.bronce, sg * (VANO / 2 + 1.1), (Y_VANO0 + Y_VANO1) / 2, 0, g));
+});
 // losas interiores por piso, coloreadas por uso (se ven en el corte)
 const USO = [
   { hasta: 3, c: 0xd9a441, n: "Público y servicios" }, { hasta: 13, c: 0x3a7bd5, n: "Operación · 1,500 por piso" }, { hasta: 23, c: 0x3fb27f, n: "Mandos medios · 1,000 por piso" },
@@ -282,12 +358,10 @@ const arbolesCielo = [];
   const patas = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.2, 0.2, 3.2, 8), MAT.bronce, 4 * 31 * 2); n = 0;
   for (let i = 0; i <= 30; i++) { const u = -L / 2 + i * M; for (let f = 0; f < 2; f++) { const off = (L - F) / 2 + 2 - f * 7; [[u, -off], [u, off], [off, u], [-off, u]].forEach(([x, z]) => { m4.compose(new THREE.Vector3(x, H_TOP + 2.6, z), new THREE.Quaternion(), new THREE.Vector3(1, 1, 1)); patas.setMatrixAt(n++, m4); }); } }
   patas.count = n; edificio.add(patas);
-  // mirador 33 (NE) y helipuerto (SE)
-  const c = L / 2 - M;
-  caja3(22, 5, 22, matVidrio(22, 5, true), c, H_TOP + 3.5, -c, edificio, { t: "Mirador 33", c: "Restaurante en la esquina Nororiente de la azotea: 150 asientos, terraza, para cerrar tratos y cenas de Estado informales.", d: [] });
-  caja3(24, 0.6, 24, MAT.bronce, c, H_TOP + 6.3, -c);
-  const hp = new THREE.Mesh(new THREE.CylinderGeometry(13, 13, 0.4, 32), MAT.recinto); hp.position.set(c, H_TOP + 1.2, c); edificio.add(hp);
-  const hr = new THREE.Mesh(new THREE.RingGeometry(8, 10, 32), MAT.blanco); hr.rotation.x = -Math.PI / 2; hr.position.set(c, H_TOP + 1.45, c); edificio.add(hr);
+  // helipuerto de emergencia en el techo del lado Sur, junto a la torre Suroriente
+  const c = L / 2 - M - 36;
+  const hp = new THREE.Mesh(new THREE.CylinderGeometry(13, 13, 0.4, 32), MAT.recinto); hp.position.set(c, H_TOP + 1.2, (L - F) / 2); edificio.add(hp);
+  const hr = new THREE.Mesh(new THREE.RingGeometry(8, 10, 32), MAT.blanco); hr.rotation.x = -Math.PI / 2; hr.position.set(c, H_TOP + 1.45, (L - F) / 2); edificio.add(hr);
 }
 
 /* ---------- El parque interior ---------- */
@@ -306,12 +380,15 @@ const parque = new THREE.Group(); edificio.add(parque);
 });
 // loma del Teatro 333 y milpa
 loma(60, 105, 38, 9, 27, MAT.pradera, { t: "Teatro 333", c: "Bajo una loma del parque, a 60 m de la Casa: anuncios grandes, tomas de protesta, ceremonias con 333 invitados. Salida directa a la Sala de Prensa por túnel.", d: [["Butacas", "333, ninguna a más de 18 m"], ["Escenario", "16 × 10 m"], ["Pantalla", "LED de 14 × 6 m"]] });
-caja3(20, 6, 6, MAT.recinto, 60, 3, 78, parque);
+{ const infoR = { t: "Restaurante del Teatro 333", c: "Debajo del foyer, con terraza hacia el parque y el agua de la Casa: 120 asientos. Abierto todo el día.", d: [["Asientos", "120"]] }, infoF = { t: "Foyer del Teatro 333", c: "Para recibir a los 333 invitados antes de acomodarlos: 40 × 12 m, 8 m de altura, vidrio contra la loma.", d: [["Superficie", "480 m²"]] };
+  caja3(40, 4.5, 12, matVidrio(40, 4.5, true), 60, 2.25, 72, parque, infoR); caja3(44, 0.6, 14, MAT.cantera, 60, 4.8, 72, parque);
+  caja3(40, 8, 12, matVidrio(40, 8, true), 60, 9, 78, parque, infoF); caja3(44, 1, 14, MAT.recinto, 60, 13.5, 78, parque);
+  caja3(50, 0.3, 10, MAT.tezontle, 60, 0.3, 61, parque, infoR).castShadow = false; }
 caja3(33, 0.6, 33, mat(0x7a8a3a), -80, 0.3, -90, parque, { t: "La milpa", c: "33 × 33 m de maíz, frijol y calabaza. La siembran los niños de las guarderías en mayo, la cosechan en octubre, y las tortillas se sirven en los Mercados.", d: [] }).castShadow = false;
 // la Casa de Decisiones
 {
-  const h1 = 7, h2 = 5, H = h1 + h2, hueco = SUITE + 4;
-  const infoCasa = { t: "La Casa de Decisiones", c: "Al centro exacto del parque: la oficina del Presidente con cuatro puertas a cuatro salas, seis salas conectadas en anillo, Vicepresidencia y Secretaría en las esquinas opuestas, y un pasillo de preparación donde el siguiente equipo ya tiene su presentación en pantalla. El carrusel. Alrededor: Sala del Gabinete, Sala de Situación, Sala de Prensa, 300 personas de Presidencia.", d: [["Medida", "99 × 99 m, 2 niveles + sótano"], ["Suite", "33.3 × 33.3 m en 3 × 3 celdas de 11.1 m"], ["Techo", "verde, continúa el parque"], ["Sismo", "aislamiento de base completo"], ["Llegada", "cuatro calzadas o túnel desde el S1"]] };
+  const h1 = 11, h2 = 7, H = h1 + h2, hueco = SUITE + 4, HL = 11; // planta baja 11 m, planta alta 7 m, linterna del Presidente 11 m más
+  const infoCasa = { t: "La Casa de Decisiones", c: "Al centro exacto del parque: la oficina del Presidente con cuatro puertas a cuatro salas, seis salas conectadas en anillo, Vicepresidencia y Secretaría en las esquinas opuestas, y un pasillo de preparación donde el siguiente equipo ya tiene su presentación en pantalla. El carrusel. Alrededor: Sala del Gabinete, Sala de Situación, Sala de Prensa, 300 personas de Presidencia.", d: [["Medida", "99 × 99 m, 2 niveles (11 m + 7 m) + sótano"], ["Suite", "33.3 × 33.3 m en 3 × 3 celdas de 11.1 m, 11 m de altura"], ["Linterna", "la oficina del Presidente sube a 22 m: la única marca vertical del centro"], ["Portales", "columnata de 11 m alrededor, 3.3 m de fondo, pisa el agua"], ["Techo", "verde, continúa el parque"], ["Sismo", "aislamiento de base completo"], ["Llegada", "cuatro calzadas o túnel desde el S1"]] };
   const MC = { pradera: MAT.pradera.clone(), cantera: MAT.cantera.clone(), bronce: MAT.bronce.clone(), parque: MAT.parque.clone(), madera: mat(0x7a5a3a) };
   Object.values(MC).forEach(m => { m.clippingPlanes = [planoCasa]; matsCasa.push(m); });
   const vidrioCasa = (w, h) => { const m = matVidrio(w, h, true); m.clippingPlanes = [planoCasa]; matsCasa.push(m); return m; };
@@ -319,17 +396,26 @@ caja3(33, 0.6, 33, mat(0x7a8a3a), -80, 0.3, -90, parque, { t: "La milpa", c: "33
   const a = (CASA - hueco) / 2; anillo(CASA, a, 0, -(CASA - a) / 2); anillo(CASA, a, 0, (CASA - a) / 2); anillo(a, hueco, (CASA - a) / 2, 0); anillo(a, hueco, -(CASA - a) / 2, 0);
   const techoV = (w, d, x, z) => caja3(w, 0.8, d, MC.pradera, x, H + 0.4, z, parque, infoCasa);
   techoV(CASA + 1, a + 1, 0, -(CASA - a) / 2); techoV(CASA + 1, a + 1, 0, (CASA - a) / 2); techoV(a + 1, hueco, (CASA - a) / 2, 0); techoV(a + 1, hueco, -(CASA - a) / 2, 0);
-  // pilares de piedra de la Casa
-  for (let k = 0; k < 10; k++) { const u = -CASA / 2 + k * (CASA / 9); [[u, -CASA / 2 - 0.5], [u, CASA / 2 + 0.5], [CASA / 2 + 0.5, u], [-CASA / 2 - 0.5, u]].forEach(([x, z]) => caja3(1.2, H, 1.2, MC.cantera, x, H / 2, z, parque)); }
+  // los portales: columnata de 11 m y 3.3 m de fondo alrededor de la Casa; las columnas pisan el agua
+  const PF = 3.3;
+  for (let k = 0; k <= 9; k++) { const u = -CASA / 2 + k * (CASA / 9); [[u, -CASA / 2 - PF], [u, CASA / 2 + PF], [CASA / 2 + PF, u], [-CASA / 2 - PF, u]].forEach(([x, z]) => { const col = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.85, h1, 14), MC.cantera); col.position.set(x, h1 / 2, z); col.castShadow = true; parque.add(col); }); }
+  [[CASA + 2 * PF + 1.6, PF + 1, 0, -(CASA / 2 + PF / 2 + 0.3)], [CASA + 2 * PF + 1.6, PF + 1, 0, CASA / 2 + PF / 2 + 0.3], [PF + 1, CASA, CASA / 2 + PF / 2 + 0.3, 0], [PF + 1, CASA, -(CASA / 2 + PF / 2 + 0.3), 0]].forEach(([w, d, x, z]) => caja3(w, 0.7, d, MC.cantera, x, h1 + 0.35, z, parque, infoCasa));
+  // pilares de piedra de la planta alta
+  for (let k = 0; k <= 9; k++) { const u = -CASA / 2 + k * (CASA / 9); [[u, -CASA / 2 - 0.5], [u, CASA / 2 + 0.5], [CASA / 2 + 0.5, u], [-CASA / 2 - 0.5, u]].forEach(([x, z]) => caja3(1.2, h2, 1.2, MC.cantera, x, h1 + h2 / 2, z, parque)); }
   // la suite: bloque de 33.3 con tragaluces 3 × 3 y el patio de la magnolia
-  const suite = caja3(SUITE, h1, SUITE, MC.cantera, 0, h1 / 2, 0, parque, { t: "La suite de decisión", c: "Nueve celdas de 11.1 m: el Presidente al centro (7 m de altura, patio de luz con una magnolia mexicana), salas Norte y Sur para 33, Oriente y Poniente para 24, dos esquinas para 16, y Vicepresidencia y Secretaría en las otras dos. Todas conectadas con puertas corredizas.", d: [["Medida", "33.3 × 33.3 m"], ["Pantalla por sala", "4 m + dos laterales"], ["Acústica", "25 dB de fondo"], ["Mesa", "una sola pieza de parota"]] });
+  const suite = caja3(SUITE, h1, SUITE, MC.cantera, 0, h1 / 2, 0, parque, { t: "La suite de decisión", c: "Nueve celdas de 11.1 m: el Presidente al centro (su oficina sube 22 m como una linterna de vidrio, con patio de luz y una magnolia mexicana), salas de 11 m de altura, salas Norte y Sur para 33, Oriente y Poniente para 24, dos esquinas para 16, y Vicepresidencia y Secretaría en las otras dos. Todas conectadas con puertas corredizas.", d: [["Medida", "33.3 × 33.3 m"], ["Pantalla por sala", "4 m + dos laterales"], ["Acústica", "25 dB de fondo"], ["Mesa", "una sola pieza de parota"]] });
   for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) { if (i === 1 && j === 1) continue; caja3(M - 2, 0.5, M - 2, vidrioCasa(M, 1), (i - 1) * M, h1 + 0.3, (j - 1) * M, parque); }
+  // la linterna: la oficina del Presidente sube 11 m más sobre el techo, vidrio y bronce, abierta al cielo por el patio de la magnolia
+  const infoLin = { t: "La linterna del Presidente", c: "La celda central de la suite sube 11 m sobre el techo verde: 22 m en total, el doble de las salas. Vidrio y bronce, abierta al cielo por el patio de 5 × 5 m de la magnolia. Es la única marca vertical en el centro del complejo y se ve desde los cuatro zaguanes.", d: [["Base", "11.1 × 11.1 m"], ["Altura total", "22 m"], ["Árbol", "Magnolia mexicana (yoloxóchitl)"]] };
+  caja3(M, HL, M, vidrioCasa(M, HL), 0, h1 + HL / 2, 0, parque, infoLin);
+  [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([i, j]) => caja3(0.9, HL + 1, 0.9, MC.bronce, i * (M / 2), h1 + HL / 2 + 0.3, j * (M / 2), parque));
+  [[M + 1.4, 0.8, 0, -(M / 2 + 0.3)], [M + 1.4, 0.8, 0, M / 2 + 0.3], [0.8, M + 1.4, M / 2 + 0.3, 0], [0.8, M + 1.4, -(M / 2 + 0.3), 0]].forEach(([w, d, x, z]) => caja3(w, 0.9, d, MC.bronce, x, h1 + HL + 0.3, z, parque, infoLin));
   const marco = (w, d, x, z) => caja3(w, 0.7, d, MC.bronce, x, h1 + 0.35, z, parque);
   for (let k = -1; k <= 2; k++) { marco(SUITE, 0.8, 0, (k - 0.5) * M); marco(0.8, SUITE, (k - 0.5) * M, 0); }
-  caja3(5, 0.4, 5, MC.parque, 0, h1 + 0.2, 0, parque); // el patio de la magnolia (abierto)
+  caja3(5, 0.4, 5, MC.parque, 0, h1 + HL + 0.2, 0, parque); // el patio de la magnolia, abierto arriba de la linterna
   // por dentro de la suite (se ve cuando la Casa se corta a 6.5 m): piso de madera, muros del tablero 3 × 3 con sus puertas, mesas
   caja3(SUITE - 0.6, 0.3, SUITE - 0.6, MC.madera, 0, 0.3, 0, parque);
-  const muroS = (w, d, x, z) => caja3(w, 6.2, d, MC.cantera, x, 3.3, z, parque);
+  const muroS = (w, d, x, z) => caja3(w, h1 - 0.8, d, MC.cantera, x, (h1 - 0.8) / 2, z, parque);
   [-M / 2, M / 2].forEach(p => { [[-M, 0], [M, 0]].forEach(([u]) => { muroS(M - 3, 0.3, u, p); muroS(0.3, M - 3, p, u); }); muroS(M - 3, 0.3, 0, p); muroS(0.3, M - 3, p, 0); });
   for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) { if (!i && !j) { caja3(4.5, 0.08, 4.5, MC.parque, 0, 0.5, 0, parque); continue; } caja3(4.2, 0.12, 2.0, MC.madera, i * M, 1.0, j * M, parque); }
 }
@@ -372,7 +458,7 @@ function libre(x, z) {
   if (Math.abs(x) < L / 2 + 6 && Math.abs(z) < L / 2 + 6) return false;              // edificio
   if (plazas.some(([px, pz]) => dentro(x, z, px, pz, PLAZA + 8, PLAZA + 8))) return false;
   if (dentro(x, z, 0, -420, 260, 60) || dentro(x, z, 0, -380, 30, 60)) return false; // estación y su andén
-  if (enElipse(x, z, 0, 400, 118, 88) || dentro(x, z, 0, 300, 70, 30)) return false;  // teatro 999
+  if (enElipse(x, z, 0, 400, 118, 88) || dentro(x, z, 0, 305, 124, 60)) return false;  // teatro 999, foyer y restaurante
   if (dentro(x, z, -400, -20, 210, 200)) return false;                                // canchas
   if (enElipse(x, z, 400, -90, 22, 22) || enElipse(x, z, 430, 110, 66, 50) || enElipse(x, z, 420, 40, 44, 33)) return false;
   for (const [i, j] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) { if (dentro(x, z, i * (C + 110), j * (C + 110), 50, 80)) return false; const t = ((x * i) + (z * j)) / 2; if (t > L / 2 && t < C - 40 && Math.abs(x * i - z * j) < 12) return false; }
@@ -394,7 +480,7 @@ for (let k = 0; k < 900; k++) {
   const x = entre(-LI / 2 + 6, LI / 2 - 6), z = entre(-LI / 2 + 6, LI / 2 - 6);
   if (Math.abs(x) < CASA / 2 + AGUA + 10 && Math.abs(z) < CASA / 2 + AGUA + 10) continue;   // la isla y el agua
   if (Math.abs(x) < 9 || Math.abs(z) < 9) continue;                                          // calzadas
-  if (enElipse(x, z, 60, 105, 42, 31) || dentro(x, z, -80, -90, 40, 40)) continue;           // teatro y milpa
+  if (enElipse(x, z, 60, 105, 42, 31) || dentro(x, z, 60, 68, 58, 34) || dentro(x, z, -80, -90, 40, 40)) continue;           // teatro y milpa
   if (azar() < 0.45) continue;                                                               // claros
   planta(azar() < 0.7 ? "encino" : "madrono", x, 0, z, entre(0.7, 1.1), parque);
 }
@@ -439,8 +525,8 @@ function etiqueta(texto, x, y, z, ancho = 60, grupo = etiquetas, color = "#e6e8e
   const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthWrite: false, fog: false })); s.scale.set(ancho, alto, 1); s.position.set(x, y, z); grupo.add(s); return s;
 }
 Object.entries(SECT).forEach(([l, s]) => { const d = L / 2 + 30, p = { norte: [0, -d], sur: [0, d], oriente: [d, 0], poniente: [-d, 0] }[l]; etiqueta(`${NOMBRE_LADO[l]} · ${s.nombre}`, p[0], H_TOP + 26, p[1], 110); });
-etiqueta("Casa de Decisiones", 0, 36, 0, 90);
-etiqueta("Teatro 999", 0, 32, 400, 70); etiqueta("Teatro 333", 60, 22, 105, 60); etiqueta("Estación", 0, 26, -420, 60); etiqueta("Canchas", -400, 20, -20, 60); etiqueta("Energía", 430, 26, 110, 60);
+etiqueta("Casa de Decisiones", 0, 42, 0, 90);
+etiqueta("Teatro 999", 0, 32, 400, 70); etiqueta("Teatro 333", 60, 22, 105, 60); etiqueta("Estación de Metro y Tren", 0, 26, -420, 110); etiqueta("Canchas", -400, 20, -20, 60); etiqueta("Energía", 430, 26, 110, 60);
 [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(([i, j]) => etiqueta("Bosque · estacionamiento debajo", i * C, 30, j * C, 150));
 [[0, -(L - F) / 2], [0, (L - F) / 2], [(L - F) / 2, 0], [-(L - F) / 2, 0]].forEach(([x, z]) => etiqueta("Parque de cielo", x, Y_VANO1 + 8, z, 70));
 const etiquetasCorte = new THREE.Group(); corteG.add(etiquetasCorte);
@@ -511,8 +597,8 @@ const RECORRIDOS = [
     { m: [20, 1.6, -150], c: [-40, 26, -250], t: 7, corte: -160, txt: "<strong>Planta baja.</strong> Cruzas el anillo hacia el parque." },
     { m: [0, 1.6, -120], c: [-70, 30, -95], t: 6, txt: "<strong>La calzada Norte.</strong> 84 m bajo una pérgola de bronce, colorines a los lados, el agua al frente." },
     { m: [0, 1.6, -60], c: [-64, 26, -34], t: 8, txt: "<strong>El puente sobre el agua.</strong> Ahuehuetes en la orilla. La Casa de Decisiones adelante." },
-    { m: [0, 1.6, -30], c: [-50, 30, -10], t: 6, casa: 6.5, txt: "<strong>La esclusa.</strong> Dos puertas en serie, verificación de dos factores. Cinco minutos desde tu escritorio." },
-    { m: [0, 1.6, 0], c: [30, 42, 30], t: 8, casa: 6.5, txt: "<strong>La suite.</strong> Tu equipo ya puso la presentación en la antesala. Cuando la puerta se abre, la pantalla ya tiene tu material." } ] },
+    { m: [0, 1.6, -30], c: [-50, 30, -10], t: 6, casa: 9.5, txt: "<strong>La esclusa.</strong> Dos puertas en serie, verificación de dos factores. Cinco minutos desde tu escritorio." },
+    { m: [0, 1.6, 0], c: [30, 42, 30], t: 8, casa: 9.5, txt: "<strong>La suite.</strong> Tu equipo ya puso la presentación en la antesala. Cuando la puerta se abre, la pantalla ya tiene tu material." } ] },
   { id: "ciudadano", nombre: "El ciudadano", dur: "45 s", pasos: [
     { m: [0, 1.6, -300], c: [70, 50, -390], t: 0 }, { m: [0, 1.6, -230], c: [70, 36, -300], t: 7, txt: "<strong>Un agricultor de Michoacán</strong> baja del tren en la Puerta Norte. Tiene cita; no hay fila." },
     { m: [-30, 1.6, -155], c: [-70, 28, -250], t: 8, corte: -160, txt: "<strong>La Casa del Ciudadano.</strong> 99 mesas redondas de piedra, dos sillas iguales, sin mostrador." },
@@ -521,8 +607,8 @@ const RECORRIDOS = [
     { c: [-60, y33 + 14, -262], mira: [0, y33, -150], t: 7, corte: -160, txt: "<strong>Piso 33.</strong> La Secretaria baja una escalera y está con quien construye su herramienta. Respuesta humana en 1 hora; solución o fecha en 11 días." },
     { m: [-30, 1.6, -155], c: [70, 70, -340], t: 8, corte: -160, txt: "<strong>El gobierno aprende</strong> de cada persona que viene a hablar." } ] },
   { id: "decision", nombre: "Una decisión", dur: "11 min reales · 40 s", pasos: [
-    { c: [30, 42, 30], mira: [0, 3, 0], t: 0, casa: 6.5 }, { c: [44, 30, 8], mira: [8, 3, 0], t: 7, casa: 6.5, txt: "<strong>Sala Oriente, 24 personas.</strong> El Presidente decide. La decisión queda en el Tablero con dueño y fecha antes de que salga de la sala." },
-    { c: [60, 36, -60], mira: [10, 4, -20], t: 7, casa: 6.5, txt: "<strong>Minuto 1.</strong> En la antesala, el siguiente equipo ya está listo. El carrusel no se detiene." },
+    { c: [30, 42, 30], mira: [0, 3, 0], t: 0, casa: 9.5 }, { c: [44, 30, 8], mira: [8, 3, 0], t: 7, casa: 9.5, txt: "<strong>Sala Oriente, 24 personas.</strong> El Presidente decide. La decisión queda en el Tablero con dueño y fecha antes de que salga de la sala." },
+    { c: [60, 36, -60], mira: [10, 4, -20], t: 7, casa: 9.5, txt: "<strong>Minuto 1.</strong> En la antesala, el siguiente equipo ya está listo. El carrusel no se detiene." },
     { c: [200, y33 + 16, -262], mira: [150, y33, -150], t: 8, corte: -160, txt: "<strong>Minuto 3.</strong> La esquina Nororiente, piso 33: la coordinadora de Personas y Orden ve la decisión en su pantalla." },
     { c: [40, yPiso(12) + 14, -246], mira: [75, yPiso(12), -150], t: 9, corte: -160, txt: "<strong>Minuto 11.</strong> Piso 12, lado Norte: la dueña de la tarea la tiene en su escritorio. El ingeniero de piso ya está a su lado." },
     { c: [-240, 300, 420], mira: [0, 60, 0], t: 9, txt: "<strong>Aquí se decide y se cumple.</strong>" } ] },

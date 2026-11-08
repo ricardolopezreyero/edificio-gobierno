@@ -18,7 +18,7 @@
     "orientacion": "lados a los puntos cardinales",
     "celdas": {
       "centro": "edificio + parque interior + Casa de Decisiones + Teatro 333",
-      "norte": "plaza principal, estación de transporte, terminal de 33 rutas, Casa del Ciudadano Norte, jacarandas",
+      "norte": "plaza principal, estación de Metro y Tren Suburbano, terminal de 33 rutas, Casa del Ciudadano Norte, jacarandas",
       "sur": "Teatro 999 semienterrado, plaza, 2000 cajones de visitantes",
       "oriente": "prensa y visitas oficiales, helipuerto de emergencia, subestación y planta de enfriamiento en lomas",
       "poniente": "canchas (8 pádel, 6 tenis, 2 fútbol rápido, 4 básquet), pista 5 km, rampa de logística a S1, vivero",
@@ -184,7 +184,66 @@
         "personas": 500
       }
     ],
-    "total_personas": 30000
+    "total_personas": 30000,
+    "arquitectura": {
+      "basamento": {
+        "pisos": [
+          0,
+          3
+        ],
+        "altura": 24.5,
+        "material": "tezontle con marcos de cantera; el vidrio empieza en el piso 4"
+      },
+      "zaguanes": {
+        "cantidad": 4,
+        "ancho": 11.1,
+        "alto": 11,
+        "portal_alto": 20,
+        "nota": "el eje de cada calzada atraviesa el anillo en PB"
+      },
+      "torres_esquina": {
+        "cantidad": 4,
+        "modulos": 3,
+        "lado": 38.8,
+        "vuelo": 5.5,
+        "sobre_techo": 11,
+        "linterna": 6,
+        "mirador_33": "torre NE"
+      },
+      "greca": {
+        "pisos": [
+          24,
+          31
+        ],
+        "regla": "(módulo + piso) % 3 == 0, módulos 3–26",
+        "saliente": 2.2,
+        "bahias": 256,
+        "marco": "bronce"
+      },
+      "remate": {
+        "pisos": [
+          32,
+          33
+        ],
+        "saliente": 2.2,
+        "cornisa_vuelo": 4,
+        "material": "bronce"
+      },
+      "pilares": {
+        "cada": 11.1,
+        "doble_cada": 33.3
+      },
+      "marcos_parques_cielo": 1.4,
+      "no": [
+        "curvas o formas paramétricas",
+        "salientes al azar",
+        "escalonar como pirámide",
+        "lados distintos",
+        "voladizos > 1 módulo",
+        "ornamento aplicado",
+        "muro ciego arriba"
+      ]
+    }
   },
   "parque_interior": {
     "lado": 266.4,
@@ -220,7 +279,7 @@
     "suite": {
       "lado": 33.3,
       "celda": 11.1,
-      "altura_oficina_presidente": 7,
+      "altura_oficina_presidente": 22,
       "patio_luz": {
         "lado": 5,
         "arbol": "Magnolia mexicana (yoloxóchitl)"
@@ -243,7 +302,8 @@
         ]
       ],
       "pasillo_preparacion": 3.3,
-      "antesala_por_sala_m2": 20
+      "antesala_por_sala_m2": 20,
+      "altura_salas": 11
     },
     "planta_baja": [
       "suite",
@@ -264,7 +324,20 @@
       "refugio",
       "cocina",
       "red"
-    ]
+    ],
+    "altura_planta_baja": 11,
+    "altura_planta_alta": 7,
+    "linterna": {
+      "lado": 11.1,
+      "altura_total": 22,
+      "material": "vidrio y bronce, abierta al cielo por el patio de la magnolia"
+    },
+    "portales": {
+      "altura": 11,
+      "fondo": 3.3,
+      "columnas_por_lado": 10,
+      "nota": "las columnas pisan el agua"
+    }
   },
   "sotanos": {
     "cantidad": 11,
@@ -360,7 +433,19 @@
         14,
         6
       ],
-      "distancia_max": 18
+      "distancia_max": 18,
+      "foyer": {
+        "medida": [
+          40,
+          12
+        ],
+        "alto": 8,
+        "m2": 480
+      },
+      "restaurante": {
+        "asientos": 120,
+        "terraza": "hacia el agua de la Casa"
+      }
     },
     "t999": {
       "butacas": 999,
@@ -375,7 +460,23 @@
       ],
       "distancia_max": 30,
       "balcon": true,
-      "foso": 60
+      "foso": 60,
+      "foyer": {
+        "medida": [
+          90,
+          22
+        ],
+        "alto": 12,
+        "m2": 1980
+      },
+      "restaurante": {
+        "asientos": 300,
+        "alto": 5,
+        "terraza": [
+          110,
+          16
+        ]
+      }
     },
     "butaca": {
       "paso_filas": 1.1,
@@ -400,7 +501,9 @@
     "restaurantes_bosque": 4,
     "mirador_33": 150,
     "comedor_estado": 99,
-    "comidas_dia_cocina_central": 40000
+    "comidas_dia_cocina_central": 40000,
+    "restaurantes_teatros": 2,
+    "mirador_33_donde": "linterna de la torre NE"
   },
   "gimnasios": [
     {

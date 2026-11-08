@@ -26,7 +26,7 @@ mostrar(location.hash.slice(1) || "3d");
 /* ---------- 3D (se carga una vez) ---------- */
 function cargar3D() {
   if (cargando3D) return cargando3D;
-  cargando3D = import("/tres.js?v=6").then(m => { window.EDIFICIO.tres = m; }).catch(e => {
+  cargando3D = import("/tres.js?v=7").then(m => { window.EDIFICIO.tres = m; }).catch(e => {
     $("#cargando").innerHTML = `<p>No se pudo cargar el 3D.<br><small>${e.message}</small></p>`;
     console.error(e);
   });
@@ -50,7 +50,7 @@ function planoTerreno() {
   [[0, -C / 2 - 49.5], [0, C / 2 + 49.5], [C / 2 + 49.5, 0], [-C / 2 - 49.5, 0]].forEach(([x, y]) => s += rect(x - 49.5, y - 49.5, 99, 99, "#5a2c22"));
   // teatro 999 y estación
   s += `<ellipse cx="0" cy="400" rx="110" ry="80" fill="#2d5a3a"/>` + txt(0, 400, "999", 22, "#e6e8ec");
-  s += rect(-120, -440, 240, 40, "#2a3a4a") + txt(0, -420, "Estación", 14);
+  s += rect(-120, -440, 240, 40, "#2a3a4a") + txt(0, -420, "Estación de Metro y Tren", 12);
   // edificio
   const L = P.edificio.lado, F = P.edificio.fondo_anillo;
   s += rect(-L / 2, -L / 2, L, L, "#8d8a82") + rect(-L / 2 + F, -L / 2 + F, L - 2 * F, L - 2 * F, "#245a3a");
@@ -74,8 +74,10 @@ function planoEdificio() {
   const c = L / 2 - M, n2 = 22.2;
   [[-c, -c], [c, -c], [-c, c], [c, c]].forEach(([x, y]) => s += rect(x - n2 / 2, y - n2 / 2, n2, n2, "#3a3a3c"));
   [[49.5, -L / 2 + F / 2], [49.5, L / 2 - F / 2], [L / 2 - F / 2, 49.5], [-L / 2 + F / 2, 49.5]].forEach(([x, y], k) => s += rect(x - (k < 2 ? n2 / 2 : F / 2), y - (k < 2 ? F / 2 : n2 / 2), k < 2 ? n2 : F, k < 2 ? F : n2, "#3a3a3c"));
+  // torres de esquina (3 módulos, salen 5.5 m)
+  { const TW = 3 * M + 5.5, cc = L / 2 - 1.5 * M + 2.75; [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([i, j]) => s += rect(i * cc - TW / 2, j * cc - TW / 2, TW, TW, "#6f6b62", 'stroke="#c9ced6" stroke-width=".8"')); }
   // agua, casa, calzadas, teatro, milpa
-  s += rect(-66, -66, 132, 132, "#2f6f9f") + rect(-CASA / 2, -CASA / 2, CASA, CASA, "#b08d57") + rect(-16.65, -16.65, 33.3, 33.3, "#8d6a3a") + rect(-5.55, -5.55, 11.1, 11.1, "#3fb27f");
+  s += rect(-66, -66, 132, 132, "#2f6f9f") + rect(-CASA / 2, -CASA / 2, CASA, CASA, "#b08d57") + rect(-16.65, -16.65, 33.3, 33.3, "#8d6a3a") + rect(-5.55, -5.55, 11.1, 11.1, "#dfe6ee") + rect(-2.5, -2.5, 5, 5, "#3fb27f");
   [[0, -1], [0, 1], [1, 0], [-1, 0]].forEach(([i, j]) => { const w = i ? 83.7 : M, h = j ? 83.7 : M; const x = i ? i * (CASA / 2 + 83.7 / 2) : 0, y = j ? j * (CASA / 2 + 83.7 / 2) : 0; s += rect(x - w / 2, y - h / 2, w, h, "#a0442f"); });
   s += `<ellipse cx="60" cy="105" rx="36" ry="26" fill="#2d6a3f"/>` + txt(60, 105, "333", 12);
   s += rect(-96.5, -106.5, 33, 33, "#7a8a3a") + txt(-80, -90, "milpa", 9, "#111");
@@ -102,7 +104,7 @@ function planoSuite() {
 
 $("#planos").innerHTML = `
   <div class="plano"><h2>El terreno · 999 × 999 m</h2><p>Nueve celdas de 333 m. El edificio al centro, cuatro puertas, cuatro esquinas de bosque con el estacionamiento debajo.</p>${planoTerreno()}</div>
-  <div class="plano"><h2>El edificio · 333 × 333 m</h2><p>Anillo de 33.3 m, retícula de 11.1 m, 8 núcleos, 4 parques de cielo (verde), el agua, la Casa y las cuatro calzadas.</p>${planoEdificio()}</div>
+  <div class="plano"><h2>El edificio · 333 × 333 m</h2><p>Anillo de 33.3 m, retícula de 11.1 m, 8 núcleos, 4 torres de esquina, 4 parques de cielo (verde), 4 zaguanes, el agua, la Casa con su linterna y las cuatro calzadas.</p>${planoEdificio()}</div>
   <div class="plano"><h2>La suite de decisión · 33.3 × 33.3 m</h2><p>Nueve celdas de 11.1 m: el Presidente al centro con cuatro puertas, seis salas conectadas, Vicepresidencia y Secretaría en las esquinas opuestas.</p>${planoSuite()}</div>`;
 
 /* ---------- números ---------- */
