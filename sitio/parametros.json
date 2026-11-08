@@ -65,17 +65,27 @@
         "medio S",
         "medio O"
       ],
-      "elevadores_doble_cabina": 12,
       "elevadores_servicio": 2,
       "elevadores_bomberos": 2,
       "escaleras": 2,
       "bloques_bano": 2,
       "express_a": [
         0,
+        11,
         17,
+        22,
         33
       ],
-      "nota": "los 4 núcleos de medio lado están centrados en el borde del vano del parque de cielo (x=+49.5 en N/S, z=+49.5 en E/O)"
+      "nota": "los 4 núcleos de medio lado están centrados en el borde del vano del parque de cielo (x=+49.5 en N/S, z=+49.5 en E/O)",
+      "esquema": "tres zonas de 11 pisos con lobbies en 11, 22 y 33",
+      "lanzaderas_doble_cabina": 6,
+      "locales_por_zona": 4,
+      "zonas": 3,
+      "total_por_nucleo": 22,
+      "total": 176,
+      "cabinas": 224,
+      "subir_30000_min": 26,
+      "escalera_abierta_cada_pisos": 3
     },
     "parques_de_cielo": {
       "cantidad": 4,
@@ -337,6 +347,32 @@
       "fondo": 3.3,
       "columnas_por_lado": 10,
       "nota": "las columnas pisan el agua"
+    },
+    "v2": {
+      "flujo_un_sentido": true,
+      "cuarto_de_resultado_m2": 10,
+      "decisiones_por_dia_meta": 33,
+      "muro_decision_m": 11,
+      "sala_enlace_m2": 40,
+      "sala_datos_analistas": 30,
+      "salas_espera": {
+        "cantidad": 4,
+        "m2": 60,
+        "donde": "final de cada calzada, orilla del agua"
+      },
+      "terraza_presidente": [
+        33,
+        33
+      ],
+      "casa_privada": [
+        "recámara",
+        "baño",
+        "gimnasio",
+        "comedor de 8",
+        "consultorio 24 h"
+      ],
+      "banos_de_estado": "uno por sala, 8 m²",
+      "obsidiana": "en la linterna"
     }
   },
   "sotanos": {
@@ -419,7 +455,23 @@
     "motos": 3000,
     "bicis": 10000,
     "total_coches": 39000,
-    "del_coche_al_escritorio_min": 12
+    "del_coche_al_escritorio_min": 12,
+    "margen": 0.3,
+    "cajon": [
+      2.7,
+      5.5
+    ],
+    "pasillo": 7,
+    "libre": 3.3,
+    "entradas_por_esquina": 2,
+    "salidas_por_esquina": 2,
+    "carriles_por_esquina": 6,
+    "coches_hora_por_esquina": 7200,
+    "patios_de_luz_por_esquina": 9,
+    "malla_patios": 111,
+    "distancia_max_patio": 80,
+    "sin_barreras": true,
+    "cajon_asignado": true
   },
   "teatros": {
     "t333": {
@@ -585,10 +637,24 @@
     ]
   },
   "banos": {
+    "bloque_tipo": {
+      "m2": 66,
+      "cabinas_completas": 8,
+      "mingitorios": 4,
+      "accesible": 1,
+      "familiar": 1
+    },
     "bloques_por_piso": 16,
     "extra_pisos_densos": 4,
+    "lactarios_por_piso": 2,
     "distancia_max": 40,
-    "muebles_por_persona": "1:15"
+    "total_bloques": 600,
+    "total_muebles": 8000,
+    "proporcion": "1 por cada 7 en pisos de 1,500",
+    "semaforo": true,
+    "pasillo_tecnico": true,
+    "limpieza_cada_h": 2,
+    "renovaciones_aire_h": 15
   },
   "seguridad": {
     "zonas": [
@@ -769,5 +835,41 @@
     "bloque de servicio del Sur (999 y Salón)",
     "loma del 333 y sótano de la Casa",
     "estación y estacionamientos de esquina"
+  ],
+  "estacion": {
+    "vestibulo": [
+      240,
+      60
+    ],
+    "alto": 22,
+    "doble_techo": true,
+    "cafeterias": {
+      "cantidad": 4,
+      "asientos": 120
+    },
+    "andenes": {
+      "metro": -12,
+      "tren": -18
+    },
+    "rampa_norte": {
+      "largo": 135,
+      "bandas": 4,
+      "ancho_banda": 2,
+      "velocidad": 0.75
+    },
+    "anden_a_escritorio_min": 10
+  },
+  "bandas": [
+    {
+      "tramo": "Rampa Norte",
+      "largo": 135,
+      "cantidad": 4
+    },
+    {
+      "tramo": "sendero de cada esquina",
+      "largo": 150,
+      "cantidad": 2,
+      "por": 4
+    }
   ]
 }

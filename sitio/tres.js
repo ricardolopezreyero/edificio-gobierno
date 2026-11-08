@@ -185,14 +185,30 @@ plazas.forEach(([x, z, t, c]) => caja3(PLAZA, 0.5, PLAZA, MAT.tezontle, x, 0.2, 
 [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(([i, j]) => {
   const a = new THREE.Vector3(i * (L / 2 + 4), 0, j * (L / 2 + 4)), b = new THREE.Vector3(i * (C - 40), 0, j * (C - 40));
   const len = a.distanceTo(b), mid = a.clone().add(b).multiplyScalar(0.5);
-  const p = caja3(len, 0.6, 7, MAT.bronce, mid.x, 4.8, mid.z, sitio); p.rotation.y = -Math.atan2(b.z - a.z, b.x - a.x);
-  const piso = caja3(len, 0.3, 6, MAT.cantera, mid.x, 0.15, mid.z, sitio); piso.rotation.y = p.rotation.y; piso.castShadow = false;
+  const infoSendero = { t: "Sendero cubierto con bandas", c: "Del estacionamiento de la esquina al edificio: 333 m bajo una pérgola de madera y bronce con enredaderas. Dos bandas móviles de 150 m (una por sentido) hacen el tramo en 2 minutos; a un lado, el paso libre y el carril de los carritos eléctricos.", d: [["Largo", "333 m"], ["Bandas", "2 × 150 m, 2 m de ancho, 0.75 m/s + tu paso"], ["Tiempo", "~2.5 min del patio de luz al zaguán"]] };
+  const p = caja3(len, 0.6, 12, MAT.bronce, mid.x, 4.8, mid.z, sitio, infoSendero); p.rotation.y = -Math.atan2(b.z - a.z, b.x - a.x);
+  const piso = caja3(len, 0.3, 11, MAT.cantera, mid.x, 0.15, mid.z, sitio, infoSendero); piso.rotation.y = p.rotation.y; piso.castShadow = false;
+  [-2.4, 2.4].forEach(off => { const bnd = caja3(150, 0.12, 2.0, MAT.recinto, mid.x, 0.36, mid.z, sitio, infoSendero); bnd.rotation.y = p.rotation.y; bnd.translateZ(off); bnd.castShadow = false; });
+  // los 9 patios de luz del estacionamiento: tragaluces de 11 × 11 con escaleras y elevadores al bosque
+  for (let u = -1; u <= 1; u++) for (let v = -1; v <= 1; v++) { const x = i * C + u * 111, z = j * C + v * 111; caja3(M, 1.1, M, matVidrio(M, 1.1, true), x, 0.55, z, sitio, { t: "Patio de luz del estacionamiento", c: "Nueve por esquina, en una malla de 111 m: cada uno es un tragaluz de 11 × 11 m que mete sol y aire a los dos niveles, con escaleras eléctricas y dos elevadores al bosque. Nadie estaciona a más de 80 m de uno.", d: [["Por esquina", "9"], ["Medida", "11.1 × 11.1 m"], ["Elevadores", "2 + 2 escaleras eléctricas por patio"]] }); caja3(M + 1.2, 0.4, M + 1.2, MAT.bronce, x, 1.2, z, sitio); }
   // rampa al estacionamiento
   caja3(40, 0.5, 70, MAT.asfalto, i * (C + 110), 0.2, j * (C + 110), sitio).castShadow = false;
 });
 // estación (norte)
-caja3(240, 10, 40, matVidrio(240, 10, true), 0, 5, -420, sitio, { t: "Estación de Metro y Tren Suburbano", c: "Extensión de Metro o tren con andenes que salen a la plaza Norte, más la terminal de 33 rutas de autobús eléctrico que bajan al S1. Meta: la mitad de la gente llega sin coche.", d: [["Largo", "240 m"], ["Rutas eléctricas", "33, diseñadas con los domicilios del padrón"], ["Bicis", "10,000 lugares en el S1"]] });
-caja3(250, 1.2, 50, MAT.cantera, 0, 10.6, -420, sitio);
+{ const infoEst = { t: "La Gran Estación · Metro y Tren Suburbano", c: "Los andenes van bajo tierra; la gente sube por escaleras eléctricas a un vestíbulo de 240 × 60 m y 22 m de altura, con doble techo: una bóveda de vidrio adentro y, encima, una pérgola de paneles solares que da sombra y lluvia afuera. Cuatro cafeterías, una en cada esquina del vestíbulo: pides desde el tren, recoges al salir y caminas a tu lugar. De ahí, la Rampa Norte con bandas hasta la plaza.", d: [["Vestíbulo", "240 × 60 m, 22 m de alto"], ["Cafeterías", "4 × 120 asientos, pedido desde el teléfono"], ["Andenes", "Metro a −12 m, tren a −18 m"], ["Rutas eléctricas", "33, con terminal en el S1"], ["Del andén al escritorio", "10 minutos"]] };
+  caja3(240, 4, 60, matPiedra(texBasaPB, 240, 4, 1), 0, 2, -430, sitio, infoEst);                 // basamento de tezontle
+  caja3(240, 18, 60, matVidrio(240, 18, true), 0, 13, -430, sitio, infoEst);                      // bóveda de vidrio
+  caja3(248, 1.2, 68, MAT.cantera, 0, 22.6, -430, sitio, infoEst);                                 // cornisa
+  caja3(264, 0.9, 84, MAT.pv, 0, 27, -430, sitio, infoEst);                                        // doble techo: pérgola de paneles
+  for (let k = 0; k < 12; k++) [-1, 1].forEach(sg => { const col = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.7, 27, 10), MAT.cantera); col.position.set(-126 + k * 23, 13.5, -430 + sg * 40); col.castShadow = true; sitio.add(col); });
+  [[-105, -455], [105, -455], [-105, -405], [105, -405]].forEach(([x, z]) => caja3(22, 5, 14, MAT.bronce, x, 2.5 + 4, z, sitio, { t: "Cafetería de la estación", c: "Una en cada esquina del vestíbulo, 120 asientos: café, desayuno y pan. Pides desde el tren y lo recoges al pasar.", d: [] }));
+  // la Rampa Norte: 135 m de galería cubierta con dos pares de bandas hasta la plaza
+  const infoRampa = { t: "La Rampa Norte", c: "De la estación a la plaza Norte: 135 m bajo una pérgola de bronce con dos pares de bandas móviles (dos por sentido) y paso libre al centro. Con la banda, el tramo se hace en poco más de un minuto.", d: [["Largo", "135 m"], ["Bandas", "4 × 135 m, 2 m de ancho"], ["Ancho total", "22 m"]] };
+  caja3(22, 0.3, 135, MAT.cantera, 0, 0.15, -332, sitio, infoRampa).castShadow = false;
+  caja3(24, 0.6, 137, MAT.bronce, 0, 6.5, -332, sitio, infoRampa);
+  for (let k = 0; k <= 12; k++) [-11.5, 11.5].forEach(x => { const col = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 6.5, 8), MAT.bronce); col.position.set(x, 3.25, -400 + k * 11.25); sitio.add(col); });
+  [-7.5, -4.5, 4.5, 7.5].forEach(x => caja3(2, 0.12, 133, MAT.recinto, x, 0.36, -332, sitio, infoRampa).castShadow = false);
+}
 // teatro 999: colina + pórtico (sur)
 function loma(x, z, rx, ry, rz, m, info) { const o = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 24), m); o.scale.set(rx, ry, rz); o.position.set(x, 0, z); o.castShadow = o.receiveShadow = true; if (info) { o.userData.info = info; pickables.push(o); } sitio.add(o); return o; }
 loma(0, 400, 112, 15, 82, MAT.pradera, { t: "Teatro 999", c: "Semienterrado bajo una colina de bosque, abierto a la ciudad: conciertos, actos nacionales, ceremonias. 999 butacas en platea y balcón, ninguna a más de 30 m del escenario.", d: [["Sala", "2,200 m²"], ["Escenario", "24 × 14 m con foso para 60 músicos"], ["Pantalla", "LED de 24 × 10 m"], ["Butaca", "paso 1.10 m, 0.65 m de ancho, ventilación individual"], ["Estacionamiento", "2,000 cajones bajo la plaza"]] });
@@ -432,6 +448,13 @@ caja3(33, 0.6, 33, mat(0x7a8a3a), -80, 0.3, -90, parque, { t: "La milpa", c: "33
   const marco = (w, d, x, z) => caja3(w, 0.7, d, MC.bronce, x, h1 + 0.35, z, parque);
   for (let k = -1; k <= 2; k++) { marco(SUITE, 0.8, 0, (k - 0.5) * M); marco(0.8, SUITE, (k - 0.5) * M, 0); }
   caja3(5, 0.4, 5, MC.parque, 0, h1 + HL + 0.2, 0, parque); // el patio de la magnolia, abierto arriba de la linterna
+  // la terraza del Presidente: 33 × 33 en el techo verde, alrededor de la linterna, con barandal de bronce
+  caja3(SUITE, 0.3, SUITE, MC.pradera, 0, H + 0.95, 0, parque, { t: "La terraza del Presidente", c: "33 × 33 m de jardín en el techo de la Casa, alrededor de la linterna, con acceso solo desde la oficina: para la conversación que no cabe en una sala, con el edificio entero alrededor.", d: [] });
+  [[SUITE + 0.4, 0.2, 0, -SUITE / 2], [SUITE + 0.4, 0.2, 0, SUITE / 2], [0.2, SUITE + 0.4, SUITE / 2, 0], [0.2, SUITE + 0.4, -SUITE / 2, 0]].forEach(([w, d, x, z]) => caja3(w, 1.1, d, MC.bronce, x, H + 1.6, z, parque));
+  // salas de espera y esclusas al final de cada calzada, a la orilla del agua
+  [[0, -1], [0, 1], [1, 0], [-1, 0]].forEach(([i, j]) => { const d = CASA / 2 + AGUA + 9, x = i * d, z = j * d, w = i ? 14 : 22, dd = j ? 14 : 22;
+    caja3(w, 6.5, dd, vidrioCasa(22, 6.5), x, 3.25, z, parque, { t: "Sala de espera de Estado y esclusa", c: "Al final de cada calzada, a la orilla del agua: una sala de espera de 60 m² con vista al espejo y a la linterna, café servido, y la esclusa de dos puertas hacia la Casa. Quien espera, espera frente al agua, nunca en un pasillo.", d: [["Hay", "4, una por calzada"], ["Sala", "60 m²"], ["Esclusa", "dos puertas en serie, verificación de dos factores"]] });
+    caja3(w + 1.5, 0.6, dd + 1.5, MC.cantera, x, 6.8, z, parque); });
   // por dentro de la suite (se ve cuando la Casa se corta a 6.5 m): piso de madera, muros del tablero 3 × 3 con sus puertas, mesas
   caja3(SUITE - 0.6, 0.3, SUITE - 0.6, MC.madera, 0, 0.3, 0, parque);
   const muroS = (w, d, x, z) => caja3(w, h1 - 0.8, d, MC.cantera, x, (h1 - 0.8) / 2, z, parque);
@@ -476,7 +499,7 @@ const enElipse = (x, z, cx, cz, rx, rz) => ((x - cx) / rx) ** 2 + ((z - cz) / rz
 function libre(x, z) {
   if (Math.abs(x) < L / 2 + 6 && Math.abs(z) < L / 2 + 6) return false;              // edificio
   if (plazas.some(([px, pz]) => dentro(x, z, px, pz, PLAZA + 8, PLAZA + 8))) return false;
-  if (dentro(x, z, 0, -420, 260, 60) || dentro(x, z, 0, -380, 30, 60)) return false; // estación y su andén
+  if (dentro(x, z, 0, -430, 280, 100) || dentro(x, z, 0, -332, 34, 145)) return false; // estación y Rampa Norte
   if (enElipse(x, z, 0, 400, 118, 88) || dentro(x, z, 0, 305, 124, 60) || dentro(x, z, 100, 330, 110, 100) || dentro(x, z, 124, 384, 36, 20)) return false;  // teatro 999, foyer, restaurante, salón, bodegas
   if (dentro(x, z, -400, -20, 210, 200)) return false;                                // canchas
   if (enElipse(x, z, 400, -90, 22, 22) || enElipse(x, z, 430, 110, 66, 50) || enElipse(x, z, 420, 40, 44, 33)) return false;
@@ -545,11 +568,12 @@ function etiqueta(texto, x, y, z, ancho = 60, grupo = etiquetas, color = "#e6e8e
 }
 Object.entries(SECT).forEach(([l, s]) => { const d = L / 2 + 30, p = { norte: [0, -d], sur: [0, d], oriente: [d, 0], poniente: [-d, 0] }[l]; etiqueta(`${NOMBRE_LADO[l]} · ${s.nombre}`, p[0], H_TOP + 26, p[1], 110); });
 etiqueta("Casa de Decisiones", 0, 42, 0, 90);
-etiqueta("Teatro 999", 0, 32, 400, 70); etiqueta("Salón de Eventos", 103, 24, 314, 90); etiqueta("Teatro 333", 60, 22, 105, 60); etiqueta("Estación de Metro y Tren", 0, 26, -420, 110); etiqueta("Canchas", -400, 20, -20, 60); etiqueta("Energía", 430, 26, 110, 60);
+etiqueta("Teatro 999", 0, 32, 400, 70); etiqueta("Salón de Eventos", 103, 24, 314, 90); etiqueta("Teatro 333", 60, 22, 105, 60); etiqueta("Estación de Metro y Tren", 0, 36, -430, 110); etiqueta("Canchas", -400, 20, -20, 60); etiqueta("Energía", 430, 26, 110, 60);
 [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(([i, j]) => etiqueta("Bosque · estacionamiento debajo", i * C, 30, j * C, 150));
 [[0, -(L - F) / 2], [0, (L - F) / 2], [(L - F) / 2, 0], [-(L - F) / 2, 0]].forEach(([x, z]) => etiqueta("Parque de cielo", x, Y_VANO1 + 8, z, 70));
 const etiquetasCorte = new THREE.Group(); corteG.add(etiquetasCorte);
 infoSotanos.forEach(s => etiqueta(s.n === "S10-S11" ? "La Bóveda" : s.n, L / 2 + 40, s.y, 0, s.n === "S10-S11" ? 60 : 30, etiquetasCorte, s.n === "S10-S11" ? "#7fb3ff" : "#cfd3da"));
+[11, 22, 33].forEach(k => etiqueta(`Lobby ${k} · lanzaderas`, -L / 2 - 60, yPiso(k) + 2, 0, 80, etiquetasCorte, "#ffd9a0"));
 USO.forEach((u, i) => { const k0 = i ? USO[i - 1].hasta + 1 : 0, y = (yPiso(k0) + yPiso(u.hasta + 1)) / 2; etiqueta(u.n, L / 2 + 70, y, 0, 100, etiquetasCorte, "#" + u.c.toString(16).padStart(6, "0")); });
 
 /* ---------- Marcador de los recorridos ---------- */

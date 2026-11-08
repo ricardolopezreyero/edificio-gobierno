@@ -46,7 +46,7 @@ Las seis decisiones abiertas están en [PROYECTO.md §20](PROYECTO.md#20-decisio
 
 Three.js, 1 unidad = 1 metro, todo leído de `parametros.json`: si cambia un número, cambia el edificio.
 
-- **Terreno** de 999 × 999 m con ~10,800 árboles instanciados de 9 especies (encino, pino, cedro, fresno, madroño, ahuehuete, jacaranda, colorín), plazas de tezontle, estación, Teatro 999 bajo su colina, canchas, lomas de energía, senderos cubiertos y la ciudad alrededor.
+- **Terreno** de 999 × 999 m con la Gran Estación (22 m, doble techo, 4 cafeterías) y la Rampa Norte con bandas, senderos con bandas y 36 patios de luz sobre el estacionamiento, ~10,800 árboles instanciados de 9 especies (encino, pino, cedro, fresno, madroño, ahuehuete, jacaranda, colorín), plazas de tezontle, estación, Teatro 999 bajo su colina, canchas, lomas de energía, senderos cubiertos y la ciudad alrededor.
 - **Edificio**: basamento de tezontle con los cuatro zaguanes, anillo de vidrio con pilares de piedra cada 11.1 m (dobles cada 33.3), la greca de 256 bahías en los pisos 24–31, el remate con cornisa, las cuatro torres de esquina con linterna, 33 losas interiores coloreadas por uso, 8 núcleos, los 4 parques de cielo con sus columnas y árboles, azotea con pista, paneles, Mirador 33 y helipuerto.
 - **Parque interior**: el agua alrededor de la Casa, las cuatro calzadas con pérgola, ahuehuetes, colorines, la loma del Teatro 333 y la milpa.
 - **Casa de Decisiones** de 11 + 7 m con portales de columnas sobre el agua y la linterna del Presidente de 22 m; la suite 3 × 3 por dentro (muros, mesas, el patio de la magnolia) se ve cortando la Casa a 9.5 m.

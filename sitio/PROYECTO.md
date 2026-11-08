@@ -50,12 +50,14 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Arquitectura | Basamento de tezontle (4 pisos), 4 zaguanes, 4 torres de esquina (+11 m), la greca (256 bahías en pisos 24–31), remate con cornisa (§7b) |
 | Parques de cielo | 4, uno al centro de cada fachada, pisos 16–18, 99 m de ancho, abiertos al aire |
 | Bosque | ~78 ha netas, 15,000 a 20,000 árboles de ~33 especies nativas del Valle de México |
-| Estacionamiento | ~37,000 cajones: 29,500 bajo el bosque de las 4 esquinas + 7,400 bajo el edificio |
+| Estacionamiento | ~39,000 cajones (30 % de margen): 29,500 bajo el bosque con 36 patios de luz, 7,400 bajo el edificio, 2,000 bajo la plaza Sur; sin barreras, cajón asignado |
 | Teatros y eventos | 333 butacas bajo el parque central · 999 butacas en el bosque, abierto a la ciudad · Salón de Eventos de 2,904 m² junto al 999, con bodega y cabina por recinto |
 | Comer | 4 Mercados de los 32 estados + 4 comedores de planta baja + 33 cafés + 8 restaurantes |
 | Gimnasios | 12, incluida una alberca de 33.3 m y una pista de 1.2 km en la azotea |
 | Servidores | La Bóveda: sótanos 10–11 unidos, 9 m de altura, 110,889 m², 4 cuadrantes independientes |
-| Elevadores | 8 núcleos, 96 elevadores de doble cabina + 16 de servicio + 16 de bomberos |
+| Elevadores | 8 núcleos · 48 lanzaderas de doble cabina a los lobbies 11, 22 y 33 · 96 locales · 16 de servicio · 16 de evacuación · 176 en total |
+| Estación | Gran Estación de Metro y Tren: vestíbulo de 240 × 60 × 22 m con doble techo y 4 cafeterías; Rampa Norte con 4 bandas |
+| Baños | ~600 bloques y ~8,000 muebles; 1 por cada 7 personas; nadie a más de 40 m |
 | Vida útil de diseño | 200 años |
 | Obra | ~7 años; el bosque y el teatro 999 abren al público en el año 3 |
 | Orden de magnitud | US$ 15,000 a 25,000 millones (ver §19; cifra para dimensionar, no presupuesto) |
@@ -233,16 +235,24 @@ Referencia: el Pentágono tiene ~604,000 m² para ~23,000 personas. Este edifici
 - **Sismo**: el edificio es el país del sismo. Núcleos duales con **amortiguadores viscosos** en los acoplamientos, juntas sísmicas a mitad de cada lado (el anillo se comporta como 8 edificios ligados por los parques de cielo y las esquinas), y **aislamiento de base** completo para la Casa de Decisiones y para los racks de La Bóveda. Meta: operación continua tras un sismo como el de 1985 o el de 2017, no solo «no colapsar».
 - **Fachada**: ventilada, con columnas y losas por dentro de la piel. La piel pesa y dura: piedra volcánica de 60 mm sobre paneles de concreto de ultra alto desempeño (UHPC), ventanas de triple vidrio de 3.6 m de alto, lamas verticales de bronce. Ninguna junta de silicón expuesta al sol.
 
-### Los 8 núcleos
+### Los 8 núcleos y el esquema de tres lobbies
 
-Cada núcleo (4 de esquina y 4 de medio lado) tiene:
+Tú lo dijiste: elevadores en distintos niveles. El edificio se divide en **tres zonas de 11 pisos** con un lobby de cambio en el **11, el 22 y el 33**:
 
-- 12 elevadores de **doble cabina** (dos pisos a la vez) con despacho por destino: express a la planta baja, al piso 17 (cintura) y al 33. Los núcleos de medio lado están en el borde del parque de cielo: sales del elevador en el 17 y estás en el parque.
-- 2 elevadores de servicio (camillas, mobiliario, cocina) y 2 de bomberos presurizados que también sirven para **evacuación asistida**.
-- 2 escaleras de 1.5 m presurizadas.
-- 2 bloques de baños (ver §10), cuarto de limpieza, ducto de basura separada en 4 fracciones, tableros y cuarto de red por piso.
+| Tipo | Por núcleo | Total | Qué hace |
+|---|---|---|---|
+| **Lanzaderas** de doble cabina | 6 | 48 (96 cabinas) | Solo paran en PB, 11, 22 y 33 (y en el 17, la cintura): 22 pisos en ~40 s |
+| **Locales** | 4 por zona × 3 zonas = 12 | 96 | Sirven su zona de 11 pisos desde su lobby: máximo 5 pisos de viaje, ~20 s |
+| Servicio | 2 | 16 | Camillas, mobiliario, cocina, mudanzas |
+| Bomberos / evacuación | 2 | 16 | Presurizados; también evacuación asistida |
+| **Total** | 22 | **176 elevadores · 224 cabinas** | |
 
-Total: 96 elevadores de doble cabina (192 cabinas), 16 de servicio, 16 de bomberos. Meta de diseño: **30,000 personas suben en 30 minutos**; nadie espera más de 40 segundos un elevador.
+- Despacho por destino: marcas tu piso en la compuerta de entrada y la pantalla te dice qué elevador.
+- Cualquier piso desde la planta baja en **menos de 90 segundos**; en la zona baja, el local va directo.
+- Capacidad: 96 cabinas de lanzadera × 24 personas cada 2 minutos → 69,000 personas por hora; **los 30,000 suben en 26 minutos**.
+- Cada núcleo tiene además 2 escaleras presurizadas, y entre cada tres pisos de cada lado hay una **escalera abierta de barrio** con luz natural: para un piso o dos, nadie espera elevador.
+- Los núcleos de medio lado dan al parque de cielo en el 17: sales del elevador y estás en el jardín.
+- Los núcleos de esquina están dentro de las torres: los superdirectores tienen su propio lobby.
 
 ### Los 4 parques de cielo (pisos 16–18)
 
@@ -366,6 +376,36 @@ Nueve celdas de 11.1 × 11.1 m (123 m² cada una):
 - **El pasillo de preparación**: un corredor de 3.3 m alrededor de las nueve celdas, con una **antesala de 20 m² por sala** donde el siguiente equipo ya conectó su presentación (pantalla espejo de la sala, sin cables), repasa y espera. Cuando la puerta se abre, entran y la pantalla ya tiene su material. Cero tiempos muertos: ese es **el carrusel**.
 - **Equipamiento por sala**: pantalla principal de 4 m, dos laterales, cámaras que siguen a quien habla, micrófonos de techo, traducción simultánea, **votación y registro de la decisión** en el Tablero, muro de pizarra de vidrio, y mesa de piedra con madera, con energía y red en la mesa. Acústica a 25 dB de fondo; muros de 300 mm con doble hoja.
 
+### La Casa, repensada: lujos y optimización
+
+La Casa es la pieza clave del complejo, así que se repensó completa con una pregunta: **¿qué le quita segundos a una decisión y qué le da dignidad a quien la toma y a quien la espera?**
+
+**Optimización (segundos):**
+
+| Qué | Cómo |
+|---|---|
+| **Flujo de un solo sentido** | El pasillo de preparación gira como reloj: los equipos entran por la antesala, presentan, y salen por el **cuarto de resultado** (10 m² por sala) donde registran la decisión en el Tablero antes de irse. Entrada y salida nunca se cruzan: por eso es un carrusel |
+| **33 decisiones al día** | Con turnos de 11 minutos, el Presidente despacha 6 por hora en las cuatro salas que tocan su oficina; las dos salas de esquina corren en paralelo con Vicepresidencia y Secretaría. Meta: 33 decisiones registradas por jornada |
+| **El muro de decisión** | En la linterna, un muro de 11 m con el Tablero vivo: qué está pendiente, quién espera en qué antesala, qué se decidió hoy |
+| **Sala de Enlace** | 40 m² blindados (Faraday, audio sellado) para llamadas con jefes de Estado y mandos; junto a la Sala de Situación |
+| **Sala de Datos** | En la planta alta, 30 analistas con línea directa a La Bóveda: la cifra que pide el Presidente llega a la pantalla en la misma junta |
+| **Llegada sin cruces** | Cuatro **salas de espera de Estado** (60 m²) al final de cada calzada, a la orilla del agua, con café servido; ahí está la esclusa. Quien espera, espera frente al agua y la linterna, nunca en un pasillo |
+| **Túnel de Estado** | Del S1 directo al sótano de la Casa: una visita oficial llega sin cruzar ninguna zona pública |
+
+**Lujo (dignidad), sin dorados:**
+
+| Qué | Cómo |
+|---|---|
+| **Alturas** | 11 m en salas y oficinas, 22 m en la linterna del Presidente, 7 m en la planta alta |
+| **La casa dentro de la Casa** | Escalera privada de la linterna a la planta alta: recámara, baño, gimnasio privado, comedor de 8 y consultorio médico 24 h. Para las noches largas y las crisis |
+| **La terraza del Presidente** | 33 × 33 m de jardín en el techo, alrededor de la linterna, solo desde su oficina |
+| **Los portales** | Columnata de 11 m y 3.3 m de fondo alrededor de toda la Casa; las columnas pisan el agua |
+| **Materiales** | Piso de mármol Santo Tomás, muros de cantera y **obsidiana** pulida en la linterna (la piedra negra de México que refleja el cielo), mesas de una sola pieza de parota, bronce en toda herrería, textiles de Oaxaca |
+| **Baños de Estado** | Uno por sala, 8 m², mármol, grifería de bronce, flores frescas; más el baño de la oficina del Presidente con regadera |
+| **Luz y silencio** | Tragaluces en las 8 salas, el patio de la magnolia en el centro, 25 dB de fondo, losa radiante |
+| **Cocina de Estado** | Chef, comedor de 99, y servicio en antesalas y salas de espera |
+| **Capilla de silencio, biblioteca, cuarto de descanso del equipo** | Ya estaban; se quedan |
+
 ### Lo demás en la Casa
 
 | Nivel | Qué hay |
@@ -411,11 +451,46 @@ Regla: **una sala por cada 11 personas**. Todas con cámara, pantalla, micrófon
 | Sala de Situación de sector | 24 | 120 | piso 33, una por lado | 4 |
 | Sala del Gabinete y las 6 de la Casa | 16–33 | 123–225 | Casa de Decisiones | 7 |
 
-### Baños: a menos de 40 m de cualquier escritorio
+### Baños: la revisión completa
 
-- **16 bloques por piso** (2 por núcleo), más 4 bloques intermedios en los pisos de 1,500 personas: **ningún puesto a más de 40 m de un baño**.
-- Proporción de **1 mueble por cada 15 personas** (el doble de lo que pide el reglamento). Cada bloque: 6 inodoros de mujeres, 4 inodoros y 4 mingitorios de hombres, 2 baños familiares/neutros con cambiador, 1 accesible con grúa de techo, 2 lactarios por piso en el bloque de medio lado.
-- Cabinas de piso a techo con puerta de madera maciza, inodoro con asiento lavador, lavabo de piedra de una pieza con grifería de bronce sin contacto, piso de recinto negro, muros de **talavera** de Puebla, luz indirecta, música baja, ventilación 100 % aire exterior, y **fabricados como módulos** en planta (§19).
+Regla única: **nadie hace fila y nadie camina más de 40 m**. Todo lo demás sale de ahí.
+
+**El bloque tipo (66 m², el mismo en todo el edificio):**
+
+| Pieza | Cuántas | Detalle |
+|---|---|---|
+| Cabinas completas | 8 | Cada una es un cuarto: inodoro con asiento lavador, lavabo de piedra de una pieza, repisa para el teléfono, gancho de bronce, espejo, puerta maciza de piso a techo, ventilación propia. Sin género: cualquiera usa cualquiera |
+| Sala de mingitorios | 4 + 2 lavabos | Para que el flujo de hombres no ocupe cabinas |
+| Cabina accesible grande | 1 | 2.2 × 2.4 m, con grúa de techo en los bloques de medio lado |
+| Familiar / cambiador | 1 | Cambiador de bebé y de adulto |
+| Lactario | 2 por piso | En los bloques de medio lado: sillón, refrigerador, lavabo, puerta con seguro |
+
+**Cuántos y dónde:**
+
+| Lugar | Bloques | Distancia máxima |
+|---|---|---|
+| Cada piso de oficinas (1–33) | 16 (dos por núcleo) + 4 intermedios en los pisos de 1,500 | 40 m |
+| Planta baja y Casas del Ciudadano | 4 bloques triples (públicos, con acceso desde la plaza sin pasar compuerta) | 50 m |
+| Parques de cielo y Mercados | 2 bloques dobles por parque | 40 m |
+| Azotea | 4 (uno por lado) | — |
+| Teatros | 999: 1 mueble por cada 15 butacas, dos de mujeres por cada uno de hombres (es la regla que evita la fila en el intermedio); 333: igual | En el foyer y en el restaurante |
+| Salón de Eventos | 2 bloques dobles + 1 por cada tercio al dividirse | — |
+| Casa de Decisiones | Baños de Estado: uno por sala; bloques en la planta alta y en las salas de espera | — |
+| Estación | 2 bloques dobles en el vestíbulo | — |
+| Estacionamientos | 1 bloque por patio de luz (9 por esquina) | 80 m |
+| Gimnasios y alberca | Vestidores con 1 regadera por cada 10 usuarios en hora pico, 6 en cada vestidor de piso | — |
+
+Suma: **~600 bloques y ~8,000 muebles**; en un piso de 1,500 personas la proporción es 1 por cada 7 (el reglamento pide 1 por cada 25–40).
+
+**Cómo funcionan:**
+
+- **Semáforo de cabinas** en la entrada de cada bloque y en el teléfono: cuántas libres, como en los aeropuertos. Nadie entra a buscar.
+- **Se reparan por atrás**: cada bloque tiene un pasillo técnico a la espalda; el plomero nunca entra al baño mientras se usa.
+- **Limpieza cada 2 horas** con registro en el Tablero, sensores de consumibles (jabón, papel, toallas) que piden solos, y un contador de usos por cabina para limpiar lo que se usa.
+- **Aire**: 15 renovaciones por hora, extracción por cabina, presión negativa hacia el pasillo técnico: nunca huele.
+- **Agua**: todo sin contacto; inodoros de 3 litros; agua tratada de la planta del S5 para los inodoros.
+- **Materiales**: piso de recinto flameado, muros de talavera (una paleta por lado: así sabes en qué lado estás), lavabo de mármol, bronce, luz indirecta cálida, música baja.
+- **Prefabricados**: los ~600 bloques se fabrican completos en planta y se conectan en un día cada uno (§19).
 
 ### Comer: todos comen en el edificio, en menos de 90 minutos
 
@@ -603,12 +678,59 @@ Cada esquina: 333 × 333 m × 2 niveles = 221,778 m² ÷ 30 m² por cajón ≈ 7
 
 Desde el estacionamiento de esquina hasta el vestíbulo más lejano hay 333 m: **senderos cubiertos** por el bosque (pérgolas de madera con enredaderas) y **carritos eléctricos** cada 2 minutos. Meta: del coche al escritorio en **12 minutos**, incluido el elevador.
 
-### Sin coche
+### La Gran Estación de Metro y Tren Suburbano
 
-- **Estación de Metro y Tren Suburbano** en la Puerta Norte: extensión de Metro o tren (desde Cuatro Caminos / Tren Suburbano, por confirmar con la autoridad de transporte) con andenes que desembocan en la plaza Norte.
-- **33 rutas de autobús eléctrico** que salen desde el S1 a las colonias donde vive la gente del edificio, con horarios ajustados al padrón de empleados (la ruta se diseña con los domicilios, no al revés).
-- Ciclovías a los cuatro lados del terreno, 10,000 lugares para bici, regaderas.
-- Meta: **la mitad de la gente llega sin coche** en el año 5. El estacionamiento de esquina se va convirtiendo en otra cosa conforme se vacía.
+La estación no es un túnel: es **la puerta de la mitad de la gente**. Por eso sube.
+
+- Los andenes van bajo tierra (Metro a −12 m, tren a −18 m); la gente sube por escaleras eléctricas a un **vestíbulo de 240 × 60 m y 22 m de altura**, sobre un basamento de tezontle.
+- **Doble techo**: adentro, una bóveda de vidrio; encima, una pérgola de paneles solares que da sombra y lluvia afuera y deja una cámara de aire que enfría el vestíbulo. Cómoda a las 8 de la mañana y a las 3 de la tarde.
+- **Cuatro cafeterías**, una en cada esquina del vestíbulo, 120 asientos cada una: café, desayuno, pan. **Pides desde el tren y lo recoges al salir**, o te lo llevan a tu café de piso. Nadie llega a trabajar sin desayunar.
+- Terminal de las 33 rutas eléctricas en el sótano de la estación, conectada al S1 del edificio por túnel; bicis en el vestíbulo.
+- **La Rampa Norte**: 135 m de galería cubierta de la estación a la plaza, con **cuatro bandas móviles** (dos por sentido) y paso libre al centro. Luego la plaza, el zaguán, el elevador: **del andén al escritorio en 10 minutos**.
+
+### Dónde van bandas y dónde van elevadores
+
+Regla: **banda donde el flujo es masivo, en línea recta y mayor de 100 m; elevador o escalera eléctrica donde hay que cambiar de nivel; carrito donde alguien no puede caminar.** Dentro de los pisos no hay bandas: ahí la gente se sienta con los suyos y camina menos de 60 m.
+
+| Tramo | Largo | Qué va | Tiempo |
+|---|---|---|---|
+| Andén → vestíbulo de la estación | −18 m → 0 | 12 escaleras eléctricas + 6 elevadores | 1 min |
+| Estación → plaza Norte (Rampa Norte) | 135 m | 4 bandas de 2 m (dos por sentido) | 1.2 min |
+| Patio de luz del estacionamiento → bosque | −7 m → 0 | 2 escaleras eléctricas + 2 elevadores por patio (36 patios) | 30 s |
+| Patio de luz → edificio (sendero de la esquina) | 333 m | 2 bandas de 150 m + paso libre + carril de carritos | 2.5 min |
+| S1 (autobuses, bicis) → vestíbulos | −6 m → 0 | 16 escaleras eléctricas + los elevadores de los núcleos | 1 min |
+| Plaza → zaguán → núcleo | 60–100 m | A pie (es la entrada: se ve el parque y la linterna) | 1.5 min |
+| Planta baja → cualquier piso | hasta 160 m | Lanzaderas a 11, 22, 33 + locales | < 1.5 min |
+| Estacionamiento S2–S3 → vestíbulos | −12 m → 0 | 8 núcleos con 2 elevadores + escalera eléctrica cada uno | 40 s |
+| Teatro 999 / Salón → plaza Sur | 100–150 m | A pie bajo pérgola; carritos para quien lo pida | 2 min |
+
+Las bandas son de 2 m de ancho, 0.75 m/s, con pasamanos calefactado en invierno, techo y luz; se detienen solas de noche cuando no hay nadie.
+
+### El estacionamiento como obra de ingeniería
+
+«Sobrado y con movimiento»: no un depósito de coches, una máquina de entrar y salir.
+
+| Dato | Valor |
+|---|---|
+| Cajones | **~39,000** para 30,000 personas: 29,500 bajo las cuatro esquinas del bosque, 7,400 bajo el edificio (S2–S3), 2,000 bajo la plaza Sur. Un **30 % de margen** para que siempre haya lugar y el flujo no se trabe |
+| Cajón | 2.7 × 5.5 m (el reglamento pide 2.4 × 5), pasillos de 7 m en dos sentidos, 3.3 m libres (caben camionetas) |
+| Entradas | Cada esquina: 2 entradas y 2 salidas desde el anillo vial por **rampas helicoidales dobles**, 6 carriles en total. A 1,200 coches por hora por carril, una esquina de 7,400 cajones se vacía en una hora; las cuatro mueven 29,000 coches por hora: más que todos los coches del edificio en la hora pico |
+| Sin barreras | Lectura de placa y credencial en el teléfono: no hay pluma, no hay boleto, no hay fila para pagar |
+| Tu cajón | Antes de llegar, el teléfono te asigna cajón **en la esquina de tu lado y cerca de tu patio de luz**; un LED verde lo marca. Sensor por cajón; el mapa del edificio sabe cuántos quedan |
+| Patios de luz | 9 por esquina, en malla de 111 m: tragaluces de 11 × 11 m que meten sol y aire a los dos niveles; cada uno con escaleras eléctricas y 2 elevadores al bosque y un bloque de baños. **Nadie estaciona a más de 80 m de uno** |
+| Aire y luz | Ventilación natural por los patios más extracción mecánica por zonas; luz LED por presencia; losa blanca |
+| Agua | El bosque de encima drena a cisternas; el estacionamiento es también el depósito de lluvia de las esquinas |
+| Carga eléctrica | 100 % precableado, 1 de cada 3 cajones con cargador desde el primer día; los de visitantes bajo el edificio, todos |
+| Motos y bicis | 3,000 motos en las esquinas junto a los patios; 10,000 bicis en el S1 y en la estación |
+| Convertible | Losas planas y 3.3 m libres: cuando sobren coches, son talleres, bodegas o lo que el gobierno necesite |
+| Visitas de Estado | Túnel vehicular al S1 y de ahí al sótano de la Casa, sin cruzar nada |
+
+Del coche al escritorio sigue siendo **12 minutos**, ahora con banda: patio de luz, sendero, zaguán, lanzadera.
+
+### Sin coche: la meta
+
+- La mitad de la gente llega sin coche en el año 5: estación, 33 rutas eléctricas diseñadas con los domicilios del padrón, ciclovías a los cuatro lados.
+- El estacionamiento de esquina se va convirtiendo en otra cosa conforme se vacía.
 
 ### Visitantes
 
@@ -681,7 +803,8 @@ Un piso del anillo mide 1,200 m de perímetro; caminar un lado completo son 4 mi
 | De... a... | Tiempo |
 |---|---|
 | Tu escritorio a tu equipo | < 1 min (60 m) |
-| Tu escritorio a tu Secretario (mismo lado, pisos arriba) | 2 min (un elevador express) |
+| Del andén del tren a tu escritorio | 10 min (escaleras, Rampa Norte con bandas, zaguán, lanzadera) |
+| Tu escritorio a tu Secretario (mismo lado, pisos arriba) | 2 min (lanzadera al lobby 22 o 33 + local) |
 | Tu escritorio a la esquina de tu sector | 2–4 min caminando |
 | Tu escritorio a la Casa de Decisiones | 5 min (elevador a PB + calzada de 84 m) |
 | Cualquier punto a cualquier punto | 9 min máximo |
