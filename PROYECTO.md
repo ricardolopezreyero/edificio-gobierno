@@ -235,7 +235,7 @@ Referencia: el Pentágono tiene ~604,000 m² para ~23,000 personas. Este edifici
 
 Cada núcleo (4 de esquina y 4 de medio lado) tiene:
 
-- 12 elevadores de **doble cabina** (dos pisos a la vez) con despacho por destino: express a la planta baja, al piso 17 (cintura) y al 33.
+- 12 elevadores de **doble cabina** (dos pisos a la vez) con despacho por destino: express a la planta baja, al piso 17 (cintura) y al 33. Los núcleos de medio lado están en el borde del parque de cielo: sales del elevador en el 17 y estás en el parque.
 - 2 elevadores de servicio (camillas, mobiliario, cocina) y 2 de bomberos presurizados que también sirven para **evacuación asistida**.
 - 2 escaleras de 1.5 m presurizadas.
 - 2 bloques de baños (ver §10), cuarto de limpieza, ducto de basura separada en 4 fracciones, tableros y cuarto de red por piso.
@@ -301,7 +301,7 @@ Tú pediste pisos de ingenieros con retroalimentación directa de los de arriba.
 
 ## 9. La Casa de Decisiones
 
-Al centro exacto del parque interior. **99 × 99 m, dos niveles sobre el suelo y uno debajo**, techo verde que continúa el parque, de modo que desde los pisos altos se ve una loma cuadrada con un patio de luz al centro. Se llega por las cuatro **calzadas** (galerías cubiertas de 11.1 m de ancho y 117 m de largo, con jardín a ambos lados) desde el centro de cada lado del anillo, o por el túnel de seguridad desde el S1.
+Al centro exacto del parque interior. **99 × 99 m, dos niveles sobre el suelo y uno debajo**, techo verde que continúa el parque, de modo que desde los pisos altos se ve una loma cuadrada con un patio de luz al centro. Se llega por las cuatro **calzadas** (galerías cubiertas de 11.1 m de ancho y 84 m de largo (de la fachada interior al borde del agua), con jardín a ambos lados) desde el centro de cada lado del anillo, o por el túnel de seguridad desde el S1.
 
 ### El tablero de 3 × 3: la suite de decisión (33.3 × 33.3 m)
 
@@ -596,7 +596,7 @@ Un piso del anillo mide 1,200 m de perímetro; caminar un lado completo son 4 mi
 | Tu escritorio a tu equipo | < 1 min (60 m) |
 | Tu escritorio a tu Secretario (mismo lado, pisos arriba) | 2 min (un elevador express) |
 | Tu escritorio a la esquina de tu sector | 2–4 min caminando |
-| Tu escritorio a la Casa de Decisiones | 5 min (elevador a PB + calzada de 117 m) |
+| Tu escritorio a la Casa de Decisiones | 5 min (elevador a PB + calzada de 84 m) |
 | Cualquier punto a cualquier punto | 9 min máximo |
 | Decisión del Presidente a su dueño en el Tablero | 11 min (meta) |
 
@@ -651,7 +651,7 @@ Se plantan **el primer año de obra**, desde vivero propio en la Puerta Poniente
 
 ### El parque interior (7.1 ha)
 
-- Un **espejo de agua** cuadrado de 99 × 99 m frente a la Casa de Decisiones (30 cm de profundidad, agua de lluvia tratada, recirculada) con **ahuehuetes** en sus bordes: el lago alrededor de la isla.
+- Un **espejo de agua** de 16.5 m de ancho alrededor de la Casa de Decisiones (132 × 132 m por fuera, 30 cm de profundidad, agua de lluvia tratada, recirculada) con **ahuehuetes** en su orilla: el lago alrededor de la isla. Las cuatro calzadas lo cruzan como puentes.
 - Praderas de pastos nativos con senderos de recinto en la retícula de 11.1 m; bosquecillos de encino y madroño; una **milpa de 33 × 33 m** (maíz, frijol, calabaza) que se siembra y cosecha cada año con los niños de las guarderías.
 - El Teatro 333 bajo una loma con pastizal; la loma es el mejor lugar para ver la fachada interior del anillo.
 - Las **cuatro calzadas**: 11.1 m de ancho, cubiertas con pérgolas de bronce y tezontle, flanqueadas por **colorines** (rojos en marzo) y bancas.

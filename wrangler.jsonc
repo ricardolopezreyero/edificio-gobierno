@@ -1,0 +1,10 @@
+// RLR · Edificio de Gobierno en edificio.capitaltorreon.com — Ricardo López Reyero
+// Solo archivos estáticos (sitio/). Publicar: ./publicar.sh
+{
+  "name": "edificio-gobierno",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./sitio" },
+  "routes": [{ "pattern": "edificio.capitaltorreon.com", "custom_domain": true }],
+  "workers_dev": false,
+  "preview_urls": false
+}

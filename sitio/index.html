@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  RLR · Edificio de Gobierno — edificio.capitaltorreon.com
+  Proyecto de Ricardo López Reyero. Un cuadrado de 333 m y 33 pisos para 30,000 personas.
+  Modelo 3D construido desde parametros.json (la misma fuente que PROYECTO.md).
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="author" content="Ricardo López Reyero">
+<meta name="build" content="eye">
+<meta name="rev" content="181218">
+<meta name="theme-color" content="#0b0c10">
+<title>Edificio de Gobierno</title>
+<meta name="description" content="El edificio de gobierno perfecto para México: un cuadrado de 333 m y 33 pisos para 30,000 personas, un parque al centro con la Casa de Decisiones y un bosque alrededor. Modelo 3D y proyecto completo. Proyecto de Ricardo López Reyero.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CapitalTorreon">
+<meta property="og:title" content="Edificio de Gobierno">
+<meta property="og:description" content="Un cuadrado de 333 m y 33 pisos para 30,000 personas. Modelo 3D y proyecto completo. Proyecto de Ricardo López Reyero.">
+<meta property="og:url" content="https://edificio.capitaltorreon.com">
+<meta property="og:image" content="https://edificio.capitaltorreon.com/img/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://edificio.capitaltorreon.com/img/og.jpg?v=1">
+<link rel="icon" type="image/svg+xml" href="/img/marca.svg">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<link rel="stylesheet" href="/estilo.css?v=5">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="/" aria-label="Edificio de Gobierno, inicio"><img src="/img/marca.svg" alt="" width="28" height="28"><span>Edificio de Gobierno</span></a>
+  <nav class="pestanas" role="tablist" aria-label="Vistas">
+    <button type="button" role="tab" data-v="3d" aria-selected="true">3D</button>
+    <button type="button" role="tab" data-v="plano" aria-selected="false">Plano</button>
+    <button type="button" role="tab" data-v="numeros" aria-selected="false">Números</button>
+    <button type="button" role="tab" data-v="proyecto" aria-selected="false">Proyecto</button>
+  </nav>
+  <a class="repo" href="https://github.com/ricardolopezreyero/edificio-gobierno" target="_blank" rel="noopener">Repo</a>
+</header>
+
+<main>
+  <!-- RLR · vista 3D -->
+  <section class="vista activa" id="v-3d">
+    <div class="escena" id="escena"><div class="cargando" id="cargando"><div class="cuadro"></div><p>Levantando el edificio…</p></div></div>
+    <div class="panel" id="panel">
+      <button type="button" class="plegar" id="plegar" aria-expanded="true" aria-controls="panel-cuerpo">Controles</button>
+      <div class="panel-cuerpo" id="panel-cuerpo">
+        <div class="grupo"><span class="eti">Ambiente</span><div class="seg" id="amb"><button type="button" data-a="dia" aria-pressed="true">Día</button><button type="button" data-a="tarde" aria-pressed="false">Atardecer</button><button type="button" data-a="noche" aria-pressed="false">Noche</button></div></div>
+        <div class="grupo"><span class="eti">Mes</span><div class="seg" id="mes"><button type="button" data-m="verde" aria-pressed="true">Verde</button><button type="button" data-m="marzo" aria-pressed="false">Marzo</button><button type="button" data-m="noviembre" aria-pressed="false">Noviembre</button></div></div>
+        <div class="grupo"><span class="eti">Capas</span><div class="chips" id="capas"><label><input type="checkbox" data-c="bosque" checked>Bosque</label><label><input type="checkbox" data-c="ciudad" checked>Ciudad</label><label><input type="checkbox" data-c="etiquetas" checked>Nombres</label></div></div>
+        <div class="grupo"><span class="eti">Corte</span><div class="corte"><label class="sw"><input type="checkbox" id="corte">Ver por dentro</label><input type="range" id="corte-z" min="-500" max="500" value="0" step="5" aria-label="Posición del corte" disabled></div></div>
+        <div class="grupo"><span class="eti">Recorridos</span><div class="lista" id="recorridos"></div></div>
+        <div class="grupo acciones"><button type="button" id="pantalla">Pantalla completa</button><button type="button" id="foto">Descargar imagen</button></div>
+      </div>
+    </div>
+    <aside class="ficha" id="ficha" hidden><button type="button" class="cerrar" id="ficha-cerrar" aria-label="Cerrar">×</button><h3 id="ficha-t"></h3><div id="ficha-c"></div></aside>
+    <div class="leyenda" id="leyenda" hidden></div>
+    <p class="subtitulo" id="subtitulo" hidden></p>
+    <p class="pista" id="pista">Arrastra para girar · rueda para acercar · toca un elemento para conocerlo</p>
+  </section>
+
+  <!-- RLR · plano -->
+  <section class="vista" id="v-plano">
+    <div class="wrap">
+      <h1>El mismo tablero a tres escalas</h1>
+      <p class="sub">Una sola retícula de 11.1 m ordena el terreno, el edificio y la sala del Presidente. Todo sale de <code>parametros.json</code>.</p>
+      <div class="planos" id="planos"></div>
+    </div>
+  </section>
+
+  <!-- RLR · números -->
+  <section class="vista" id="v-numeros">
+    <div class="wrap">
+      <h1>El edificio en números</h1>
+      <p class="sub">Los datos que gobiernan el modelo. Cambiar uno aquí es cambiar el edificio entero.</p>
+      <div class="tablas" id="tablas"></div>
+    </div>
+  </section>
+
+  <!-- RLR · proyecto -->
+  <section class="vista" id="v-proyecto">
+    <div class="wrap doc">
+      <div class="seg docs" id="docs"><button type="button" data-d="PROYECTO.md" aria-pressed="true">Proyecto maestro</button><button type="button" data-d="PROMPT.md" aria-pressed="false">El brief</button></div>
+      <article id="articulo" class="md"><p class="mut">Cargando…</p></article>
+    </div>
+  </section>
+</main>
+
+<footer class="pie"><span>Proyecto de <strong>Ricardo López Reyero</strong> · CapitalTorreon · v1 · noviembre de 2026</span><a href="https://github.com/ricardolopezreyero/edificio-gobierno" target="_blank" rel="noopener">Código y documentos en GitHub</a></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+<script type="module" src="/app.js?v=5"></script>
+<!-- RLR · Ricardo López Reyero · EYE · 181218 -->
+</body>
+</html>

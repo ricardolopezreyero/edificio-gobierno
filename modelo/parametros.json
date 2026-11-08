@@ -11,7 +11,10 @@
     "celda": 333,
     "superficie_ha": 99.8,
     "bosque_neto_ha": 78,
-    "arboles": [15000, 20000],
+    "arboles": [
+      15000,
+      20000
+    ],
     "orientacion": "lados a los puntos cardinales",
     "celdas": {
       "centro": "edificio + parque interior + Casa de Decisiones + Teatro 333",
@@ -28,12 +31,22 @@
     "patio": 266.4,
     "planta_tipo_m2": 39920,
     "pisos": 33,
-    "altura_pb": 11.0,
+    "altura_pb": 11,
     "altura_piso_tipo": 4.5,
     "altura_libre_tipo": 3.6,
-    "pisos_tecnicos": { "niveles": [11, 22], "entrepiso_extra": 2.2 },
+    "pisos_tecnicos": {
+      "niveles": [
+        11,
+        22
+      ],
+      "entrepiso_extra": 2.2
+    },
     "altura_total_aprox": 160,
-    "retícula": { "modulo": 11.1, "modulos_por_lado": 30, "modulos_de_fondo": 3 },
+    "retícula": {
+      "modulo": 11.1,
+      "modulos_por_lado": 30,
+      "modulos_de_fondo": 3
+    },
     "superficie_sobre_suelo_m2": 1317000,
     "fachada": {
       "piel": "recinto negro + cantera gris 60 mm sobre UHPC, ventilada",
@@ -42,26 +55,50 @@
     },
     "nucleos": {
       "cantidad": 8,
-      "posiciones": ["esquina NE", "esquina SE", "esquina SO", "esquina NO", "medio N", "medio E", "medio S", "medio O"],
+      "posiciones": [
+        "esquina NE",
+        "esquina SE",
+        "esquina SO",
+        "esquina NO",
+        "medio N",
+        "medio E",
+        "medio S",
+        "medio O"
+      ],
       "elevadores_doble_cabina": 12,
       "elevadores_servicio": 2,
       "elevadores_bomberos": 2,
       "escaleras": 2,
       "bloques_bano": 2,
-      "express_a": [0, 17, 33]
+      "express_a": [
+        0,
+        17,
+        33
+      ],
+      "nota": "los 4 núcleos de medio lado están centrados en el borde del vano del parque de cielo (x=+49.5 en N/S, z=+49.5 en E/O)"
     },
     "parques_de_cielo": {
       "cantidad": 4,
-      "pisos": [16, 17, 18],
+      "pisos": [
+        16,
+        17,
+        18
+      ],
       "ancho": 99,
       "fondo": 33.3,
       "altura_vacio": 13.5,
       "sustrato": 1.2,
       "columnas_atraviesan": true,
       "cortaviento": 2.4,
-      "extras": { "poniente": "muro de escalada 13.5 m" }
+      "extras": {
+        "poniente": "muro de escalada 13.5 m"
+      }
     },
-    "pisos_refugio": [8, 17, 25],
+    "pisos_refugio": [
+      8,
+      17,
+      25
+    ],
     "azotea": {
       "pista_m": 1200,
       "paneles_m2": 24000,
@@ -71,26 +108,108 @@
       "calistenia": "esquina SO"
     },
     "sectores": {
-      "norte": { "nombre": "Personas", "secretarias": ["Bienestar", "Educación", "Salud", "Cultura", "Mujeres", "Trabajo"] },
-      "oriente": { "nombre": "Orden", "secretarias": ["Gobernación", "Seguridad", "Relaciones Exteriores", "Defensa/Marina (enlaces)", "Función Pública"] },
-      "sur": { "nombre": "Economía", "secretarias": ["Hacienda", "Economía", "Agricultura", "Turismo", "Ciencia y Tecnología"] },
-      "poniente": { "nombre": "Territorio", "secretarias": ["Infraestructura", "Comunicaciones y Transportes", "Energía", "Medio Ambiente", "Desarrollo Urbano"] }
+      "norte": {
+        "nombre": "Personas",
+        "secretarias": [
+          "Bienestar",
+          "Educación",
+          "Salud",
+          "Cultura",
+          "Mujeres",
+          "Trabajo"
+        ]
+      },
+      "oriente": {
+        "nombre": "Orden",
+        "secretarias": [
+          "Gobernación",
+          "Seguridad",
+          "Relaciones Exteriores",
+          "Defensa/Marina (enlaces)",
+          "Función Pública"
+        ]
+      },
+      "sur": {
+        "nombre": "Economía",
+        "secretarias": [
+          "Hacienda",
+          "Economía",
+          "Agricultura",
+          "Turismo",
+          "Ciencia y Tecnología"
+        ]
+      },
+      "poniente": {
+        "nombre": "Territorio",
+        "secretarias": [
+          "Infraestructura",
+          "Comunicaciones y Transportes",
+          "Energía",
+          "Medio Ambiente",
+          "Desarrollo Urbano"
+        ]
+      }
     },
     "personas_por_piso": [
-      { "pisos": [0, 3], "uso": "público y servicios", "personas": 0 },
-      { "pisos": [4, 13], "uso": "operación", "personas": 1500 },
-      { "pisos": [14, 23], "uso": "mandos medios y proyectos", "personas": 1000 },
-      { "pisos": [24, 33], "uso": "direcciones, Fábrica (30-31), gabinete (32-33)", "personas": 500 }
+      {
+        "pisos": [
+          0,
+          3
+        ],
+        "uso": "público y servicios",
+        "personas": 0
+      },
+      {
+        "pisos": [
+          4,
+          13
+        ],
+        "uso": "operación",
+        "personas": 1500
+      },
+      {
+        "pisos": [
+          14,
+          23
+        ],
+        "uso": "mandos medios y proyectos",
+        "personas": 1000
+      },
+      {
+        "pisos": [
+          24,
+          33
+        ],
+        "uso": "direcciones, Fábrica (30-31), gabinete (32-33)",
+        "personas": 500
+      }
     ],
     "total_personas": 30000
   },
   "parque_interior": {
     "lado": 266.4,
     "superficie_m2": 70969,
-    "espejo_agua": { "lado": 99, "profundidad": 0.3, "arboles": "ahuehuetes en el borde" },
-    "milpa": { "lado": 33 },
-    "teatro_333": { "posicion": "bajo loma, 60 m al sur de la Casa", "butacas": 333 },
-    "calzadas": { "cantidad": 4, "ancho": 11.1, "largo": 117, "desde": "centro de cada lado del anillo", "arboles": "colorines" }
+    "espejo_agua": {
+      "ancho": 16.5,
+      "lado_exterior": 132,
+      "profundidad": 0.3,
+      "arboles": "ahuehuetes en la orilla",
+      "nota": "anillo de agua alrededor de la Casa; las calzadas lo cruzan"
+    },
+    "milpa": {
+      "lado": 33
+    },
+    "teatro_333": {
+      "posicion": "bajo loma, 60 m al sur de la Casa",
+      "butacas": 333
+    },
+    "calzadas": {
+      "cantidad": 4,
+      "ancho": 11.1,
+      "largo": 83.7,
+      "desde": "fachada interior (±133.2) al borde de la Casa (±49.5)",
+      "arboles": "colorines"
+    }
   },
   "casa_de_decisiones": {
     "lado": 99,
@@ -102,54 +221,181 @@
       "lado": 33.3,
       "celda": 11.1,
       "altura_oficina_presidente": 7,
-      "patio_luz": { "lado": 5, "arbol": "Magnolia mexicana (yoloxóchitl)" },
+      "patio_luz": {
+        "lado": 5,
+        "arbol": "Magnolia mexicana (yoloxóchitl)"
+      },
       "tablero": [
-        ["Vicepresidencia", "Sala Norte (33)", "Sala NE (16)"],
-        ["Sala Poniente (24)", "Oficina del Presidente", "Sala Oriente (24)"],
-        ["Sala SP (16)", "Sala Sur (33)", "Secretaría"]
+        [
+          "Vicepresidencia",
+          "Sala Norte (33)",
+          "Sala NE (16)"
+        ],
+        [
+          "Sala Poniente (24)",
+          "Oficina del Presidente",
+          "Sala Oriente (24)"
+        ],
+        [
+          "Sala SP (16)",
+          "Sala Sur (33)",
+          "Secretaría"
+        ]
       ],
       "pasillo_preparacion": 3.3,
       "antesala_por_sala_m2": 20
     },
-    "planta_baja": ["suite", "Sala del Gabinete 15x15 (33 asientos)", "Sala de Situación", "Sala de Prensa 200 + estudio TV", "salón de recepciones 600 m²", "capilla de silencio"],
-    "planta_alta": ["300 personas de Presidencia", "biblioteca", "Comedor de Estado 99", "terraza-jardín"],
-    "sotano": ["túnel a 4 núcleos y S1", "refugio", "cocina", "red"]
+    "planta_baja": [
+      "suite",
+      "Sala del Gabinete 15x15 (33 asientos)",
+      "Sala de Situación",
+      "Sala de Prensa 200 + estudio TV",
+      "salón de recepciones 600 m²",
+      "capilla de silencio"
+    ],
+    "planta_alta": [
+      "300 personas de Presidencia",
+      "biblioteca",
+      "Comedor de Estado 99",
+      "terraza-jardín"
+    ],
+    "sotano": [
+      "túnel a 4 núcleos y S1",
+      "refugio",
+      "cocina",
+      "red"
+    ]
   },
   "sotanos": {
     "cantidad": 11,
-    "huella": { "lado": 333, "m2": 110889 },
+    "huella": {
+      "lado": 333,
+      "m2": 110889
+    },
     "profundidad_total_aprox": 50,
     "niveles": [
-      { "n": "S1", "h": 6.0, "uso": "llegada: 33 rutas eléctricas, túnel de Estado, 10,000 bicis, carga, cocina central, residuos" },
-      { "n": "S2", "h": 3.3, "uso": "estacionamiento visitas/directivos (3,700)" },
-      { "n": "S3", "h": 3.3, "uso": "estacionamiento visitas/directivos (3,700)" },
-      { "n": "S4", "h": 4.5, "uso": "archivo activo, bodegas, talleres" },
-      { "n": "S5", "h": 5.0, "uso": "planta: cisternas 100,000 m³, PTAR, chillers" },
-      { "n": "S6", "h": 5.0, "uso": "planta: baterías 200 MWh, generadores 72 h, subestación interior" },
-      { "n": "S7", "h": 4.5, "uso": "Centro de Continuidad de Gobierno: 333 personas, 33 días" },
-      { "n": "S8", "h": 4.5, "uso": "Centro de operaciones: seguridad, bomberos, telecom" },
-      { "n": "S9", "h": 4.5, "uso": "soporte de La Bóveda: eléctrico, UPS, bombas" },
-      { "n": "S10-S11", "h": 9.0, "uso": "La Bóveda: 4 cuadrantes, 50 → 250 MW" }
+      {
+        "n": "S1",
+        "h": 6,
+        "uso": "llegada: 33 rutas eléctricas, túnel de Estado, 10,000 bicis, carga, cocina central, residuos"
+      },
+      {
+        "n": "S2",
+        "h": 3.3,
+        "uso": "estacionamiento visitas/directivos (3,700)"
+      },
+      {
+        "n": "S3",
+        "h": 3.3,
+        "uso": "estacionamiento visitas/directivos (3,700)"
+      },
+      {
+        "n": "S4",
+        "h": 4.5,
+        "uso": "archivo activo, bodegas, talleres"
+      },
+      {
+        "n": "S5",
+        "h": 5,
+        "uso": "planta: cisternas 100,000 m³, PTAR, chillers"
+      },
+      {
+        "n": "S6",
+        "h": 5,
+        "uso": "planta: baterías 200 MWh, generadores 72 h, subestación interior"
+      },
+      {
+        "n": "S7",
+        "h": 4.5,
+        "uso": "Centro de Continuidad de Gobierno: 333 personas, 33 días"
+      },
+      {
+        "n": "S8",
+        "h": 4.5,
+        "uso": "Centro de operaciones: seguridad, bomberos, telecom"
+      },
+      {
+        "n": "S9",
+        "h": 4.5,
+        "uso": "soporte de La Bóveda: eléctrico, UPS, bombas"
+      },
+      {
+        "n": "S10-S11",
+        "h": 9,
+        "uso": "La Bóveda: 4 cuadrantes, 50 → 250 MW"
+      }
     ]
   },
   "estacionamiento": {
     "m2_por_cajon": 30,
-    "esquinas": { "niveles": 2, "m2": 887112, "cajones": 29500 },
-    "bajo_edificio": { "niveles": ["S2", "S3"], "cajones": 7400 },
-    "teatro_999": { "cajones": 2000 },
+    "esquinas": {
+      "niveles": 2,
+      "m2": 887112,
+      "cajones": 29500
+    },
+    "bajo_edificio": {
+      "niveles": [
+        "S2",
+        "S3"
+      ],
+      "cajones": 7400
+    },
+    "teatro_999": {
+      "cajones": 2000
+    },
     "motos": 3000,
     "bicis": 10000,
     "total_coches": 39000,
     "del_coche_al_escritorio_min": 12
   },
   "teatros": {
-    "t333": { "butacas": 333, "sala_m2": 900, "escenario": [16, 10], "pantalla": [14, 6], "distancia_max": 18 },
-    "t999": { "butacas": 999, "sala_m2": 2200, "escenario": [24, 14], "pantalla": [24, 10], "distancia_max": 30, "balcon": true, "foso": 60 },
-    "butaca": { "paso_filas": 1.10, "ancho": 0.65, "reclinable_grados": 15, "ventilacion_individual": true }
+    "t333": {
+      "butacas": 333,
+      "sala_m2": 900,
+      "escenario": [
+        16,
+        10
+      ],
+      "pantalla": [
+        14,
+        6
+      ],
+      "distancia_max": 18
+    },
+    "t999": {
+      "butacas": 999,
+      "sala_m2": 2200,
+      "escenario": [
+        24,
+        14
+      ],
+      "pantalla": [
+        24,
+        10
+      ],
+      "distancia_max": 30,
+      "balcon": true,
+      "foso": 60
+    },
+    "butaca": {
+      "paso_filas": 1.1,
+      "ancho": 0.65,
+      "reclinable_grados": 15,
+      "ventilacion_individual": true
+    }
   },
   "comer": {
-    "mercados": { "cantidad": 4, "piso": 17, "asientos": 1200, "puestos": 32, "puesto_33": "cocina de la casa" },
-    "comedores_pb": { "cantidad": 4, "asientos": 1000 },
+    "mercados": {
+      "cantidad": 4,
+      "piso": 17,
+      "asientos": 1200,
+      "puestos": 32,
+      "puesto_33": "cocina de la casa"
+    },
+    "comedores_pb": {
+      "cantidad": 4,
+      "asientos": 1000
+    },
     "cafes_de_piso": 33,
     "restaurantes_bosque": 4,
     "mirador_33": 150,
@@ -157,44 +403,214 @@
     "comidas_dia_cocina_central": 40000
   },
   "gimnasios": [
-    { "n": 1, "nombre": "Alberca 33.3 m", "donde": "PB Sur" },
-    { "n": 2, "nombre": "Fuerza y potencia", "donde": "17 Norte" },
-    { "n": 3, "nombre": "Cardio con cielo", "donde": "17 Sur" },
-    { "n": 4, "nombre": "Funcional y HIIT", "donde": "17 Oriente" },
-    { "n": 5, "nombre": "Yoga, pilates y movilidad", "donde": "17 Poniente" },
-    { "n": 6, "nombre": "Box y artes marciales", "donde": "PB Oriente" },
-    { "n": 7, "nombre": "Muro de escalada 13.5 m", "donde": "parque de cielo Poniente" },
-    { "n": 8, "nombre": "Ciclismo indoor", "donde": "S1" },
-    { "n": 9, "nombre": "Baile y ritmo", "donde": "PB Norte" },
-    { "n": 10, "nombre": "Recuperación (4 nodos)", "donde": "17, uno por lado" },
-    { "n": 11, "nombre": "Pista 1.2 km y calistenia", "donde": "azotea" },
-    { "n": 12, "nombre": "Canchas al aire libre", "donde": "Puerta Poniente" }
+    {
+      "n": 1,
+      "nombre": "Alberca 33.3 m",
+      "donde": "PB Sur"
+    },
+    {
+      "n": 2,
+      "nombre": "Fuerza y potencia",
+      "donde": "17 Norte"
+    },
+    {
+      "n": 3,
+      "nombre": "Cardio con cielo",
+      "donde": "17 Sur"
+    },
+    {
+      "n": 4,
+      "nombre": "Funcional y HIIT",
+      "donde": "17 Oriente"
+    },
+    {
+      "n": 5,
+      "nombre": "Yoga, pilates y movilidad",
+      "donde": "17 Poniente"
+    },
+    {
+      "n": 6,
+      "nombre": "Box y artes marciales",
+      "donde": "PB Oriente"
+    },
+    {
+      "n": 7,
+      "nombre": "Muro de escalada 13.5 m",
+      "donde": "parque de cielo Poniente"
+    },
+    {
+      "n": 8,
+      "nombre": "Ciclismo indoor",
+      "donde": "S1"
+    },
+    {
+      "n": 9,
+      "nombre": "Baile y ritmo",
+      "donde": "PB Norte"
+    },
+    {
+      "n": 10,
+      "nombre": "Recuperación (4 nodos)",
+      "donde": "17, uno por lado"
+    },
+    {
+      "n": 11,
+      "nombre": "Pista 1.2 km y calistenia",
+      "donde": "azotea"
+    },
+    {
+      "n": 12,
+      "nombre": "Canchas al aire libre",
+      "donde": "Puerta Poniente"
+    }
   ],
   "salas_de_juntas": {
     "regla": "una por cada 11 personas",
     "total_aprox": 2700,
-    "tipos": ["Cabina 2", "Charla 4", "Equipo 8", "Consejo 12", "Mesa 16", "Aula 24", "Sala 33", "Auditorio de piso 99", "Al aire libre", "Situación de sector 24", "Casa de Decisiones"]
+    "tipos": [
+      "Cabina 2",
+      "Charla 4",
+      "Equipo 8",
+      "Consejo 12",
+      "Mesa 16",
+      "Aula 24",
+      "Sala 33",
+      "Auditorio de piso 99",
+      "Al aire libre",
+      "Situación de sector 24",
+      "Casa de Decisiones"
+    ]
   },
-  "banos": { "bloques_por_piso": 16, "extra_pisos_densos": 4, "distancia_max": 40, "muebles_por_persona": "1:15" },
+  "banos": {
+    "bloques_por_piso": 16,
+    "extra_pisos_densos": 4,
+    "distancia_max": 40,
+    "muebles_por_persona": "1:15"
+  },
   "seguridad": {
-    "zonas": ["Z0 bosque", "Z1 vestíbulos y Casas del Ciudadano", "Z2 sector propio", "Z3 otros sectores", "Z4 pisos 32-33, Fábrica, operaciones", "Z5 Casa de Decisiones", "Z6 La Bóveda"],
-    "puerta": { "alto": 3.6, "material": "vidrio + bronce", "abre_a_m": 3, "color_ok": "blanco", "color_no": "ámbar", "esclusa_desde": "Z4", "anfitrion_a_m": 20 }
+    "zonas": [
+      "Z0 bosque",
+      "Z1 vestíbulos y Casas del Ciudadano",
+      "Z2 sector propio",
+      "Z3 otros sectores",
+      "Z4 pisos 32-33, Fábrica, operaciones",
+      "Z5 Casa de Decisiones",
+      "Z6 La Bóveda"
+    ],
+    "puerta": {
+      "alto": 3.6,
+      "material": "vidrio + bronce",
+      "abre_a_m": 3,
+      "color_ok": "blanco",
+      "color_no": "ámbar",
+      "esclusa_desde": "Z4",
+      "anfitrion_a_m": 20
+    }
   },
   "vegetacion": {
-    "bosque_dosel": ["Quercus rugosa", "Quercus laurina", "Quercus crassipes", "Pinus montezumae", "Pinus patula", "Cupressus lusitanica", "Fraxinus uhdei", "Alnus acuminata"],
-    "bosque_medio": ["Arbutus xalapensis", "Prunus serotina capuli", "Crataegus mexicana", "Erythrina coralloides", "Buddleja cordata", "Pittocaulon praecox"],
-    "agua": ["Taxodium mucronatum", "Salix bonplandiana"],
-    "flores": ["Dahlia coccinea", "Salvia mexicana", "Salvia leucantha", "Tagetes erecta", "Cosmos bipinnatus", "Agave salmiana", "Opuntia ficus-indica"],
-    "pastos": ["Bouteloua gracilis", "Muhlenbergia spp."],
-    "plazas": ["Jacaranda mimosifolia"],
-    "calzadas": ["Erythrina coralloides"],
-    "parques_de_cielo": ["Quercus rugosa (bajo)", "Fraxinus uhdei (joven)", "Crataegus mexicana", "Magnolia mexicana", "Eysenhardtia polystachya"],
-    "interior": ["Chamaedorea elegans", "Monstera deliciosa", "Beaucarnea recurvata", "Ficus petiolaris", "Tillandsia", "Laelia"],
-    "azotea": ["Sedum", "Echeveria", "Agave"],
-    "muros_verdes": { "por_piso": 8, "medida": [11, 7], "total": 264 }
+    "bosque_dosel": [
+      "Quercus rugosa",
+      "Quercus laurina",
+      "Quercus crassipes",
+      "Pinus montezumae",
+      "Pinus patula",
+      "Cupressus lusitanica",
+      "Fraxinus uhdei",
+      "Alnus acuminata"
+    ],
+    "bosque_medio": [
+      "Arbutus xalapensis",
+      "Prunus serotina capuli",
+      "Crataegus mexicana",
+      "Erythrina coralloides",
+      "Buddleja cordata",
+      "Pittocaulon praecox"
+    ],
+    "agua": [
+      "Taxodium mucronatum",
+      "Salix bonplandiana"
+    ],
+    "flores": [
+      "Dahlia coccinea",
+      "Salvia mexicana",
+      "Salvia leucantha",
+      "Tagetes erecta",
+      "Cosmos bipinnatus",
+      "Agave salmiana",
+      "Opuntia ficus-indica"
+    ],
+    "pastos": [
+      "Bouteloua gracilis",
+      "Muhlenbergia spp."
+    ],
+    "plazas": [
+      "Jacaranda mimosifolia"
+    ],
+    "calzadas": [
+      "Erythrina coralloides"
+    ],
+    "parques_de_cielo": [
+      "Quercus rugosa (bajo)",
+      "Fraxinus uhdei (joven)",
+      "Crataegus mexicana",
+      "Magnolia mexicana",
+      "Eysenhardtia polystachya"
+    ],
+    "interior": [
+      "Chamaedorea elegans",
+      "Monstera deliciosa",
+      "Beaucarnea recurvata",
+      "Ficus petiolaris",
+      "Tillandsia",
+      "Laelia"
+    ],
+    "azotea": [
+      "Sedum",
+      "Echeveria",
+      "Agave"
+    ],
+    "muros_verdes": {
+      "por_piso": 8,
+      "medida": [
+        11,
+        7
+      ],
+      "total": 264
+    }
   },
-  "agua": { "lluvia_mm": 800, "captacion_m3_anio": 800000, "consumo_m3_anio": 450000, "cisternas_m3": 100000 },
-  "energia": { "paneles_gwh": 8, "edificio_gwh": 200, "boveda_gwh": [400, 2000], "subestacion_kv": 400, "baterias_mwh": 200, "generadores_h": 72 },
-  "metas": { "subir_30000_min": 30, "evacuar_min": 33, "coche_a_escritorio_min": 12, "escritorio_a_casa_min": 5, "decision_a_dueno_min": 11, "queja_respuesta_h": 1, "queja_solucion_dias": 11 },
-  "obra": { "anios": 7, "bosque_abre_anio": 3, "primer_lado_ocupado_anio": 5, "costo_usd_millones": [16000, 26000] }
+  "agua": {
+    "lluvia_mm": 800,
+    "captacion_m3_anio": 800000,
+    "consumo_m3_anio": 450000,
+    "cisternas_m3": 100000
+  },
+  "energia": {
+    "paneles_gwh": 8,
+    "edificio_gwh": 200,
+    "boveda_gwh": [
+      400,
+      2000
+    ],
+    "subestacion_kv": 400,
+    "baterias_mwh": 200,
+    "generadores_h": 72
+  },
+  "metas": {
+    "subir_30000_min": 30,
+    "evacuar_min": 33,
+    "coche_a_escritorio_min": 12,
+    "escritorio_a_casa_min": 5,
+    "decision_a_dueno_min": 11,
+    "queja_respuesta_h": 1,
+    "queja_solucion_dias": 11
+  },
+  "obra": {
+    "anios": 7,
+    "bosque_abre_anio": 3,
+    "primer_lado_ocupado_anio": 5,
+    "costo_usd_millones": [
+      16000,
+      26000
+    ]
+  }
 }
