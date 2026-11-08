@@ -9,13 +9,14 @@ window.EDIFICIO.P = P;
 
 let cargando3D = null;
 /* ---------- pestañas ---------- */
-const VISTAS = ["3d", "plano", "numeros", "proyecto"];
+const VISTAS = ["3d", "plano", "numeros", "proyecto", "origen"];
 function mostrar(v) {
   if (!VISTAS.includes(v)) v = "3d";
+  const doc = v === "origen" ? "ORIGEN.md" : null; if (doc) v = "proyecto";
   $$(".pestanas [role=tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.v === v));
   $$(".vista").forEach(s => s.classList.toggle("activa", s.id === "v-" + v));
   if (v === "3d") cargar3D();
-  if (v === "proyecto" && !$("#articulo").dataset.listo) cargarDoc("PROYECTO.md");
+  if (v === "proyecto" && (doc || !$("#articulo").dataset.listo)) cargarDoc(doc || "PROYECTO.md");
   window.EDIFICIO.tres?.visible?.(v === "3d");
 }
 $$(".pestanas [role=tab]").forEach(b => b.addEventListener("click", () => { location.hash = b.dataset.v; }));
@@ -136,7 +137,8 @@ async function cargarDoc(nombre) {
   art.innerHTML = window.marked.parse(md.replace(/<!--[\s\S]*?-->/g, ""));
   art.querySelectorAll("h1,h2,h3").forEach(h => { h.id = slug(h.textContent); });
   art.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => { e.preventDefault(); document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1)))?.scrollIntoView({ behavior: "smooth", block: "start" }); }));
-  art.querySelectorAll('a[href$=".json"],a[href$=".md"]').forEach(a => { const h = a.getAttribute("href"); if (h.endsWith("parametros.json")) a.href = "/parametros.json"; });
+  art.querySelectorAll('a[href$=".json"],a[href$=".md"]').forEach(a => { const h = a.getAttribute("href"); if (h.endsWith("parametros.json")) a.href = "/parametros.json"; else if (/^(PROYECTO|PROMPT|ORIGEN)\.md$/.test(h)) { a.href = "#proyecto"; a.addEventListener("click", e => { e.preventDefault(); cargarDoc(h); scrollTo(0, 0); }); } });
+  scrollTo(0, 0);
 }
 $$("#docs button").forEach(b => b.addEventListener("click", () => cargarDoc(b.dataset.d)));
 // RLR · fin

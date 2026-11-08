@@ -1,7 +1,7 @@
 <!-- RLR · Ricardo López Reyero · EYE · 181218 -->
 # Edificio de Gobierno · El brief
 
-> Esta es la versión destilada de lo que dicté el 7 de noviembre de 2026. Quité los titubeos, junté las ideas repetidas y subrayé lo que más pesa. Donde cambié algo de fondo, lo digo en la nota del final.
+> Esta es la versión destilada de lo que dicté el 7 de noviembre de 2026 a las 10:02 pm ([el dictado original, palabra por palabra](ORIGEN.md)). Quité los titubeos, junté las ideas repetidas y subrayé lo que más pesa. Donde cambié algo de fondo, lo digo en la nota del final.
 
 ## Qué quiero
 

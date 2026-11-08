@@ -12,6 +12,7 @@ Proyecto de **Ricardo López Reyero**.
 
 | Archivo | Qué es |
 |---|---|
+| [ORIGEN.md](ORIGEN.md) | **El origen**: el dictado original de Ricardo López Reyero, tal como se habló el 7 de noviembre de 2026 a las 10:02 pm, del que salió todo lo demás |
 | [PROMPT.md](PROMPT.md) | El brief destilado: lo que se pidió, limpio, con la nota de lo que se cambió del dictado |
 | [PROYECTO.md](PROYECTO.md) | El proyecto maestro: idea, correcciones honestas, 12 lineamientos, sitio, tablero del terreno, edificio, organización, Casa de Decisiones, programa con medidas, sótanos, llegada, seguridad, comunicación, materiales, vegetación, confort, 33 detalles, construcción, decisiones pendientes y plan del 3D |
 | [modelo/parametros.json](modelo/parametros.json) | Todos los números del proyecto; el 3D se construye leyendo este archivo |
