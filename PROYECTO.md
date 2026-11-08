@@ -58,6 +58,8 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Servidores | La Bóveda: sótanos 10–11 unidos, 9 m de altura, 110,889 m², 4 cuadrantes independientes |
 | Elevadores | 8 núcleos · 48 lanzaderas de doble cabina a los lobbies 11, 22 y 33 · 96 locales · 16 de servicio · 16 de evacuación · 176 en total |
 | Estación | Gran Estación de Metro y Tren: vestíbulo de 240 × 60 × 22 m con doble techo y 4 cafeterías; Rampa Norte con 4 bandas |
+| Helipuerto | 6 plataformas, torre, hangar, pabellón de llegada con baños y cafetería, banda de 240 m; del helicóptero al escritorio en 9 min |
+| Banderas | Dos astas de 111 m junto a la Rampa Norte: México al Oriente, el país visitante al Poniente |
 | Baños | ~600 bloques y ~8,000 muebles; 1 por cada 7 personas; nadie a más de 40 m |
 | Vida útil de diseño | 200 años |
 | Obra | ~7 años; el bosque y el teatro 999 abren al público en el año 3 |
@@ -195,7 +197,7 @@ Nueve celdas de 333 × 333 m. El edificio ocupa la central. Todo lo demás es bo
 | Celda | Qué tiene | Notas |
 |---|---|---|
 | **Centro** | El edificio, el parque interior, la Casa de Decisiones, el Teatro 333 bajo una loma del parque | Perímetro de seguridad Z1 en las cuatro plazas de acceso |
-| **Puerta Norte** | Plaza de llegada principal, **estación de Metro y Tren Suburbano** (más terminal de 33 rutas eléctricas), ciclovías, **Casa del Ciudadano Norte**, jacarandas | La puerta «de la ciudad» |
+| **Puerta Norte** | Plaza de llegada principal, **Gran Estación de Metro y Tren** con la Rampa Norte, **las dos banderas** de 111 m, el **Helipuerto** de 6 plataformas con pabellón de llegada, ciclovías, **Casa del Ciudadano Norte**, jacarandas | La puerta «de la ciudad» y del cielo |
 | **Puerta Sur** | **Teatro 999** semienterrado bajo una colina de bosque, el **Salón de Eventos** (66 × 44 m) unido al foyer por una galería, bodegas y máquinas del Sur, plaza y estacionamiento de visitantes (2,000 cajones en un nivel) | Abierto a la ciudad: eventos nacionales, conciertos, ceremonias, expos |
 | **Puerta Oriente** | Acceso de prensa y visitas oficiales, **El Cuartel** (edificio militar y de seguridad, 110 × 44 m, 9 pisos, helipuerto en su techo), el polvorín bajo su montículo, **subestación eléctrica** y planta de enfriamiento de La Bóveda camufladas en lomas con bosque encima | Sale el sol: la puerta de las noticias y del Orden |
 | **Puerta Poniente** | **Deportes al aire libre**: 8 canchas de pádel, 6 de tenis, 2 de fútbol rápido, 4 de básquet, pista de 5 km por el bosque; acceso de logística y proveedores (rampa al S1) | El lado del atardecer |
@@ -689,6 +691,30 @@ La estación no es un túnel: es **la puerta de la mitad de la gente**. Por eso 
 - Terminal de las 33 rutas eléctricas en el sótano de la estación, conectada al S1 del edificio por túnel; bicis en el vestíbulo.
 - **La Rampa Norte**: 135 m de galería cubierta de la estación a la plaza, con **cuatro bandas móviles** (dos por sentido) y paso libre al centro. Luego la plaza, el zaguán, el elevador: **del andén al escritorio en 10 minutos**.
 
+### El Helipuerto: la rapidez es el lujo
+
+Para recibir empresarios y para ir a los aeropuertos o a donde haga falta sin perder una hora en la ciudad. No es un helipuerto de emergencia (esos siguen en la azotea y en el Cuartel): es una **puerta**.
+
+| | |
+|---|---|
+| Dónde | Puerta Norte, mitad oriente, en bosque claro: aproximación desde el norte sobre el anillo vial, **nunca sobre el patio ni sobre las torres**; a 240 m de la plaza Norte |
+| Plataformas | **6**, en dos hileras, radio de 11 m, iluminación de precisión, sensores de viento, calefacción contra hielo: dos helicópteros aterrizan y despegan a la vez, hasta 30 movimientos por hora |
+| Torre de control | Pequeña, 18 m, cabina de vidrio sobre las plataformas; coordina con los aeropuertos de la ciudad y con el helipuerto del Cuartel |
+| Hangar | 60 × 30 m, seis helicópteros bajo techo, taller, combustible, tripulación de guardia 24 horas |
+| **Pabellón de llegada** | Lo primero al bajar: **baños de primera** (dos bloques tipo en mármol y bronce, toallas de algodón, lavabos a la vista) y una **cafetería** con barista y desayuno, 60 asientos, pedido desde el helicóptero. Guardarropa y lockers para quien llega con maleta; terraza al bosque |
+| La banda | Del pabellón a la esquina de la plaza Norte: 240 m bajo pérgola con dos bandas móviles y paso libre |
+| Tiempos | Al AICM 12 min, al AIFA 15, a Toluca 20. **Del helicóptero al zaguán en 5 minutos; al escritorio en 9** |
+
+La secuencia que pediste, exacta: bajas, baño, manos, café, banda, oficina.
+
+### Las banderas
+
+Dos astas de **111 m** en claros abiertos del bosque (radio de 33 m sin árboles), a los lados de la Rampa Norte: se ven desde la estación, desde la plaza, por el zaguán, desde las torres y desde la ciudad.
+
+- **La del Oriente, por donde sale el sol, es siempre la de México**: 50 × 28.6 m (proporción 4:7), se iza a las 6 y se arría a las 18 con guardia de honor; de noche, iluminada desde el piso.
+- **La del Poniente queda vacía** los días normales. Cuando nos visita un país, su bandera sube ahí, a la misma altura, en el mismo claro, frente a la misma plaza. Las dos se ven juntas desde la Rampa Norte, que es por donde llega el visitante.
+- Al pie de cada una, una plaza circular de tezontle de 32 m con la guardia.
+
 ### Dónde van bandas y dónde van elevadores
 
 Regla: **banda donde el flujo es masivo, en línea recta y mayor de 100 m; elevador o escalera eléctrica donde hay que cambiar de nivel; carrito donde alguien no puede caminar.** Dentro de los pisos no hay bandas: ahí la gente se sienta con los suyos y camina menos de 60 m.
@@ -697,6 +723,7 @@ Regla: **banda donde el flujo es masivo, en línea recta y mayor de 100 m; eleva
 |---|---|---|---|
 | Andén → vestíbulo de la estación | −18 m → 0 | 12 escaleras eléctricas + 6 elevadores | 1 min |
 | Estación → plaza Norte (Rampa Norte) | 135 m | 4 bandas de 2 m (dos por sentido) | 1.2 min |
+| Helipuerto → plaza Norte | 240 m | 2 bandas + paso libre bajo pérgola | 2.5 min |
 | Patio de luz del estacionamiento → bosque | −7 m → 0 | 2 escaleras eléctricas + 2 elevadores por patio (36 patios) | 30 s |
 | Patio de luz → edificio (sendero de la esquina) | 333 m | 2 bandas de 150 m + paso libre + carril de carritos | 2.5 min |
 | S1 (autobuses, bicis) → vestíbulos | −6 m → 0 | 16 escaleras eléctricas + los elevadores de los núcleos | 1 min |

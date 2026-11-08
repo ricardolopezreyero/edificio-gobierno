@@ -14,9 +14,11 @@ const hex = c => parseInt(String(c).replace("#", ""), 16);
 const dentro = (x, z, cx, cz, w, d) => Math.abs(x - cx) < w / 2 && Math.abs(z - cz) < d / 2;
 const enElipse = (x, z, cx, cz, rx, rz) => ((x - cx) / rx) ** 2 + ((z - cz) / rz) ** 2 < 1;
 const MARGEN = P.terreno.bosque.margen_sin_arboles_m;
+const distSegmento = (x, z, ax, az, bx, bz) => { const dx = bx - ax, dz = bz - az, t = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz || 1))); return Math.hypot(x - (ax + dx * t), z - (az + dz * t)); };
 function tapado(x, z, grupoId) {
   return P.emplazamientos.some(e => { if (e.grupo !== grupoId) return false; const [w, d] = e.medida_xz, esLoma = e.partes?.[0]?.tipo === "loma";
-    return esLoma ? enElipse(x, z, e.pos_xz[0], e.pos_xz[1], w / 2 + MARGEN, d / 2 + MARGEN) : dentro(x, z, e.pos_xz[0], e.pos_xz[1], w + 2 * MARGEN, d + 2 * MARGEN); });
+    if (esLoma ? enElipse(x, z, e.pos_xz[0], e.pos_xz[1], w / 2 + MARGEN, d / 2 + MARGEN) : dentro(x, z, e.pos_xz[0], e.pos_xz[1], w + 2 * MARGEN, d + 2 * MARGEN)) return true;
+    return (e.partes || []).some(pt => pt.tipo === "sendero" ? distSegmento(x, z, e.pos_xz[0] + pt.desde[0], e.pos_xz[1] + pt.desde[1], e.pos_xz[0] + pt.hasta[0], e.pos_xz[1] + pt.hasta[1]) < pt.ancho / 2 + 3 : pt.tipo === "asta" ? Math.hypot(x - e.pos_xz[0] - pt.dxz[0], z - e.pos_xz[1] - pt.dxz[1]) < 33 : false); });
 }
 const rad = g => (g * Math.PI) / 180;
 const lerp = (a, b, k) => a + (b - a) * k;
@@ -218,6 +220,18 @@ function construirEmplazamientos(grupoId, grupo) {
       else if (pt.tipo === "disco") { const o = new THREE.Mesh(new THREE.CylinderGeometry(pt.radio, pt.radio, pt.alto, 32), matPorNombre(pt.material)); o.position.set(x, y0 + pt.alto / 2, z); grupo.add(o); }
       else if (pt.tipo === "anillo") { const o = new THREE.Mesh(new THREE.RingGeometry(pt.radio[0], pt.radio[1], 32), matPorNombre(pt.material)); o.rotation.x = -Math.PI / 2; o.position.set(x, y0, z); grupo.add(o); }
       else if (pt.tipo === "columnas") { for (let k = 0; k < pt.n; k++) { const t = pt.n > 1 ? k / (pt.n - 1) : 0; const col = new THREE.Mesh(new THREE.CylinderGeometry(pt.radio, pt.radio, pt.alto, 10), matPorNombre(pt.material)); col.position.set(ex + pt.desde[0] + (pt.hasta[0] - pt.desde[0]) * t, y0 + pt.alto / 2, ez + pt.desde[1] + (pt.hasta[1] - pt.desde[1]) * t); col.castShadow = true; grupo.add(col); } }
+      else if (pt.tipo === "asta") {
+        const palo = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 1.4, pt.alto, 14), MAT.blanco); palo.position.set(x, pt.alto / 2, z); palo.castShadow = true; palo.userData.info = info; if (info) pickables.push(palo); grupo.add(palo);
+        const base = new THREE.Mesh(new THREE.CylinderGeometry(3, 3.6, 2.2, 16), MAT.cantera); base.position.set(x, 1.1, z); grupo.add(base);
+        if (pt.bandera) { const [bw, bh] = pt.bandera, y = pt.alto - bh / 2 - 2; pt.colores.forEach((c, k) => { const f = caja3(bw / 3, bh, 0.4, mat(hex(c), { side: DS, roughness: 0.95 }), x + 1.2 + bw / 6 + k * (bw / 3), y, z, grupo, info); f.castShadow = true; }); }
+      }
+      else if (pt.tipo === "sendero") {
+        const a = new THREE.Vector3(ex + pt.desde[0], 0, ez + pt.desde[1]), b = new THREE.Vector3(ex + pt.hasta[0], 0, ez + pt.hasta[1]), len = a.distanceTo(b), mid = a.clone().add(b).multiplyScalar(0.5), ry = -Math.atan2(b.z - a.z, b.x - a.x);
+        const techo = caja3(len, 0.6, pt.ancho + 1, MAT.bronce, mid.x, (pt.alto_techo || 5) - 0.3, mid.z, grupo, info); techo.rotation.y = ry;
+        const piso = caja3(len, 0.3, pt.ancho, MAT.cantera, mid.x, 0.15, mid.z, grupo, info); piso.rotation.y = ry; piso.castShadow = false;
+        for (let k = 0; k < (pt.bandas || 0); k++) { const off = (k - ((pt.bandas - 1) / 2)) * 2.8, bnd = caja3(pt.largo_bandas || len - 10, 0.12, 2.0, MAT.recinto, mid.x, 0.36, mid.z, grupo, info); bnd.rotation.y = ry; bnd.translateZ(off); bnd.castShadow = false; }
+        const nPost = Math.floor(len / 11.1); for (let k = 0; k <= nPost; k++) { const t = k / nPost; [-1, 1].forEach(sg => { const po = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, pt.alto_techo || 5, 8), MAT.bronce); po.position.set(a.x + (b.x - a.x) * t, (pt.alto_techo || 5) / 2, a.z + (b.z - a.z) * t); po.translateOnAxis(new THREE.Vector3(-(b.z - a.z), 0, b.x - a.x).normalize(), sg * (pt.ancho / 2 - 0.4)); grupo.add(po); }); }
+      }
       else if (pt.tipo === "malla") { for (let u = 0; u < pt.n_xz[0]; u++) for (let v = 0; v < pt.n_xz[1]; v++) { const o = caja3(pt.medida_xz[0], pt.alto, pt.medida_xz[1], matPorNombre(pt.material), x + u * pt.paso_xz[0], y0 + pt.alto / 2, z + v * pt.paso_xz[1], grupo, info); if (pt.sombra === false) o.castShadow = false; } }
     });
   });

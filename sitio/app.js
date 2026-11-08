@@ -2,7 +2,7 @@
 // Todo sale de parametros.json (+ recorridos.json) y de los derivados compartidos con el 3D.
 import { derivar } from "/derivados.js?v=1";
 const _RLR = "Ricardo López Reyero", _k = "EYE", _rev = 181218; // firma
-const VER = 12; // sube al cambiar tres.js
+const VER = 13; // sube al cambiar tres.js
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const n = (v, d = 0) => Number(v).toLocaleString("es-MX", { maximumFractionDigits: d, minimumFractionDigits: d });
 
@@ -42,6 +42,8 @@ const COLOR_MAT = { vidrio: "#2a3a4a", piedra_pb: "#5a2c22", piedra_torre: "#6f6
 function dibujarEmplazamiento(e, size) {
   const p = e.partes?.[0], [x, z] = e.pos_xz, [w, d] = e.medida_xz, nombre = e.etiqueta?.texto || e.ficha?.t?.split(" · ")[0] || e.id;
   let s = p?.tipo === "loma" ? elipse(x, z, w / 2, d / 2, COLOR_MAT[p.material] || "#2d5a3a") : rect(x - w / 2, z - d / 2, w, d, COLOR_MAT[p?.material] || "#555");
+  (e.partes || []).filter(q => q.tipo === "asta").forEach(q => { s += `<circle cx="${x + q.dxz[0]}" cy="${z + q.dxz[1]}" r="6" fill="${q.bandera ? "#ce1126" : "#9aa1ad"}"/>`; });
+  (e.partes || []).filter(q => q.tipo === "sendero").forEach(q => { s += `<line x1="${x + q.desde[0]}" y1="${z + q.desde[1]}" x2="${x + q.hasta[0]}" y2="${z + q.hasta[1]}" stroke="#8a6f45" stroke-width="${q.ancho}"/>`; });
   return s + txt(x, z, nombre, size, "#e6e8ec");
 }
 function planoTerreno() {

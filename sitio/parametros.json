@@ -39,6 +39,10 @@
       {
         "fecha": "2026-11-08",
         "que": "El Cuartel con C4 por fuerza, C5, Cuarto de Guerra y polvorín; veredas en malla de 111 m con formato de juntas caminando; plan de siembra; jardineras, manchas de flor y macetas"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "Helipuerto de 6 plataformas con torre, hangar, pabellón de llegada y banda; dos astas de 111 m (México y país visitante)"
       }
     ]
   },
@@ -121,6 +125,8 @@
           "plaza_norte",
           "estacion",
           "rampa_norte",
+          "banderas",
+          "helipuerto",
           "casa_del_ciudadano_norte"
         ]
       },
@@ -572,7 +578,8 @@
       },
       "helipuerto": {
         "en": "techo del lado sur, junto a la torre SE",
-        "radio_m": 13
+        "radio_m": 13,
+        "nota": "solo emergencias civiles; el tráfico de personas va al Helipuerto de la Puerta Norte"
       },
       "calistenia": "esquina SO"
     }
@@ -858,11 +865,29 @@
       "escritorio_a_casa": 5,
       "cualquier_punto": 9,
       "decision_a_dueno": 11,
-      "evacuar": 33
+      "evacuar": 33,
+      "helicoptero_a_escritorio": 9
     },
     "meta_sin_coche": {
       "fraccion": 0.5,
       "anio": 5
+    },
+    "helipuerto": {
+      "plataformas": 6,
+      "movimientos_hora": 30,
+      "hangar": 6,
+      "torre_alto_m": 18,
+      "pabellon": {
+        "banos_bloques": 2,
+        "cafeteria_asientos": 60
+      },
+      "banda_largo_m": 240,
+      "helicoptero_a_escritorio_min": 9,
+      "vuelos_min": {
+        "aicm": 12,
+        "aifa": 15,
+        "toluca": 20
+      }
     }
   },
   "recintos": {
@@ -1562,7 +1587,8 @@
     "decision_a_dueno_min": 11,
     "queja_respuesta_h": 1,
     "queja_solucion_dias": 11,
-    "decisiones_dia": 33
+    "decisiones_dia": 33,
+    "helicoptero_a_escritorio_min": 9
   },
   "obra": {
     "anios": 7,
@@ -3241,6 +3267,506 @@
           "material": "recinto"
         }
       ]
+    },
+    {
+      "id": "helipuerto",
+      "grupo": "sitio",
+      "pos_xz": [
+        255,
+        -405
+      ],
+      "medida_xz": [
+        200,
+        150
+      ],
+      "etiqueta": {
+        "texto": "Helipuerto · 6 plataformas",
+        "y": 30,
+        "ancho": 110
+      },
+      "ficha": {
+        "t": "El Helipuerto",
+        "c": "Seis plataformas, torre de control, hangar para seis helicópteros y el pabellón de llegada: bajas, entras a un baño de primera, te lavas las manos, tomas tu café y te vas caminando o en la banda a la plaza Norte. Para recibir empresarios y para moverse a los aeropuertos y a donde haga falta, rápido. La rapidez es el lujo.",
+        "d": [
+          [
+            "Plataformas",
+            "6 (hasta 30 movimientos por hora)"
+          ],
+          [
+            "Al AICM",
+            "12 min · al AIFA 15 · a Toluca 20"
+          ],
+          [
+            "Del helicóptero al escritorio",
+            "9 minutos"
+          ],
+          [
+            "Aproximación",
+            "desde el norte, sobre el anillo vial; nunca sobre el patio"
+          ],
+          [
+            "Hangar",
+            "6 helicópteros, combustible, taller"
+          ],
+          [
+            "Noche",
+            "iluminación de precisión, 24 h"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            200,
+            130
+          ],
+          "alto": 0.3,
+          "y": 0,
+          "material": "asfalto",
+          "sombra": false
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            -60,
+            -30
+          ],
+          "radio": 11,
+          "alto": 0.5,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "pista"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            -60,
+            -30
+          ],
+          "radio": [
+            7,
+            8.5
+          ],
+          "y": 0.55,
+          "material": "blanco"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            0,
+            -30
+          ],
+          "radio": 11,
+          "alto": 0.5,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "pista"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            0,
+            -30
+          ],
+          "radio": [
+            7,
+            8.5
+          ],
+          "y": 0.55,
+          "material": "blanco"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            60,
+            -30
+          ],
+          "radio": 11,
+          "alto": 0.5,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "pista"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            60,
+            -30
+          ],
+          "radio": [
+            7,
+            8.5
+          ],
+          "y": 0.55,
+          "material": "blanco"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            -60,
+            25
+          ],
+          "radio": 11,
+          "alto": 0.5,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "pista"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            -60,
+            25
+          ],
+          "radio": [
+            7,
+            8.5
+          ],
+          "y": 0.55,
+          "material": "blanco"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            0,
+            25
+          ],
+          "radio": 11,
+          "alto": 0.5,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "pista"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            0,
+            25
+          ],
+          "radio": [
+            7,
+            8.5
+          ],
+          "y": 0.55,
+          "material": "blanco"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            60,
+            25
+          ],
+          "radio": 11,
+          "alto": 0.5,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "pista"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            60,
+            25
+          ],
+          "radio": [
+            7,
+            8.5
+          ],
+          "y": 0.55,
+          "material": "blanco"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -70,
+            -78
+          ],
+          "medida_xz": [
+            60,
+            30
+          ],
+          "alto": 9,
+          "y": 0,
+          "material": "piedra_torre",
+          "ficha": "hangar"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -70,
+            -78
+          ],
+          "medida_xz": [
+            64,
+            34
+          ],
+          "alto": 0.9,
+          "y": 9,
+          "material": "bronce"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            88,
+            -60
+          ],
+          "medida_xz": [
+            8,
+            8
+          ],
+          "alto": 14,
+          "y": 0,
+          "material": "cantera",
+          "ficha": "torre"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            88,
+            -60
+          ],
+          "medida_xz": [
+            11,
+            11
+          ],
+          "alto": 4,
+          "y": 14,
+          "material": "vidrio",
+          "ficha": "torre"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            88,
+            -60
+          ],
+          "medida_xz": [
+            12,
+            12
+          ],
+          "alto": 0.6,
+          "y": 18,
+          "material": "bronce"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            60
+          ],
+          "medida_xz": [
+            44,
+            16
+          ],
+          "alto": 6,
+          "y": 0,
+          "material": "vidrio",
+          "ficha": "pabellon"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            60
+          ],
+          "medida_xz": [
+            48,
+            20
+          ],
+          "alto": 0.8,
+          "y": 6,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            70
+          ],
+          "medida_xz": [
+            44,
+            4
+          ],
+          "alto": 0.4,
+          "y": 0,
+          "material": "tezontle",
+          "sombra": false
+        },
+        {
+          "tipo": "sendero",
+          "desde": [
+            0,
+            68
+          ],
+          "hasta": [
+            -205,
+            189
+          ],
+          "ancho": 8,
+          "bandas": 2,
+          "largo_bandas": 200,
+          "alto_techo": 5,
+          "ficha": "banda"
+        }
+      ],
+      "fichas": {
+        "pista": {
+          "t": "Plataforma",
+          "c": "Radio de 11 m, iluminación de precisión, calefacción contra hielo, sensores de viento. Seis en dos hileras para que dos helicópteros aterricen y despeguen a la vez.",
+          "d": []
+        },
+        "hangar": {
+          "t": "Hangar",
+          "c": "Seis helicópteros bajo techo, taller, combustible y la tripulación de guardia 24 horas.",
+          "d": [
+            [
+              "Medida",
+              "60 × 30 m, 9 m libres"
+            ]
+          ]
+        },
+        "torre": {
+          "t": "Torre de control",
+          "c": "Pequeña, 18 m, con la cabina de vidrio sobre las seis plataformas; coordina con los aeropuertos de la ciudad y con el helipuerto del Cuartel.",
+          "d": []
+        },
+        "pabellon": {
+          "t": "Pabellón de llegada",
+          "c": "Lo primero al bajar: baños de primera (cabinas completas de mármol, bronce, toallas de algodón), lavabos a la vista, y una cafetería con barista y desayuno. Tomas tu café y sales a la banda. Guardarropa y lockers para quien llega con maleta.",
+          "d": [
+            [
+              "Baños",
+              "2 bloques tipo, mármol y bronce"
+            ],
+            [
+              "Cafetería",
+              "60 asientos, barista, pedido desde el helicóptero"
+            ],
+            [
+              "Terraza",
+              "hacia el bosque"
+            ]
+          ]
+        },
+        "banda": {
+          "t": "La banda del Helipuerto",
+          "c": "Del pabellón a la esquina de la plaza Norte: 240 m bajo pérgola con dos bandas móviles (una por sentido) y paso libre. Del helicóptero al zaguán en 5 minutos; al escritorio en 9.",
+          "d": [
+            [
+              "Largo",
+              "240 m"
+            ],
+            [
+              "Bandas",
+              "2 × 200 m"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "banderas",
+      "grupo": "sitio",
+      "pos_xz": [
+        0,
+        -300
+      ],
+      "medida_xz": [
+        170,
+        44
+      ],
+      "etiqueta": {
+        "texto": "Las banderas",
+        "y": 122,
+        "ancho": 80
+      },
+      "ficha": {
+        "t": "Las banderas",
+        "c": "Dos astas de 111 m en claros abiertos del bosque, a los lados de la Rampa Norte: se ven desde la estación, desde la plaza, desde el zaguán, desde las torres y desde la ciudad. La del Oriente, por donde sale el sol, es siempre la de México: 50 × 28.6 m. La del Poniente queda vacía y se iza para el país que nos visita, a la misma altura, en el mismo claro. Plaza circular de tezontle al pie de cada una, con la guardia de honor.",
+        "d": [
+          [
+            "Astas",
+            "2 × 111 m, acero con cantera al pie"
+          ],
+          [
+            "Bandera",
+            "50 × 28.6 m (proporción 4:7)"
+          ],
+          [
+            "Claro",
+            "radio de 33 m sin árboles"
+          ],
+          [
+            "Luz",
+            "iluminada toda la noche desde el piso"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "disco",
+          "dxz": [
+            -66,
+            0
+          ],
+          "radio": 16,
+          "alto": 0.5,
+          "y": 0,
+          "material": "tezontle"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            66,
+            0
+          ],
+          "radio": 16,
+          "alto": 0.5,
+          "y": 0,
+          "material": "tezontle"
+        },
+        {
+          "tipo": "asta",
+          "dxz": [
+            66,
+            0
+          ],
+          "alto": 111,
+          "bandera": [
+            50,
+            28.6
+          ],
+          "colores": [
+            "#006847",
+            "#f4f4f4",
+            "#ce1126"
+          ],
+          "ficha": "mexico"
+        },
+        {
+          "tipo": "asta",
+          "dxz": [
+            -66,
+            0
+          ],
+          "alto": 111,
+          "bandera": null,
+          "ficha": "visita"
+        }
+      ],
+      "fichas": {
+        "mexico": {
+          "t": "La bandera de México",
+          "c": "Asta de 111 m, bandera de 50 × 28.6 m. Oriente: por donde sale el sol. Se iza a las 6 y se arría a las 18 con guardia de honor; de noche, iluminada.",
+          "d": []
+        },
+        "visita": {
+          "t": "El asta del país visitante",
+          "c": "Vacía los días normales. Cuando nos visita un país, su bandera sube aquí, a la misma altura que la nuestra, en el mismo claro, frente a la misma plaza.",
+          "d": []
+        }
+      }
     }
   ]
 }

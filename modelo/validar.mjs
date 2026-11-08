@@ -46,8 +46,10 @@ P.emplazamientos.forEach(e => {
   ok(e.grupo === "patio" ? dentroEdificio : !dentroEdificio, `${e.id}: grupo ${e.grupo} no coincide con su posición`);
   ok(Math.abs(e.pos_xz[0]) + e.medida_xz[0] / 2 <= D.T / 2 && Math.abs(e.pos_xz[1]) + e.medida_xz[1] / 2 <= D.T / 2, `${e.id}: se sale del terreno`);
   (e.partes || []).forEach((p, i) => {
-    ok(["caja", "loma", "disco", "anillo", "columnas", "malla"].includes(p.tipo), `${e.id}.partes[${i}]: tipo ${p.tipo}`);
-    ok(typeof p.material === "string", `${e.id}.partes[${i}]: material`);
+    ok(["caja", "loma", "disco", "anillo", "columnas", "malla", "asta", "sendero"].includes(p.tipo), `${e.id}.partes[${i}]: tipo ${p.tipo}`);
+    ok(["asta", "sendero"].includes(p.tipo) || typeof p.material === "string", `${e.id}.partes[${i}]: material`);
+    if (p.tipo === "sendero") ok(Array.isArray(p.desde) && Array.isArray(p.hasta) && p.ancho > 0, `${e.id}.partes[${i}]: sendero sin desde/hasta/ancho`);
+    if (p.tipo === "asta") ok(p.alto > 0 && (p.bandera === null || (Array.isArray(p.bandera) && p.colores?.length === 3)), `${e.id}.partes[${i}]: asta sin alto o bandera incompleta`);
     if (p.ficha) ok(e.fichas && e.fichas[p.ficha], `${e.id}.partes[${i}]: ficha ${p.ficha} no existe`);
   });
   if (e.ficha) ok(e.ficha.t && e.ficha.c && Array.isArray(e.ficha.d), `${e.id}: ficha incompleta`);
