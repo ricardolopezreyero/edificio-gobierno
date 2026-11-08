@@ -135,3 +135,13 @@ main{flex:1;display:flex;flex-direction:column}
 /* RLR · modo og: solo la escena */
 body.og .barra,body.og .panel,body.og .pista,body.og .pie,body.og .leyenda,body.og .ficha{display:none!important}
 body.og #v-3d{height:100dvh}
+
+/* RLR · planos anchos e índice del documento */
+.plano.ancho{grid-column:1 / -1}
+.doc{max-width:1180px}
+.doc-cuerpo{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:start}
+.indice{position:sticky;top:70px;display:flex;flex-direction:column;gap:2px;max-height:calc(100dvh - 90px);overflow:auto;font-size:13px;padding-right:6px}
+.indice a{color:var(--mut);text-decoration:none;padding:5px 8px;border-left:2px solid var(--border);line-height:1.3}
+.indice a:hover{color:var(--txt);border-color:var(--bronce)}
+.md{max-width:860px}
+@media (max-width:900px){.doc-cuerpo{grid-template-columns:1fr}.indice{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;margin-bottom:14px}.indice a{border:1px solid var(--border);border-radius:999px;padding:4px 10px}}

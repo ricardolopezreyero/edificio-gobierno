@@ -1,7 +1,7 @@
 {
   "meta": {
     "proyecto": "Edificio de Gobierno",
-    "version": "2.0",
+    "version": "2.1",
     "actualizado": "2026-11-08",
     "autor": "Ricardo López Reyero",
     "firma": {
@@ -51,6 +51,10 @@
       {
         "fecha": "2026-11-08",
         "que": "Ergonomía: islas con luz lateral, separadores de vidrio con persiana, estancias por manzana, macetas por isla; bancas en bosque, plazas, agua, patio, parques de cielo y azotea"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "PROYECTO.md v2 como proyecto ejecutivo; planos nuevos (corte, manzana amueblada, Casa, puertas) con cotas; índice del documento"
       }
     ]
   },
@@ -4093,6 +4097,17 @@
       "estancias": 2,
       "barrio": 1,
       "nota": "la misma banca en todas partes; de frente al agua, a la plaza o al cruce; nunca de espaldas a la vista"
+    },
+    "conteo_modelo": {
+      "mesas": 30940,
+      "sillas": 68636,
+      "cubiculos": 3360,
+      "mesas_de_junta": 1756,
+      "redondas": 924,
+      "butacas": 1332,
+      "bancas": 5636,
+      "separadores": 6744,
+      "nota": "contado por el 3D el 8-nov-2026; cambia solo con las reglas"
     }
   }
 }

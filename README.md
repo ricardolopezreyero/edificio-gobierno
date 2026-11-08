@@ -13,8 +13,9 @@ Proyecto de **Ricardo López Reyero**.
 | Archivo | Qué es |
 |---|---|
 | [ORIGEN.md](ORIGEN.md) | **El origen**: el dictado original de Ricardo López Reyero, tal como se habló el 7 de noviembre de 2026 a las 10:02 pm, del que salió todo lo demás |
+| [PROYECTO.md](PROYECTO.md) · pestaña Plano | Siete láminas acotadas generadas desde el modelo: corte Norte–Sur, terreno, edificio, Casa, manzana amueblada, Puerta Norte, Sur y Oriente, suite |
 | [PROMPT.md](PROMPT.md) | El brief destilado: lo que se pidió, limpio, con la nota de lo que se cambió del dictado |
-| [PROYECTO.md](PROYECTO.md) | El proyecto maestro: idea, correcciones honestas, 12 lineamientos, sitio, tablero del terreno, edificio, arquitectura (qué sí y qué no), organización, Casa de Decisiones, programa con medidas, sótanos, llegada, seguridad, comunicación, materiales, vegetación, confort, 33 detalles, construcción, decisiones pendientes y plan del 3D |
+| [PROYECTO.md](PROYECTO.md) | **El proyecto ejecutivo (v2)**, escrito para quien lo va a construir: cómo leerlo por disciplina, resumen, idea y lineamientos, sitio, terreno, edificio, interiores y mobiliario, Casa de Decisiones, recintos y Cuartel, sótanos y Bóveda, movilidad, seguridad, sistemas, materiales, paisaje, confort, 33 detalles, construcción con entregables y criterios de aceptación por capítulo, decisiones pendientes, glosario y lista de verificación de 33 puntos |
 | [modelo/parametros.json](modelo/parametros.json) | **La única fuente de verdad** del edificio (esquema v2 por dominios); el 3D, el plano y los números se construyen leyendo este archivo. Cómo está organizado y cómo se cambia: [modelo/README.md](modelo/README.md) |
 | [modelo/recorridos.json](modelo/recorridos.json) | Los recorridos del 3D |
 | [sitio/derivados.js](sitio/derivados.js) · [modelo/validar.mjs](modelo/validar.mjs) | Lo que se calcula a partir de los primarios, y el validador que corre antes de publicar |
