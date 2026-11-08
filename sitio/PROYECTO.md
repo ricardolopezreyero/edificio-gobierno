@@ -61,7 +61,7 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Helipuerto | 6 plataformas, torre, hangar, pabellón de llegada con baños y cafetería, banda de 240 m; del helicóptero al escritorio en 9 min |
 | Banderas | Dos astas de 111 m junto a la Rampa Norte: México al Oriente, el país visitante al Poniente |
 | Baños | ~600 bloques y ~8,000 muebles; 1 por cada 7 personas; nadie a más de 40 m |
-| Mobiliario | Seis piezas en todo el edificio, acomodadas por regla: 30,940 mesas, 71,676 sillas, 4,352 cubículos, 2,208 mesas de junta, 1,332 butacas |
+| Mobiliario | Ocho piezas acomodadas por regla: islas con luz lateral, separadores de vidrio con persiana, estancias por manzana; 30,940 mesas, 68,636 sillas, 5,636 bancas, 6,744 separadores |
 | Vida útil de diseño | 200 años |
 | Obra | ~7 años; el bosque y el teatro 999 abren al público en el año 3 |
 | Orden de magnitud | US$ 15,000 a 25,000 millones (ver §19; cifra para dimensionar, no presupuesto) |
@@ -331,7 +331,7 @@ Las **oficinas de esquina** (4 por piso × 33 pisos = 132) son de quien coordina
 | Pisos | Quién | Personas por piso | m² brutos por persona | Cómo es |
 |---|---|---|---|---|
 | PB–3 | Ciudadanos, servicios, comedores, guarderías, clínica | pocos escritorios | — | Público y semipúblico |
-| 4–13 | Operación y atención: la gente que ejecuta | 1,500 | 27 | Planta abierta por equipos de 11, mesas de 1.8 m, cabinas de llamada cada 11 m |
+| 4–13 | Operación y atención: la gente que ejecuta | 1,500 | 27 | Planta abierta por islas de 4 y barrios de 8, mesas de 1.8 m, cabinas de llamada cada 11 m |
 | 14–23 | Mandos medios, proyectos, ingeniería | 1,000 | 40 | Barrios de 33 personas con sala propia, oficinas de 2–4 para jefes |
 | 24–31 | Direcciones generales, subsecretarías | 500 | 80 | Oficinas privadas de 22–44 m², antesalas, salas de 12 |
 | 30–31 | **La Fábrica**: ingeniería central del sistema | 1,000 (dentro de la cuenta anterior) | 40 | Dos pisos conectados por escaleras abiertas con el 32 y el 33 |
@@ -437,9 +437,9 @@ El **Teatro 333** está a 60 m de la Casa, bajo una loma del parque, con entrada
 | Cabina de llamada | 1–2 personas, 4 m², cada 11 m en planta abierta | Todos | 3,000 |
 | Lockers y vestidores de piso | 1 locker por persona, vestidores con regadera en pisos 4–23 (bicicleta, deporte) | Todos | — |
 
-### El mobiliario: seis piezas, todo acomodado
+### El mobiliario: ocho piezas, todo acomodado
 
-Poca variedad y acomodo total: **la misma mesa, la misma silla y el mismo cubículo en todo el edificio**. Lo que cambia es la regla de acomodo por tipo de piso, y esa regla vive en los parámetros, de modo que el 3D amuebla los 33 pisos solo.
+Poca variedad y acomodo total: **la misma mesa, la misma silla, el mismo cubículo y la misma banca en todo el edificio y en el bosque**. Lo que cambia es la regla de acomodo por tipo de piso, y esa regla vive en los parámetros, de modo que el 3D amuebla los 33 pisos solo.
 
 **El catálogo (seis piezas):**
 
@@ -451,6 +451,8 @@ Poca variedad y acomodo total: **la misma mesa, la misma silla y el mismo cubíc
 | **Mesa de junta** | 2.4 × 1.2 (4) · 4.2 × 1.4 (8) · 6.6 × 1.6 (12) | Una sola pieza de parota con orilla viva; tres tamaños del mismo tablero |
 | **Mesa redonda** | Ø 1.6 m | Piedra de una pieza, dos sillas iguales: la Casa del Ciudadano y los cafés |
 | **La butaca** | 0.65 m, paso 1.10 | Piel vegetal, tzalam, ventilación individual, micrófono, USB-C |
+| **La banca** | 2.2 × 0.45 × 0.45 m | Asiento de encino de 60 mm sobre dos patas de recinto; la misma afuera y adentro |
+| **Separador de vidrio con persiana** | 2.4 m de alto | Vidrio acústico de piso a 2.4 m con persiana de lamas de encino integrada; entre barrios y entre oficinas |
 
 **La regla de acomodo:** el anillo de 33.3 m se parte en **tres bandas de 11.1 m**. La **exterior** (ventana al bosque) y la **interior** (ventana al parque) llevan las mesas, siempre de cara a la ventana con la silla del lado de adentro. La **banda media** lleva cubículos, salas, baños y núcleos, en un patrón de tres módulos que se repite a lo largo de cada lado.
 
@@ -458,14 +460,54 @@ Poca variedad y acomodo total: **la misma mesa, la misma silla y el mismo cubíc
 |---|---|---|---|
 | PB | Casa del Ciudadano · comedores | Afuera: 4 mesas redondas con dos sillas (99 por puerta) · Adentro: 2 mesas dobles de comedor con 8 sillas | Vestíbulos, compuertas, cafés |
 | 1–3 | Público y servicios | 2 mesas dobles de comedor por banda | Guarderías, clínica, servicios |
-| 4–13 | Operación (1,500) | **8 mesas** en dos filas (a 2.2 y 6.6 m de la ventana), barrios de 11 | Cubículos (4) · sala de equipo (8) · sala de charla (4) + 2 cubículos |
-| 14–23 | Mandos medios (1,000) | **5 mesas** en dos filas (3 + 2), barrios de 33 | Sala de equipo · cubículos · sala de equipo |
-| 24–29 | Direcciones (500) | **3 oficinas** de 41 m² por módulo: mesa, silla, dos sillas de visita | Sala de consejo (12) · cubículos · sala de charla |
-| 30–31 | La Fábrica | 8 mesas en dos filas, como operación | Sala de equipo · sala de equipo · cubículos |
-| 32–33 | Gabinete | **1 oficina** de Secretario por módulo: mesa y sala de 8 | Sala de consejo · sala de consejo · cubículos |
-| Torres | Oficinas de esquina | Una mesa y una sala de 8 por piso, más la terraza | — |
+| 4–13 | Operación (1,500) | **Dos islas de 4** perpendiculares a la ventana (8), maceta por isla, banca por barrio | Cubículos (4) · sala de equipo (8) · **estancia** · sala de charla (4) + 2 cubículos |
+| 14–23 | Mandos medios (1,000) | **Una isla de 4** y la mesa del jefe de barrio con su maceta | Sala de equipo · cubículos · **estancia** · sala de equipo |
+| 24–29 | Direcciones (500) | **3 oficinas** de 41 m² separadas por vidrio con persiana: mesa perpendicular a la ventana, dos sillas de visita, maceta | Sala de consejo (12) · cubículos · **estancia** · sala de charla |
+| 30–31 | La Fábrica | Dos islas de 4, como operación | Sala de equipo · **estancia** · cubículos · sala de equipo |
+| 32–33 | Gabinete | **1 oficina** de Secretario por módulo: mesa, sala de 8, maceta | Sala de consejo · **estancia** · sala de consejo · cubículos |
+| Torres | Oficinas de esquina | Una mesa, una sala de 8 y una banca por piso, más la terraza | — |
 
-**Lo que resulta en el edificio** (contado por el modelo, no estimado):
+### La capa extra: ergonomía, orden y lo libre
+
+Máxima comodidad para poder pedir el máximo rendimiento. La revisión cambió tres cosas del acomodo: **la luz, los límites y lo libre**.
+
+1. **Luz de lado, nunca de frente ni de espalda.** Las mesas ya no miran a la ventana: van **perpendiculares a la fachada, en islas de cuatro** (dos pares espalda con espalda). Cada persona tiene el bosque o el parque de reojo, a su par enfrente, y ni deslumbramiento ni reflejo en la pantalla. Es la regla más vieja de la ergonomía de oficina y la que más se ignora.
+2. **Separadores de vidrio con persiana** entre barrio y barrio y entre oficina y oficina: vidrio acústico de 2.4 m, de piso a 2.4 sin tocar el plafón (el aire y la luz pasan por arriba), con una persiana de lamas de encino integrada que cada barrio abre o cierra. Silencio y privacidad a voluntad, sin muros: el piso se ve ordenado y transparente a la vez.
+3. **Lo libre también está diseñado.** Nadie mueve el mobiliario, así que el descanso tiene lugar propio: una **estancia por manzana** (cada cuatro módulos) en la banda media, con dos bancas de frente, una mesa redonda y macetas, sin pantallas, a menos de 30 m de cualquier mesa; una **banca libre por barrio** detrás de las islas; una **maceta por isla**; los cafés de piso, los parques de cielo, la azotea y las veredas del bosque.
+
+| Regla | Medida |
+|---|---|
+| Isla de 4 | 1.8 × 3.6 m; dos pares espalda con espalda; sillas hacia afuera |
+| Pasillo entre islas | 1.8 m |
+| Pasillo detrás de la fila | 2.2 m; ahí va la banca del barrio |
+| Mesa | sube y baja (72–118 cm) con memoria, brazo de monitor, nada encima que no se use |
+| Separador | 2.4 m, vidrio acústico, persiana de encino; en cada borde de módulo y entre oficinas |
+| Estancia | cada 4 módulos: 2 bancas, 1 redonda, 2 macetas |
+| Unidades | isla 4 · barrio 8 (un módulo) · manzana 33 (cuatro barrios con su jefe, su estancia y sus separadores) |
+| Ambiente | 3.6 m libres, 500 lux, 35 dB, 40 m³/h de aire por persona, ventana que abre |
+
+Por tipo de piso: operación y La Fábrica llevan **dos islas por módulo** (8); mandos medios una isla y la mesa del jefe de barrio con su maceta; direcciones tres oficinas de 41 m² separadas por vidrio con persiana, mesa perpendicular a la ventana y dos sillas de visita; gabinete una oficina de Secretario por módulo con su sala de 8.
+
+### Bancas para sentarse a platicar
+
+La misma banca en todas partes, **de frente a lo que vale la pena ver**: 2.2 m de encino sobre dos patas de recinto.
+
+| Dónde | Regla |
+|---|---|
+| Cruces de las veredas | 2 por cruce, frente al poste del cruce: el lugar natural de la junta caminando |
+| A lo largo de las veredas | Una cada 55 m, alternando de lado, bajo los frutales |
+| Plazas | 4 por lado, detrás de la línea de macetas, mirando a la plaza |
+| Patios de luz del estacionamiento | 2 por patio, mirando al tragaluz |
+| Orilla del agua | Una cada 22 m, de frente al espejo y a la linterna |
+| Calzadas | 3 por lado, entre los colorines |
+| Manchas de flor del patio | 2 por mancha, de frente a la flor |
+| Parques de cielo | 6 por parque |
+| Azotea | Una cada 55 m junto a la pista, mirando al patio |
+| Adentro | 1 por barrio, 2 por estancia, 1 por oficina de esquina |
+
+**Contado por el modelo:** 30,940 mesas, 68,636 sillas, 3,360 cubículos, 1,756 mesas de junta, 924 mesas redondas, 1,332 butacas, **5,636 bancas** y **6,744 separadores de vidrio con persiana**.
+
+**Lo que resultaba con el primer acomodo** (el actual está en la tabla de arriba):
 
 | Pieza | Cantidad |
 |---|---|

@@ -65,7 +65,7 @@ R.recorridos.forEach(r => {
   });
 });
 // mobiliario
-const MB = P.mobiliario; ok(MB && Array.isArray(MB.catalogo) && MB.catalogo.length <= 8, "mobiliario: catálogo corto (≤ 8 piezas)");
+const MB = P.mobiliario; ok(MB && Array.isArray(MB.catalogo) && MB.catalogo.length <= 9, "mobiliario: catálogo corto (≤ 9 piezas)");
 usos.forEach(u => ok(MB.por_uso[u.id], `mobiliario: falta regla para el uso ${u.id}`));
 ["t999", "t333"].forEach(t => { const te = MB.teatros[t], b = P.recintos["teatro_" + t.slice(1)].butacas; ok(te.filas * te.por_fila === b, `teatro ${t}: ${te.filas} × ${te.por_fila} ≠ ${b} butacas`); });
 // colores

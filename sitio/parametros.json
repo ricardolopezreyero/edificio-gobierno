@@ -47,6 +47,10 @@
       {
         "fecha": "2026-11-08",
         "que": "Mobiliario: catálogo de seis piezas y acomodo por regla en los 33 pisos; butacas y pantallas en los teatros; modo ver adentro"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "Ergonomía: islas con luz lateral, separadores de vidrio con persiana, estancias por manzana, macetas por isla; bancas en bosque, plazas, agua, patio, parques de cielo y azotea"
       }
     ]
   },
@@ -3774,7 +3778,7 @@
     }
   ],
   "mobiliario": {
-    "principio": "Seis piezas para todo el edificio, sin variedad: la misma mesa, la misma silla, el mismo cubículo. Lo que cambia es el acomodo, y el acomodo sale de una regla por tipo de piso.",
+    "principio": "Ocho piezas para todo el edificio y el bosque, sin variedad: la misma mesa, la misma silla, el mismo cubículo, la misma banca. Lo que cambia es el acomodo, y el acomodo sale de una regla por tipo de piso. Nadie mueve nada: por eso lo libre también está diseñado.",
     "catalogo": [
       {
         "id": "mesa",
@@ -3784,7 +3788,7 @@
           0.74,
           0.9
         ],
-        "material": "tablero de encino de 40 mm sobre dos paneles de acero; un cajón; energía y red en la mesa",
+        "material": "tablero de encino de 40 mm sobre dos paneles de acero, sube y baja (72–118 cm) con memoria, brazo de monitor, un cajón, energía y red en la mesa",
         "usos": "escritorio, comedor (dos juntas), mostrador, mesa de ingeniero",
         "color": "#8a5a3a"
       },
@@ -3855,6 +3859,27 @@
         ],
         "material": "piel de curtido vegetal, tzalam, espuma de curado en frío, ventilación individual, micrófono, USB-C",
         "color": "#7a2e2e"
+      },
+      {
+        "id": "banca",
+        "nombre": "La banca",
+        "medida": [
+          2.2,
+          0.45,
+          0.45
+        ],
+        "material": "asiento de encino de 60 mm sobre dos patas de recinto; la misma afuera (bosque, plazas, agua) y adentro (estancias)",
+        "color": "#8a5a3a"
+      },
+      {
+        "id": "separador",
+        "nombre": "Separador de vidrio con persiana",
+        "medida": [
+          0.05,
+          2.4
+        ],
+        "material": "vidrio acústico de 2.4 m con persiana de lamas de encino integrada, de piso a 2.4 m sin tocar el plafón; la persiana la mueve cada barrio para abrir o cerrar la vista",
+        "color": "#9fc7e8"
       }
     ],
     "bandas": {
@@ -3885,78 +3910,68 @@
         }
       },
       "operacion": {
-        "nota": "pisos 4–13, 1,500 por piso: barrios de 11 en planta abierta",
-        "mesas_por_modulo": 8,
-        "filas_v": [
-          2.2,
-          6.6
+        "nota": "pisos 4–13, 1,500 por piso: dos islas de 4 por módulo frente a la ventana, maceta por isla, banca por barrio",
+        "islas_por_modulo": 2,
+        "islas_u": [
+          -2.8,
+          2.8
         ],
-        "por_fila": [
-          4,
-          4
-        ],
-        "paso_u": 2.8,
         "banda_media": [
           "cubiculos",
           "equipo",
+          "estancia",
           "charla"
         ]
       },
       "mandos": {
-        "nota": "pisos 14–23, 1,000 por piso: barrios de 33 con sala propia",
-        "mesas_por_modulo": 5,
-        "filas_v": [
-          2.2,
-          6.6
+        "nota": "pisos 14–23, 1,000 por piso: una isla de 4 y la mesa del jefe de barrio con su maceta",
+        "islas_por_modulo": 1,
+        "islas_u": [
+          -1.6
         ],
-        "por_fila": [
-          3,
-          2
-        ],
-        "paso_u": 2.8,
+        "mesa_jefe_u": 3.4,
         "banda_media": [
           "equipo",
           "cubiculos",
+          "estancia",
           "equipo"
         ]
       },
       "direccion": {
-        "nota": "pisos 24–29: tres oficinas privadas por módulo (41 m²), mesa + dos sillas de visita",
+        "nota": "pisos 24–29: tres oficinas de 41 m² por módulo separadas por vidrio con persiana: mesa perpendicular a la ventana, dos sillas de visita, maceta",
         "oficinas_por_modulo": 3,
-        "mesa_v": 3,
-        "visitas_v": 5.2,
+        "mesa_v": 3.5,
+        "visitas_v": 5.6,
         "banda_media": [
           "consejo",
           "cubiculos",
+          "estancia",
           "charla"
         ]
       },
       "fabrica": {
         "nota": "pisos 30–31: ingeniería, como operación pero con más salas",
-        "mesas_por_modulo": 8,
-        "filas_v": [
-          2.2,
-          6.6
+        "islas_por_modulo": 2,
+        "islas_u": [
+          -2.8,
+          2.8
         ],
-        "por_fila": [
-          4,
-          4
-        ],
-        "paso_u": 2.8,
         "banda_media": [
           "equipo",
-          "equipo",
-          "cubiculos"
+          "estancia",
+          "cubiculos",
+          "equipo"
         ]
       },
       "gabinete": {
-        "nota": "pisos 32–33: una oficina de Secretario por módulo con su sala de 8",
+        "nota": "pisos 32–33: una oficina de Secretario por módulo con su sala de 8 y su estancia",
         "oficinas_por_modulo": 1,
         "mesa_v": 3,
         "junta": "equipo",
-        "junta_v": 7.6,
+        "junta_v": 8,
         "banda_media": [
           "consejo",
+          "estancia",
           "consejo",
           "cubiculos"
         ]
@@ -4009,6 +4024,75 @@
         ]
       },
       "nota": "999 = 27 filas × 37 butacas; 333 = 9 × 37; ninguna fila a más de 30 / 18 m"
+    },
+    "ergonomia": {
+      "principio": "Máxima comodidad para poder pedir el máximo rendimiento: luz de lado, aire, silencio, verde a la vista y un lugar libre a menos de 30 m.",
+      "reglas": [
+        "Luz lateral: las mesas van perpendiculares a la ventana, en islas de cuatro; nadie tiene la ventana de frente (deslumbra) ni de espalda (refleja)",
+        "Isla de 4 = dos pares de mesas espalda con espalda; cada persona ve a su par y al bosque de reojo",
+        "Pasillos de 1.8 m entre islas y de 2.2 m detrás de la fila: se pasa sin pedir permiso",
+        "La mesa sube y baja; la silla reclina; brazo de monitor; nada sobre la mesa que no se use",
+        "Un separador de vidrio con persiana entre barrio y barrio: silencio y vista a voluntad, sin muros",
+        "Una maceta por isla y una banca libre por barrio: verde y descanso a la vista",
+        "Una estancia por manzana (cada 4 módulos): bancas, mesa redonda, macetas, sin pantallas; a menos de 30 m de cualquier mesa",
+        "3.6 m libres, 500 lux en la mesa, 35 dB de fondo, 40 m³/h de aire por persona, ventana que abre",
+        "Todo alineado a la retícula de 11.1 m: lo que se ve ordenado, se siente natural"
+      ],
+      "unidades": {
+        "isla": 4,
+        "barrio": 8,
+        "manzana": 33,
+        "nota": "barrio = un módulo de 11.1 m (dos islas); manzana = cuatro barrios con su jefe (33), su estancia y sus separadores"
+      }
+    },
+    "islas": {
+      "ancho_u": 1.8,
+      "largo_v": 3.6,
+      "pares_u": [
+        -0.45,
+        0.45
+      ],
+      "filas_v": [
+        -0.9,
+        0.9
+      ],
+      "silla_fuera_u": 1.2,
+      "v_centro": 3.5,
+      "pasillo_detras_v": 6.2
+    },
+    "estancia": {
+      "bancas": 2,
+      "bancas_v": [
+        15.4,
+        17.9
+      ],
+      "redonda": true,
+      "macetas_u": [
+        -3.6,
+        3.6
+      ]
+    },
+    "separadores": {
+      "entre_modulos": true,
+      "alto_m": 2.4,
+      "desde_v": 0.6,
+      "hasta_v": 10.5,
+      "entre_oficinas": true
+    },
+    "macetas_por_isla": 1,
+    "bancas": {
+      "cruces_veredas": 2,
+      "veredas_cada_m": 55,
+      "plazas_por_lado": 4,
+      "patios_luz": 2,
+      "agua_cada_m": 22,
+      "calzadas_por_lado": 3,
+      "manchas": 2,
+      "parques_cielo": 6,
+      "azotea_cada_m": 55,
+      "estancias": 2,
+      "barrio": 1,
+      "nota": "la misma banca en todas partes; de frente al agua, a la plaza o al cruce; nunca de espaldas a la vista"
     }
   }
 }

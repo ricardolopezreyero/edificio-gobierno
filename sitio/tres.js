@@ -15,6 +15,11 @@ const hex = c => parseInt(String(c).replace("#", ""), 16);
 const dentro = (x, z, cx, cz, w, d) => Math.abs(x - cx) < w / 2 && Math.abs(z - cz) < d / 2;
 const enElipse = (x, z, cx, cz, rx, rz) => ((x - cx) / rx) ** 2 + ((z - cz) / rz) ** 2 < 1;
 const MARGEN = P.terreno.bosque.margen_sin_arboles_m;
+// RLR · mobiliario: las listas de piezas se llenan desde todo el archivo (pisos, bosque, patio) y se construyen al final
+const MB = P.mobiliario;
+const listasMob = { mesa: [], silla: [], cubiculo: [], junta: [], redonda: [], butaca: [], banca: [], separador: [] }; // [x, y, z, ry, sx, sz]
+const addMob = (p, x, y, z, ry = 0, sx = 1, sz = 1) => listasMob[p].push([x, y, z, ry, sx, sz]);
+const macetasInterior = []; // macetas pedidas por el mobiliario; se plantan cuando existen las especies
 const distSegmento = (x, z, ax, az, bx, bz) => { const dx = bx - ax, dz = bz - az, t = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz || 1))); return Math.hypot(x - (ax + dx * t), z - (az + dz * t)); };
 function tapado(x, z, grupoId) {
   return P.emplazamientos.some(e => { if (e.grupo !== grupoId) return false; const [w, d] = e.medida_xz, esLoma = e.partes?.[0]?.tipo === "loma";
@@ -197,7 +202,7 @@ plazas.forEach(([x, z], k) => { const pu = P.terreno.puertas[k]; caja3(PLAZA, 0.
     const piso = caja3(len, 0.3, SE.ancho_m, MAT.cantera, mid.x, 0.15, mid.z, sitio, infoSendero); piso.rotation.y = ry; piso.castShadow = false;
     [-1, 1].forEach(sg => { const bnd = caja3(SE.bandas.largo_m, 0.12, SE.bandas.ancho_m, MAT.recinto, mid.x, 0.36, mid.z, sitio, infoSendero); bnd.rotation.y = ry; bnd.translateZ(sg * (SE.bandas.ancho_m / 2 + 1.4)); bnd.castShadow = false; });
     const lado = Math.round(Math.sqrt(PL.por_esquina)), m0 = (lado - 1) / 2;
-    for (let u = 0; u < lado; u++) for (let v = 0; v < lado; v++) { const x = i * C + (u - m0) * PL.malla_m, z = j * C + (v - m0) * PL.malla_m; caja3(PL.lado_m, 1.1, PL.lado_m, matVidrio(PL.lado_m, 1.1, true), x, 0.55, z, sitio, infoPatio); caja3(PL.lado_m + 1.2, 0.4, PL.lado_m + 1.2, MAT.bronce, x, 1.2, z, sitio); }
+    for (let u = 0; u < lado; u++) for (let v = 0; v < lado; v++) { const x = i * C + (u - m0) * PL.malla_m, z = j * C + (v - m0) * PL.malla_m; caja3(PL.lado_m, 1.1, PL.lado_m, matVidrio(PL.lado_m, 1.1, true), x, 0.55, z, sitio, infoPatio); caja3(PL.lado_m + 1.2, 0.4, PL.lado_m + 1.2, MAT.bronce, x, 1.2, z, sitio); for (let b = 0; b < MB.bancas.patios_luz; b++) addMob("banca", x + (b ? 8 : -8), 0.1, z, b ? -Math.PI / 2 : Math.PI / 2); }
     caja3(RA.medida_xz[0], 0.5, RA.medida_xz[1], MAT.asfalto, i * (C + RA.desde_centro_celda_m), 0.2, j * (C + RA.desde_centro_celda_m), sitio).castShadow = false;
   });
 }
@@ -416,7 +421,12 @@ construirEmplazamientos("patio", parque); // Teatro 333 con foyer, restaurante, 
     [-1, 1].forEach(sg => { const o = sg * (M / 2 + 0.9 + aw / 2); const [w, d, cx, cz] = i ? [largo, aw, x, o] : [aw, largo, o, z]; caja3(w, 0.5, d, MAT.flor, cx, 0.3, cz, parque).castShadow = false; }); });
   for (let k = 0, intentos = 0; k < JA.patio_manchas.cantidad && intentos < 3000; intentos++) { const x = entre(-LI / 2 + 14, LI / 2 - 14), z = entre(-LI / 2 + 14, LI / 2 - 14), r = entre(...JA.patio_manchas.radio_m);
     if ((Math.abs(x) < CASA / 2 + AGUA + 14 && Math.abs(z) < CASA / 2 + AGUA + 14) || Math.abs(x) < 10 + r || Math.abs(z) < 10 + r || tapado(x, z, "patio")) continue;
-    const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.12, 20), MAT.flor); m.position.set(x, 0.1, z); m.receiveShadow = true; parque.add(m); k++; }
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.12, 20), MAT.flor); m.position.set(x, 0.1, z); m.receiveShadow = true; parque.add(m); k++;
+    for (let b = 0; b < MB.bancas.manchas; b++) { const a = azar() * Math.PI * 2; addMob("banca", x + Math.cos(a) * (r + 1.6), 0.1, z + Math.sin(a) * (r + 1.6), -a + Math.PI / 2); } }
+  // bancas de frente al agua, alrededor del espejo
+  { const rb = CASA / 2 + AGUA + 2.5, paso = MB.bancas.agua_cada_m; for (let u = -rb + paso / 2; u < rb; u += paso) { if (Math.abs(u) < 9) continue; [[u, -rb, Math.PI], [u, rb, 0], [rb, u, Math.PI / 2], [-rb, u, -Math.PI / 2]].forEach(([x, z, r]) => addMob("banca", x, 0.5, z, r)); } }
+  // bancas a los lados de las calzadas, entre los colorines
+  [[0, -1], [0, 1], [1, 0], [-1, 0]].forEach(([i, j]) => { const largo = (LI - CASA) / 2 - AGUA - 8; for (let b = 0; b < MB.bancas.calzadas_por_lado; b++) { const u = CASA / 2 + AGUA + 6 + (b + 0.5) * (largo / MB.bancas.calzadas_por_lado); [-1, 1].forEach(sg => { const o = sg * (M / 2 + 4.2); addMob("banca", i ? i * u : o, 0.5, j ? j * u : o, i ? 0 : Math.PI / 2); }); } });
 }
 // la Casa de Decisiones
 {
@@ -460,72 +470,91 @@ construirEmplazamientos("patio", parque); // Teatro 333 con foyer, restaurante, 
   for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) { if (!i && !j) { caja3(4.5, 0.08, 4.5, MC.parque, 0, 0.5, 0, parque); continue; } caja3(4.2, 0.12, 2.0, MC.madera, i * M, 1.0, j * M, parque); }
 }
 
-/* ---------- Mobiliario: seis piezas, acomodadas por regla en los 33 pisos ---------- */
-// RLR · cada pieza es una malla instanciada; las posiciones salen de P.mobiliario (bandas, reglas por uso, patrón de la banda media)
-const MB = P.mobiliario, mobiliario = new THREE.Group(); edificio.add(mobiliario);
+/* ---------- Mobiliario: ocho piezas, acomodadas por regla en los 33 pisos ---------- */
+// RLR · cada pieza es una malla instanciada; las posiciones salen de P.mobiliario (bandas, islas, reglas por uso, patrón de la banda media, bancas)
+const mobiliario = new THREE.Group(); edificio.add(mobiliario);
 const CAT = Object.fromEntries(MB.catalogo.map(c => [c.id, c]));
 const conteoMob = {};
 {
-  const listas = { mesa: [], silla: [], cubiculo: [], junta: [], redonda: [], butaca: [] };
-  const add = (p, x, y, z, ry = 0, sx = 1, sz = 1) => listas[p].push([x, y, z, ry, sx, sz]);
-  const yBase = k => (k ? yPiso(k) + 0.35 : 0.5);
+  const add = addMob, yBase = k => (k ? yPiso(k) + 0.35 : 0.5), IS = MB.islas, TAM = CAT.junta.tamanos;
   // marco por lado: u a lo largo del lado (−L/2..L/2), v hacia adentro del anillo (0 = fachada exterior, 33.3 = fachada interior)
   const LADOS = [
-    { id: "norte", xz: (u, v) => [u, -L / 2 + v], ry: 0 }, { id: "sur", xz: (u, v) => [u, L / 2 - v], ry: 0 },
-    { id: "oriente", xz: (u, v) => [L / 2 - v, u], ry: Math.PI / 2 }, { id: "poniente", xz: (u, v) => [-L / 2 + v, u], ry: Math.PI / 2 },
+    { id: "norte", xz: (u, v) => [u, -L / 2 + v], ry: 0, esp: 1 }, { id: "sur", xz: (u, v) => [u, L / 2 - v], ry: 0, esp: -1 },
+    { id: "oriente", xz: (u, v) => [L / 2 - v, u], ry: Math.PI / 2, esp: -1 }, { id: "poniente", xz: (u, v) => [-L / 2 + v, u], ry: Math.PI / 2, esp: 1 },
   ];
-  const TAM = CAT.junta.tamanos;
-  function sala(lado, uc, vc, y, tam) { // mesa de junta con sus sillas alrededor
+  const giro = (lado, aLoLargoDeV) => lado.ry + (aLoLargoDeV ? Math.PI / 2 : 0); // piezas largas: a lo largo de u o de v
+  function sala(lado, uc, vc, y, tam) { // mesa de junta con sus sillas alrededor, a lo largo de u
     const t = TAM[tam], [lt, wt] = t.medida, n = t.sillas, [x, z] = lado.xz(uc, vc); add("junta", x, y, z, lado.ry, lt / TAM.equipo.medida[0], wt / TAM.equipo.medida[1]);
     const porLado = Math.max(1, Math.floor((n - 2) / 2)), paso = lt / (porLado + 1);
     for (let j = 1; j <= porLado; j++) [-1, 1].forEach(sg => { const [sx, sz] = lado.xz(uc - lt / 2 + j * paso, vc + sg * (wt / 2 + 0.45)); add("silla", sx, y, sz, lado.ry); });
     [-1, 1].forEach(sg => { const [sx, sz] = lado.xz(uc + sg * (lt / 2 + 0.45), vc); add("silla", sx, y, sz, lado.ry + Math.PI / 2); });
   }
   function cubiculos(lado, uc, y, n, v = 13.3) { for (let j = 0; j < n; j++) { const [x, z] = lado.xz(uc - (n - 1) * 1.3 + j * 2.6, v); add("cubiculo", x, y, z, lado.ry); } }
-  function filaMesas(lado, uc, v, y, n, paso, espejo) { // n mesas en fila frente a la ventana; la silla del lado de adentro
-    for (let j = 0; j < n; j++) { const u = uc - ((n - 1) * paso) / 2 + j * paso, [x, z] = lado.xz(u, v); add("mesa", x, y, z, lado.ry); const [cx, cz] = lado.xz(u, v + (espejo ? -0.8 : 0.8)); add("silla", cx, y, cz, lado.ry); }
+  function isla(lado, uc, vc, y, espejo) { // cuatro mesas perpendiculares a la ventana, en dos pares espalda con espalda; luz de lado; maceta al final
+    IS.pares_u.forEach(du => IS.filas_v.forEach(dv => { const v = espejo ? F - (vc + dv) : vc + dv, [x, z] = lado.xz(uc + du, v); add("mesa", x, y, z, giro(lado, true)); const [cx, cz] = lado.xz(uc + Math.sign(du) * IS.silla_fuera_u, v); add("silla", cx, y, cz, giro(lado, true) + (du > 0 ? Math.PI : 0)); }));
+    const [mx, mz] = lado.xz(uc, espejo ? F - (vc + IS.largo_v / 2 + 0.9) : vc + IS.largo_v / 2 + 0.9); planta("maceta", mx, y, mz, 0.7, mobiliario);
   }
-  function comedor(lado, uc, v, y, espejo) { // mesa doble (dos mesas juntas) con 8 sillas
-    const [x, z] = lado.xz(uc, v); add("mesa", x, y, z, lado.ry, 2, 1);
-    for (let j = 0; j < 4; j++) [-1, 1].forEach(sg => { const [cx, cz] = lado.xz(uc - 1.35 + j * 0.9, v + sg * 0.85); add("silla", cx, y, cz, lado.ry); });
+  function mesaSola(lado, u, v, y, espejo, visitas) { // mesa perpendicular a la ventana, silla del lado de adentro, visitas enfrente
+    const vv = espejo ? F - v : v, [x, z] = lado.xz(u, vv); add("mesa", x, y, z, giro(lado, true)); const [cx, cz] = lado.xz(u + 1.2, vv); add("silla", cx, y, cz, giro(lado, true) + Math.PI);
+    if (visitas) [-0.5, 0.5].forEach(dv => { const [vx, vz] = lado.xz(u - 1.2, vv + dv); add("silla", vx, y, vz, giro(lado, true)); });
+    const [mx, mz] = lado.xz(u, espejo ? F - (v + 1.9) : v + 1.9); planta("maceta", mx, y, mz, 0.7, mobiliario);
   }
-  const nMod = P.edificio.geometria.reticula.modulos_por_lado, cTorre = P.edificio.arquitectura.torres_esquina.modulos;
+  function comedor(lado, uc, v, y) { const [x, z] = lado.xz(uc, v); add("mesa", x, y, z, lado.ry, 2, 1); for (let j = 0; j < 4; j++) [-1, 1].forEach(sg => { const [cx, cz] = lado.xz(uc - 1.35 + j * 0.9, v + sg * 0.85); add("silla", cx, y, cz, lado.ry); }); }
+  function estancia(lado, uc, y) { // bancas de frente, mesa redonda, macetas: el lugar libre de la manzana
+    MB.estancia.bancas_v.forEach((v, j) => { const [x, z] = lado.xz(uc, v); add("banca", x, y, z, lado.ry); });
+    const [rx, rz] = lado.xz(uc, 16.65); if (MB.estancia.redonda) add("redonda", rx, y, rz);
+    MB.estancia.macetas_u.forEach(du => { const [mx, mz] = lado.xz(uc + du, 16.65); planta("maceta", mx, y, mz, 0.8, mobiliario); });
+  }
+  function separador(lado, u, y, v0, v1) { const [x, z] = lado.xz(u, (v0 + v1) / 2); add("separador", x, y, z, giro(lado, true), 1, v1 - v0); }
+  const nMod = P.edificio.geometria.reticula.modulos_por_lado, cTorre = P.edificio.arquitectura.torres_esquina.modulos, SEP = MB.separadores;
   for (let k = 0; k <= NP; k++) {
     const y = yBase(k), uso = k ? D.usoDe(k).id : "pb", R = k ? MB.por_uso[uso] : null;
     for (const lado of LADOS) {
+      let previoAmueblado = false;
       for (let i = cTorre; i < nMod - cTorre; i++) {
-        const uc = -L / 2 + i * M + M / 2;
-        if (Math.abs(uc - VANO / 2) < M) continue;                                   // núcleo de medio lado
-        if (k >= PC0 && k <= PC2 && Math.abs(uc) < VANO / 2) continue;              // parque de cielo
-        if (k === 0 && Math.abs(uc) < M) continue;                                    // zaguán
+        const uc = -L / 2 + i * M + M / 2, u0 = uc - M / 2;
+        const salta = Math.abs(uc - VANO / 2) < M || (k >= PC0 && k <= PC2 && Math.abs(uc) < VANO / 2) || (k === 0 && Math.abs(uc) < M);
+        if (salta) { previoAmueblado = false; continue; }
         if (k === 0) { // planta baja: Casa del Ciudadano afuera, comedores adentro
           const cz = MB.pb.ciudadano; for (let j = 0; j < cz.mesas_por_modulo; j++) { const u = uc - ((cz.mesas_por_modulo - 1) * cz.paso_u) / 2 + j * cz.paso_u, [x, z] = lado.xz(u, cz.v); add("redonda", x, y, z); [-1, 1].forEach(sg => { const [sx, sz] = lado.xz(u + sg * 0.95, cz.v); add("silla", sx, y, sz, lado.ry + Math.PI / 2); }); }
-          MB.pb.comedor.filas_v.forEach(v => { for (let j = 0; j < MB.pb.comedor.mesas_dobles_por_modulo; j++) comedor(lado, uc - 2.6 + j * 5.2, v, y, true); });
-          continue;
+          MB.pb.comedor.filas_v.forEach(v => { for (let j = 0; j < MB.pb.comedor.mesas_dobles_por_modulo; j++) comedor(lado, uc - 2.6 + j * 5.2, v, y); });
+          previoAmueblado = true; continue;
         }
-        if (uso === "publico") { R.comedor.filas_v.forEach(v => { for (let j = 0; j < R.comedor.mesas_dobles_por_modulo; j++) { comedor(lado, uc - 2.6 + j * 5.2, v, y, false); comedor(lado, uc - 2.6 + j * 5.2, F - v, y, true); } }); continue; }
-        // bandas exterior e interior
-        if (R.mesas_por_modulo) { R.filas_v.forEach((v, f) => { filaMesas(lado, uc, v, y, R.por_fila[f], R.paso_u, false); filaMesas(lado, uc, F - v, y, R.por_fila[f], R.paso_u, true); }); }
-        else if (R.oficinas_por_modulo) {
+        if (uso === "publico") { R.comedor.filas_v.forEach(v => { for (let j = 0; j < R.comedor.mesas_dobles_por_modulo; j++) { comedor(lado, uc - 2.6 + j * 5.2, v, y); comedor(lado, uc - 2.6 + j * 5.2, F - v, y); } }); previoAmueblado = true; continue; }
+        // separador de vidrio con persiana en el borde del módulo (entre barrio y barrio), en las dos bandas
+        if (SEP.entre_modulos && previoAmueblado) { separador(lado, u0, y, SEP.desde_v, SEP.hasta_v); separador(lado, u0, y, F - SEP.hasta_v, F - SEP.desde_v); }
+        // bandas de ventana
+        if (R.islas_por_modulo) {
+          R.islas_u.forEach(du => { isla(lado, uc + du, IS.v_centro, y, false); isla(lado, uc + du, IS.v_centro, y, true); });
+          if (R.mesa_jefe_u != null) { mesaSola(lado, uc + R.mesa_jefe_u, IS.v_centro, y, false, false); mesaSola(lado, uc + R.mesa_jefe_u, IS.v_centro, y, true, false); }
+          if (MB.bancas.barrio) { const [bx, bz] = lado.xz(uc, 8.6); add("banca", bx, y, bz, lado.ry); const [bx2, bz2] = lado.xz(uc, F - 8.6); add("banca", bx2, y, bz2, lado.ry); }
+        } else if (R.oficinas_por_modulo) {
           const n = R.oficinas_por_modulo, paso = M / n;
           for (let o = 0; o < n; o++) { const u = uc - M / 2 + paso / 2 + o * paso;
-            [[R.mesa_v, false], [F - R.mesa_v, true]].forEach(([v, esp]) => { const [x, z] = lado.xz(u, v); add("mesa", x, y, z, lado.ry); const [cx, cz] = lado.xz(u, v + (esp ? -0.8 : 0.8)); add("silla", cx, y, cz, lado.ry);
-              if (R.visitas_v) [-0.6, 0.6].forEach(du => { const [vx, vz] = lado.xz(u + du, esp ? F - R.visitas_v : R.visitas_v); add("silla", vx, y, vz, lado.ry); });
-              if (R.junta) sala(lado, u, esp ? F - R.junta_v : R.junta_v, y, R.junta); }); }
+            mesaSola(lado, u, R.mesa_v, y, false, !!R.visitas_v); mesaSola(lado, u, R.mesa_v, y, true, !!R.visitas_v);
+            if (R.junta) { sala(lado, u, R.junta_v, y, R.junta); sala(lado, u, F - R.junta_v, y, R.junta); }
+            if (SEP.entre_oficinas && o > 0) { separador(lado, u - paso / 2, y, SEP.desde_v, SEP.hasta_v); separador(lado, u - paso / 2, y, F - SEP.hasta_v, F - SEP.desde_v); } }
         }
-        // banda media: patrón de tres módulos
-        const pat = R.banda_media[i % 3];
+        // banda media: patrón de cuatro módulos (la manzana), con su estancia
+        const pat = R.banda_media[i % R.banda_media.length];
         if (pat === "cubiculos") cubiculos(lado, uc, y, MB.cubiculos_por_modulo);
+        else if (pat === "estancia") estancia(lado, uc, y);
         else if (pat === "charla") { sala(lado, uc - 2.4, 16.65, y, "charla"); cubiculos(lado, uc + 3.6, y, 1, 13.3); cubiculos(lado, uc + 3.6, y, 1, 20); }
         else sala(lado, uc, 16.65, y, pat);
+        previoAmueblado = true;
       }
     }
-    // oficinas de esquina en las torres: una mesa y una sala de 8
+    // oficinas de esquina en las torres: una mesa, una sala de 8, una banca
     if (k >= 1) [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([i, j]) => { const cc = D.torre.centro; add("mesa", i * (cc - 7), y, j * (cc - 7), 0); add("silla", i * (cc - 7), y, j * (cc - 7) + j * 0.8, 0);
-      const ladoF = { id: "esq", xz: (u, v) => [u, v], ry: 0 }; sala(ladoF, i * (cc + 5), j * (cc + 5), y, MB.esquinas.junta); });
+      const ladoF = { id: "esq", xz: (u, v) => [u, v], ry: 0 }; sala(ladoF, i * (cc + 5), j * (cc + 5), y, MB.esquinas.junta); add("banca", i * (cc + 12), y, j * (cc - 10), i * j > 0 ? Math.PI / 2 : 0); });
   }
+  // bancas en los parques de cielo y en la azotea (junto a la pista)
+  { const tmp = new THREE.Object3D();
+    [[0, -(L - F) / 2, 0], [0, (L - F) / 2, 0], [(L - F) / 2, 0, Math.PI / 2], [-(L - F) / 2, 0, Math.PI / 2]].forEach(([x, z, r]) => { tmp.position.set(x, 0, z); tmp.rotation.set(0, r, 0); tmp.updateMatrixWorld();
+      for (let b = 0; b < MB.bancas.parques_cielo; b++) { const p = new THREE.Vector3(-40 + b * 16, Y_VANO0 + 0.6, (b % 2 ? 1 : -1) * 9); tmp.localToWorld(p); add("banca", p.x, p.y, p.z, r + (b % 2 ? Math.PI : 0)); } });
+    const rA = LI / 2 + 9, paso = MB.bancas.azotea_cada_m; for (let u = -rA + paso / 2; u < rA; u += paso) [[u, -rA, 0], [u, rA, Math.PI], [rA, u, -Math.PI / 2], [-rA, u, Math.PI / 2]].forEach(([x, z, r]) => add("banca", x, H_TOP + 1.2, z, r)); }
   // teatros: filas de butacas con rake, escenario y pantalla, dentro de la colina
-  [["t999", "teatro_999", -1], ["t333", "teatro_333", -1]].forEach(([tid, eid]) => {
+  [["t999", "teatro_999"], ["t333", "teatro_333"]].forEach(([tid, eid]) => {
     const e = P.emplazamientos.find(x => x.id === eid), te = MB.teatros[tid], [cx, cz] = e.pos_xz, prof = e.medida_xz[1] / 2, grupo = e.grupo === "patio" ? parque : sitio;
     const zPantalla = cz - prof * 0.3, zEsc = zPantalla + 7, z0 = zEsc + 7, [pw, ph] = te.pantalla_xz;
     const pantalla = new THREE.Mesh(new THREE.BoxGeometry(pw, ph, 0.4), new THREE.MeshStandardMaterial({ color: 0x0b1020, emissive: 0x1a2a4a, emissiveIntensity: 0.8, side: DS })); pantalla.position.set(cx, ph / 2 + 1, zPantalla); grupo.add(pantalla);
@@ -533,10 +562,13 @@ const conteoMob = {};
     for (let r = 0; r < te.filas; r++) for (let b = 0; b < te.por_fila; b++) add("butaca", cx - ((te.por_fila - 1) * te.ancho_m) / 2 + b * te.ancho_m, 0.1 + r * te.rake_m, z0 + r * te.paso_m, Math.PI);
     caja3(te.por_fila * te.ancho_m + 2, 0.3, te.filas * te.paso_m + 2, MAT.recinto, cx, 0.05, z0 + (te.filas * te.paso_m) / 2, grupo).castShadow = false;
   });
-  // geometrías (una por pieza) y mallas instanciadas
+}
+// RLR · persiana: lamas horizontales de encino sobre vidrio, para los separadores
+const texPersiana = lienzo(64, 256, (g, w, h) => { g.fillStyle = "rgba(170,205,235,0.35)"; g.fillRect(0, 0, w, h); g.fillStyle = "rgba(120,80,48,0.9)"; for (let y = 6; y < h; y += 12) g.fillRect(0, y, w, 5); });
+function construirMobiliario() { // se llama al final, cuando ya están las bancas del bosque y del patio
   const geoCaja = (w, h, d, dx = 0, dy = 0, dz = 0) => { const g = new THREE.BoxGeometry(w, h, d); g.translate(dx, dy, dz); return g; };
-  const union = (...gs) => { const g = BGU.mergeGeometries(gs.map(x => x.toNonIndexed()), false); return g; };
-  const mesaC = CAT.mesa.medida, sillaC = CAT.silla.medida, cubC = CAT.cubiculo.medida, jun = TAM.equipo.medida;
+  const union = (...gs) => BGU.mergeGeometries(gs.map(x => x.toNonIndexed()), false);
+  const TAM = CAT.junta.tamanos, mesaC = CAT.mesa.medida, sillaC = CAT.silla.medida, cubC = CAT.cubiculo.medida, jun = TAM.equipo.medida, banC = CAT.banca.medida;
   const GEO = {
     mesa: union(geoCaja(mesaC[0], 0.05, mesaC[2], 0, mesaC[1] - 0.025), geoCaja(0.06, mesaC[1] - 0.05, mesaC[2] - 0.2, -mesaC[0] / 2 + 0.1, (mesaC[1] - 0.05) / 2), geoCaja(0.06, mesaC[1] - 0.05, mesaC[2] - 0.2, mesaC[0] / 2 - 0.1, (mesaC[1] - 0.05) / 2)),
     silla: union(geoCaja(sillaC[0], 0.08, sillaC[2], 0, 0.46), geoCaja(sillaC[0], 0.5, 0.06, 0, 0.72, -sillaC[2] / 2 + 0.03), geoCaja(0.06, 0.42, 0.06, 0, 0.21)),
@@ -544,10 +576,12 @@ const conteoMob = {};
     junta: union(geoCaja(jun[0], 0.06, jun[1], 0, 0.72), geoCaja(0.08, 0.69, jun[1] - 0.4, -jun[0] / 2 + 0.3, 0.345), geoCaja(0.08, 0.69, jun[1] - 0.4, jun[0] / 2 - 0.3, 0.345)),
     redonda: union(new THREE.CylinderGeometry(CAT.redonda.diametro / 2, CAT.redonda.diametro / 2, 0.06, 20).translate(0, 0.72, 0), new THREE.CylinderGeometry(0.25, 0.35, 0.69, 12).translate(0, 0.345, 0)),
     butaca: union(geoCaja(CAT.butaca.medida[0] - 0.08, 0.1, 0.55, 0, 0.45), geoCaja(CAT.butaca.medida[0] - 0.08, 0.6, 0.1, 0, 0.75, 0.25), geoCaja(CAT.butaca.medida[0] - 0.08, 0.4, 0.5, 0, 0.2)),
+    banca: union(geoCaja(banC[0], 0.07, banC[2], 0, banC[1] - 0.035), geoCaja(0.12, banC[1] - 0.07, banC[2] - 0.08, -banC[0] / 2 + 0.25, (banC[1] - 0.07) / 2), geoCaja(0.12, banC[1] - 0.07, banC[2] - 0.08, banC[0] / 2 - 0.25, (banC[1] - 0.07) / 2)),
+    separador: union(geoCaja(0.05, CAT.separador.medida[1], 1, 0, CAT.separador.medida[1] / 2), geoCaja(0.09, 0.06, 1, 0, CAT.separador.medida[1] - 0.03)),
   };
-  const MATM = { mesa: mat(hex(CAT.mesa.color), { roughness: 0.6 }), silla: mat(hex(CAT.silla.color), { roughness: 0.8 }), cubiculo: new THREE.MeshStandardMaterial({ color: hex(CAT.cubiculo.color), transparent: true, opacity: 0.45, roughness: 0.2, side: DS }), junta: mat(hex(CAT.junta.color), { roughness: 0.5 }), redonda: mat(hex(CAT.redonda.color), { roughness: 0.7 }), butaca: mat(hex(CAT.butaca.color), { roughness: 0.75 }) };
+  const MATM = { mesa: mat(hex(CAT.mesa.color), { roughness: 0.6 }), silla: mat(hex(CAT.silla.color), { roughness: 0.8 }), cubiculo: new THREE.MeshStandardMaterial({ color: hex(CAT.cubiculo.color), transparent: true, opacity: 0.45, roughness: 0.2, side: DS }), junta: mat(hex(CAT.junta.color), { roughness: 0.5 }), redonda: mat(hex(CAT.redonda.color), { roughness: 0.7 }), butaca: mat(hex(CAT.butaca.color), { roughness: 0.75 }), banca: mat(hex(CAT.banca.color), { roughness: 0.7 }), separador: new THREE.MeshStandardMaterial({ map: texPersiana, transparent: true, opacity: 0.85, roughness: 0.3, side: DS }) };
   const q = new THREE.Quaternion(), e3 = new THREE.Euler(), m4m = new THREE.Matrix4();
-  Object.entries(listas).forEach(([id, lista]) => { if (!lista.length) return; if (movil && id === "silla") lista = lista.filter((_, i) => i % 3 === 0);
+  Object.entries(listasMob).forEach(([id, lista]) => { if (!lista.length) return; if (movil && id === "silla") lista = lista.filter((_, i) => i % 3 === 0);
     const inst = new THREE.InstancedMesh(GEO[id], MATM[id], lista.length);
     lista.forEach(([x, y, z, ry, sx, sz], i) => { e3.set(0, ry, 0); q.setFromEuler(e3); m4m.compose(new THREE.Vector3(x, y, z), q, new THREE.Vector3(sx, 1, sz)); inst.setMatrixAt(i, m4m); });
     inst.castShadow = false; inst.receiveShadow = true; mobiliario.add(inst); conteoMob[id] = lista.length; });
@@ -566,7 +600,7 @@ const m4 = new THREE.Matrix4(), q0 = new THREE.Quaternion(), v3 = new THREE.Vect
 // forma de cada especie: [radio tronco, alto tronco, ancho copa, alto copa]
 const FORMA = Object.fromEntries(Object.entries(P.vegetacion.especies_3d).map(([id, e]) => [id, e.forma]));
 const MEZCLA = (() => { let acum = 0; return Object.entries(P.vegetacion.mezcla_bosque).map(([id, f]) => [id, (acum += f)]); })();
-function planta(e, x, y, z, esc = 1, grupo = bosque) {
+function planta(e, x, y, z, esc = 1, grupo = bosque) { if (grupo === mobiliario) { macetasInterior.push([x, y, z, esc]); return; }
   const s = ESP[e]; if (s.n >= s.max) return;
   const [rt, ht, wc, hc] = FORMA[e], k = esc;
   m4.compose(v3.set(x, y + (ht * k) / 2, z), q0, new THREE.Vector3(rt * k, ht * k, rt * k)); s.t.setMatrixAt(s.n, m4);
@@ -594,6 +628,7 @@ const VRD = P.terreno.veredas, lineasV = [];
     const len = b - a, mid = (a + b) / 2; if (len < 22) return;
     const o = enX ? caja3(len, 0.15, w, MAT.tepetate, mid, 0.08, fijo, sitio) : caja3(w, 0.15, len, MAT.tepetate, fijo, 0.08, mid, sitio); o.castShadow = false;
     for (let u = a + 5.55, lado = 1; u < b - 5; u += VRD.frutales_cada_m, lado = -lado) { const [x, z] = enX ? [u, fijo + lado * 3.5] : [fijo + lado * 3.5, u]; planta("frutal", x, 0, z, entre(0.8, 1.15)); }
+    for (let u = a + MB.bancas.veredas_cada_m / 2, lado = -1; u < b - 4; u += MB.bancas.veredas_cada_m, lado = -lado) { const [x, z] = enX ? [u, fijo + lado * 2.1] : [fijo + lado * 2.1, u]; addMob("banca", x, 0.1, z, enX ? 0 : Math.PI / 2); }
   };
   lineasV.forEach(fijo => {
     [true, false].forEach(enX => { let ini = null;
@@ -601,9 +636,12 @@ const VRD = P.terreno.veredas, lineasV = [];
         if (libreAqui && ini === null) ini = u; if (!libreAqui && ini !== null) { tramo(ini, u - 5.55, fijo, enX); ini = null; } }
     });
   });
-  if (VRD.postes_en_cruces) lineasV.forEach(x => lineasV.forEach(z => { if (bloqueado(x, z)) return; const po = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 1.4, 8), MAT.bronce); po.position.set(x, 0.7, z); sitio.add(po); }));
+  if (VRD.postes_en_cruces) lineasV.forEach(x => lineasV.forEach(z => { if (bloqueado(x, z)) return; const po = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 1.4, 8), MAT.bronce); po.position.set(x, 0.7, z); sitio.add(po);
+    for (let b = 0; b < MB.bancas.cruces_veredas; b++) addMob("banca", x + (b ? 3.2 : -3.2), 0.1, z + 3.2, b ? Math.PI / 2 : Math.PI / 2); }));
 }
 const cercaVereda = (x, z) => lineasV.some(l => Math.abs(x - l) < 2.8 || Math.abs(z - l) < 2.8);
+// RLR · bancas de frente a la plaza, al agua y a las manchas de flor
+plazas.forEach(([px, pz]) => { for (let b = 0; b < MB.bancas.plazas_por_lado; b++) { const u = -PLAZA / 2 + 12 + b * ((PLAZA - 24) / (MB.bancas.plazas_por_lado - 1)); [[px + u, pz - PLAZA / 2 + 7, 0], [px + u, pz + PLAZA / 2 - 7, Math.PI], [px - PLAZA / 2 + 7, pz + u, Math.PI / 2], [px + PLAZA / 2 - 7, pz + u, -Math.PI / 2]].forEach(([x, z, r]) => { if (Math.abs(x) < L / 2 + 2 && Math.abs(z) < L / 2 + 2) return; addMob("banca", x, 0.5, z, r); }); } });
 // RLR · macetas de barro con palma camedor: bordes de las plazas y Rampa Norte
 { const JM = P.vegetacion.jardineras.macetas;
   plazas.forEach(([px, pz]) => { for (let u = -PLAZA / 2 + 3; u <= PLAZA / 2 - 3; u += JM.cada_m) [[px + u, pz - PLAZA / 2 + 3], [px + u, pz + PLAZA / 2 - 3], [px - PLAZA / 2 + 3, pz + u], [px + PLAZA / 2 - 3, pz + u]].forEach(([x, z]) => { if (Math.abs(x) < L / 2 + 2 && Math.abs(z) < L / 2 + 2) return; planta("maceta", x, 0.5, z, 1); }); });
@@ -631,10 +669,13 @@ for (let k = 0; k < BQ.intentos; k++) {
   planta(azar() < BQ.especies.encino ? "encino" : "madrono", x, 0, z, entre(0.7, 1.1), parque);
 }
 arbolesCielo.forEach(p => planta("cielo", p.x, p.y, p.z, entre(0.8, 1.1), edificio));
+macetasInterior.forEach(([x, y, z, esc]) => planta("maceta", x, y, z, esc, edificio));
 // magnolia del Presidente
 planta("cielo", 0, 0.4, 0, 0.9, parque);
-Object.values(ESP).forEach(s => { s.t.count = s.c.count = s.n; s.t.instanceMatrix.needsUpdate = s.c.instanceMatrix.needsUpdate = true; if (s.c.instanceColor) s.c.instanceColor.needsUpdate = true; (s === ESP.cielo ? edificio : s === ESP.ahuehuete || s === ESP.colorin ? parque : s === ESP.maceta ? sitio : bosque).add(s.t, s.c); });
+Object.values(ESP).forEach(s => { s.t.count = s.c.count = s.n; s.t.instanceMatrix.needsUpdate = s.c.instanceMatrix.needsUpdate = true; if (s.c.instanceColor) s.c.instanceColor.needsUpdate = true; (s === ESP.cielo ? edificio : s === ESP.ahuehuete || s === ESP.colorin ? parque : s === ESP.maceta ? edificio : bosque).add(s.t, s.c); });
 const totalArboles = Object.values(ESP).reduce((a, s) => a + s.n, 0);
+
+construirMobiliario();
 
 /* ---------- La ciudad alrededor (contexto) ---------- */
 {
