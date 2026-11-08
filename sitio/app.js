@@ -2,7 +2,7 @@
 // Todo sale de parametros.json (+ recorridos.json) y de los derivados compartidos con el 3D.
 import { derivar } from "/derivados.js?v=1";
 const _RLR = "Ricardo López Reyero", _k = "EYE", _rev = 181218; // firma
-const VER = 21; // sube al cambiar tres.js
+const VER = 22; // sube al cambiar tres.js
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const n = (v, d = 0) => Number(v).toLocaleString("es-MX", { maximumFractionDigits: d, minimumFractionDigits: d });
 
@@ -12,10 +12,10 @@ window.EDIFICIO = { P, R, D, tres: null };
 
 /* ---------- pestañas ---------- */
 let cargando3D = null;
-const VISTAS = ["3d", "plano", "numeros", "proyecto", "origen"];
+const VISTAS = ["3d", "plano", "numeros", "proyecto", "origen", "organigrama"];
 function mostrar(v) {
   if (!VISTAS.includes(v)) v = "3d";
-  const doc = v === "origen" ? "ORIGEN.md" : null; if (doc) v = "proyecto";
+  const doc = v === "origen" ? "ORIGEN.md" : v === "organigrama" ? "ORGANIGRAMA.md" : null; if (doc) v = "proyecto";
   $$(".pestanas [role=tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.v === v));
   $$(".vista").forEach(s => s.classList.toggle("activa", s.id === "v-" + v));
   if (v === "3d") cargar3D();
@@ -211,7 +211,7 @@ async function cargarDoc(nombre) {
   art.querySelectorAll("h1,h2,h3").forEach(h => { h.id = slug(h.textContent); });
   const idx = $("#indice"); if (idx) { idx.innerHTML = [...art.querySelectorAll("h2")].map(h => `<a href="#${h.id}">${h.textContent.replace(/^\d+\.\s*/, "")}</a>`).join(""); idx.querySelectorAll("a").forEach(l => l.addEventListener("click", e => { e.preventDefault(); document.getElementById(decodeURIComponent(l.getAttribute("href").slice(1)))?.scrollIntoView({ behavior: "smooth", block: "start" }); })); }
   art.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => { e.preventDefault(); document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1)))?.scrollIntoView({ behavior: "smooth", block: "start" }); }));
-  art.querySelectorAll('a[href$=".json"],a[href$=".md"]').forEach(a => { const h = a.getAttribute("href"); if (h.endsWith("parametros.json")) a.href = "/parametros.json"; else if (/^(PROYECTO|PROMPT|ORIGEN)\.md$/.test(h)) { a.href = "#proyecto"; a.addEventListener("click", e => { e.preventDefault(); cargarDoc(h); scrollTo(0, 0); }); } });
+  art.querySelectorAll('a[href$=".json"],a[href$=".md"]').forEach(a => { const h = a.getAttribute("href"); if (h.endsWith("parametros.json")) a.href = "/parametros.json"; else if (/^(PROYECTO|PROMPT|ORIGEN|ORGANIGRAMA)\.md$/.test(h)) { a.href = "#proyecto"; a.addEventListener("click", e => { e.preventDefault(); cargarDoc(h); scrollTo(0, 0); }); } });
   scrollTo(0, 0);
 }
 $$("#docs button").forEach(b => b.addEventListener("click", () => cargarDoc(b.dataset.d)));

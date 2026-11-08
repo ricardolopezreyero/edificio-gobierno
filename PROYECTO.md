@@ -835,11 +835,15 @@ El proyecto está completo con la opción recomendada en cada caso. Si se elige 
 - El 3D (edificio.capitaltorreon.com): cada pieza con ficha, corte por pisos, capa «Ver adentro» para el interior amueblado y los teatros, plano a tres escalas, números y este documento.
 - Para verificar un número: `node modelo/validar.mjs`. Para cambiar una pieza: su entrada en `emplazamientos`. Para cambiar una regla de mobiliario: `mobiliario.por_uso`.
 
-### 18.2 Glosario
+### 18.2 El organigrama
+
+La arquitectura de puestos que ocupa el edificio (quién se sienta en qué lado, piso y silla; cómo se dirigen los estados y municipios; La Fábrica; la operación de la casa; el Cuartel) está en [ORGANIGRAMA.md](ORGANIGRAMA.md).
+
+### 18.3 Glosario
 
 **Tablero**: el sistema único de decisiones, tareas y casos. **Calzada**: galería cubierta del anillo a la Casa. **Zaguán**: paso a través del anillo en planta baja. **Parque de cielo**: vacío de tres pisos al centro de cada fachada. **Cintura**: el piso 17. **Lanzadera**: elevador que solo para en los lobbies. **Isla, barrio, manzana**: 4, 8 y 33 personas. **Estancia**: lugar libre de la manzana. **La Fábrica**: ingeniería central, pisos 30–31. **La Bóveda**: el nivel de servidores. **Casa del Ciudadano**: atención en planta baja. **Valor y Estudios**: la unidad que estudia qué necesita la gente y cómo se sostiene cada servicio. **C4 / C5**: centros de mando por fuerza y unificado. **Rampa Norte**: galería con bandas de la estación a la plaza.
 
-### 18.3 Lista de verificación de ejecución (33 puntos)
+### 18.4 Lista de verificación de ejecución (33 puntos)
 
 1. Sitio con suelo zona I confirmado por sondeos.
 2. Polígono federal de 999 × 999 m disponible.
