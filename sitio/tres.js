@@ -10,6 +10,14 @@ const P = window.EDIFICIO.P, D = derivar(P);
 const { M, L, F, LI, NP, H0, HP, C, T, yPiso, H_TOP, Y_BASA, Y_REMATE, Y_VANO0, Y_VANO1, VANO, CASA, SUITE, AGUA } = D;
 const [PC0, , PC2] = P.edificio.parques_de_cielo.pisos;
 const hex = c => parseInt(String(c).replace("#", ""), 16);
+// RLR · geometría de exclusión: ¿este punto cae sobre una pieza colocada? (lo usan el bosque, las jardineras y las veredas)
+const dentro = (x, z, cx, cz, w, d) => Math.abs(x - cx) < w / 2 && Math.abs(z - cz) < d / 2;
+const enElipse = (x, z, cx, cz, rx, rz) => ((x - cx) / rx) ** 2 + ((z - cz) / rz) ** 2 < 1;
+const MARGEN = P.terreno.bosque.margen_sin_arboles_m;
+function tapado(x, z, grupoId) {
+  return P.emplazamientos.some(e => { if (e.grupo !== grupoId) return false; const [w, d] = e.medida_xz, esLoma = e.partes?.[0]?.tipo === "loma";
+    return esLoma ? enElipse(x, z, e.pos_xz[0], e.pos_xz[1], w / 2 + MARGEN, d / 2 + MARGEN) : dentro(x, z, e.pos_xz[0], e.pos_xz[1], w + 2 * MARGEN, d + 2 * MARGEN); });
+}
 const rad = g => (g * Math.PI) / 180;
 const lerp = (a, b, k) => a + (b - a) * k;
 let semilla = 181218;
@@ -88,6 +96,8 @@ const MAT = {
   cancha: mat(0x2f6f6f),
   blanco: mat(0xd9d5cc),
   milpa: mat(0x7a8a3a),
+  tepetate: mat(0xb9a27a, { roughness: 1 }),
+  flor: mat(0x7a5fb0, { roughness: 0.9 }),
   marcador: new THREE.MeshStandardMaterial({ color: 0xffb347, emissive: 0xffa030, emissiveIntensity: 2.5, roughness: 0.3, side: DS }),
 };
 
@@ -377,6 +387,21 @@ const parque = new THREE.Group(); edificio.add(parque);
   for (let k = 0; k <= n; k++) { const u = -largo / 2 + k * (largo / n); [[-1], [1]].forEach(([s]) => { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 5.4, 8), MAT.bronce); p.position.set(i ? x + u : s * (M / 2 - 0.4), 2.7, j ? z + u : s * (M / 2 - 0.4)); if (i) p.position.z = s * (M / 2 - 0.4); else p.position.x = s * (M / 2 - 0.4); parque.add(p); }); }
 });
 construirEmplazamientos("patio", parque); // Teatro 333 con foyer, restaurante, cabina y bodega; la milpa
+// RLR · jardineras: corridas al pie de las cuatro fachadas (entre torre y zaguán), círculos en las plazas, corridas en las calzadas; manchas de flor en las praderas
+{ const JA = P.vegetacion.jardineras, TW3 = 3 * M, fin = L / 2 - TW3 - 1, ini = M / 2 + 5.5, len = fin - ini, mid = (ini + fin) / 2, ancho = JA.facade_pb.ancho_m, alto = JA.facade_pb.alto_m, off = L / 2 + 1.4 + ancho / 2;
+  [[mid, -off, true], [-mid, -off, true], [mid, off, true], [-mid, off, true], [off, mid, false], [off, -mid, false], [-off, mid, false], [-off, -mid, false]].forEach(([a, b, enX]) => {
+    const [w, d, x, z] = enX ? [len, ancho, a, b] : [ancho, len, b, a];
+    caja3(w, alto, d, MAT.cantera, x, alto / 2, z, edificio, { t: "Jardinera de la fachada", c: "Al pie de las cuatro fachadas, entre la torre y el zaguán: una jardinera corrida de cantera de 3 m con salvias, dalias y agaves. La flor cambia con el mes.", d: [] }).castShadow = false;
+    caja3(w - 0.6, 0.35, d - 0.6, MAT.flor, x, alto + 0.1, z, edificio).castShadow = false; });
+  plazas.forEach(([px, pz]) => [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([i, j]) => { const x = px + i * 30, z = pz + j * 30, r = JA.plazas.radio_m;
+    const b = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.6, 24), MAT.cantera); b.position.set(x, 0.75, z); sitio.add(b);
+    const f = new THREE.Mesh(new THREE.CylinderGeometry(r - 0.5, r - 0.5, 0.3, 24), MAT.flor); f.position.set(x, 1.15, z); sitio.add(f); }));
+  [[0, -1], [0, 1], [1, 0], [-1, 0]].forEach(([i, j]) => { const largo = (LI - CASA) / 2 - AGUA - 2, centro = CASA / 2 + AGUA + 1 + largo / 2, x = i * centro, z = j * centro, aw = JA.calzadas.ancho_m;
+    [-1, 1].forEach(sg => { const o = sg * (M / 2 + 0.9 + aw / 2); const [w, d, cx, cz] = i ? [largo, aw, x, o] : [aw, largo, o, z]; caja3(w, 0.5, d, MAT.flor, cx, 0.3, cz, parque).castShadow = false; }); });
+  for (let k = 0, intentos = 0; k < JA.patio_manchas.cantidad && intentos < 3000; intentos++) { const x = entre(-LI / 2 + 14, LI / 2 - 14), z = entre(-LI / 2 + 14, LI / 2 - 14), r = entre(...JA.patio_manchas.radio_m);
+    if ((Math.abs(x) < CASA / 2 + AGUA + 14 && Math.abs(z) < CASA / 2 + AGUA + 14) || Math.abs(x) < 10 + r || Math.abs(z) < 10 + r || tapado(x, z, "patio")) continue;
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.12, 20), MAT.flor); m.position.set(x, 0.1, z); m.receiveShadow = true; parque.add(m); k++; }
+}
 // la Casa de Decisiones
 {
   const h1 = 11, h2 = 7, H = h1 + h2, hueco = SUITE + 4, HL = 11; // planta baja 11 m, planta alta 7 m, linterna del Presidente 11 m más
@@ -441,14 +466,7 @@ function planta(e, x, y, z, esc = 1, grupo = bosque) {
   const tono = entre(0.78, 1.12); s.c.setColorAt(s.n, colTmp.copy(s.cCopa).multiplyScalar(tono));
   s.n++;
 }
-// exclusiones del bosque
-const dentro = (x, z, cx, cz, w, d) => Math.abs(x - cx) < w / 2 && Math.abs(z - cz) < d / 2;
-const enElipse = (x, z, cx, cz, rx, rz) => ((x - cx) / rx) ** 2 + ((z - cz) / rz) ** 2 < 1;
-const MARGEN = P.terreno.bosque.margen_sin_arboles_m;
-function tapado(x, z, grupoId) {
-  return P.emplazamientos.some(e => { if (e.grupo !== grupoId) return false; const [w, d] = e.medida_xz, esLoma = e.partes?.[0]?.tipo === "loma";
-    return esLoma ? enElipse(x, z, e.pos_xz[0], e.pos_xz[1], w / 2 + MARGEN, d / 2 + MARGEN) : dentro(x, z, e.pos_xz[0], e.pos_xz[1], w + 2 * MARGEN, d + 2 * MARGEN); });
-}
+// exclusiones del bosque (dentro, enElipse y tapado viven en la cabecera)
 function libre(x, z) {
   if (Math.abs(x) < L / 2 + MARGEN && Math.abs(z) < L / 2 + MARGEN) return false;              // edificio
   if (plazas.some(([px, pz]) => dentro(x, z, px, pz, PLAZA + 8, PLAZA + 8))) return false;
@@ -457,10 +475,35 @@ function libre(x, z) {
   for (const [i, j] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) { if (dentro(x, z, i * (C + RA.desde_centro_celda_m), j * (C + RA.desde_centro_celda_m), RA.medida_xz[0] + 10, RA.medida_xz[1] + 10)) return false; const t = ((x * i) + (z * j)) / 2; if (t > L / 2 && t < C - 40 && Math.abs(x * i - z * j) < SE.ancho_m + 2) return false; }
   return true;
 }
+// RLR · veredas: la misma malla de 111 m de los patios de luz, sobre las ocho celdas del bosque, interrumpida donde hay una pieza; postes de bronce en los cruces y frutales a la orilla
+const VRD = P.terreno.veredas, lineasV = [];
+{
+  const paso = VRD.malla_m, nL = VRD.extension_lineas, lim = nL * paso + paso / 2, w = VRD.ancho_m;
+  for (let k = -nL; k <= nL; k++) lineasV.push(k * paso);
+  const bloqueado = (x, z) => (Math.abs(x) < L / 2 + 10 && Math.abs(z) < L / 2 + 10) || Math.abs(x) > T / 2 - 4 || Math.abs(z) > T / 2 - 4 || plazas.some(([px, pz]) => dentro(x, z, px, pz, PLAZA + 2, PLAZA + 2)) || tapado(x, z, "sitio");
+  const tramo = (a, b, fijo, enX) => { // un tramo de vereda de a a b sobre la línea fija
+    const len = b - a, mid = (a + b) / 2; if (len < 22) return;
+    const o = enX ? caja3(len, 0.15, w, MAT.tepetate, mid, 0.08, fijo, sitio) : caja3(w, 0.15, len, MAT.tepetate, fijo, 0.08, mid, sitio); o.castShadow = false;
+    for (let u = a + 5.55, lado = 1; u < b - 5; u += VRD.frutales_cada_m, lado = -lado) { const [x, z] = enX ? [u, fijo + lado * 3.5] : [fijo + lado * 3.5, u]; planta("frutal", x, 0, z, entre(0.8, 1.15)); }
+  };
+  lineasV.forEach(fijo => {
+    [true, false].forEach(enX => { let ini = null;
+      for (let u = -lim; u <= lim + 0.1; u += 5.55) { const [x, z] = enX ? [u, fijo] : [fijo, u]; const libreAqui = u <= lim && !bloqueado(x, z);
+        if (libreAqui && ini === null) ini = u; if (!libreAqui && ini !== null) { tramo(ini, u - 5.55, fijo, enX); ini = null; } }
+    });
+  });
+  if (VRD.postes_en_cruces) lineasV.forEach(x => lineasV.forEach(z => { if (bloqueado(x, z)) return; const po = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 1.4, 8), MAT.bronce); po.position.set(x, 0.7, z); sitio.add(po); }));
+}
+const cercaVereda = (x, z) => lineasV.some(l => Math.abs(x - l) < 2.8 || Math.abs(z - l) < 2.8);
+// RLR · macetas de barro con palma camedor: bordes de las plazas y Rampa Norte
+{ const JM = P.vegetacion.jardineras.macetas;
+  plazas.forEach(([px, pz]) => { for (let u = -PLAZA / 2 + 3; u <= PLAZA / 2 - 3; u += JM.cada_m) [[px + u, pz - PLAZA / 2 + 3], [px + u, pz + PLAZA / 2 - 3], [px - PLAZA / 2 + 3, pz + u], [px + PLAZA / 2 - 3, pz + u]].forEach(([x, z]) => { if (Math.abs(x) < L / 2 + 2 && Math.abs(z) < L / 2 + 2) return; planta("maceta", x, 0.5, z, 1); }); });
+  const RN = P.emplazamientos.find(e => e.id === "rampa_norte"); if (RN) for (let z = RN.pos_xz[1] - RN.medida_xz[1] / 2 + 4; z < RN.pos_xz[1] + RN.medida_xz[1] / 2 - 2; z += JM.cada_m) [-10, 10].forEach(dx => planta("maceta", RN.pos_xz[0] + dx, 0.3, z, 1));
+}
 // bosque: malla de 8.2 m con desorden
 for (let x = -T / 2 + 5; x < T / 2 - 5; x += 8.2) for (let z = -T / 2 + 5; z < T / 2 - 5; z += 8.2) {
   const px = x + entre(-3.2, 3.2), pz = z + entre(-3.2, 3.2);
-  if (!libre(px, pz)) continue;
+  if (!libre(px, pz) || cercaVereda(px, pz)) continue;
   const r = azar(), e = (MEZCLA.find(([, hasta]) => r < hasta) || MEZCLA[MEZCLA.length - 1])[0];
   planta(e, px, 0, pz, entre(0.75, 1.3));
 }
@@ -481,7 +524,7 @@ for (let k = 0; k < BQ.intentos; k++) {
 arbolesCielo.forEach(p => planta("cielo", p.x, p.y, p.z, entre(0.8, 1.1), edificio));
 // magnolia del Presidente
 planta("cielo", 0, 0.4, 0, 0.9, parque);
-Object.values(ESP).forEach(s => { s.t.count = s.c.count = s.n; s.t.instanceMatrix.needsUpdate = s.c.instanceMatrix.needsUpdate = true; if (s.c.instanceColor) s.c.instanceColor.needsUpdate = true; (s === ESP.cielo ? edificio : s === ESP.ahuehuete || s === ESP.colorin ? parque : bosque).add(s.t, s.c); });
+Object.values(ESP).forEach(s => { s.t.count = s.c.count = s.n; s.t.instanceMatrix.needsUpdate = s.c.instanceMatrix.needsUpdate = true; if (s.c.instanceColor) s.c.instanceColor.needsUpdate = true; (s === ESP.cielo ? edificio : s === ESP.ahuehuete || s === ESP.colorin ? parque : s === ESP.maceta ? sitio : bosque).add(s.t, s.c); });
 const totalArboles = Object.values(ESP).reduce((a, s) => a + s.n, 0);
 
 /* ---------- La ciudad alrededor (contexto) ---------- */
@@ -546,10 +589,11 @@ function aplicarAmbiente(a) {
 
 /* ---------- Meses (vegetación) ---------- */
 const COPA = Object.fromEntries(Object.entries(P.presentacion.meses).map(([id, m]) => [id, { jacaranda: hex(m.jacaranda), colorin: hex(m.colorin), pradera: hex(m.pradera) }]));
+MAT.flor.color.set(hex(P.presentacion.meses.verde.flor));
 function ponerMes(m) {
   const c = COPA[m];
   ["jacaranda", "colorin"].forEach(e => { const s = ESP[e]; s.cCopa.set(c[e]); for (let i = 0; i < s.n; i++) s.c.setColorAt(i, colTmp.copy(s.cCopa).multiplyScalar(entre(0.85, 1.1))); s.c.instanceColor.needsUpdate = true; });
-  MAT.pradera.color.set(c.pradera);
+  MAT.pradera.color.set(c.pradera); if (P.presentacion.meses[m].flor) MAT.flor.color.set(hex(P.presentacion.meses[m].flor));
 }
 
 /* ---------- Corte ---------- */

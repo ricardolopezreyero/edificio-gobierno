@@ -4,7 +4,10 @@
     "version": "2.0",
     "actualizado": "2026-11-08",
     "autor": "Ricardo López Reyero",
-    "firma": { "k": "EYE", "rev": 181218 },
+    "firma": {
+      "k": "EYE",
+      "rev": 181218
+    },
     "fuente_narrativa": "PROYECTO.md",
     "unidades": "metros salvo sufijo: _m2, _ha, _min, _h, _kv, _mw, _gwh, _mwh, _m3, _usd_m (millones de dólares)",
     "ejes": "x = oriente (+) / poniente (−); z = sur (+) / norte (−); y = altura. Origen: centro del edificio a nivel de calle",
@@ -17,41 +20,215 @@
       "Antes de publicar corre `node modelo/validar.mjs`: revisa invariantes y imprime los derivados"
     ],
     "cambios": [
-      { "fecha": "2026-11-07", "que": "v1: brief, proyecto maestro y primeros números" },
-      { "fecha": "2026-11-07", "que": "modelo 3D; arquitectura (basamento, zaguanes, torres, greca, remate); Casa de 11 + 7 m con linterna; teatros con foyer y restaurante" },
-      { "fecha": "2026-11-08", "que": "Salón de Eventos, bodegas, cabinas, cuartos de máquinas; Casa v2; baños; elevadores por zonas; Gran Estación; bandas; estacionamiento" },
-      { "fecha": "2026-11-08", "que": "v2 del esquema: dominios, emplazamientos, derivados calculados, validador" }
+      {
+        "fecha": "2026-11-07",
+        "que": "v1: brief, proyecto maestro y primeros números"
+      },
+      {
+        "fecha": "2026-11-07",
+        "que": "modelo 3D; arquitectura (basamento, zaguanes, torres, greca, remate); Casa de 11 + 7 m con linterna; teatros con foyer y restaurante"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "Salón de Eventos, bodegas, cabinas, cuartos de máquinas; Casa v2; baños; elevadores por zonas; Gran Estación; bandas; estacionamiento"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "v2 del esquema: dominios, emplazamientos, derivados calculados, validador"
+      },
+      {
+        "fecha": "2026-11-08",
+        "que": "El Cuartel con C4 por fuerza, C5, Cuarto de Guerra y polvorín; veredas en malla de 111 m con formato de juntas caminando; plan de siembra; jardineras, manchas de flor y macetas"
+      }
     ]
   },
-
   "modulo_m": 11.1,
-
   "terreno": {
     "lado_m": 999,
     "celdas_por_lado": 3,
-    "anillo_vial": { "ancho_m": 24 },
-    "plazas": { "lado_m": 99, "material": "tezontle", "jacarandas_por_plaza": 40 },
-    "bosque": { "arboles_estimados": [15000, 20000], "neto_ha": 78, "malla_siembra_m": 8.2, "desorden_m": 3.2, "margen_sin_arboles_m": 6 },
-    "senderos_esquina": { "ancho_m": 11, "largo_m": 333, "bandas": { "cantidad": 2, "largo_m": 150, "ancho_m": 2, "velocidad_ms": 0.75 }, "tiempo_min": 2.5 },
+    "anillo_vial": {
+      "ancho_m": 24
+    },
+    "plazas": {
+      "lado_m": 99,
+      "material": "tezontle",
+      "jacarandas_por_plaza": 40
+    },
+    "bosque": {
+      "arboles_estimados": [
+        15000,
+        20000
+      ],
+      "neto_ha": 78,
+      "malla_siembra_m": 8.2,
+      "desorden_m": 3.2,
+      "margen_sin_arboles_m": 6
+    },
+    "senderos_esquina": {
+      "ancho_m": 11,
+      "largo_m": 333,
+      "bandas": {
+        "cantidad": 2,
+        "largo_m": 150,
+        "ancho_m": 2,
+        "velocidad_ms": 0.75
+      },
+      "tiempo_min": 2.5
+    },
     "puertas": [
-      { "id": "norte", "nombre": "Puerta Norte", "descripcion": "Plaza de llegada principal: Gran Estación de Metro y Tren, Rampa Norte con bandas, Casa del Ciudadano Norte y jacarandas moradas en marzo." },
-      { "id": "sur", "nombre": "Puerta Sur", "descripcion": "Plaza del Teatro 999 y del Salón de Eventos, abiertos a la ciudad." },
-      { "id": "oriente", "nombre": "Puerta Oriente", "descripcion": "Prensa y visitas oficiales. Sale el sol: la puerta de las noticias." },
-      { "id": "poniente", "nombre": "Puerta Poniente", "descripcion": "Deportes al aire libre, logística y vivero." }
+      {
+        "id": "norte",
+        "nombre": "Puerta Norte",
+        "descripcion": "Plaza de llegada principal: Gran Estación de Metro y Tren, Rampa Norte con bandas, Casa del Ciudadano Norte y jacarandas moradas en marzo."
+      },
+      {
+        "id": "sur",
+        "nombre": "Puerta Sur",
+        "descripcion": "Plaza del Teatro 999 y del Salón de Eventos, abiertos a la ciudad."
+      },
+      {
+        "id": "oriente",
+        "nombre": "Puerta Oriente",
+        "descripcion": "Prensa y visitas oficiales. Sale el sol: la puerta de las noticias."
+      },
+      {
+        "id": "poniente",
+        "nombre": "Puerta Poniente",
+        "descripcion": "Deportes al aire libre, logística y vivero."
+      }
     ],
     "celdas": [
-      { "id": "centro", "ij": [0, 0], "contenido": ["edificio", "patio", "casa_de_decisiones", "teatro_333"] },
-      { "id": "norte", "ij": [0, -1], "contenido": ["plaza_norte", "estacion", "rampa_norte", "casa_del_ciudadano_norte"] },
-      { "id": "sur", "ij": [0, 1], "contenido": ["plaza_sur", "teatro_999", "salon_de_eventos", "bodegas_sur", "estacionamiento_sur"] },
-      { "id": "oriente", "ij": [1, 0], "contenido": ["plaza_oriente", "helipuerto", "energia"] },
-      { "id": "poniente", "ij": [-1, 0], "contenido": ["plaza_poniente", "canchas", "rampa_logistica", "vivero"] },
-      { "id": "esquina_ne", "ij": [1, -1], "contenido": ["bosque", "estacionamiento_esquina"] },
-      { "id": "esquina_se", "ij": [1, 1], "contenido": ["bosque", "estacionamiento_esquina"] },
-      { "id": "esquina_so", "ij": [-1, 1], "contenido": ["bosque", "estacionamiento_esquina"] },
-      { "id": "esquina_no", "ij": [-1, -1], "contenido": ["bosque", "estacionamiento_esquina"] }
-    ]
+      {
+        "id": "centro",
+        "ij": [
+          0,
+          0
+        ],
+        "contenido": [
+          "edificio",
+          "patio",
+          "casa_de_decisiones",
+          "teatro_333"
+        ]
+      },
+      {
+        "id": "norte",
+        "ij": [
+          0,
+          -1
+        ],
+        "contenido": [
+          "plaza_norte",
+          "estacion",
+          "rampa_norte",
+          "casa_del_ciudadano_norte"
+        ]
+      },
+      {
+        "id": "sur",
+        "ij": [
+          0,
+          1
+        ],
+        "contenido": [
+          "plaza_sur",
+          "teatro_999",
+          "salon_de_eventos",
+          "bodegas_sur",
+          "estacionamiento_sur"
+        ]
+      },
+      {
+        "id": "oriente",
+        "ij": [
+          1,
+          0
+        ],
+        "contenido": [
+          "plaza_oriente",
+          "cuartel",
+          "polvorin",
+          "energia"
+        ]
+      },
+      {
+        "id": "poniente",
+        "ij": [
+          -1,
+          0
+        ],
+        "contenido": [
+          "plaza_poniente",
+          "canchas",
+          "rampa_logistica",
+          "vivero"
+        ]
+      },
+      {
+        "id": "esquina_ne",
+        "ij": [
+          1,
+          -1
+        ],
+        "contenido": [
+          "bosque",
+          "estacionamiento_esquina"
+        ]
+      },
+      {
+        "id": "esquina_se",
+        "ij": [
+          1,
+          1
+        ],
+        "contenido": [
+          "bosque",
+          "estacionamiento_esquina"
+        ]
+      },
+      {
+        "id": "esquina_so",
+        "ij": [
+          -1,
+          1
+        ],
+        "contenido": [
+          "bosque",
+          "estacionamiento_esquina"
+        ]
+      },
+      {
+        "id": "esquina_no",
+        "ij": [
+          -1,
+          -1
+        ],
+        "contenido": [
+          "bosque",
+          "estacionamiento_esquina"
+        ]
+      }
+    ],
+    "veredas": {
+      "malla_m": 111,
+      "extension_lineas": 4,
+      "ancho_m": 2.2,
+      "material": "tepetate",
+      "postes_en_cruces": true,
+      "bancas_cada_m": 333,
+      "luz_alto_m": 3,
+      "formato": {
+        "cuadra_m": 111,
+        "cuadra_min": 1.4,
+        "junta_11_min": "dos cuadras de ida y dos de vuelta (444 m)",
+        "circuito_11_min": "una manzana de 2 × 2 cuadras (888 m)",
+        "circuito_22_min": "2 × 4 cuadras",
+        "circuito_33_min": "la vuelta a una celda completa"
+      },
+      "frutales_cada_m": 11.1,
+      "nota": "misma malla de 111 m que los patios de luz; cada cruce tiene nombre (lado + número) para citar una junta caminando"
+    }
   },
-
   "edificio": {
     "geometria": {
       "lado_m": 333,
@@ -60,94 +237,372 @@
       "altura_pb_m": 11,
       "altura_piso_m": 4.5,
       "altura_libre_m": 3.6,
-      "pisos_tecnicos": [11, 22],
+      "pisos_tecnicos": [
+        11,
+        22
+      ],
       "entrepiso_tecnico_m": 2.2,
-      "pisos_refugio": [8, 17, 25],
-      "reticula": { "modulos_por_lado": 30, "modulos_fondo": 3 }
+      "pisos_refugio": [
+        8,
+        17,
+        25
+      ],
+      "reticula": {
+        "modulos_por_lado": 30,
+        "modulos_fondo": 3
+      }
     },
     "personas": {
       "total": 30000,
       "operacion_de_la_casa": 3000,
       "visitantes_dia_max": 10000,
       "por_piso": [
-        { "pisos": [0, 3], "uso": "publico", "personas": 0 },
-        { "pisos": [4, 13], "uso": "operacion", "personas": 1500 },
-        { "pisos": [14, 23], "uso": "mandos", "personas": 1000 },
-        { "pisos": [24, 33], "uso": "direccion", "personas": 500 }
+        {
+          "pisos": [
+            0,
+            3
+          ],
+          "uso": "publico",
+          "personas": 0
+        },
+        {
+          "pisos": [
+            4,
+            13
+          ],
+          "uso": "operacion",
+          "personas": 1500
+        },
+        {
+          "pisos": [
+            14,
+            23
+          ],
+          "uso": "mandos",
+          "personas": 1000
+        },
+        {
+          "pisos": [
+            24,
+            33
+          ],
+          "uso": "direccion",
+          "personas": 500
+        }
       ]
     },
     "usos": [
-      { "id": "publico", "pisos": [0, 3], "nombre": "Público y servicios", "color": "#d9a441" },
-      { "id": "operacion", "pisos": [4, 13], "nombre": "Operación · 1,500 por piso", "color": "#3a7bd5" },
-      { "id": "mandos", "pisos": [14, 23], "nombre": "Mandos medios · 1,000 por piso", "color": "#3fb27f" },
-      { "id": "direccion", "pisos": [24, 29], "nombre": "Direcciones · 500 por piso", "color": "#9b6fd6" },
-      { "id": "fabrica", "pisos": [30, 31], "nombre": "La Fábrica · ingeniería", "color": "#e66767" },
-      { "id": "gabinete", "pisos": [32, 33], "nombre": "Gabinete y coordinadores", "color": "#b08d57" }
+      {
+        "id": "publico",
+        "pisos": [
+          0,
+          3
+        ],
+        "nombre": "Público y servicios",
+        "color": "#d9a441"
+      },
+      {
+        "id": "operacion",
+        "pisos": [
+          4,
+          13
+        ],
+        "nombre": "Operación · 1,500 por piso",
+        "color": "#3a7bd5"
+      },
+      {
+        "id": "mandos",
+        "pisos": [
+          14,
+          23
+        ],
+        "nombre": "Mandos medios · 1,000 por piso",
+        "color": "#3fb27f"
+      },
+      {
+        "id": "direccion",
+        "pisos": [
+          24,
+          29
+        ],
+        "nombre": "Direcciones · 500 por piso",
+        "color": "#9b6fd6"
+      },
+      {
+        "id": "fabrica",
+        "pisos": [
+          30,
+          31
+        ],
+        "nombre": "La Fábrica · ingeniería",
+        "color": "#e66767"
+      },
+      {
+        "id": "gabinete",
+        "pisos": [
+          32,
+          33
+        ],
+        "nombre": "Gabinete y coordinadores",
+        "color": "#b08d57"
+      }
     ],
     "sectores": [
-      { "id": "norte", "nombre": "Personas", "secretarias": ["Bienestar", "Educación", "Salud", "Cultura", "Mujeres", "Trabajo"] },
-      { "id": "oriente", "nombre": "Orden", "secretarias": ["Gobernación", "Seguridad", "Relaciones Exteriores", "Defensa y Marina (enlaces)", "Función Pública"] },
-      { "id": "sur", "nombre": "Economía", "secretarias": ["Hacienda", "Economía", "Agricultura", "Turismo", "Ciencia y Tecnología"] },
-      { "id": "poniente", "nombre": "Territorio", "secretarias": ["Infraestructura", "Comunicaciones y Transportes", "Energía", "Medio Ambiente", "Desarrollo Urbano"] }
+      {
+        "id": "norte",
+        "nombre": "Personas",
+        "secretarias": [
+          "Bienestar",
+          "Educación",
+          "Salud",
+          "Cultura",
+          "Mujeres",
+          "Trabajo"
+        ]
+      },
+      {
+        "id": "oriente",
+        "nombre": "Orden",
+        "secretarias": [
+          "Gobernación",
+          "Seguridad",
+          "Relaciones Exteriores",
+          "Defensa y Marina (enlaces)",
+          "Función Pública"
+        ]
+      },
+      {
+        "id": "sur",
+        "nombre": "Economía",
+        "secretarias": [
+          "Hacienda",
+          "Economía",
+          "Agricultura",
+          "Turismo",
+          "Ciencia y Tecnología"
+        ]
+      },
+      {
+        "id": "poniente",
+        "nombre": "Territorio",
+        "secretarias": [
+          "Infraestructura",
+          "Comunicaciones y Transportes",
+          "Energía",
+          "Medio Ambiente",
+          "Desarrollo Urbano"
+        ]
+      }
     ],
     "esquinas": [
-      { "id": "ne", "ij": [1, -1], "nombre": "Nororiente", "sectores": ["norte", "oriente"], "extra": "Mirador 33 en la linterna" },
-      { "id": "se", "ij": [1, 1], "nombre": "Suroriente", "sectores": ["oriente", "sur"] },
-      { "id": "so", "ij": [-1, 1], "nombre": "Surponiente", "sectores": ["sur", "poniente"] },
-      { "id": "no", "ij": [-1, -1], "nombre": "Norponiente", "sectores": ["poniente", "norte"] }
+      {
+        "id": "ne",
+        "ij": [
+          1,
+          -1
+        ],
+        "nombre": "Nororiente",
+        "sectores": [
+          "norte",
+          "oriente"
+        ],
+        "extra": "Mirador 33 en la linterna"
+      },
+      {
+        "id": "se",
+        "ij": [
+          1,
+          1
+        ],
+        "nombre": "Suroriente",
+        "sectores": [
+          "oriente",
+          "sur"
+        ]
+      },
+      {
+        "id": "so",
+        "ij": [
+          -1,
+          1
+        ],
+        "nombre": "Surponiente",
+        "sectores": [
+          "sur",
+          "poniente"
+        ]
+      },
+      {
+        "id": "no",
+        "ij": [
+          -1,
+          -1
+        ],
+        "nombre": "Norponiente",
+        "sectores": [
+          "poniente",
+          "norte"
+        ]
+      }
     ],
     "fachada": {
       "piel": "recinto negro y cantera gris de 60 mm sobre paneles UHPC, ventilada, sin silicón expuesto",
       "vidrio": "triple, 3.6 m de alto, electrocrómico en Sur, Oriente y Poniente",
       "lamas": "bronce vertical; más cerradas en Oriente y Poniente; alero profundo en Sur",
-      "pilares": { "cada_m": 11.1, "doble_cada_m": 33.3, "ancho_m": 0.9, "ancho_doble_m": 1.8 }
+      "pilares": {
+        "cada_m": 11.1,
+        "doble_cada_m": 33.3,
+        "ancho_m": 0.9,
+        "ancho_doble_m": 1.8
+      }
     },
     "arquitectura": {
-      "basamento": { "pisos": [0, 3], "material": "tezontle con marcos de cantera; el vidrio empieza en el piso 4" },
-      "zaguanes": { "cantidad": 4, "ancho_m": 11.1, "alto_m": 11, "portal_alto_m": 20, "jamba_m": 5 },
-      "torres_esquina": { "cantidad": 4, "modulos": 3, "vuelo_m": 5.5, "sobre_techo_m": 11, "linterna_alto_m": 6 },
-      "greca": { "pisos": [24, 31], "modulos": [3, 26], "regla": "(modulo + piso) % 3 == 0", "saliente_m": 2.2, "marco": "bronce" },
-      "remate": { "pisos": [32, 33], "saliente_m": 2.2, "cornisa_vuelo_m": 4, "material": "bronce" },
+      "basamento": {
+        "pisos": [
+          0,
+          3
+        ],
+        "material": "tezontle con marcos de cantera; el vidrio empieza en el piso 4"
+      },
+      "zaguanes": {
+        "cantidad": 4,
+        "ancho_m": 11.1,
+        "alto_m": 11,
+        "portal_alto_m": 20,
+        "jamba_m": 5
+      },
+      "torres_esquina": {
+        "cantidad": 4,
+        "modulos": 3,
+        "vuelo_m": 5.5,
+        "sobre_techo_m": 11,
+        "linterna_alto_m": 6
+      },
+      "greca": {
+        "pisos": [
+          24,
+          31
+        ],
+        "modulos": [
+          3,
+          26
+        ],
+        "regla": "(modulo + piso) % 3 == 0",
+        "saliente_m": 2.2,
+        "marco": "bronce"
+      },
+      "remate": {
+        "pisos": [
+          32,
+          33
+        ],
+        "saliente_m": 2.2,
+        "cornisa_vuelo_m": 4,
+        "material": "bronce"
+      },
       "marcos_parques_cielo_m": 1.4,
-      "no": ["curvas o formas paramétricas", "salientes al azar", "escalonar como pirámide", "lados distintos", "voladizos > 1 módulo", "ornamento aplicado", "muro ciego arriba"]
+      "no": [
+        "curvas o formas paramétricas",
+        "salientes al azar",
+        "escalonar como pirámide",
+        "lados distintos",
+        "voladizos > 1 módulo",
+        "ornamento aplicado",
+        "muro ciego arriba"
+      ]
     },
     "nucleos": {
       "cantidad": 8,
       "esquina_lado_m": 22.2,
-      "medio_lado": { "ancho_m": 22.2, "posicion": "centrado en el borde del vano del parque de cielo (+49.5 m)" },
+      "medio_lado": {
+        "ancho_m": 22.2,
+        "posicion": "centrado en el borde del vano del parque de cielo (+49.5 m)"
+      },
       "esquema": "tres zonas de 11 pisos con lobbies en 11, 22 y 33",
-      "lobbies": [0, 11, 17, 22, 33],
-      "por_nucleo": { "lanzaderas_doble_cabina": 6, "locales_por_zona": 4, "zonas": 3, "servicio": 2, "evacuacion": 2, "escaleras": 2, "bloques_bano": 2 },
+      "lobbies": [
+        0,
+        11,
+        17,
+        22,
+        33
+      ],
+      "por_nucleo": {
+        "lanzaderas_doble_cabina": 6,
+        "locales_por_zona": 4,
+        "zonas": 3,
+        "servicio": 2,
+        "evacuacion": 2,
+        "escaleras": 2,
+        "bloques_bano": 2
+      },
       "escalera_abierta_cada_pisos": 3,
-      "metas": { "subir_todos_min": 26, "espera_max_s": 40, "cualquier_piso_s": 90 }
+      "metas": {
+        "subir_todos_min": 26,
+        "espera_max_s": 40,
+        "cualquier_piso_s": 90
+      }
     },
     "parques_de_cielo": {
-      "pisos": [16, 17, 18],
+      "pisos": [
+        16,
+        17,
+        18
+      ],
       "ancho_m": 99,
       "sustrato_m": 1.2,
       "cortaviento_m": 2.4,
-      "columnas": { "lineas_ancho": 9, "lineas_fondo": 4, "radio_m": 0.7 },
+      "columnas": {
+        "lineas_ancho": 9,
+        "lineas_fondo": 4,
+        "radio_m": 0.7
+      },
       "arboles_por_parque": 14,
-      "extras": { "poniente": "muro de escalada de 13.5 m" }
+      "extras": {
+        "poniente": "muro de escalada de 13.5 m"
+      }
     },
     "azotea": {
       "pista_m": 1200,
       "paneles_m2": 24000,
       "paneles_mwp": 5,
       "paneles_filas": 2,
-      "mirador_33": { "en": "torre_ne", "asientos": 150 },
-      "helipuerto": { "en": "techo del lado sur, junto a la torre SE", "radio_m": 13 },
+      "mirador_33": {
+        "en": "torre_ne",
+        "asientos": 150
+      },
+      "helipuerto": {
+        "en": "techo del lado sur, junto a la torre SE",
+        "radio_m": 13
+      },
       "calistenia": "esquina SO"
     }
   },
-
   "patio": {
-    "agua": { "ancho_m": 16.5, "profundidad_m": 0.3, "arboles": "ahuehuetes en la orilla", "nota": "anillo alrededor de la Casa; las calzadas lo cruzan como puentes" },
-    "calzadas": { "cantidad": 4, "ancho_m": 11.1, "pergola_alto_m": 5.6, "arboles": "colorines" },
-    "bosquecillos": { "intentos": 900, "claros": 0.45, "especies": { "encino": 0.7, "madrono": 0.3 } },
-    "ahuehuetes": { "por_lado": 13, "separacion_del_agua_m": 4 }
+    "agua": {
+      "ancho_m": 16.5,
+      "profundidad_m": 0.3,
+      "arboles": "ahuehuetes en la orilla",
+      "nota": "anillo alrededor de la Casa; las calzadas lo cruzan como puentes"
+    },
+    "calzadas": {
+      "cantidad": 4,
+      "ancho_m": 11.1,
+      "pergola_alto_m": 5.6,
+      "arboles": "colorines"
+    },
+    "bosquecillos": {
+      "intentos": 900,
+      "claros": 0.45,
+      "especies": {
+        "encino": 0.7,
+        "madrono": 0.3
+      }
+    },
+    "ahuehuetes": {
+      "por_lado": 13,
+      "separacion_del_agua_m": 4
+    }
   },
-
   "casa_de_decisiones": {
     "lado_m": 99,
     "altura_planta_baja_m": 11,
@@ -163,321 +618,2629 @@
       "pasillo_preparacion_m": 3.3,
       "antesala_m2": 20,
       "cuarto_resultado_m2": 10,
-      "patio_luz": { "lado_m": 5, "arbol": "Magnolia mexicana (yoloxóchitl)" },
+      "patio_luz": {
+        "lado_m": 5,
+        "arbol": "Magnolia mexicana (yoloxóchitl)"
+      },
       "tablero": [
-        ["Vicepresidencia", "Sala Norte (33)", "Sala NE (16)"],
-        ["Sala Poniente (24)", "Oficina del Presidente", "Sala Oriente (24)"],
-        ["Sala SP (16)", "Sala Sur (33)", "Secretaría"]
+        [
+          "Vicepresidencia",
+          "Sala Norte (33)",
+          "Sala NE (16)"
+        ],
+        [
+          "Sala Poniente (24)",
+          "Oficina del Presidente",
+          "Sala Oriente (24)"
+        ],
+        [
+          "Sala SP (16)",
+          "Sala Sur (33)",
+          "Secretaría"
+        ]
       ]
     },
-    "linterna": { "lado_m": 11.1, "altura_total_m": 22, "material": "vidrio, bronce y obsidiana; abierta al cielo por el patio de la magnolia" },
-    "portales": { "altura_m": 11, "fondo_m": 3.3, "columnas_por_lado": 10, "radio_columna_m": 0.8 },
-    "salas_espera": { "cantidad": 4, "m2": 60, "medida_xz": [22, 14], "alto_m": 6.5, "separacion_del_agua_m": 9, "nota": "al final de cada calzada, a la orilla del agua; ahí está la esclusa" },
-    "terraza_presidente": { "lado_m": 33.3, "barandal_m": 1.1 },
-    "flujo": { "un_sentido": true, "turno_min": 11, "decisiones_dia_meta": 33, "muro_decision_m": 11 },
+    "linterna": {
+      "lado_m": 11.1,
+      "altura_total_m": 22,
+      "material": "vidrio, bronce y obsidiana; abierta al cielo por el patio de la magnolia"
+    },
+    "portales": {
+      "altura_m": 11,
+      "fondo_m": 3.3,
+      "columnas_por_lado": 10,
+      "radio_columna_m": 0.8
+    },
+    "salas_espera": {
+      "cantidad": 4,
+      "m2": 60,
+      "medida_xz": [
+        22,
+        14
+      ],
+      "alto_m": 6.5,
+      "separacion_del_agua_m": 9,
+      "nota": "al final de cada calzada, a la orilla del agua; ahí está la esclusa"
+    },
+    "terraza_presidente": {
+      "lado_m": 33.3,
+      "barandal_m": 1.1
+    },
+    "flujo": {
+      "un_sentido": true,
+      "turno_min": 11,
+      "decisiones_dia_meta": 33,
+      "muro_decision_m": 11
+    },
     "niveles": {
-      "planta_baja": ["suite", "Sala del Gabinete 15 × 15 (33 asientos)", "Sala de Situación", "Sala de Enlace 40 m²", "Sala de Prensa 200 + estudio TV", "salón de recepciones 600 m²", "capilla de silencio"],
-      "planta_alta": ["300 personas de Presidencia", "Sala de Datos (30 analistas)", "biblioteca", "Comedor de Estado 99", "casa privada: recámara, baño, gimnasio, comedor de 8, consultorio 24 h"],
-      "sotano": ["túnel a 4 núcleos y S1", "refugio", "cocina de Estado", "bodega 300 m²", "red"]
+      "planta_baja": [
+        "suite",
+        "Sala del Gabinete 15 × 15 (33 asientos)",
+        "Sala de Situación",
+        "Sala de Enlace 40 m²",
+        "Sala de Prensa 200 + estudio TV",
+        "salón de recepciones 600 m²",
+        "capilla de silencio"
+      ],
+      "planta_alta": [
+        "300 personas de Presidencia",
+        "Sala de Datos (30 analistas)",
+        "biblioteca",
+        "Comedor de Estado 99",
+        "casa privada: recámara, baño, gimnasio, comedor de 8, consultorio 24 h"
+      ],
+      "sotano": [
+        "túnel a 4 núcleos y S1",
+        "refugio",
+        "cocina de Estado",
+        "bodega 300 m²",
+        "red"
+      ]
     },
     "banos_de_estado": "uno por sala, 8 m²"
   },
-
   "sotanos": {
     "huella_lado_m": 333,
     "niveles": [
-      { "id": "S1", "alto_m": 6.0, "uso": "llegada: 33 rutas eléctricas, túnel de Estado, 10,000 bicis, carga, cocina central, residuos", "color": "#8a7a5a" },
-      { "id": "S2", "alto_m": 3.3, "uso": "estacionamiento visitas y directivos (3,700)", "color": "#6b6b70" },
-      { "id": "S3", "alto_m": 3.3, "uso": "estacionamiento visitas y directivos (3,700)", "color": "#6b6b70" },
-      { "id": "S4", "alto_m": 4.5, "uso": "archivo activo, bodegas, talleres", "color": "#7a6a4a" },
-      { "id": "S5", "alto_m": 5.0, "uso": "planta: cisternas 100,000 m³, PTAR, chillers", "color": "#3a6a8a" },
-      { "id": "S6", "alto_m": 5.0, "uso": "planta: baterías 200 MWh, generadores 72 h, subestación interior", "color": "#3a6a8a" },
-      { "id": "S7", "alto_m": 4.5, "uso": "Centro de Continuidad de Gobierno: 333 personas, 33 días", "color": "#a05a3a" },
-      { "id": "S8", "alto_m": 4.5, "uso": "Centro de operaciones: seguridad, bomberos, telecom", "color": "#5a5a9a" },
-      { "id": "S9", "alto_m": 4.5, "uso": "soporte de La Bóveda: eléctrico, UPS, bombas", "color": "#4a7a6a" },
-      { "id": "S10-S11", "alto_m": 9.0, "uso": "La Bóveda: 4 cuadrantes, 50 → 250 MW", "color": "#1e3a6a", "boveda": true }
+      {
+        "id": "S1",
+        "alto_m": 6,
+        "uso": "llegada: 33 rutas eléctricas, túnel de Estado, 10,000 bicis, carga, cocina central, residuos",
+        "color": "#8a7a5a"
+      },
+      {
+        "id": "S2",
+        "alto_m": 3.3,
+        "uso": "estacionamiento visitas y directivos (3,700)",
+        "color": "#6b6b70"
+      },
+      {
+        "id": "S3",
+        "alto_m": 3.3,
+        "uso": "estacionamiento visitas y directivos (3,700)",
+        "color": "#6b6b70"
+      },
+      {
+        "id": "S4",
+        "alto_m": 4.5,
+        "uso": "archivo activo, bodegas, talleres",
+        "color": "#7a6a4a"
+      },
+      {
+        "id": "S5",
+        "alto_m": 5,
+        "uso": "planta: cisternas 100,000 m³, PTAR, chillers",
+        "color": "#3a6a8a"
+      },
+      {
+        "id": "S6",
+        "alto_m": 5,
+        "uso": "planta: baterías 200 MWh, generadores 72 h, subestación interior",
+        "color": "#3a6a8a"
+      },
+      {
+        "id": "S7",
+        "alto_m": 4.5,
+        "uso": "Centro de Continuidad de Gobierno: 333 personas, 33 días",
+        "color": "#a05a3a"
+      },
+      {
+        "id": "S8",
+        "alto_m": 4.5,
+        "uso": "Centro de operaciones: seguridad, bomberos, telecom",
+        "color": "#5a5a9a"
+      },
+      {
+        "id": "S9",
+        "alto_m": 4.5,
+        "uso": "soporte de La Bóveda: eléctrico, UPS, bombas",
+        "color": "#4a7a6a"
+      },
+      {
+        "id": "S10-S11",
+        "alto_m": 9,
+        "uso": "La Bóveda: 4 cuadrantes, 50 → 250 MW",
+        "color": "#1e3a6a",
+        "boveda": true
+      }
     ],
-    "boveda": { "cuadrantes": 4, "mw_inicial": 50, "mw_max": 250, "gemelas": ["Querétaro", "Mérida"], "calor_reusado": "alberca, regaderas, comedores" }
+    "boveda": {
+      "cuadrantes": 4,
+      "mw_inicial": 50,
+      "mw_max": 250,
+      "gemelas": [
+        "Querétaro",
+        "Mérida"
+      ],
+      "calor_reusado": "alberca, regaderas, comedores"
+    }
   },
-
   "estacionamiento": {
     "m2_por_cajon": 30,
-    "cajon_m": [2.7, 5.5],
+    "cajon_m": [
+      2.7,
+      5.5
+    ],
     "pasillo_m": 7,
     "libre_m": 3.3,
-    "esquinas": { "niveles": 2, "cajones": 29500, "patios_de_luz": { "por_esquina": 9, "malla_m": 111, "lado_m": 11.1, "distancia_max_m": 80 }, "rampas": { "entradas": 2, "salidas": 2, "carriles": 6, "coches_hora": 7200, "desde_centro_celda_m": 110, "medida_xz": [40, 70] } },
-    "bajo_edificio": { "niveles": ["S2", "S3"], "cajones": 7400 },
-    "plaza_sur": { "cajones": 2000 },
+    "esquinas": {
+      "niveles": 2,
+      "cajones": 29500,
+      "patios_de_luz": {
+        "por_esquina": 9,
+        "malla_m": 111,
+        "lado_m": 11.1,
+        "distancia_max_m": 80
+      },
+      "rampas": {
+        "entradas": 2,
+        "salidas": 2,
+        "carriles": 6,
+        "coches_hora": 7200,
+        "desde_centro_celda_m": 110,
+        "medida_xz": [
+          40,
+          70
+        ]
+      }
+    },
+    "bajo_edificio": {
+      "niveles": [
+        "S2",
+        "S3"
+      ],
+      "cajones": 7400
+    },
+    "plaza_sur": {
+      "cajones": 2000
+    },
     "motos": 3000,
     "bicis": 10000,
     "margen": 0.3,
     "sin_barreras": true,
     "cajon_asignado": true,
-    "carga_electrica": { "precableado": 1.0, "cargadores": 0.33 },
+    "carga_electrica": {
+      "precableado": 1,
+      "cargadores": 0.33
+    },
     "convertible": true
   },
-
   "movilidad": {
     "estacion": {
       "nombre": "Gran Estación de Metro y Tren Suburbano",
-      "vestibulo_xz": [240, 60],
+      "vestibulo_xz": [
+        240,
+        60
+      ],
       "alto_m": 22,
       "doble_techo": true,
-      "cafeterias": { "cantidad": 4, "asientos": 120 },
-      "andenes": { "metro_m": -12, "tren_m": -18 },
+      "cafeterias": {
+        "cantidad": 4,
+        "asientos": 120
+      },
+      "andenes": {
+        "metro_m": -12,
+        "tren_m": -18
+      },
       "rutas_electricas": 33
     },
-    "rampa_norte": { "largo_m": 135, "ancho_m": 22, "bandas": 4, "ancho_banda_m": 2, "velocidad_ms": 0.75 },
+    "rampa_norte": {
+      "largo_m": 135,
+      "ancho_m": 22,
+      "bandas": 4,
+      "ancho_banda_m": 2,
+      "velocidad_ms": 0.75
+    },
     "regla_bandas": "banda donde el flujo es masivo, recto y > 100 m; escalera eléctrica o elevador al cambiar de nivel; carrito para quien no camina; nunca dentro de los pisos",
-    "tiempos_min": { "anden_a_escritorio": 10, "coche_a_escritorio": 12, "escritorio_a_casa": 5, "cualquier_punto": 9, "decision_a_dueno": 11, "evacuar": 33 },
-    "meta_sin_coche": { "fraccion": 0.5, "anio": 5 }
+    "tiempos_min": {
+      "anden_a_escritorio": 10,
+      "coche_a_escritorio": 12,
+      "escritorio_a_casa": 5,
+      "cualquier_punto": 9,
+      "decision_a_dueno": 11,
+      "evacuar": 33
+    },
+    "meta_sin_coche": {
+      "fraccion": 0.5,
+      "anio": 5
+    }
   },
-
   "recintos": {
-    "teatro_333": { "butacas": 333, "sala_m2": 900, "escenario_xz": [16, 10], "pantalla_xz": [14, 6], "distancia_max_m": 18, "foyer": { "medida_xz": [40, 12], "alto_m": 8 }, "restaurante": { "asientos": 120, "terraza": "hacia el agua de la Casa" }, "cabina_m2": 40, "bodega_m2": 400 },
-    "teatro_999": { "butacas": 999, "sala_m2": 2200, "escenario_xz": [24, 14], "pantalla_xz": [24, 10], "distancia_max_m": 30, "balcon": true, "foso_musicos": 60, "foyer": { "medida_xz": [90, 22], "alto_m": 12 }, "restaurante": { "asientos": 300, "alto_m": 5, "terraza_xz": [110, 16] }, "cabina_m2": 60, "bodega_m2": 1200 },
-    "butaca": { "paso_filas_m": 1.1, "ancho_m": 0.65, "reclinable_grados": 15, "ventilacion_individual": true },
-    "salon_de_eventos": { "medida_xz": [66, 44], "alto_libre_m": 11, "sin_columnas": true, "capacidad": { "de_pie": 2000, "banquete": 1200, "stands_3x3": 100 }, "divisible_en": 3, "cajas_de_piso_cada_m": 5.55, "cabina_m2": 30, "bodega_m2": 800, "galeria": { "largo_m": 25, "ancho_m": 11.1, "alto_m": 7 } },
-    "bodegas": { "casa_m2": 300, "anden_camiones": 4 },
-    "cuartos_de_maquinas": ["S5–S6 planta del edificio", "pisos técnicos 11 y 22", "azotea (elevadores)", "Puerta Oriente (subestación y enfriamiento de La Bóveda)", "bloque de servicio del Sur (999 y Salón)", "loma del 333 y sótano de la Casa", "estación y estacionamientos de esquina"]
-  },
-
-  "servicios": {
-    "salas_de_juntas": { "regla": "una por cada 11 personas", "total_aprox": 2700, "tipos": ["Cabina 2", "Charla 4", "Equipo 8", "Consejo 12", "Mesa 16", "Aula 24", "Sala 33", "Auditorio de piso 99", "Al aire libre", "Situación de sector 24", "Casa de Decisiones"] },
-    "banos": { "bloque_tipo": { "m2": 66, "cabinas_completas": 8, "mingitorios": 4, "accesible": 1, "familiar": 1 }, "bloques_por_piso": 16, "extra_pisos_densos": 4, "lactarios_por_piso": 2, "distancia_max_m": 40, "total_bloques": 600, "total_muebles": 8000, "proporcion": "1 por cada 7 en pisos de 1,500", "semaforo": true, "pasillo_tecnico": true, "limpieza_cada_h": 2, "renovaciones_aire_h": 15 },
-    "comer": { "mercados": { "cantidad": 4, "piso": 17, "asientos": 1200, "puestos": 32, "puesto_33": "cocina de la casa" }, "comedores_pb": { "cantidad": 4, "asientos": 1000 }, "cafes_de_piso": 33, "restaurantes_bosque": 4, "restaurantes_teatros": 2, "mirador_33": 150, "comedor_estado": 99, "cafeterias_estacion": 4, "comidas_dia_cocina_central": 40000 },
-    "gimnasios": [
-      { "n": 1, "nombre": "Alberca 33.3 m", "donde": "PB Sur" },
-      { "n": 2, "nombre": "Fuerza y potencia", "donde": "17 Norte" },
-      { "n": 3, "nombre": "Cardio con cielo", "donde": "17 Sur" },
-      { "n": 4, "nombre": "Funcional y HIIT", "donde": "17 Oriente" },
-      { "n": 5, "nombre": "Yoga, pilates y movilidad", "donde": "17 Poniente" },
-      { "n": 6, "nombre": "Box y artes marciales", "donde": "PB Oriente" },
-      { "n": 7, "nombre": "Muro de escalada 13.5 m", "donde": "parque de cielo Poniente" },
-      { "n": 8, "nombre": "Ciclismo indoor", "donde": "S1" },
-      { "n": 9, "nombre": "Baile y ritmo", "donde": "PB Norte" },
-      { "n": 10, "nombre": "Recuperación (4 nodos)", "donde": "17, uno por lado" },
-      { "n": 11, "nombre": "Pista 1.2 km y calistenia", "donde": "azotea" },
-      { "n": 12, "nombre": "Canchas al aire libre", "donde": "Puerta Poniente" }
+    "teatro_333": {
+      "butacas": 333,
+      "sala_m2": 900,
+      "escenario_xz": [
+        16,
+        10
+      ],
+      "pantalla_xz": [
+        14,
+        6
+      ],
+      "distancia_max_m": 18,
+      "foyer": {
+        "medida_xz": [
+          40,
+          12
+        ],
+        "alto_m": 8
+      },
+      "restaurante": {
+        "asientos": 120,
+        "terraza": "hacia el agua de la Casa"
+      },
+      "cabina_m2": 40,
+      "bodega_m2": 400
+    },
+    "teatro_999": {
+      "butacas": 999,
+      "sala_m2": 2200,
+      "escenario_xz": [
+        24,
+        14
+      ],
+      "pantalla_xz": [
+        24,
+        10
+      ],
+      "distancia_max_m": 30,
+      "balcon": true,
+      "foso_musicos": 60,
+      "foyer": {
+        "medida_xz": [
+          90,
+          22
+        ],
+        "alto_m": 12
+      },
+      "restaurante": {
+        "asientos": 300,
+        "alto_m": 5,
+        "terraza_xz": [
+          110,
+          16
+        ]
+      },
+      "cabina_m2": 60,
+      "bodega_m2": 1200
+    },
+    "butaca": {
+      "paso_filas_m": 1.1,
+      "ancho_m": 0.65,
+      "reclinable_grados": 15,
+      "ventilacion_individual": true
+    },
+    "salon_de_eventos": {
+      "medida_xz": [
+        66,
+        44
+      ],
+      "alto_libre_m": 11,
+      "sin_columnas": true,
+      "capacidad": {
+        "de_pie": 2000,
+        "banquete": 1200,
+        "stands_3x3": 100
+      },
+      "divisible_en": 3,
+      "cajas_de_piso_cada_m": 5.55,
+      "cabina_m2": 30,
+      "bodega_m2": 800,
+      "galeria": {
+        "largo_m": 25,
+        "ancho_m": 11.1,
+        "alto_m": 7
+      }
+    },
+    "bodegas": {
+      "casa_m2": 300,
+      "anden_camiones": 4
+    },
+    "cuartos_de_maquinas": [
+      "S5–S6 planta del edificio",
+      "pisos técnicos 11 y 22",
+      "azotea (elevadores)",
+      "Puerta Oriente (subestación y enfriamiento de La Bóveda)",
+      "bloque de servicio del Sur (999 y Salón)",
+      "loma del 333 y sótano de la Casa",
+      "estación y estacionamientos de esquina"
     ],
-    "guarderias": { "cantidad": 4, "ninos": 333 },
-    "clinica": { "urgencias_24h": true, "enfermerias_en_pisos": [8, 17, 25, 33] },
-    "otros": ["banco y correo", "lavandería, tintorería, sastre, zapatero, barbería", "biblioteca 2,000 m² (piso 17 Norte)", "cuartos de descanso: 11 camas por piso", "capillas de silencio"]
+    "cuartel": {
+      "medida_xz": [
+        110,
+        44
+      ],
+      "pisos": 9,
+      "altura_m": 45,
+      "personas": 1800,
+      "programa": [
+        [
+          "PB",
+          "esclusas, armería de servicio, patio de armas, vehículos blindados"
+        ],
+        [
+          "1–3",
+          "Guardia Nacional y su C4"
+        ],
+        [
+          "4–5",
+          "Fuerzas Armadas (enlace Defensa y Marina) y su C4"
+        ],
+        [
+          "6–7",
+          "policía federal y policía estatal, cada una con su C4"
+        ],
+        [
+          "8",
+          "C5 unificado"
+        ],
+        [
+          "9",
+          "mando y enlace con la Presidencia"
+        ],
+        [
+          "S1",
+          "Cuarto de Guerra 33 × 22 m, búnker; túnel al S7 del edificio y al S1"
+        ],
+        [
+          "S2",
+          "arsenal controlado, cuarto de máquinas, generadores 72 h"
+        ]
+      ],
+      "polvorin": {
+        "m2": 1200,
+        "distancia_cuartel_m": 100,
+        "acceso": "túnel blindado con dos esclusas"
+      },
+      "helipuerto_en_techo": true
+    }
   },
-
+  "servicios": {
+    "salas_de_juntas": {
+      "regla": "una por cada 11 personas",
+      "total_aprox": 2700,
+      "tipos": [
+        "Cabina 2",
+        "Charla 4",
+        "Equipo 8",
+        "Consejo 12",
+        "Mesa 16",
+        "Aula 24",
+        "Sala 33",
+        "Auditorio de piso 99",
+        "Al aire libre",
+        "Situación de sector 24",
+        "Casa de Decisiones"
+      ]
+    },
+    "banos": {
+      "bloque_tipo": {
+        "m2": 66,
+        "cabinas_completas": 8,
+        "mingitorios": 4,
+        "accesible": 1,
+        "familiar": 1
+      },
+      "bloques_por_piso": 16,
+      "extra_pisos_densos": 4,
+      "lactarios_por_piso": 2,
+      "distancia_max_m": 40,
+      "total_bloques": 600,
+      "total_muebles": 8000,
+      "proporcion": "1 por cada 7 en pisos de 1,500",
+      "semaforo": true,
+      "pasillo_tecnico": true,
+      "limpieza_cada_h": 2,
+      "renovaciones_aire_h": 15
+    },
+    "comer": {
+      "mercados": {
+        "cantidad": 4,
+        "piso": 17,
+        "asientos": 1200,
+        "puestos": 32,
+        "puesto_33": "cocina de la casa"
+      },
+      "comedores_pb": {
+        "cantidad": 4,
+        "asientos": 1000
+      },
+      "cafes_de_piso": 33,
+      "restaurantes_bosque": 4,
+      "restaurantes_teatros": 2,
+      "mirador_33": 150,
+      "comedor_estado": 99,
+      "cafeterias_estacion": 4,
+      "comidas_dia_cocina_central": 40000
+    },
+    "gimnasios": [
+      {
+        "n": 1,
+        "nombre": "Alberca 33.3 m",
+        "donde": "PB Sur"
+      },
+      {
+        "n": 2,
+        "nombre": "Fuerza y potencia",
+        "donde": "17 Norte"
+      },
+      {
+        "n": 3,
+        "nombre": "Cardio con cielo",
+        "donde": "17 Sur"
+      },
+      {
+        "n": 4,
+        "nombre": "Funcional y HIIT",
+        "donde": "17 Oriente"
+      },
+      {
+        "n": 5,
+        "nombre": "Yoga, pilates y movilidad",
+        "donde": "17 Poniente"
+      },
+      {
+        "n": 6,
+        "nombre": "Box y artes marciales",
+        "donde": "PB Oriente"
+      },
+      {
+        "n": 7,
+        "nombre": "Muro de escalada 13.5 m",
+        "donde": "parque de cielo Poniente"
+      },
+      {
+        "n": 8,
+        "nombre": "Ciclismo indoor",
+        "donde": "S1"
+      },
+      {
+        "n": 9,
+        "nombre": "Baile y ritmo",
+        "donde": "PB Norte"
+      },
+      {
+        "n": 10,
+        "nombre": "Recuperación (4 nodos)",
+        "donde": "17, uno por lado"
+      },
+      {
+        "n": 11,
+        "nombre": "Pista 1.2 km y calistenia",
+        "donde": "azotea"
+      },
+      {
+        "n": 12,
+        "nombre": "Canchas al aire libre",
+        "donde": "Puerta Poniente"
+      }
+    ],
+    "guarderias": {
+      "cantidad": 4,
+      "ninos": 333
+    },
+    "clinica": {
+      "urgencias_24h": true,
+      "enfermerias_en_pisos": [
+        8,
+        17,
+        25,
+        33
+      ]
+    },
+    "otros": [
+      "banco y correo",
+      "lavandería, tintorería, sastre, zapatero, barbería",
+      "biblioteca 2,000 m² (piso 17 Norte)",
+      "cuartos de descanso: 11 camas por piso",
+      "capillas de silencio"
+    ]
+  },
   "seguridad": {
-    "zonas": ["Z0 bosque", "Z1 vestíbulos y Casas del Ciudadano", "Z2 sector propio", "Z3 otros sectores", "Z4 pisos 32–33, Fábrica, operaciones", "Z5 Casa de Decisiones", "Z6 La Bóveda"],
-    "puerta": { "alto_m": 3.6, "material": "vidrio y bronce", "abre_a_m": 3, "color_ok": "#ffffff", "color_no": "#f0a030", "esclusa_desde": "Z4", "anfitrion_a_m": 20 },
+    "zonas": [
+      "Z0 bosque",
+      "Z1 vestíbulos y Casas del Ciudadano",
+      "Z2 sector propio",
+      "Z3 otros sectores",
+      "Z4 pisos 32–33, Fábrica, operaciones",
+      "Z5 Casa de Decisiones",
+      "Z6 La Bóveda"
+    ],
+    "puerta": {
+      "alto_m": 3.6,
+      "material": "vidrio y bronce",
+      "abre_a_m": 3,
+      "color_ok": "#ffffff",
+      "color_no": "#f0a030",
+      "esclusa_desde": "Z4",
+      "anfitrion_a_m": 20
+    },
     "registros_dias": 90
   },
-
   "vegetacion": {
-    "bosque_dosel": ["Quercus rugosa", "Quercus laurina", "Quercus crassipes", "Pinus montezumae", "Pinus patula", "Cupressus lusitanica", "Fraxinus uhdei", "Alnus acuminata"],
-    "bosque_medio": ["Arbutus xalapensis", "Prunus serotina capuli", "Crataegus mexicana", "Erythrina coralloides", "Buddleja cordata", "Pittocaulon praecox"],
-    "agua": ["Taxodium mucronatum", "Salix bonplandiana"],
-    "flores": ["Dahlia coccinea", "Salvia mexicana", "Salvia leucantha", "Tagetes erecta", "Cosmos bipinnatus", "Agave salmiana", "Opuntia ficus-indica"],
-    "pastos": ["Bouteloua gracilis", "Muhlenbergia spp."],
-    "plazas": ["Jacaranda mimosifolia"],
-    "calzadas": ["Erythrina coralloides"],
-    "parques_de_cielo": ["Quercus rugosa (bajo)", "Fraxinus uhdei (joven)", "Crataegus mexicana", "Magnolia mexicana", "Eysenhardtia polystachya"],
-    "interior": ["Chamaedorea elegans", "Monstera deliciosa", "Beaucarnea recurvata", "Ficus petiolaris", "Tillandsia", "Laelia"],
-    "azotea": ["Sedum", "Echeveria", "Agave"],
-    "muros_verdes": { "por_piso": 8, "medida_xz": [11, 7] },
-    "mezcla_bosque": { "encino": 0.36, "pino": 0.28, "cedro": 0.14, "fresno": 0.12, "madrono": 0.10 },
-    "especies_3d": {
-      "encino": { "nombre": "Encino", "copa": "redonda", "tronco": "#5a4634", "copa_color": "#3e6b36", "forma": [0.4, 4, 9, 7], "max": 6000 },
-      "pino": { "nombre": "Pino", "copa": "cono", "tronco": "#5a4634", "copa_color": "#2b5236", "forma": [0.35, 5, 7, 11], "max": 4500 },
-      "cedro": { "nombre": "Cedro blanco", "copa": "cono", "tronco": "#5a4634", "copa_color": "#355f3a", "forma": [0.3, 3, 4.5, 13], "max": 2500 },
-      "fresno": { "nombre": "Fresno", "copa": "redonda", "tronco": "#6a5444", "copa_color": "#5d8c3c", "forma": [0.35, 5, 8.5, 9], "max": 2500 },
-      "madrono": { "nombre": "Madroño", "copa": "redonda", "tronco": "#8b4a2e", "copa_color": "#497a3a", "forma": [0.3, 3, 6, 5], "max": 2000 },
-      "ahuehuete": { "nombre": "Ahuehuete", "copa": "redonda", "tronco": "#5a4634", "copa_color": "#4f7f45", "forma": [1.2, 9, 15, 16], "max": 80 },
-      "jacaranda": { "nombre": "Jacaranda", "copa": "redonda", "tronco": "#6a5444", "copa_color": "#5a8a45", "forma": [0.35, 4, 9.5, 6], "max": 400 },
-      "colorin": { "nombre": "Colorín", "copa": "redonda", "tronco": "#6a5444", "copa_color": "#4d7a3f", "forma": [0.3, 3, 6, 4.5], "max": 160 },
-      "cielo": { "nombre": "Encino bajo", "copa": "redonda", "tronco": "#5a4634", "copa_color": "#4a7a3a", "forma": [0.3, 2.5, 5.5, 4.5], "max": 80 }
+    "bosque_dosel": [
+      "Quercus rugosa",
+      "Quercus laurina",
+      "Quercus crassipes",
+      "Pinus montezumae",
+      "Pinus patula",
+      "Cupressus lusitanica",
+      "Fraxinus uhdei",
+      "Alnus acuminata"
+    ],
+    "bosque_medio": [
+      "Arbutus xalapensis",
+      "Prunus serotina capuli",
+      "Crataegus mexicana",
+      "Erythrina coralloides",
+      "Buddleja cordata",
+      "Pittocaulon praecox"
+    ],
+    "agua": [
+      "Taxodium mucronatum",
+      "Salix bonplandiana"
+    ],
+    "flores": [
+      "Dahlia coccinea",
+      "Salvia mexicana",
+      "Salvia leucantha",
+      "Tagetes erecta",
+      "Cosmos bipinnatus",
+      "Agave salmiana",
+      "Opuntia ficus-indica"
+    ],
+    "pastos": [
+      "Bouteloua gracilis",
+      "Muhlenbergia spp."
+    ],
+    "plazas": [
+      "Jacaranda mimosifolia"
+    ],
+    "calzadas": [
+      "Erythrina coralloides"
+    ],
+    "parques_de_cielo": [
+      "Quercus rugosa (bajo)",
+      "Fraxinus uhdei (joven)",
+      "Crataegus mexicana",
+      "Magnolia mexicana",
+      "Eysenhardtia polystachya"
+    ],
+    "interior": [
+      "Chamaedorea elegans",
+      "Monstera deliciosa",
+      "Beaucarnea recurvata",
+      "Ficus petiolaris",
+      "Tillandsia",
+      "Laelia"
+    ],
+    "azotea": [
+      "Sedum",
+      "Echeveria",
+      "Agave"
+    ],
+    "muros_verdes": {
+      "por_piso": 8,
+      "medida_xz": [
+        11,
+        7
+      ]
     },
-    "nota_forma": "forma = [radio del tronco, alto del tronco, ancho de copa, alto de copa] en metros"
+    "mezcla_bosque": {
+      "encino": 0.36,
+      "pino": 0.28,
+      "cedro": 0.14,
+      "fresno": 0.12,
+      "madrono": 0.1
+    },
+    "especies_3d": {
+      "encino": {
+        "nombre": "Encino",
+        "copa": "redonda",
+        "tronco": "#5a4634",
+        "copa_color": "#3e6b36",
+        "forma": [
+          0.4,
+          4,
+          9,
+          7
+        ],
+        "max": 6000
+      },
+      "pino": {
+        "nombre": "Pino",
+        "copa": "cono",
+        "tronco": "#5a4634",
+        "copa_color": "#2b5236",
+        "forma": [
+          0.35,
+          5,
+          7,
+          11
+        ],
+        "max": 4500
+      },
+      "cedro": {
+        "nombre": "Cedro blanco",
+        "copa": "cono",
+        "tronco": "#5a4634",
+        "copa_color": "#355f3a",
+        "forma": [
+          0.3,
+          3,
+          4.5,
+          13
+        ],
+        "max": 2500
+      },
+      "fresno": {
+        "nombre": "Fresno",
+        "copa": "redonda",
+        "tronco": "#6a5444",
+        "copa_color": "#5d8c3c",
+        "forma": [
+          0.35,
+          5,
+          8.5,
+          9
+        ],
+        "max": 2500
+      },
+      "madrono": {
+        "nombre": "Madroño",
+        "copa": "redonda",
+        "tronco": "#8b4a2e",
+        "copa_color": "#497a3a",
+        "forma": [
+          0.3,
+          3,
+          6,
+          5
+        ],
+        "max": 2000
+      },
+      "ahuehuete": {
+        "nombre": "Ahuehuete",
+        "copa": "redonda",
+        "tronco": "#5a4634",
+        "copa_color": "#4f7f45",
+        "forma": [
+          1.2,
+          9,
+          15,
+          16
+        ],
+        "max": 80
+      },
+      "jacaranda": {
+        "nombre": "Jacaranda",
+        "copa": "redonda",
+        "tronco": "#6a5444",
+        "copa_color": "#5a8a45",
+        "forma": [
+          0.35,
+          4,
+          9.5,
+          6
+        ],
+        "max": 400
+      },
+      "colorin": {
+        "nombre": "Colorín",
+        "copa": "redonda",
+        "tronco": "#6a5444",
+        "copa_color": "#4d7a3f",
+        "forma": [
+          0.3,
+          3,
+          6,
+          4.5
+        ],
+        "max": 160
+      },
+      "cielo": {
+        "nombre": "Encino bajo",
+        "copa": "redonda",
+        "tronco": "#5a4634",
+        "copa_color": "#4a7a3a",
+        "forma": [
+          0.3,
+          2.5,
+          5.5,
+          4.5
+        ],
+        "max": 80
+      },
+      "frutal": {
+        "nombre": "Tejocote y capulín",
+        "copa": "redonda",
+        "tronco": "#6a5444",
+        "copa_color": "#4f8a3a",
+        "forma": [
+          0.28,
+          2.8,
+          5.5,
+          4.5
+        ],
+        "max": 5000
+      },
+      "maceta": {
+        "nombre": "Palma camedor en maceta",
+        "copa": "redonda",
+        "tronco": "#8a5a3a",
+        "copa_color": "#3f8a4a",
+        "forma": [
+          0.9,
+          1.2,
+          3.2,
+          2.6
+        ],
+        "max": 1200
+      }
+    },
+    "nota_forma": "forma = [radio del tronco, alto del tronco, ancho de copa, alto de copa] en metros",
+    "plan": [
+      {
+        "zona": "esquinas (bosque denso sobre el estacionamiento)",
+        "especies": "encino, pino, cedro blanco",
+        "separacion_m": 8.2,
+        "por_que": "sombra cerrada y silencio; raíces someras sobre 1.5 m de tierra; el pino da la silueta alta"
+      },
+      {
+        "zona": "puertas (bosque claro)",
+        "especies": "fresno, madroño, aile",
+        "separacion_m": 10,
+        "por_que": "copas abiertas para ver la plaza y el edificio; el madroño da color de corteza en invierno"
+      },
+      {
+        "zona": "orillas de las veredas",
+        "especies": "tejocote y capulín (frutales), cada 11.1 m",
+        "separacion_m": 11.1,
+        "por_que": "fruta en otoño para quien camina; los frutales marcan la vereda sin señal"
+      },
+      {
+        "zona": "plazas",
+        "especies": "jacarandas en los bordes, agaves y dalias en jardineras",
+        "separacion_m": 9,
+        "por_que": "morado en marzo contra el tezontle rojo"
+      },
+      {
+        "zona": "calzadas del patio",
+        "especies": "colorines a los lados, salvias y dalias en jardineras corridas",
+        "separacion_m": 11.1,
+        "por_que": "rojo en marzo; flor todo el año a la altura de la mano"
+      },
+      {
+        "zona": "orilla del agua",
+        "especies": "ahuehuetes cada 11 m",
+        "separacion_m": 11,
+        "por_que": "el árbol nacional pisa el agua; raíz que aguanta la humedad"
+      },
+      {
+        "zona": "praderas del patio",
+        "especies": "pastos nativos con manchas de cempasúchil (nov) y cosmos (verano)",
+        "separacion_m": null,
+        "por_que": "color por mes sin riego; las manchas marcan los claros donde se puede sentar"
+      },
+      {
+        "zona": "parques de cielo",
+        "especies": "encino bajo, fresno joven, tejocote, magnolia, palo dulce",
+        "separacion_m": 9,
+        "por_que": "viento y sustrato de 1.2 m: copas compactas, anclaje de raíz"
+      },
+      {
+        "zona": "azotea",
+        "especies": "sedum, echeveria, agave en franjas",
+        "separacion_m": null,
+        "por_que": "casi sin agua a 160 m de altura"
+      },
+      {
+        "zona": "vestíbulos y pisos",
+        "especies": "palma camedor, monstera, pata de elefante en macetas de barro; muros verdes en cada núcleo",
+        "separacion_m": null,
+        "por_que": "sombra y aire interior; especies mexicanas que viven adentro"
+      },
+      {
+        "zona": "Cuartel y polvorín",
+        "especies": "encino y nopal en el montículo",
+        "separacion_m": 8,
+        "por_que": "cubierta densa sobre el polvorín; el nopal no se trepa"
+      }
+    ],
+    "jardineras": {
+      "facade_pb": {
+        "ancho_m": 3,
+        "alto_m": 0.9,
+        "nota": "jardinera corrida al pie de las cuatro fachadas: salvias y dalias"
+      },
+      "plazas": {
+        "por_plaza": 4,
+        "radio_m": 7,
+        "nota": "agaves y dalias en círculo"
+      },
+      "calzadas": {
+        "ancho_m": 1.5,
+        "nota": "corridas a los lados"
+      },
+      "patio_manchas": {
+        "cantidad": 33,
+        "radio_m": [
+          6,
+          12
+        ],
+        "nota": "manchas de flor en las praderas, cambian con el mes"
+      },
+      "macetas": {
+        "en": [
+          "bordes de las plazas",
+          "Rampa Norte",
+          "galería del Salón",
+          "patio de armas"
+        ],
+        "cada_m": 6
+      }
+    }
   },
-
-  "agua": { "lluvia_mm": 800, "captacion_m3_anio": 800000, "consumo_m3_anio": 450000, "cisternas_m3": 100000 },
-  "energia": { "paneles_gwh": 8, "edificio_gwh": 200, "boveda_gwh": [400, 2000], "subestacion_kv": 400, "baterias_mwh": 200, "generadores_h": 72 },
-
+  "agua": {
+    "lluvia_mm": 800,
+    "captacion_m3_anio": 800000,
+    "consumo_m3_anio": 450000,
+    "cisternas_m3": 100000
+  },
+  "energia": {
+    "paneles_gwh": 8,
+    "edificio_gwh": 200,
+    "boveda_gwh": [
+      400,
+      2000
+    ],
+    "subestacion_kv": 400,
+    "baterias_mwh": 200,
+    "generadores_h": 72
+  },
   "materiales": [
-    { "elemento": "estructura", "material": "concreto C70 de baja permeabilidad, acero inoxidable dúplex expuesto, protección catódica", "vida_anios": 200 },
-    { "elemento": "piel", "material": "recinto negro y cantera gris de Zacatecas sobre UHPC; tezontle en basamento, portales y calzadas" },
-    { "elemento": "ventanas", "material": "triple vidrio, marcos de bronce, electrocrómico en S/E/O" },
-    { "elemento": "pisos", "material": "mármol Santo Tomás y travertino en vestíbulos; terrazo sobre piso técnico en oficinas; recinto en baños" },
-    { "elemento": "muros de baños", "material": "talavera de Puebla, una paleta por lado" },
-    { "elemento": "madera", "material": "tzalam, parota, granadillo certificados; encino para muebles" },
-    { "elemento": "herrajes", "material": "bronce macizo" },
-    { "elemento": "linterna", "material": "obsidiana pulida" }
+    {
+      "elemento": "estructura",
+      "material": "concreto C70 de baja permeabilidad, acero inoxidable dúplex expuesto, protección catódica",
+      "vida_anios": 200
+    },
+    {
+      "elemento": "piel",
+      "material": "recinto negro y cantera gris de Zacatecas sobre UHPC; tezontle en basamento, portales y calzadas"
+    },
+    {
+      "elemento": "ventanas",
+      "material": "triple vidrio, marcos de bronce, electrocrómico en S/E/O"
+    },
+    {
+      "elemento": "pisos",
+      "material": "mármol Santo Tomás y travertino en vestíbulos; terrazo sobre piso técnico en oficinas; recinto en baños"
+    },
+    {
+      "elemento": "muros de baños",
+      "material": "talavera de Puebla, una paleta por lado"
+    },
+    {
+      "elemento": "madera",
+      "material": "tzalam, parota, granadillo certificados; encino para muebles"
+    },
+    {
+      "elemento": "herrajes",
+      "material": "bronce macizo"
+    },
+    {
+      "elemento": "linterna",
+      "material": "obsidiana pulida"
+    }
   ],
-
-  "metas": { "subir_30000_min": 26, "evacuar_min": 33, "coche_a_escritorio_min": 12, "anden_a_escritorio_min": 10, "escritorio_a_casa_min": 5, "decision_a_dueno_min": 11, "queja_respuesta_h": 1, "queja_solucion_dias": 11, "decisiones_dia": 33 },
-  "obra": { "anios": 7, "bosque_abre_anio": 3, "primer_lado_ocupado_anio": 5, "costo_usd_m": [16000, 26000], "operacion_anual_usd_m": [400, 600] },
+  "metas": {
+    "subir_30000_min": 26,
+    "evacuar_min": 33,
+    "coche_a_escritorio_min": 12,
+    "anden_a_escritorio_min": 10,
+    "escritorio_a_casa_min": 5,
+    "decision_a_dueno_min": 11,
+    "queja_respuesta_h": 1,
+    "queja_solucion_dias": 11,
+    "decisiones_dia": 33
+  },
+  "obra": {
+    "anios": 7,
+    "bosque_abre_anio": 3,
+    "primer_lado_ocupado_anio": 5,
+    "costo_usd_m": [
+      16000,
+      26000
+    ],
+    "operacion_anual_usd_m": [
+      400,
+      600
+    ]
+  },
   "decisiones_pendientes": [
-    { "id": "sitio", "a": "Campo Militar No. 1", "b": "Texcoco" },
-    { "id": "sotanos", "a": "11 niveles", "b": "33 literales" },
-    { "id": "estacionamiento", "a": "~39,000 cajones", "b": "15,000 y transporte" },
-    { "id": "sectores", "a": "Personas / Orden / Economía / Territorio", "b": "otra agrupación" },
-    { "id": "vicepresidencia", "a": "se diseña la oficina", "b": "Jefatura de la Oficina" },
-    { "id": "nombre", "a": "Edificio de Gobierno", "b": "El Tablero / La Cuadra" }
+    {
+      "id": "sitio",
+      "a": "Campo Militar No. 1",
+      "b": "Texcoco"
+    },
+    {
+      "id": "sotanos",
+      "a": "11 niveles",
+      "b": "33 literales"
+    },
+    {
+      "id": "estacionamiento",
+      "a": "~39,000 cajones",
+      "b": "15,000 y transporte"
+    },
+    {
+      "id": "sectores",
+      "a": "Personas / Orden / Economía / Territorio",
+      "b": "otra agrupación"
+    },
+    {
+      "id": "vicepresidencia",
+      "a": "se diseña la oficina",
+      "b": "Jefatura de la Oficina"
+    },
+    {
+      "id": "nombre",
+      "a": "Edificio de Gobierno",
+      "b": "El Tablero / La Cuadra"
+    }
   ],
-
   "presentacion": {
-    "camara_inicial": { "pos": [-820, 480, 900], "mira": [0, 50, 0] },
-    "og": { "pos": [-640, 360, 700], "mira": [0, 70, -20], "ambiente": "tarde" },
+    "camara_inicial": {
+      "pos": [
+        -820,
+        480,
+        900
+      ],
+      "mira": [
+        0,
+        50,
+        0
+      ]
+    },
+    "og": {
+      "pos": [
+        -640,
+        360,
+        700
+      ],
+      "mira": [
+        0,
+        70,
+        -20
+      ],
+      "ambiente": "tarde"
+    },
     "ambientes": {
-      "dia": { "nombre": "Día", "arriba": "#5f93d6", "horizonte": "#cfe0f2", "abajo": "#6f7a84", "niebla": "#c9dcef", "sol": [900, 1300, -500], "sol_intensidad": 2.4, "sol_color": "#fff1dc", "hemi": 1.0, "estrellas": 0, "ventanas": 0, "exposicion": 1.0 },
-      "tarde": { "nombre": "Atardecer", "arriba": "#3a4a8a", "horizonte": "#f2a65a", "abajo": "#3a3238", "niebla": "#e0a070", "sol": [-1800, 260, 500], "sol_intensidad": 1.6, "sol_color": "#ffb070", "hemi": 0.55, "estrellas": 0.15, "ventanas": 0.6, "exposicion": 0.95 },
-      "noche": { "nombre": "Noche", "arriba": "#05070f", "horizonte": "#1a2235", "abajo": "#05060a", "niebla": "#0e1420", "sol": [-400, 900, 800], "sol_intensidad": 0.25, "sol_color": "#8fa8d8", "hemi": 0.18, "estrellas": 1, "ventanas": 1.6, "exposicion": 1.1 }
+      "dia": {
+        "nombre": "Día",
+        "arriba": "#5f93d6",
+        "horizonte": "#cfe0f2",
+        "abajo": "#6f7a84",
+        "niebla": "#c9dcef",
+        "sol": [
+          900,
+          1300,
+          -500
+        ],
+        "sol_intensidad": 2.4,
+        "sol_color": "#fff1dc",
+        "hemi": 1,
+        "estrellas": 0,
+        "ventanas": 0,
+        "exposicion": 1
+      },
+      "tarde": {
+        "nombre": "Atardecer",
+        "arriba": "#3a4a8a",
+        "horizonte": "#f2a65a",
+        "abajo": "#3a3238",
+        "niebla": "#e0a070",
+        "sol": [
+          -1800,
+          260,
+          500
+        ],
+        "sol_intensidad": 1.6,
+        "sol_color": "#ffb070",
+        "hemi": 0.55,
+        "estrellas": 0.15,
+        "ventanas": 0.6,
+        "exposicion": 0.95
+      },
+      "noche": {
+        "nombre": "Noche",
+        "arriba": "#05070f",
+        "horizonte": "#1a2235",
+        "abajo": "#05060a",
+        "niebla": "#0e1420",
+        "sol": [
+          -400,
+          900,
+          800
+        ],
+        "sol_intensidad": 0.25,
+        "sol_color": "#8fa8d8",
+        "hemi": 0.18,
+        "estrellas": 1,
+        "ventanas": 1.6,
+        "exposicion": 1.1
+      }
     },
     "meses": {
-      "verde": { "nombre": "Verde", "jacaranda": "#5a8a45", "colorin": "#4d7a3f", "pradera": "#567a3a" },
-      "marzo": { "nombre": "Marzo", "jacaranda": "#8a6fd1", "colorin": "#c43a2f", "pradera": "#5f7f3a" },
-      "noviembre": { "nombre": "Noviembre", "jacaranda": "#5a8a45", "colorin": "#4d7a3f", "pradera": "#c98a2a" }
+      "verde": {
+        "nombre": "Verde",
+        "jacaranda": "#5a8a45",
+        "colorin": "#4d7a3f",
+        "pradera": "#567a3a",
+        "flor": "#7a5fb0",
+        "nota": "salvias moradas"
+      },
+      "marzo": {
+        "nombre": "Marzo",
+        "jacaranda": "#8a6fd1",
+        "colorin": "#c43a2f",
+        "pradera": "#5f7f3a",
+        "flor": "#d9533a",
+        "nota": "dalias y colorines rojos, jacarandas"
+      },
+      "noviembre": {
+        "nombre": "Noviembre",
+        "jacaranda": "#5a8a45",
+        "colorin": "#4d7a3f",
+        "pradera": "#c98a2a",
+        "flor": "#e8962a",
+        "nota": "cempasúchil"
+      }
     },
-    "ciudad": { "radio_m": 2700, "malla_m": 64, "vacios": 0.18, "alto_m": [5, 26] }
+    "ciudad": {
+      "radio_m": 2700,
+      "malla_m": 64,
+      "vacios": 0.18,
+      "alto_m": [
+        5,
+        26
+      ]
+    }
   },
-
   "emplazamientos": [
     {
-      "id": "estacion", "grupo": "sitio", "pos_xz": [0, -430], "medida_xz": [264, 84], "etiqueta": { "texto": "Estación de Metro y Tren", "y": 36, "ancho": 110 },
-      "ficha": { "t": "La Gran Estación · Metro y Tren Suburbano", "c": "Los andenes van bajo tierra; la gente sube por escaleras eléctricas a un vestíbulo de 240 × 60 m y 22 m de altura, con doble techo: una bóveda de vidrio adentro y, encima, una pérgola de paneles solares que da sombra y lluvia afuera. Cuatro cafeterías, una en cada esquina del vestíbulo: pides desde el tren, recoges al salir y caminas a tu lugar. De ahí, la Rampa Norte con bandas hasta la plaza.", "d": [["Vestíbulo", "240 × 60 m, 22 m de alto"], ["Cafeterías", "4 × 120 asientos, pedido desde el teléfono"], ["Andenes", "Metro a −12 m, tren a −18 m"], ["Rutas eléctricas", "33, con terminal en el S1"], ["Del andén al escritorio", "10 minutos"]] },
-      "partes": [
-        { "tipo": "caja", "medida_xz": [240, 60], "alto": 4, "y": 0, "material": "piedra_pb" },
-        { "tipo": "caja", "medida_xz": [240, 60], "alto": 18, "y": 4, "material": "vidrio" },
-        { "tipo": "caja", "medida_xz": [248, 68], "alto": 1.2, "y": 22, "material": "cantera" },
-        { "tipo": "caja", "medida_xz": [264, 84], "alto": 0.9, "y": 26.55, "material": "pv" },
-        { "tipo": "columnas", "desde": [-126, -40], "hasta": [127, -40], "n": 12, "radio": 0.7, "alto": 27, "material": "cantera" },
-        { "tipo": "columnas", "desde": [-126, 40], "hasta": [127, 40], "n": 12, "radio": 0.7, "alto": 27, "material": "cantera" },
-        { "tipo": "caja", "dxz": [-105, -25], "medida_xz": [22, 14], "alto": 5, "y": 4, "material": "bronce", "ficha": "cafeteria" },
-        { "tipo": "caja", "dxz": [105, -25], "medida_xz": [22, 14], "alto": 5, "y": 4, "material": "bronce", "ficha": "cafeteria" },
-        { "tipo": "caja", "dxz": [-105, 25], "medida_xz": [22, 14], "alto": 5, "y": 4, "material": "bronce", "ficha": "cafeteria" },
-        { "tipo": "caja", "dxz": [105, 25], "medida_xz": [22, 14], "alto": 5, "y": 4, "material": "bronce", "ficha": "cafeteria" }
+      "id": "estacion",
+      "grupo": "sitio",
+      "pos_xz": [
+        0,
+        -430
       ],
-      "fichas": { "cafeteria": { "t": "Cafetería de la estación", "c": "Una en cada esquina del vestíbulo, 120 asientos: café, desayuno y pan. Pides desde el tren y lo recoges al pasar.", "d": [] } }
+      "medida_xz": [
+        264,
+        84
+      ],
+      "etiqueta": {
+        "texto": "Estación de Metro y Tren",
+        "y": 36,
+        "ancho": 110
+      },
+      "ficha": {
+        "t": "La Gran Estación · Metro y Tren Suburbano",
+        "c": "Los andenes van bajo tierra; la gente sube por escaleras eléctricas a un vestíbulo de 240 × 60 m y 22 m de altura, con doble techo: una bóveda de vidrio adentro y, encima, una pérgola de paneles solares que da sombra y lluvia afuera. Cuatro cafeterías, una en cada esquina del vestíbulo: pides desde el tren, recoges al salir y caminas a tu lugar. De ahí, la Rampa Norte con bandas hasta la plaza.",
+        "d": [
+          [
+            "Vestíbulo",
+            "240 × 60 m, 22 m de alto"
+          ],
+          [
+            "Cafeterías",
+            "4 × 120 asientos, pedido desde el teléfono"
+          ],
+          [
+            "Andenes",
+            "Metro a −12 m, tren a −18 m"
+          ],
+          [
+            "Rutas eléctricas",
+            "33, con terminal en el S1"
+          ],
+          [
+            "Del andén al escritorio",
+            "10 minutos"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            240,
+            60
+          ],
+          "alto": 4,
+          "y": 0,
+          "material": "piedra_pb"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            240,
+            60
+          ],
+          "alto": 18,
+          "y": 4,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            248,
+            68
+          ],
+          "alto": 1.2,
+          "y": 22,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            264,
+            84
+          ],
+          "alto": 0.9,
+          "y": 26.55,
+          "material": "pv"
+        },
+        {
+          "tipo": "columnas",
+          "desde": [
+            -126,
+            -40
+          ],
+          "hasta": [
+            127,
+            -40
+          ],
+          "n": 12,
+          "radio": 0.7,
+          "alto": 27,
+          "material": "cantera"
+        },
+        {
+          "tipo": "columnas",
+          "desde": [
+            -126,
+            40
+          ],
+          "hasta": [
+            127,
+            40
+          ],
+          "n": 12,
+          "radio": 0.7,
+          "alto": 27,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -105,
+            -25
+          ],
+          "medida_xz": [
+            22,
+            14
+          ],
+          "alto": 5,
+          "y": 4,
+          "material": "bronce",
+          "ficha": "cafeteria"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            105,
+            -25
+          ],
+          "medida_xz": [
+            22,
+            14
+          ],
+          "alto": 5,
+          "y": 4,
+          "material": "bronce",
+          "ficha": "cafeteria"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -105,
+            25
+          ],
+          "medida_xz": [
+            22,
+            14
+          ],
+          "alto": 5,
+          "y": 4,
+          "material": "bronce",
+          "ficha": "cafeteria"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            105,
+            25
+          ],
+          "medida_xz": [
+            22,
+            14
+          ],
+          "alto": 5,
+          "y": 4,
+          "material": "bronce",
+          "ficha": "cafeteria"
+        }
+      ],
+      "fichas": {
+        "cafeteria": {
+          "t": "Cafetería de la estación",
+          "c": "Una en cada esquina del vestíbulo, 120 asientos: café, desayuno y pan. Pides desde el tren y lo recoges al pasar.",
+          "d": []
+        }
+      }
     },
     {
-      "id": "rampa_norte", "grupo": "sitio", "pos_xz": [0, -332], "medida_xz": [24, 137],
-      "ficha": { "t": "La Rampa Norte", "c": "De la estación a la plaza Norte: 135 m bajo una pérgola de bronce con dos pares de bandas móviles (dos por sentido) y paso libre al centro. Con la banda, el tramo se hace en poco más de un minuto.", "d": [["Largo", "135 m"], ["Bandas", "4 × 135 m, 2 m de ancho"], ["Ancho total", "22 m"]] },
+      "id": "rampa_norte",
+      "grupo": "sitio",
+      "pos_xz": [
+        0,
+        -332
+      ],
+      "medida_xz": [
+        24,
+        137
+      ],
+      "ficha": {
+        "t": "La Rampa Norte",
+        "c": "De la estación a la plaza Norte: 135 m bajo una pérgola de bronce con dos pares de bandas móviles (dos por sentido) y paso libre al centro. Con la banda, el tramo se hace en poco más de un minuto.",
+        "d": [
+          [
+            "Largo",
+            "135 m"
+          ],
+          [
+            "Bandas",
+            "4 × 135 m, 2 m de ancho"
+          ],
+          [
+            "Ancho total",
+            "22 m"
+          ]
+        ]
+      },
       "partes": [
-        { "tipo": "caja", "medida_xz": [22, 135], "alto": 0.3, "y": 0, "material": "cantera", "sombra": false },
-        { "tipo": "caja", "medida_xz": [24, 137], "alto": 0.6, "y": 6.2, "material": "bronce" },
-        { "tipo": "columnas", "desde": [-11.5, -67.5], "hasta": [-11.5, 67.5], "n": 13, "radio": 0.3, "alto": 6.5, "material": "bronce" },
-        { "tipo": "columnas", "desde": [11.5, -67.5], "hasta": [11.5, 67.5], "n": 13, "radio": 0.3, "alto": 6.5, "material": "bronce" },
-        { "tipo": "caja", "dxz": [-7.5, 0], "medida_xz": [2, 133], "alto": 0.12, "y": 0.3, "material": "recinto", "sombra": false },
-        { "tipo": "caja", "dxz": [-4.5, 0], "medida_xz": [2, 133], "alto": 0.12, "y": 0.3, "material": "recinto", "sombra": false },
-        { "tipo": "caja", "dxz": [4.5, 0], "medida_xz": [2, 133], "alto": 0.12, "y": 0.3, "material": "recinto", "sombra": false },
-        { "tipo": "caja", "dxz": [7.5, 0], "medida_xz": [2, 133], "alto": 0.12, "y": 0.3, "material": "recinto", "sombra": false }
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            22,
+            135
+          ],
+          "alto": 0.3,
+          "y": 0,
+          "material": "cantera",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            24,
+            137
+          ],
+          "alto": 0.6,
+          "y": 6.2,
+          "material": "bronce"
+        },
+        {
+          "tipo": "columnas",
+          "desde": [
+            -11.5,
+            -67.5
+          ],
+          "hasta": [
+            -11.5,
+            67.5
+          ],
+          "n": 13,
+          "radio": 0.3,
+          "alto": 6.5,
+          "material": "bronce"
+        },
+        {
+          "tipo": "columnas",
+          "desde": [
+            11.5,
+            -67.5
+          ],
+          "hasta": [
+            11.5,
+            67.5
+          ],
+          "n": 13,
+          "radio": 0.3,
+          "alto": 6.5,
+          "material": "bronce"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -7.5,
+            0
+          ],
+          "medida_xz": [
+            2,
+            133
+          ],
+          "alto": 0.12,
+          "y": 0.3,
+          "material": "recinto",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -4.5,
+            0
+          ],
+          "medida_xz": [
+            2,
+            133
+          ],
+          "alto": 0.12,
+          "y": 0.3,
+          "material": "recinto",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            4.5,
+            0
+          ],
+          "medida_xz": [
+            2,
+            133
+          ],
+          "alto": 0.12,
+          "y": 0.3,
+          "material": "recinto",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            7.5,
+            0
+          ],
+          "medida_xz": [
+            2,
+            133
+          ],
+          "alto": 0.12,
+          "y": 0.3,
+          "material": "recinto",
+          "sombra": false
+        }
       ]
     },
     {
-      "id": "teatro_999", "grupo": "sitio", "pos_xz": [0, 400], "medida_xz": [224, 164], "etiqueta": { "texto": "Teatro 999", "y": 32, "ancho": 70 },
-      "ficha": { "t": "Teatro 999", "c": "Semienterrado bajo una colina de bosque, abierto a la ciudad: conciertos, actos nacionales, ceremonias. 999 butacas en platea y balcón, ninguna a más de 30 m del escenario.", "d": [["Sala", "2,200 m²"], ["Escenario", "24 × 14 m con foso para 60 músicos"], ["Pantalla", "LED de 24 × 10 m"], ["Butaca", "paso 1.10 m, 0.65 m de ancho, ventilación individual"], ["Estacionamiento", "2,000 cajones bajo la plaza"]] },
-      "partes": [ { "tipo": "loma", "medida_xz": [224, 164], "alto": 15, "material": "pradera" } ]
-    },
-    {
-      "id": "foyer_999", "grupo": "sitio", "pos_xz": [0, 324], "medida_xz": [96, 26],
-      "ficha": { "t": "Foyer del Teatro 999", "c": "Aquí se recibe a la gente antes de acomodarla: 90 × 22 m, 12 m de altura, cantera y vidrio mirando a la plaza. Guardarropa, taquilla, baños 1:15 y acceso sin escalones a la platea.", "d": [["Superficie", "1,980 m²"], ["Altura", "12 m"]] },
-      "partes": [
-        { "tipo": "caja", "medida_xz": [90, 22], "alto": 12, "y": 5.8, "material": "vidrio" },
-        { "tipo": "caja", "medida_xz": [96, 26], "alto": 1.2, "y": 17.8, "material": "recinto" },
-        { "tipo": "caja", "dxz": [0, 10], "medida_xz": [14, 6], "alto": 4, "y": 19.4, "material": "vidrio", "ficha": "cabina" }
+      "id": "teatro_999",
+      "grupo": "sitio",
+      "pos_xz": [
+        0,
+        400
       ],
-      "fichas": { "cabina": { "t": "Cabina de producción · Teatro 999", "c": "Al fondo de la platea, con ventana a la sala: dirección de video, audio, luces, transmisión y traducción. Ocho cámaras robóticas, mezcla en 4K, señal lista para televisión y redes en el momento.", "d": [["Superficie", "60 m²"], ["Cámaras", "8 robóticas + 2 de mano"], ["Salida", "TV, streaming, pantallas del edificio"]] } }
-    },
-    {
-      "id": "restaurante_999", "grupo": "sitio", "pos_xz": [0, 312], "medida_xz": [110, 42],
-      "ficha": { "t": "Restaurante del Teatro 999", "c": "Debajo del foyer, abierto todo el día y no solo en funciones: 300 asientos, 5 m de alto, terraza de 110 m hacia la plaza y el bosque. La cocina se comparte con el foyer.", "d": [["Asientos", "300"], ["Terraza", "110 × 16 m"]] },
+      "medida_xz": [
+        224,
+        164
+      ],
+      "etiqueta": {
+        "texto": "Teatro 999",
+        "y": 32,
+        "ancho": 70
+      },
+      "ficha": {
+        "t": "Teatro 999",
+        "c": "Semienterrado bajo una colina de bosque, abierto a la ciudad: conciertos, actos nacionales, ceremonias. 999 butacas en platea y balcón, ninguna a más de 30 m del escenario.",
+        "d": [
+          [
+            "Sala",
+            "2,200 m²"
+          ],
+          [
+            "Escenario",
+            "24 × 14 m con foso para 60 músicos"
+          ],
+          [
+            "Pantalla",
+            "LED de 24 × 10 m"
+          ],
+          [
+            "Butaca",
+            "paso 1.10 m, 0.65 m de ancho, ventilación individual"
+          ],
+          [
+            "Estacionamiento",
+            "2,000 cajones bajo la plaza"
+          ]
+        ]
+      },
       "partes": [
-        { "tipo": "caja", "dxz": [0, 6], "medida_xz": [90, 22], "alto": 5, "y": 0, "material": "vidrio" },
-        { "tipo": "caja", "dxz": [0, 6], "medida_xz": [96, 26], "alto": 0.8, "y": 5, "material": "cantera" },
-        { "tipo": "caja", "dxz": [0, -13], "medida_xz": [110, 16], "alto": 0.4, "y": 0, "material": "tezontle", "sombra": false }
+        {
+          "tipo": "loma",
+          "medida_xz": [
+            224,
+            164
+          ],
+          "alto": 15,
+          "material": "pradera"
+        }
       ]
     },
     {
-      "id": "salon_de_eventos", "grupo": "sitio", "pos_xz": [103, 314], "medida_xz": [68, 46], "etiqueta": { "texto": "Salón de Eventos", "y": 24, "ancho": 90 },
-      "ficha": { "t": "Salón de Eventos", "c": "Un salón vacío de 66 × 44 m sin columnas y 11 m libres, pegado al Teatro 999 y conectado a su foyer por una galería de vidrio. Se monta y desmonta todos los días: expo de proveedores, desayuno de 1,200, baile de Año Nuevo, feria de los estados. Los proveedores exponen aquí y presentan en el teatro. Muros móviles lo parten en tres; cajas de piso cada 5.55 m con energía, red y agua; parrilla de rigging en todo el techo; cabina de ambiente en el mezanine.", "d": [["Superficie", "2,904 m²"], ["Capacidad", "2,000 de pie · 1,200 en banquete · 100 stands de 3 × 3"], ["Altura libre", "11 m"], ["Cocina", "propia, unida por pasillo de servicio a la del teatro"], ["Bodega", "800 m² contigua, con andén"]] },
-      "partes": [
-        { "tipo": "caja", "medida_xz": [66, 44], "alto": 8, "y": 0, "material": "piedra_torre" },
-        { "tipo": "caja", "medida_xz": [66, 44], "alto": 3, "y": 8, "material": "vidrio" },
-        { "tipo": "caja", "medida_xz": [68, 46], "alto": 0.9, "y": 11, "material": "bronce" },
-        { "tipo": "caja", "dxz": [0, -19], "medida_xz": [8, 5], "alto": 3, "y": 11.9, "material": "vidrio", "ficha": "cabina" }
+      "id": "foyer_999",
+      "grupo": "sitio",
+      "pos_xz": [
+        0,
+        324
       ],
-      "fichas": { "cabina": { "t": "Cabina de ambiente · Salón", "c": "En el mezanine del salón: luces, sonido, pantallas y clima se mueven desde aquí para que el ambiente cambie con el evento, de un desayuno de trabajo a un baile, sin que nadie suba a una escalera.", "d": [["Superficie", "30 m²"]] } }
+      "medida_xz": [
+        96,
+        26
+      ],
+      "ficha": {
+        "t": "Foyer del Teatro 999",
+        "c": "Aquí se recibe a la gente antes de acomodarla: 90 × 22 m, 12 m de altura, cantera y vidrio mirando a la plaza. Guardarropa, taquilla, baños 1:15 y acceso sin escalones a la platea.",
+        "d": [
+          [
+            "Superficie",
+            "1,980 m²"
+          ],
+          [
+            "Altura",
+            "12 m"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            90,
+            22
+          ],
+          "alto": 12,
+          "y": 5.8,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            96,
+            26
+          ],
+          "alto": 1.2,
+          "y": 17.8,
+          "material": "recinto"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            10
+          ],
+          "medida_xz": [
+            14,
+            6
+          ],
+          "alto": 4,
+          "y": 19.4,
+          "material": "vidrio",
+          "ficha": "cabina"
+        }
+      ],
+      "fichas": {
+        "cabina": {
+          "t": "Cabina de producción · Teatro 999",
+          "c": "Al fondo de la platea, con ventana a la sala: dirección de video, audio, luces, transmisión y traducción. Ocho cámaras robóticas, mezcla en 4K, señal lista para televisión y redes en el momento.",
+          "d": [
+            [
+              "Superficie",
+              "60 m²"
+            ],
+            [
+              "Cámaras",
+              "8 robóticas + 2 de mano"
+            ],
+            [
+              "Salida",
+              "TV, streaming, pantallas del edificio"
+            ]
+          ]
+        }
+      }
     },
     {
-      "id": "galeria", "grupo": "sitio", "pos_xz": [57.5, 326], "medida_xz": [27, 20],
-      "ficha": { "t": "La galería", "c": "25 m de vidrio y doble altura entre el foyer del Teatro 999 y el Salón de Eventos. Es el paso y es la antesala de la expo: registro, café, los primeros stands.", "d": [["Medida", "25 × 11.1 m, 7 m de alto"]] },
-      "partes": [
-        { "tipo": "caja", "dxz": [0, -4], "medida_xz": [26, 11.1], "alto": 7, "y": 0, "material": "vidrio" },
-        { "tipo": "caja", "dxz": [0, -4], "medida_xz": [27, 12.1], "alto": 0.6, "y": 7, "material": "cantera" },
-        { "tipo": "caja", "dxz": [0, 5], "medida_xz": [26, 6], "alto": 4, "y": 0, "material": "recinto", "ficha": "servicio" }
+      "id": "restaurante_999",
+      "grupo": "sitio",
+      "pos_xz": [
+        0,
+        312
       ],
-      "fichas": { "servicio": { "t": "Pasillo de servicio", "c": "Une la cocina del teatro con la cocina del salón: los dos recintos se sirven como uno solo.", "d": [] } }
-    },
-    {
-      "id": "bodegas_sur", "grupo": "sitio", "pos_xz": [124, 368], "medida_xz": [44, 46],
-      "ficha": { "t": "Bodegas y máquinas del Sur", "c": "Cada recinto tiene su bodega para montar y desmontar sin cruzarse: la del Teatro 999 (1,200 m², detrás del escenario), la del Salón (800 m², contigua, con andén de carga) y los cuartos de máquinas de los dos: clima, eléctrico, UPS, bombas contra incendio. Navidad, Año Nuevo, desayunos, comidas y cenas se guardan aquí, listos.", "d": [["Bodega 999", "1,200 m²"], ["Bodega Salón", "800 m²"], ["Andén", "4 camiones"], ["Máquinas", "clima, eléctrico, UPS, bombas"]] },
+      "medida_xz": [
+        110,
+        42
+      ],
+      "ficha": {
+        "t": "Restaurante del Teatro 999",
+        "c": "Debajo del foyer, abierto todo el día y no solo en funciones: 300 asientos, 5 m de alto, terraza de 110 m hacia la plaza y el bosque. La cocina se comparte con el foyer.",
+        "d": [
+          [
+            "Asientos",
+            "300"
+          ],
+          [
+            "Terraza",
+            "110 × 16 m"
+          ]
+        ]
+      },
       "partes": [
-        { "tipo": "caja", "dxz": [0, -6], "medida_xz": [40, 24], "alto": 6, "y": 0, "material": "recinto" },
-        { "tipo": "caja", "dxz": [0, -6], "medida_xz": [44, 28], "alto": 0.6, "y": 6, "material": "cantera" },
-        { "tipo": "caja", "dxz": [0, 16], "medida_xz": [30, 14], "alto": 0.4, "y": 0, "material": "asfalto", "sombra": false }
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            6
+          ],
+          "medida_xz": [
+            90,
+            22
+          ],
+          "alto": 5,
+          "y": 0,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            6
+          ],
+          "medida_xz": [
+            96,
+            26
+          ],
+          "alto": 0.8,
+          "y": 5,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -13
+          ],
+          "medida_xz": [
+            110,
+            16
+          ],
+          "alto": 0.4,
+          "y": 0,
+          "material": "tezontle",
+          "sombra": false
+        }
       ]
     },
     {
-      "id": "canchas", "grupo": "sitio", "pos_xz": [-400, -20], "medida_xz": [198, 190], "etiqueta": { "texto": "Canchas", "y": 20, "ancho": 60 },
-      "ficha": { "t": "Canchas al aire libre", "c": "Puerta Poniente: 8 de pádel, 6 de tenis, 2 de fútbol rápido, 4 de básquet y una pista de 5 km por el bosque. El gimnasio número 12.", "d": [] },
+      "id": "salon_de_eventos",
+      "grupo": "sitio",
+      "pos_xz": [
+        103,
+        314
+      ],
+      "medida_xz": [
+        68,
+        46
+      ],
+      "etiqueta": {
+        "texto": "Salón de Eventos",
+        "y": 24,
+        "ancho": 90
+      },
+      "ficha": {
+        "t": "Salón de Eventos",
+        "c": "Un salón vacío de 66 × 44 m sin columnas y 11 m libres, pegado al Teatro 999 y conectado a su foyer por una galería de vidrio. Se monta y desmonta todos los días: expo de proveedores, desayuno de 1,200, baile de Año Nuevo, feria de los estados. Los proveedores exponen aquí y presentan en el teatro. Muros móviles lo parten en tres; cajas de piso cada 5.55 m con energía, red y agua; parrilla de rigging en todo el techo; cabina de ambiente en el mezanine.",
+        "d": [
+          [
+            "Superficie",
+            "2,904 m²"
+          ],
+          [
+            "Capacidad",
+            "2,000 de pie · 1,200 en banquete · 100 stands de 3 × 3"
+          ],
+          [
+            "Altura libre",
+            "11 m"
+          ],
+          [
+            "Cocina",
+            "propia, unida por pasillo de servicio a la del teatro"
+          ],
+          [
+            "Bodega",
+            "800 m² contigua, con andén"
+          ]
+        ]
+      },
       "partes": [
-        { "tipo": "caja", "medida_xz": [198, 190], "alto": 0.1, "y": 0, "material": "bosque_suelo", "sombra": false },
-        { "tipo": "caja", "dxz": [-30, -90], "medida_xz": [40, 20], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [20, -90], "medida_xz": [40, 20], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [-30, -55], "medida_xz": [36, 18], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [10, -55], "medida_xz": [36, 18], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [50, -55], "medida_xz": [36, 18], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [-30, -20], "medida_xz": [36, 18], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [10, -20], "medida_xz": [36, 18], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "caja", "dxz": [50, -20], "medida_xz": [36, 18], "alto": 0.3, "y": 0.1, "material": "cancha", "sombra": false },
-        { "tipo": "malla", "dxz": [-40, 30], "paso_xz": [24, 14], "n_xz": [4, 2], "medida_xz": [20, 10], "alto": 0.3, "y": 0.1, "material": "pista", "sombra": false },
-        { "tipo": "malla", "dxz": [-40, 70], "paso_xz": [32, 19], "n_xz": [2, 2], "medida_xz": [28, 15], "alto": 0.3, "y": 0.1, "material": "asfalto", "sombra": false }
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            66,
+            44
+          ],
+          "alto": 8,
+          "y": 0,
+          "material": "piedra_torre"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            66,
+            44
+          ],
+          "alto": 3,
+          "y": 8,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            68,
+            46
+          ],
+          "alto": 0.9,
+          "y": 11,
+          "material": "bronce"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -19
+          ],
+          "medida_xz": [
+            8,
+            5
+          ],
+          "alto": 3,
+          "y": 11.9,
+          "material": "vidrio",
+          "ficha": "cabina"
+        }
+      ],
+      "fichas": {
+        "cabina": {
+          "t": "Cabina de ambiente · Salón",
+          "c": "En el mezanine del salón: luces, sonido, pantallas y clima se mueven desde aquí para que el ambiente cambie con el evento, de un desayuno de trabajo a un baile, sin que nadie suba a una escalera.",
+          "d": [
+            [
+              "Superficie",
+              "30 m²"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "galeria",
+      "grupo": "sitio",
+      "pos_xz": [
+        57.5,
+        326
+      ],
+      "medida_xz": [
+        27,
+        20
+      ],
+      "ficha": {
+        "t": "La galería",
+        "c": "25 m de vidrio y doble altura entre el foyer del Teatro 999 y el Salón de Eventos. Es el paso y es la antesala de la expo: registro, café, los primeros stands.",
+        "d": [
+          [
+            "Medida",
+            "25 × 11.1 m, 7 m de alto"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -4
+          ],
+          "medida_xz": [
+            26,
+            11.1
+          ],
+          "alto": 7,
+          "y": 0,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -4
+          ],
+          "medida_xz": [
+            27,
+            12.1
+          ],
+          "alto": 0.6,
+          "y": 7,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            5
+          ],
+          "medida_xz": [
+            26,
+            6
+          ],
+          "alto": 4,
+          "y": 0,
+          "material": "recinto",
+          "ficha": "servicio"
+        }
+      ],
+      "fichas": {
+        "servicio": {
+          "t": "Pasillo de servicio",
+          "c": "Une la cocina del teatro con la cocina del salón: los dos recintos se sirven como uno solo.",
+          "d": []
+        }
+      }
+    },
+    {
+      "id": "bodegas_sur",
+      "grupo": "sitio",
+      "pos_xz": [
+        124,
+        368
+      ],
+      "medida_xz": [
+        44,
+        46
+      ],
+      "ficha": {
+        "t": "Bodegas y máquinas del Sur",
+        "c": "Cada recinto tiene su bodega para montar y desmontar sin cruzarse: la del Teatro 999 (1,200 m², detrás del escenario), la del Salón (800 m², contigua, con andén de carga) y los cuartos de máquinas de los dos: clima, eléctrico, UPS, bombas contra incendio. Navidad, Año Nuevo, desayunos, comidas y cenas se guardan aquí, listos.",
+        "d": [
+          [
+            "Bodega 999",
+            "1,200 m²"
+          ],
+          [
+            "Bodega Salón",
+            "800 m²"
+          ],
+          [
+            "Andén",
+            "4 camiones"
+          ],
+          [
+            "Máquinas",
+            "clima, eléctrico, UPS, bombas"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -6
+          ],
+          "medida_xz": [
+            40,
+            24
+          ],
+          "alto": 6,
+          "y": 0,
+          "material": "recinto"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -6
+          ],
+          "medida_xz": [
+            44,
+            28
+          ],
+          "alto": 0.6,
+          "y": 6,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            16
+          ],
+          "medida_xz": [
+            30,
+            14
+          ],
+          "alto": 0.4,
+          "y": 0,
+          "material": "asfalto",
+          "sombra": false
+        }
       ]
     },
     {
-      "id": "helipuerto_oriente", "grupo": "sitio", "pos_xz": [400, -90], "medida_xz": [30, 30],
-      "partes": [ { "tipo": "disco", "radio": 14, "alto": 0.4, "y": 0, "material": "recinto" }, { "tipo": "anillo", "radio": [9, 11], "y": 0.55, "material": "blanco" } ]
-    },
-    {
-      "id": "energia", "grupo": "sitio", "pos_xz": [430, 110], "medida_xz": [120, 90], "etiqueta": { "texto": "Energía", "y": 26, "ancho": 60 },
-      "ficha": { "t": "Energía y enfriamiento", "c": "Subestación de 400 kV con dos acometidas y la planta de enfriamiento de La Bóveda, escondidas en lomas con bosque encima. El calor que sobra calienta la alberca y las regaderas.", "d": [["Paneles de azotea", "~5 MW, menos del 5 % del consumo"], ["Energía limpia contratada", "100 % del consumo"]] },
-      "partes": [ { "tipo": "loma", "medida_xz": [120, 90], "alto": 11, "material": "pradera" }, { "tipo": "loma", "dxz": [-10, -70], "medida_xz": [80, 60], "alto": 8, "material": "pradera" } ]
-    },
-    {
-      "id": "teatro_333", "grupo": "patio", "pos_xz": [60, 105], "medida_xz": [76, 54], "etiqueta": { "texto": "Teatro 333", "y": 22, "ancho": 60 },
-      "ficha": { "t": "Teatro 333", "c": "Bajo una loma del parque, a 60 m de la Casa: anuncios grandes, tomas de protesta, ceremonias con 333 invitados. Salida directa a la Sala de Prensa por túnel.", "d": [["Butacas", "333, ninguna a más de 18 m"], ["Escenario", "16 × 10 m"], ["Pantalla", "LED de 14 × 6 m"]] },
-      "partes": [ { "tipo": "loma", "medida_xz": [76, 54], "alto": 9, "material": "pradera" } ]
-    },
-    {
-      "id": "foyer_333", "grupo": "patio", "pos_xz": [60, 70], "medida_xz": [50, 34],
-      "ficha": { "t": "Foyer y restaurante del Teatro 333", "c": "Para recibir a los 333 invitados antes de acomodarlos: foyer de 40 × 12 m y 8 m de altura, de vidrio contra la loma. Debajo, el restaurante de 120 asientos con terraza hacia el parque y el agua de la Casa, abierto todo el día.", "d": [["Foyer", "480 m²"], ["Restaurante", "120 asientos"]] },
-      "partes": [
-        { "tipo": "caja", "dxz": [0, 2], "medida_xz": [40, 12], "alto": 4.5, "y": 0, "material": "vidrio" },
-        { "tipo": "caja", "dxz": [0, 2], "medida_xz": [44, 14], "alto": 0.6, "y": 4.5, "material": "cantera" },
-        { "tipo": "caja", "dxz": [0, 8], "medida_xz": [40, 12], "alto": 8, "y": 5, "material": "vidrio" },
-        { "tipo": "caja", "dxz": [0, 8], "medida_xz": [44, 14], "alto": 1, "y": 13, "material": "recinto" },
-        { "tipo": "caja", "dxz": [0, -9], "medida_xz": [50, 10], "alto": 0.3, "y": 0, "material": "tezontle", "sombra": false },
-        { "tipo": "caja", "dxz": [0, 12], "medida_xz": [8, 5], "alto": 3, "y": 14, "material": "vidrio", "ficha": "cabina" }
+      "id": "canchas",
+      "grupo": "sitio",
+      "pos_xz": [
+        -400,
+        -20
       ],
-      "fichas": { "cabina": { "t": "Cabina de producción · Teatro 333", "c": "Al fondo de la sala, con ventana: video, audio, luces, transmisión y traducción. Seis cámaras robóticas; la señal sale directo a la Sala de Prensa por el túnel.", "d": [["Superficie", "40 m²"]] } }
+      "medida_xz": [
+        198,
+        190
+      ],
+      "etiqueta": {
+        "texto": "Canchas",
+        "y": 20,
+        "ancho": 60
+      },
+      "ficha": {
+        "t": "Canchas al aire libre",
+        "c": "Puerta Poniente: 8 de pádel, 6 de tenis, 2 de fútbol rápido, 4 de básquet y una pista de 5 km por el bosque. El gimnasio número 12.",
+        "d": []
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            198,
+            190
+          ],
+          "alto": 0.1,
+          "y": 0,
+          "material": "bosque_suelo",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -30,
+            -90
+          ],
+          "medida_xz": [
+            40,
+            20
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            20,
+            -90
+          ],
+          "medida_xz": [
+            40,
+            20
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -30,
+            -55
+          ],
+          "medida_xz": [
+            36,
+            18
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            10,
+            -55
+          ],
+          "medida_xz": [
+            36,
+            18
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            50,
+            -55
+          ],
+          "medida_xz": [
+            36,
+            18
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -30,
+            -20
+          ],
+          "medida_xz": [
+            36,
+            18
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            10,
+            -20
+          ],
+          "medida_xz": [
+            36,
+            18
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            50,
+            -20
+          ],
+          "medida_xz": [
+            36,
+            18
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "cancha",
+          "sombra": false
+        },
+        {
+          "tipo": "malla",
+          "dxz": [
+            -40,
+            30
+          ],
+          "paso_xz": [
+            24,
+            14
+          ],
+          "n_xz": [
+            4,
+            2
+          ],
+          "medida_xz": [
+            20,
+            10
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "pista",
+          "sombra": false
+        },
+        {
+          "tipo": "malla",
+          "dxz": [
+            -40,
+            70
+          ],
+          "paso_xz": [
+            32,
+            19
+          ],
+          "n_xz": [
+            2,
+            2
+          ],
+          "medida_xz": [
+            28,
+            15
+          ],
+          "alto": 0.3,
+          "y": 0.1,
+          "material": "asfalto",
+          "sombra": false
+        }
+      ]
     },
     {
-      "id": "bodega_333", "grupo": "patio", "pos_xz": [110, 112], "medida_xz": [16, 10],
-      "ficha": { "t": "Bodega del Teatro 333", "c": "400 m² bajo la loma, con acceso desde el túnel del S1: montajes, mobiliario de ceremonias, banderas, el equipo de las tomas de protesta.", "d": [["Superficie", "400 m²"]] },
-      "partes": [ { "tipo": "caja", "medida_xz": [16, 10], "alto": 4, "y": 0, "material": "cantera" } ]
+      "id": "energia",
+      "grupo": "sitio",
+      "pos_xz": [
+        430,
+        110
+      ],
+      "medida_xz": [
+        120,
+        90
+      ],
+      "etiqueta": {
+        "texto": "Energía",
+        "y": 26,
+        "ancho": 60
+      },
+      "ficha": {
+        "t": "Energía y enfriamiento",
+        "c": "Subestación de 400 kV con dos acometidas y la planta de enfriamiento de La Bóveda, escondidas en lomas con bosque encima. El calor que sobra calienta la alberca y las regaderas.",
+        "d": [
+          [
+            "Paneles de azotea",
+            "~5 MW, menos del 5 % del consumo"
+          ],
+          [
+            "Energía limpia contratada",
+            "100 % del consumo"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "loma",
+          "medida_xz": [
+            120,
+            90
+          ],
+          "alto": 11,
+          "material": "pradera"
+        },
+        {
+          "tipo": "loma",
+          "dxz": [
+            -10,
+            -70
+          ],
+          "medida_xz": [
+            80,
+            60
+          ],
+          "alto": 8,
+          "material": "pradera"
+        }
+      ]
     },
     {
-      "id": "milpa", "grupo": "patio", "pos_xz": [-80, -90], "medida_xz": [33, 33],
-      "ficha": { "t": "La milpa", "c": "33 × 33 m de maíz, frijol y calabaza. La siembran los niños de las guarderías en mayo, la cosechan en octubre, y las tortillas se sirven en los Mercados.", "d": [] },
-      "partes": [ { "tipo": "caja", "medida_xz": [33, 33], "alto": 0.6, "y": 0, "material": "milpa", "sombra": false } ]
+      "id": "teatro_333",
+      "grupo": "patio",
+      "pos_xz": [
+        60,
+        105
+      ],
+      "medida_xz": [
+        76,
+        54
+      ],
+      "etiqueta": {
+        "texto": "Teatro 333",
+        "y": 22,
+        "ancho": 60
+      },
+      "ficha": {
+        "t": "Teatro 333",
+        "c": "Bajo una loma del parque, a 60 m de la Casa: anuncios grandes, tomas de protesta, ceremonias con 333 invitados. Salida directa a la Sala de Prensa por túnel.",
+        "d": [
+          [
+            "Butacas",
+            "333, ninguna a más de 18 m"
+          ],
+          [
+            "Escenario",
+            "16 × 10 m"
+          ],
+          [
+            "Pantalla",
+            "LED de 14 × 6 m"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "loma",
+          "medida_xz": [
+            76,
+            54
+          ],
+          "alto": 9,
+          "material": "pradera"
+        }
+      ]
+    },
+    {
+      "id": "foyer_333",
+      "grupo": "patio",
+      "pos_xz": [
+        60,
+        70
+      ],
+      "medida_xz": [
+        50,
+        34
+      ],
+      "ficha": {
+        "t": "Foyer y restaurante del Teatro 333",
+        "c": "Para recibir a los 333 invitados antes de acomodarlos: foyer de 40 × 12 m y 8 m de altura, de vidrio contra la loma. Debajo, el restaurante de 120 asientos con terraza hacia el parque y el agua de la Casa, abierto todo el día.",
+        "d": [
+          [
+            "Foyer",
+            "480 m²"
+          ],
+          [
+            "Restaurante",
+            "120 asientos"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            2
+          ],
+          "medida_xz": [
+            40,
+            12
+          ],
+          "alto": 4.5,
+          "y": 0,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            2
+          ],
+          "medida_xz": [
+            44,
+            14
+          ],
+          "alto": 0.6,
+          "y": 4.5,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            8
+          ],
+          "medida_xz": [
+            40,
+            12
+          ],
+          "alto": 8,
+          "y": 5,
+          "material": "vidrio"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            8
+          ],
+          "medida_xz": [
+            44,
+            14
+          ],
+          "alto": 1,
+          "y": 13,
+          "material": "recinto"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            -9
+          ],
+          "medida_xz": [
+            50,
+            10
+          ],
+          "alto": 0.3,
+          "y": 0,
+          "material": "tezontle",
+          "sombra": false
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            12
+          ],
+          "medida_xz": [
+            8,
+            5
+          ],
+          "alto": 3,
+          "y": 14,
+          "material": "vidrio",
+          "ficha": "cabina"
+        }
+      ],
+      "fichas": {
+        "cabina": {
+          "t": "Cabina de producción · Teatro 333",
+          "c": "Al fondo de la sala, con ventana: video, audio, luces, transmisión y traducción. Seis cámaras robóticas; la señal sale directo a la Sala de Prensa por el túnel.",
+          "d": [
+            [
+              "Superficie",
+              "40 m²"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "bodega_333",
+      "grupo": "patio",
+      "pos_xz": [
+        110,
+        112
+      ],
+      "medida_xz": [
+        16,
+        10
+      ],
+      "ficha": {
+        "t": "Bodega del Teatro 333",
+        "c": "400 m² bajo la loma, con acceso desde el túnel del S1: montajes, mobiliario de ceremonias, banderas, el equipo de las tomas de protesta.",
+        "d": [
+          [
+            "Superficie",
+            "400 m²"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            16,
+            10
+          ],
+          "alto": 4,
+          "y": 0,
+          "material": "cantera"
+        }
+      ]
+    },
+    {
+      "id": "milpa",
+      "grupo": "patio",
+      "pos_xz": [
+        -80,
+        -90
+      ],
+      "medida_xz": [
+        33,
+        33
+      ],
+      "ficha": {
+        "t": "La milpa",
+        "c": "33 × 33 m de maíz, frijol y calabaza. La siembran los niños de las guarderías en mayo, la cosechan en octubre, y las tortillas se sirven en los Mercados.",
+        "d": []
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            33,
+            33
+          ],
+          "alto": 0.6,
+          "y": 0,
+          "material": "milpa",
+          "sombra": false
+        }
+      ]
+    },
+    {
+      "id": "cuartel",
+      "grupo": "sitio",
+      "pos_xz": [
+        395,
+        -70
+      ],
+      "medida_xz": [
+        116,
+        50
+      ],
+      "etiqueta": {
+        "texto": "El Cuartel · Seguridad",
+        "y": 60,
+        "ancho": 110
+      },
+      "ficha": {
+        "t": "El Cuartel · edificio militar y de seguridad",
+        "c": "Rectangular, de piedra, 9 pisos: más bajo que el cuadrado y a su lado, en la Puerta Oriente, el lado del Orden. Aquí viven las fuerzas que acatan las órdenes del edificio: Guardia Nacional, Fuerzas Armadas (enlace), policía federal y estatal, cada una con su propio C4 mirando el país en tiempo real, y arriba el C5 que los une. Abajo, el Cuarto de Guerra. Helipuerto en el techo, túnel al Centro de Continuidad del edificio y al S1. El polvorín, aparte, bajo su propio montículo.",
+        "d": [
+          [
+            "Medida",
+            "110 × 44 m, 9 pisos (45 m)"
+          ],
+          [
+            "Pisos 1–3",
+            "Guardia Nacional y su C4"
+          ],
+          [
+            "Pisos 4–5",
+            "Fuerzas Armadas (enlace) y su C4"
+          ],
+          [
+            "Pisos 6–7",
+            "Policía federal y estatal, cada una con su C4"
+          ],
+          [
+            "Piso 8",
+            "C5: la sala que une a todos"
+          ],
+          [
+            "Piso 9",
+            "Mando y oficinas de enlace con el Presidente"
+          ],
+          [
+            "Sótano",
+            "Cuarto de Guerra, 33 × 22 m, búnker"
+          ],
+          [
+            "Personas",
+            "~1,800"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            110,
+            44
+          ],
+          "alto": 6,
+          "y": 0,
+          "material": "piedra_pb"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            110,
+            44
+          ],
+          "alto": 39,
+          "y": 6,
+          "material": "piedra_torre"
+        },
+        {
+          "tipo": "caja",
+          "medida_xz": [
+            114,
+            48
+          ],
+          "alto": 1.2,
+          "y": 45,
+          "material": "cantera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            0
+          ],
+          "medida_xz": [
+            116,
+            50
+          ],
+          "alto": 0.9,
+          "y": 46.2,
+          "material": "bronce"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -40,
+            0
+          ],
+          "medida_xz": [
+            24,
+            14
+          ],
+          "alto": 4,
+          "y": 47.1,
+          "material": "vidrio",
+          "ficha": "c5"
+        },
+        {
+          "tipo": "disco",
+          "dxz": [
+            30,
+            0
+          ],
+          "radio": 13,
+          "alto": 0.4,
+          "y": 47.1,
+          "material": "recinto",
+          "ficha": "heli"
+        },
+        {
+          "tipo": "anillo",
+          "dxz": [
+            30,
+            0
+          ],
+          "radio": [
+            8,
+            10
+          ],
+          "y": 47.6,
+          "material": "blanco"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            0,
+            30
+          ],
+          "medida_xz": [
+            60,
+            8
+          ],
+          "alto": 0.4,
+          "y": 0,
+          "material": "tezontle",
+          "sombra": false,
+          "ficha": "patio_armas"
+        }
+      ],
+      "fichas": {
+        "c5": {
+          "t": "C5 y mando",
+          "c": "En el techo, con vista al edificio: la sala donde los cuatro C4 se vuelven uno. Lo que ve la Guardia, lo que ve la policía y lo que ve la Marina en la misma pantalla.",
+          "d": [
+            [
+              "Superficie",
+              "336 m²"
+            ]
+          ]
+        },
+        "heli": {
+          "t": "Helipuerto del Cuartel",
+          "c": "Para seguridad y emergencias, en el techo: a un minuto de vuelo del helipuerto del edificio.",
+          "d": []
+        },
+        "patio_armas": {
+          "t": "Patio de armas",
+          "c": "Al frente, de tezontle: formaciones, honores y la entrada de los que llegan en vehículo blindado.",
+          "d": []
+        }
+      }
+    },
+    {
+      "id": "polvorin",
+      "grupo": "sitio",
+      "pos_xz": [
+        460,
+        -150
+      ],
+      "medida_xz": [
+        60,
+        44
+      ],
+      "ficha": {
+        "t": "El polvorín",
+        "c": "Aparte del Cuartel, a 100 m, bajo su propio montículo de tierra con bosque encima: municiones y explosivos de todas las fuerzas en un solo lugar, con acceso por túnel desde el Cuartel y nunca desde la calle. Doble puerta blindada, control de temperatura y humedad, detección de incendio por aspiración, inventario en el Tablero. Lo que vale la pena resguardar, se resguarda una sola vez y bien.",
+        "d": [
+          [
+            "Superficie",
+            "1,200 m² bajo tierra"
+          ],
+          [
+            "Distancia",
+            "100 m del Cuartel, 300 del edificio"
+          ],
+          [
+            "Acceso",
+            "túnel blindado, dos esclusas"
+          ]
+        ]
+      },
+      "partes": [
+        {
+          "tipo": "loma",
+          "medida_xz": [
+            60,
+            44
+          ],
+          "alto": 7,
+          "material": "pradera"
+        },
+        {
+          "tipo": "caja",
+          "dxz": [
+            -28,
+            0
+          ],
+          "medida_xz": [
+            6,
+            8
+          ],
+          "alto": 4,
+          "y": 0,
+          "material": "recinto"
+        }
+      ]
     }
   ]
 }

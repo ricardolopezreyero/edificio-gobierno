@@ -49,7 +49,8 @@ Para **30,000 personas** que trabajan, deciden y ejecutan, y para los ciudadanos
 | Centro | Casa de Decisiones: 99 × 99 m, planta baja de 11 m + planta alta de 7 m + sótano, linterna del Presidente de 22 m, en medio del parque de 7.1 ha |
 | Arquitectura | Basamento de tezontle (4 pisos), 4 zaguanes, 4 torres de esquina (+11 m), la greca (256 bahías en pisos 24–31), remate con cornisa (§7b) |
 | Parques de cielo | 4, uno al centro de cada fachada, pisos 16–18, 99 m de ancho, abiertos al aire |
-| Bosque | ~78 ha netas, 15,000 a 20,000 árboles de ~33 especies nativas del Valle de México |
+| Bosque | ~78 ha netas, 15,000 a 20,000 árboles de ~33 especies nativas, sembrados por plan de zona; veredas en malla de 111 m para juntas caminando |
+| Seguridad | El Cuartel: rectangular, 9 pisos, un C4 por fuerza, C5 unificado, Cuarto de Guerra en el sótano, polvorín aparte bajo montículo |
 | Estacionamiento | ~39,000 cajones (30 % de margen): 29,500 bajo el bosque con 36 patios de luz, 7,400 bajo el edificio, 2,000 bajo la plaza Sur; sin barreras, cajón asignado |
 | Teatros y eventos | 333 butacas bajo el parque central · 999 butacas en el bosque, abierto a la ciudad · Salón de Eventos de 2,904 m² junto al 999, con bodega y cabina por recinto |
 | Comer | 4 Mercados de los 32 estados + 4 comedores de planta baja + 33 cafés + 8 restaurantes |
@@ -196,7 +197,7 @@ Nueve celdas de 333 × 333 m. El edificio ocupa la central. Todo lo demás es bo
 | **Centro** | El edificio, el parque interior, la Casa de Decisiones, el Teatro 333 bajo una loma del parque | Perímetro de seguridad Z1 en las cuatro plazas de acceso |
 | **Puerta Norte** | Plaza de llegada principal, **estación de Metro y Tren Suburbano** (más terminal de 33 rutas eléctricas), ciclovías, **Casa del Ciudadano Norte**, jacarandas | La puerta «de la ciudad» |
 | **Puerta Sur** | **Teatro 999** semienterrado bajo una colina de bosque, el **Salón de Eventos** (66 × 44 m) unido al foyer por una galería, bodegas y máquinas del Sur, plaza y estacionamiento de visitantes (2,000 cajones en un nivel) | Abierto a la ciudad: eventos nacionales, conciertos, ceremonias, expos |
-| **Puerta Oriente** | Acceso de prensa y visitas oficiales, helipuerto de emergencia, **subestación eléctrica** y planta de enfriamiento de La Bóveda camufladas en lomas con bosque encima | Sale el sol: la puerta de las noticias |
+| **Puerta Oriente** | Acceso de prensa y visitas oficiales, **El Cuartel** (edificio militar y de seguridad, 110 × 44 m, 9 pisos, helipuerto en su techo), el polvorín bajo su montículo, **subestación eléctrica** y planta de enfriamiento de La Bóveda camufladas en lomas con bosque encima | Sale el sol: la puerta de las noticias y del Orden |
 | **Puerta Poniente** | **Deportes al aire libre**: 8 canchas de pádel, 6 de tenis, 2 de fútbol rápido, 4 de básquet, pista de 5 km por el bosque; acceso de logística y proveedores (rampa al S1) | El lado del atardecer |
 | **4 esquinas** | Bosque denso sobre **2 niveles de estacionamiento** (221,778 m² cada esquina, ~7,400 cajones por esquina), rampas y accesos vehiculares desde el anillo vial perimetral | Senderos peatonales cubiertos de 333 m hasta el edificio; también carritos eléctricos |
 
@@ -765,6 +766,29 @@ Tú lo describiste exacto: puertas corredizas que se abren para quien puede y no
 - Las esclusas de Z4–Z6 pesan una persona (no pasan dos), tienen vidrio blindado y se cierran en 1.2 segundos.
 - Todo el reconocimiento se procesa dentro del edificio (La Bóveda); los videos no salen; los registros de puertas se borran a los 90 días salvo incidentes. La seguridad del gobierno no puede ser excusa para vigilar a su gente.
 
+### El Cuartel: el edificio militar y de seguridad
+
+Las fuerzas de seguridad **acatan las órdenes del edificio, pero no viven en él**: tienen oficinas de enlace adentro (lado Oriente, sector Orden) y su propio edificio afuera. Así el cuadrado sigue siendo civil, y la seguridad está a un túnel de distancia.
+
+| Decisión | Qué y por qué |
+|---|---|
+| **Dónde** | Puerta Oriente, el lado del Orden (Gobernación, Seguridad, Defensa). A 60 m del anillo, con túnel al S1 y al Centro de Continuidad (S7): la orden baja por el túnel, nunca por la calle |
+| **Forma** | **Rectangular, 110 × 44 m, 9 pisos (45 m)**, de cantera con rendijas verticales y basamento de tezontle. Más bajo que el cuadrado y a su lado: obedece, no compite. El rectángulo es la forma de la formación militar; el cuadrado, la del gobierno |
+| **Pisos 1–3** | Guardia Nacional con su **C4** (centro de comando, control, cómputo y comunicaciones): muro de pantallas, 24 horas, lo que pasa en el país en tiempo real |
+| **Pisos 4–5** | Fuerzas Armadas (enlace de Defensa y Marina) con su C4 |
+| **Pisos 6–7** | Policía federal y policía estatal, cada una con su C4 |
+| **Piso 8** | **El C5**: la sala que une a los cuatro. Lo que ve la Guardia, lo que ve la policía y lo que ve la Marina en una misma pantalla; de aquí sale la respuesta coordinada |
+| **Piso 9** | Mando y oficinas de enlace con la Presidencia; sala de 33 con línea directa a la Sala de Situación de la Casa |
+| **Sótano 1** | **El Cuarto de Guerra**: 33 × 22 m, búnker con aislamiento sísmico, aire propio, pantallas en tres muros, el Tablero de seguridad; aquí se toman las decisiones de seguridad y de ahí salen ejecutadas, con los cuatro mandos en la misma mesa. Túnel al S7 del edificio |
+| **Sótano 2** | Arsenal controlado (armas de servicio, con registro por pieza), cuarto de máquinas, generadores para 72 h, telecomunicaciones redundantes |
+| **Azotea** | Helipuerto (el del edificio queda solo para emergencias civiles) y el C5 con vista al cuadrado |
+| **Patio de armas** | Al frente, de tezontle: formaciones, honores, llegada de vehículos blindados |
+| **Personas** | ~1,800 entre las cuatro fuerzas |
+
+**El polvorín**, aparte: municiones y explosivos de todas las fuerzas en un solo lugar, **bajo su propio montículo de tierra con bosque encima**, a 100 m del Cuartel y 300 del edificio. Acceso solo por túnel blindado con dos esclusas; doble puerta, control de temperatura y humedad, detección de incendio por aspiración, inventario en el Tablero. Lo que vale la pena resguardar se resguarda una sola vez y bien: todas las fuerzas sacan de ahí, ninguna guarda por su cuenta.
+
+Seguridad del conjunto: el Cuartel tiene su propio perímetro (Z4 en todo el edificio, Z5 en el C5 y el Cuarto de Guerra, Z6 en el arsenal y el polvorín), entrada vehicular desde el anillo vial por el Oriente con inspección bajo techo, y nunca una línea de visión directa del polvorín a la calle.
+
 ### Perímetro y emergencias
 
 - El perímetro duro empieza en las **cuatro plazas** (bolardos retráctiles, control de vehículos bajo tierra en las rampas, inspección de autobuses en una bahía previa al S1). El bosque es libre.
@@ -887,6 +911,46 @@ Plantas mexicanas que viven en sombra, en macetas de barro y jardineras de piedr
 ### La azotea
 
 Sedum, **echeverias** (mexicanas), **agaves**, pastos: casi sin riego, florecen y aguantan el sol de 160 m de altura.
+
+### Nada sin querer: el plan de siembra
+
+En este bosque no hay un árbol puesto al azar. Cada zona tiene su especie, su separación y su razón:
+
+| Zona | Especies | Separación | Por qué |
+|---|---|---|---|
+| Esquinas (bosque denso sobre el estacionamiento) | Encino, pino, cedro blanco | 8.2 m | Sombra cerrada y silencio; raíces someras sobre 1.5 m de tierra; el pino da la silueta alta |
+| Puertas (bosque claro) | Fresno, madroño, aile | 10 m | Copas abiertas para ver la plaza y el edificio; el madroño da color de corteza en invierno |
+| Orillas de las veredas | Tejocote y capulín | 11.1 m | Fruta en otoño para quien camina; los frutales marcan la vereda sin señal |
+| Plazas | Jacarandas en los bordes; agaves y dalias en jardineras | 9 m | Morado en marzo contra el tezontle rojo |
+| Calzadas del patio | Colorines a los lados; salvias y dalias en jardineras corridas | 11.1 m | Rojo en marzo; flor todo el año a la altura de la mano |
+| Orilla del agua | Ahuehuetes | 11 m | El árbol nacional pisa el agua; raíz que aguanta la humedad |
+| Praderas del patio | Pastos nativos con manchas de cempasúchil (noviembre) y cosmos (verano) | — | Color por mes sin riego; las manchas marcan los claros donde sentarse |
+| Parques de cielo | Encino bajo, fresno joven, tejocote, magnolia, palo dulce | 9 m | Viento y sustrato de 1.2 m: copas compactas, anclaje de raíz |
+| Azotea | Sedum, echeveria, agave en franjas | — | Casi sin agua a 160 m |
+| Vestíbulos y pisos | Palma camedor, monstera, pata de elefante en macetas de barro; muros verdes en cada núcleo | — | Sombra y aire adentro; especies mexicanas que viven bajo techo |
+| Cuartel y polvorín | Encino y nopal en el montículo | 8 m | Cubierta densa sobre el polvorín; el nopal no se trepa |
+
+El plan vive en `vegetacion.plan` de los parámetros y el 3D lo sigue: la mezcla de especies del bosque, los frutales de las veredas, los ahuehuetes del agua y los colorines de las calzadas salen de ahí.
+
+### Las veredas: juntas caminando
+
+Muchas juntas se harán caminando por el bosque. Para que eso sea eficiente y no un paseo, las veredas tienen **formato**:
+
+- **La misma malla de 111 m** de los patios de luz, sobre las ocho celdas del bosque: veredas rectas de 2.2 m de tepetate compactado, cada 111 m en los dos sentidos, interrumpidas solo donde hay una pieza (estación, teatro, salón, Cuartel). Una cuadra son 111 m: **1.4 minutos**.
+- **Cada cruce tiene nombre** (lado y número: «N2·O3») y un poste de bronce con los minutos a cada puerta. Una junta caminando se cita como una sala: «11:00, cruce S1·O2».
+- **Los tiempos están medidos**: junta de 11 minutos = dos cuadras de ida y dos de vuelta (444 m); circuito de 11 minutos = una manzana de 2 × 2 cuadras (888 m); de 22 = 2 × 4; de 33 = la vuelta a una celda. Nadie llega tarde por caminar.
+- **Bancas de recinto cada 333 m**, bebedero en cada cruce con las plazas, luz de 3 m hacia abajo, techo de copas: el frutal a la orilla da sombra y fruta.
+- **Los senderos de las esquinas** (con bandas) y la Rampa Norte son las veredas rápidas; la malla es la lenta, la de pensar.
+- Las veredas no cruzan el patio interior: ahí la retícula es de 11.1 m y los senderos son de recinto entre praderas.
+
+### Más verde: jardineras, manchas y macetas
+
+- **Jardineras corridas de cantera** al pie de las cuatro fachadas, entre cada torre y cada zaguán: 3 m de ancho con salvias, dalias y agaves. El edificio nunca toca el suelo con piedra desnuda.
+- **Cuatro jardineras circulares** en cada plaza (agaves y dalias) y **macetas de barro con palma camedor cada 6 m** en los bordes de las plazas, en la Rampa Norte, en la galería del Salón y en el patio de armas.
+- **Jardineras corridas** a los dos lados de las cuatro calzadas.
+- **33 manchas de flor** en las praderas del patio, de 6 a 12 m de radio, que cambian con el mes: salvias moradas, dalias y colorines rojos en marzo, cempasúchil en noviembre.
+- **264 muros verdes** adentro (uno por vestíbulo de núcleo), macetas en cada café de piso y en cada sala de espera.
+- Todo con riego por goteo de agua tratada y sensores por jardinera; lo que no florece se cambia, no se deja.
 
 ### El agua que las riega
 

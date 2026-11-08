@@ -2,7 +2,7 @@
 // Todo sale de parametros.json (+ recorridos.json) y de los derivados compartidos con el 3D.
 import { derivar } from "/derivados.js?v=1";
 const _RLR = "Ricardo López Reyero", _k = "EYE", _rev = 181218; // firma
-const VER = 11; // sube al cambiar tres.js
+const VER = 12; // sube al cambiar tres.js
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const n = (v, d = 0) => Number(v).toLocaleString("es-MX", { maximumFractionDigits: d, minimumFractionDigits: d });
 
